@@ -1,0 +1,513 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "customer_name",
+  "opportunity",
+  "style_no",
+  "style_name",
+  "column_1",
+  "season",
+  "product_type",
+  "style_item",
+  "revision",
+  "received_on",
+  "status",
+  "section_2",
+  "fabric_code",
+  "wash_code",
+  "wash_description",
+  "fabric_content",
+  "column_3",
+  "group_name",
+  "division",
+  "designer",
+  "tech_designer",
+  "column_4",
+  "factory",
+  "sample_size",
+  "fit_status",
+  "section_5",
+  "front_image",
+  "tech_pack_file",
+  "column_6",
+  "back_image",
+  "buyer_bom_file",
+  "section_7",
+  "source",
+  "source_reference",
+  "column_8",
+  "extracted_by_ai",
+  "extraction_confidence",
+  "ai_extraction_notes",
+  "tab_9",
+  "size_range",
+  "measurement_uom",
+  "column_10",
+  "base_size",
+  "section_11",
+  "sizes",
+  "section_12",
+  "measurement_matrix",
+  "measurements",
+  "tab_13",
+  "colours",
+  "section_14",
+  "materials",
+  "tab_15",
+  "construction_notes",
+  "wash_care",
+  "packing_notes",
+  "section_16",
+  "images",
+  "tab_17",
+  "fit_rounds",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "TP-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "no_copy": 1,
+   "options": "TP-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Inquiry (Opportunity)",
+   "options": "Opportunity"
+  },
+  {
+   "bold": 1,
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Style No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "style_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Style Name"
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "season",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Season"
+  },
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Product Type",
+   "options": "Product Type"
+  },
+  {
+   "description": "Item template with Colour and Size attributes. Use Create Style Item.",
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style Item (template)",
+   "options": "Item"
+  },
+  {
+   "fieldname": "revision",
+   "fieldtype": "Data",
+   "label": "Buyer Revision"
+  },
+  {
+   "default": "Today",
+   "fieldname": "received_on",
+   "fieldtype": "Date",
+   "label": "Received On"
+  },
+  {
+   "allow_on_submit": false,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Draft\nUnder Review\nAccepted\nCancelled"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_2",
+   "fieldtype": "Section Break",
+   "label": "Buyer Details"
+  },
+  {
+   "description": "e.g. S84 in C2027-S84-304",
+   "fieldname": "fabric_code",
+   "fieldtype": "Data",
+   "label": "Fabric Code"
+  },
+  {
+   "description": "e.g. 304",
+   "fieldname": "wash_code",
+   "fieldtype": "Data",
+   "label": "Wash Code"
+  },
+  {
+   "fieldname": "wash_description",
+   "fieldtype": "Data",
+   "label": "Wash Description"
+  },
+  {
+   "fieldname": "fabric_content",
+   "fieldtype": "Data",
+   "label": "Fabric Content"
+  },
+  {
+   "fieldname": "column_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "group_name",
+   "fieldtype": "Data",
+   "label": "Group / Category"
+  },
+  {
+   "fieldname": "division",
+   "fieldtype": "Data",
+   "label": "Division"
+  },
+  {
+   "fieldname": "designer",
+   "fieldtype": "Data",
+   "label": "Designer"
+  },
+  {
+   "fieldname": "tech_designer",
+   "fieldtype": "Data",
+   "label": "Tech Designer"
+  },
+  {
+   "fieldname": "column_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "e.g. CTVN",
+   "fieldname": "factory",
+   "fieldtype": "Data",
+   "label": "Factory Code"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "Sample Size"
+  },
+  {
+   "description": "Taken from the latest fit round.",
+   "fieldname": "fit_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Latest Fit Result",
+   "no_copy": 1,
+   "options": "\nPending\nSubmitted\nAWC\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_5",
+   "fieldtype": "Section Break",
+   "label": "Files"
+  },
+  {
+   "fieldname": "front_image",
+   "fieldtype": "Attach Image",
+   "label": "Front Image"
+  },
+  {
+   "fieldname": "tech_pack_file",
+   "fieldtype": "Attach",
+   "label": "Tech Pack File"
+  },
+  {
+   "fieldname": "column_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "back_image",
+   "fieldtype": "Attach Image",
+   "label": "Back Image"
+  },
+  {
+   "fieldname": "buyer_bom_file",
+   "fieldtype": "Attach",
+   "label": "Buyer BOM File"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_7",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "default": "Email",
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Received Via",
+   "options": "Email\nBuyer Portal\nManual\nOther"
+  },
+  {
+   "fieldname": "source_reference",
+   "fieldtype": "Data",
+   "label": "Email / Message Reference"
+  },
+  {
+   "fieldname": "column_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "extracted_by_ai",
+   "fieldtype": "Check",
+   "label": "Extracted by AI Agent"
+  },
+  {
+   "depends_on": "extracted_by_ai",
+   "fieldname": "extraction_confidence",
+   "fieldtype": "Percent",
+   "label": "Extraction Confidence"
+  },
+  {
+   "depends_on": "extracted_by_ai",
+   "fieldname": "ai_extraction_notes",
+   "fieldtype": "Small Text",
+   "label": "AI Extraction Notes"
+  },
+  {
+   "fieldname": "tab_9",
+   "fieldtype": "Tab Break",
+   "label": "Sizes & Measurements"
+  },
+  {
+   "description": "e.g. XS–XXL",
+   "fieldname": "size_range",
+   "fieldtype": "Data",
+   "label": "Size Range"
+  },
+  {
+   "default": "cm",
+   "fieldname": "measurement_uom",
+   "fieldtype": "Select",
+   "label": "Measurement Unit",
+   "options": "cm\ninch"
+  },
+  {
+   "fieldname": "column_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "base_size",
+   "fieldtype": "Data",
+   "label": "Base Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_11",
+   "fieldtype": "Section Break",
+   "label": "Sizes"
+  },
+  {
+   "fieldname": "sizes",
+   "fieldtype": "Table",
+   "label": "Sizes",
+   "options": "Tech Pack Size"
+  },
+  {
+   "fieldname": "section_12",
+   "fieldtype": "Section Break",
+   "label": "Measurement Chart"
+  },
+  {
+   "fieldname": "measurement_matrix",
+   "fieldtype": "HTML",
+   "label": "Measurement Matrix"
+  },
+  {
+   "fieldname": "measurements",
+   "fieldtype": "Table",
+   "label": "Measurements",
+   "options": "Tech Pack Measurement"
+  },
+  {
+   "fieldname": "tab_13",
+   "fieldtype": "Tab Break",
+   "label": "Colours & Materials"
+  },
+  {
+   "fieldname": "colours",
+   "fieldtype": "Table",
+   "label": "Colourways",
+   "options": "Tech Pack Colour"
+  },
+  {
+   "fieldname": "section_14",
+   "fieldtype": "Section Break",
+   "label": "Buyer BOM"
+  },
+  {
+   "fieldname": "materials",
+   "fieldtype": "Table",
+   "label": "Materials",
+   "options": "Tech Pack Material"
+  },
+  {
+   "fieldname": "tab_15",
+   "fieldtype": "Tab Break",
+   "label": "Construction & Images"
+  },
+  {
+   "fieldname": "construction_notes",
+   "fieldtype": "Text Editor",
+   "label": "Construction Notes"
+  },
+  {
+   "fieldname": "wash_care",
+   "fieldtype": "Small Text",
+   "label": "Wash & Care"
+  },
+  {
+   "fieldname": "packing_notes",
+   "fieldtype": "Small Text",
+   "label": "Packing Notes"
+  },
+  {
+   "fieldname": "section_16",
+   "fieldtype": "Section Break",
+   "label": "Images"
+  },
+  {
+   "fieldname": "images",
+   "fieldtype": "Table",
+   "label": "Images",
+   "options": "Tech Pack Image"
+  },
+  {
+   "fieldname": "tab_17",
+   "fieldtype": "Tab Break",
+   "label": "Fit Rounds"
+  },
+  {
+   "fieldname": "fit_rounds",
+   "fieldtype": "Table",
+   "label": "Fit / PP / TOP rounds",
+   "options": "Tech Pack Fit Round"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Tech Pack",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "image_field": "front_image",
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Tech Pack",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User"
+  }
+ ],
+ "search_fields": "style_no,style_name,customer",
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "style_no",
+ "track_changes": 1
+}

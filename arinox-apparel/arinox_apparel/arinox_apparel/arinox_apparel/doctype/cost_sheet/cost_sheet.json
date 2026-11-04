@@ -1,0 +1,606 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "customer",
+  "customer_name",
+  "opportunity",
+  "tech_pack",
+  "style_no",
+  "style_name",
+  "column_1",
+  "product_type",
+  "style_item",
+  "costing_date",
+  "currency",
+  "order_qty",
+  "sam",
+  "column_2",
+  "costing_parameter",
+  "reference_cost_sheet",
+  "revision_no",
+  "approval_status",
+  "section_3",
+  "company",
+  "season",
+  "fob_port",
+  "pcs_per_carton",
+  "column_4",
+  "front_image",
+  "back_image",
+  "column_5",
+  "po_date",
+  "in_warehouse_date",
+  "local_currency",
+  "local_exchange_rate",
+  "tab_6",
+  "materials",
+  "tab_7",
+  "charges",
+  "tab_8",
+  "fabric_cost",
+  "trim_cost",
+  "material_cost",
+  "conversion_cost",
+  "subtotal",
+  "column_9",
+  "price_cost_pct",
+  "profit_pct",
+  "computed_price",
+  "quoted_price",
+  "section_10",
+  "total_cost_at_quote",
+  "margin_amount",
+  "margin_pct",
+  "column_11",
+  "margin_floor_pct",
+  "below_floor",
+  "order_value",
+  "fabric_metres",
+  "product_cost",
+  "profit_amount",
+  "markup_pct",
+  "quoted_price_local",
+  "section_12",
+  "approved_by",
+  "approved_on",
+  "column_13",
+  "approved_price",
+  "approval_remarks",
+  "section_14",
+  "ai_notes",
+  "tab_15",
+  "signoffs",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "default": "CS-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "no_copy": 1,
+   "options": "CS-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": "Inquiry (Opportunity)",
+   "options": "Opportunity"
+  },
+  {
+   "fieldname": "tech_pack",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Tech Pack",
+   "options": "Tech Pack"
+  },
+  {
+   "bold": 1,
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Buyer Style No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "style_name",
+   "fieldtype": "Data",
+   "label": "Style Name"
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Product Type",
+   "options": "Product Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style Item (template)",
+   "options": "Item"
+  },
+  {
+   "default": "Today",
+   "fieldname": "costing_date",
+   "fieldtype": "Date",
+   "label": "Costing Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Int",
+   "label": "Expected Order Qty"
+  },
+  {
+   "fieldname": "sam",
+   "fieldtype": "Float",
+   "label": "SAM (minutes)"
+  },
+  {
+   "fieldname": "column_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Picked automatically from customer, product type and costing date.",
+   "fieldname": "costing_parameter",
+   "fieldtype": "Link",
+   "label": "Costing Parameter",
+   "options": "Costing Parameter"
+  },
+  {
+   "fieldname": "reference_cost_sheet",
+   "fieldtype": "Link",
+   "label": "Based On (previous costing)",
+   "no_copy": 1,
+   "options": "Cost Sheet"
+  },
+  {
+   "default": "1",
+   "fieldname": "revision_no",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Revision",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Not Required",
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Margin Approval",
+   "no_copy": 1,
+   "options": "Not Required\nPending\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_3",
+   "fieldtype": "Section Break",
+   "label": "Costing Header"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Factory / Company",
+   "options": "Company"
+  },
+  {
+   "fetch_from": "tech_pack.season",
+   "fieldname": "season",
+   "fieldtype": "Data",
+   "label": "Season"
+  },
+  {
+   "fieldname": "fob_port",
+   "fieldtype": "Data",
+   "label": "FOB Port"
+  },
+  {
+   "fieldname": "pcs_per_carton",
+   "fieldtype": "Int",
+   "label": "Pcs per Carton"
+  },
+  {
+   "fieldname": "column_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "tech_pack.front_image",
+   "fieldname": "front_image",
+   "fieldtype": "Attach Image",
+   "label": "Front Image",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "tech_pack.back_image",
+   "fieldname": "back_image",
+   "fieldtype": "Attach Image",
+   "label": "Back Image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "po_date",
+   "fieldtype": "Date",
+   "label": "PO Date"
+  },
+  {
+   "fieldname": "in_warehouse_date",
+   "fieldtype": "Date",
+   "label": "Required In-Warehouse Date"
+  },
+  {
+   "description": "Local currency for the local price line, e.g. INR",
+   "fieldname": "local_currency",
+   "fieldtype": "Link",
+   "label": "Local Currency",
+   "options": "Currency"
+  },
+  {
+   "description": "Local currency units per 1 unit of the quote currency",
+   "fieldname": "local_exchange_rate",
+   "fieldtype": "Float",
+   "label": "Local Currency per Sheet Currency"
+  },
+  {
+   "fieldname": "tab_6",
+   "fieldtype": "Tab Break",
+   "label": "Materials"
+  },
+  {
+   "fieldname": "materials",
+   "fieldtype": "Table",
+   "label": "Materials (fabric options & trims)",
+   "options": "Cost Sheet Material"
+  },
+  {
+   "fieldname": "tab_7",
+   "fieldtype": "Tab Break",
+   "label": "Cost Heads"
+  },
+  {
+   "description": "Every mandatory cost head must be here. A zero rate needs N/A ticked.",
+   "fieldname": "charges",
+   "fieldtype": "Table",
+   "label": "Cost Heads",
+   "options": "Cost Sheet Charge"
+  },
+  {
+   "fieldname": "tab_8",
+   "fieldtype": "Tab Break",
+   "label": "Summary"
+  },
+  {
+   "fieldname": "fabric_cost",
+   "fieldtype": "Currency",
+   "label": "Fabric Cost / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trim_cost",
+   "fieldtype": "Currency",
+   "label": "Trims & Other Material / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_cost",
+   "fieldtype": "Currency",
+   "label": "Material Cost / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "conversion_cost",
+   "fieldtype": "Currency",
+   "label": "Other Cost Heads / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "subtotal",
+   "fieldtype": "Currency",
+   "label": "Cost before price-based charges",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "price_cost_pct",
+   "fieldtype": "Percent",
+   "label": "Price-based Charges % (excl. profit)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "profit_pct",
+   "fieldtype": "Percent",
+   "label": "Profit % (from cost heads)",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "computed_price",
+   "fieldtype": "Currency",
+   "label": "Computed FOB / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "description": "Defaults to the computed FOB. Change it to quote a different price.",
+   "fieldname": "quoted_price",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Quoted FOB / pc",
+   "options": "currency"
+  },
+  {
+   "fieldname": "section_10",
+   "fieldtype": "Section Break",
+   "label": "Margin"
+  },
+  {
+   "fieldname": "total_cost_at_quote",
+   "fieldtype": "Currency",
+   "label": "Total Cost at Quoted Price",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "margin_amount",
+   "fieldtype": "Currency",
+   "label": "Margin / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "margin_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Margin %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "margin_floor_pct",
+   "fieldtype": "Percent",
+   "label": "Margin Floor %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "below_floor",
+   "fieldtype": "Check",
+   "label": "Below Floor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_value",
+   "fieldtype": "Currency",
+   "label": "Order Value",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fabric_metres",
+   "fieldtype": "Float",
+   "label": "Fabric Metres / pc (incl. wastage)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "product_cost",
+   "fieldtype": "Currency",
+   "label": "Product Cost / pc (materials + process)",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "profit_amount",
+   "fieldtype": "Currency",
+   "label": "Profit / pc (markup on cost)",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "markup_pct",
+   "fieldtype": "Percent",
+   "label": "Markup on Cost % at Quoted Price",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quoted_price_local",
+   "fieldtype": "Currency",
+   "label": "Quoted FOB (local currency)",
+   "options": "local_currency",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_12",
+   "fieldtype": "Section Break",
+   "label": "Approval"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "no_copy": 1,
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "approved_price",
+   "fieldtype": "Currency",
+   "label": "Approved at Price",
+   "no_copy": 1,
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approval_remarks",
+   "fieldtype": "Small Text",
+   "label": "Approval Remarks",
+   "no_copy": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_14",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "ai_notes",
+   "fieldtype": "Small Text",
+   "label": "Costing Notes (AI / merchandiser)"
+  },
+  {
+   "fieldname": "tab_15",
+   "fieldtype": "Tab Break",
+   "label": "Sign-off"
+  },
+  {
+   "description": "Use Tools → Sign Off. Each step records the user and time.",
+   "fieldname": "signoffs",
+   "fieldtype": "Table",
+   "label": "Costing Sign-off",
+   "options": "Cost Sheet Signoff"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Cost Sheet",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Cost Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User"
+  }
+ ],
+ "search_fields": "style_no,customer,tech_pack",
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "style_no",
+ "track_changes": 1
+}

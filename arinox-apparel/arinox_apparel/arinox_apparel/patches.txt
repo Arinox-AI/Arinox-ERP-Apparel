@@ -1,3 +1,4 @@
 [pre_model_sync]
 
 [post_model_sync]
+arinox_apparel.patches.update_cost_heads

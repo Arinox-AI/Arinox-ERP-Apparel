@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "step",
+  "signed_by",
+  "signed_on",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "step",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Step",
+   "options": "Fabric Cost Checked\nFirst Costing Done\nSecond Round Checked\nFinal Checked & Approved",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "signed_by",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Signed By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "signed_on",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Signed On",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Cost Sheet Signoff",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

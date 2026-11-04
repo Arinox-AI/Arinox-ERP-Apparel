@@ -1,0 +1,109 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "round_no",
+  "sent_on",
+  "courier",
+  "awb_no",
+  "buyer_received_on",
+  "decision",
+  "decision_on",
+  "shade_option",
+  "tested_after_wash",
+  "attachment",
+  "photo",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "round_no",
+   "fieldtype": "Int",
+   "label": "Round",
+   "read_only": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sent_on",
+   "fieldtype": "Date",
+   "label": "Sent On",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "courier",
+   "fieldtype": "Data",
+   "label": "Courier"
+  },
+  {
+   "fieldname": "awb_no",
+   "fieldtype": "Data",
+   "label": "AWB No"
+  },
+  {
+   "fieldname": "buyer_received_on",
+   "fieldtype": "Date",
+   "label": "Buyer Received On"
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Select",
+   "label": "Decision",
+   "options": "Pending\nApproved\nApproved with Comments\nRejected\nResubmit",
+   "default": "Pending",
+   "reqd": 1,
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "decision_on",
+   "fieldtype": "Date",
+   "label": "Decision On",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shade_option",
+   "fieldtype": "Data",
+   "label": "Shade / Option"
+  },
+  {
+   "fieldname": "tested_after_wash",
+   "fieldtype": "Check",
+   "label": "Tested After Wash"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "File"
+  },
+  {
+   "fieldname": "photo",
+   "fieldtype": "Attach Image",
+   "label": "Photo"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "columns": 2,
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Approval Round",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

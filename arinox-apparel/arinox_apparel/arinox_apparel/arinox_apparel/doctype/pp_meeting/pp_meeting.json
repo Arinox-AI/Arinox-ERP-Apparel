@@ -1,0 +1,487 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "meeting_type",
+  "sales_order",
+  "style_item",
+  "style_no",
+  "description",
+  "work_order_ref",
+  "order_qty",
+  "sales_contract",
+  "customer",
+  "tech_pack",
+  "c1",
+  "status",
+  "meeting_date",
+  "delivery_date",
+  "pcd",
+  "factory",
+  "line",
+  "s_prod",
+  "production_card_ref",
+  "production_card_issued_on",
+  "c2",
+  "pp_sample",
+  "size_set_sample",
+  "is_washed",
+  "s_part",
+  "participants",
+  "s_mat",
+  "colours",
+  "sewing_trims",
+  "packing_trims",
+  "c3",
+  "prewashed_trims",
+  "predyed_trims",
+  "line_setting_checklist",
+  "s_tech",
+  "critical_operations",
+  "expected_problems",
+  "preventive_actions",
+  "checkpoints",
+  "c4",
+  "spi",
+  "needle_size",
+  "needle_type",
+  "needle_change_frequency",
+  "marking_method",
+  "washing_method",
+  "finishing_instructions",
+  "ironing",
+  "packing",
+  "special_requirements",
+  "pp_corrections_for_cutting",
+  "size_set_corrections_for_cutting",
+  "s_act",
+  "actions",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "meeting_type",
+   "fieldtype": "Select",
+   "label": "Meeting Type",
+   "options": "PP Meeting\nPilot Run",
+   "default": "PP Meeting",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style (Item template)",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "work_order_ref",
+   "fieldtype": "Data",
+   "label": "Work Order / Job No"
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Int",
+   "label": "Order Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Sales Contract",
+   "options": "Sales Contract",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tech_pack",
+   "fieldtype": "Link",
+   "label": "Tech Pack",
+   "options": "Tech Pack"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nOpen Actions\nClosed",
+   "default": "Draft",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "allow_on_submit": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "meeting_date",
+   "fieldtype": "Date",
+   "label": "Meeting Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date"
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "PCD"
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Plant Floor"
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "s_prod",
+   "fieldtype": "Section Break",
+   "label": "Production Card and Samples"
+  },
+  {
+   "fieldname": "production_card_ref",
+   "fieldtype": "Data",
+   "label": "Production Card Ref"
+  },
+  {
+   "fieldname": "production_card_issued_on",
+   "fieldtype": "Date",
+   "label": "Production Card Issued On"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pp_sample",
+   "fieldtype": "Link",
+   "label": "PP Sample",
+   "options": "Sample Approval"
+  },
+  {
+   "fieldname": "size_set_sample",
+   "fieldtype": "Link",
+   "label": "Size Set Sample",
+   "options": "Sample Approval"
+  },
+  {
+   "fieldname": "is_washed",
+   "fieldtype": "Check",
+   "label": "Garment is Washed"
+  },
+  {
+   "fieldname": "s_part",
+   "fieldtype": "Section Break",
+   "label": "Participants"
+  },
+  {
+   "fieldname": "participants",
+   "fieldtype": "Table",
+   "label": "Participants",
+   "options": "PP Meeting Participant"
+  },
+  {
+   "fieldname": "s_mat",
+   "fieldtype": "Section Break",
+   "label": "PO / Colour / Fabric / Trim Matrix"
+  },
+  {
+   "fieldname": "colours",
+   "fieldtype": "Table",
+   "label": "Colours",
+   "options": "PP Meeting Colour"
+  },
+  {
+   "fieldname": "sewing_trims",
+   "fieldtype": "Select",
+   "label": "Sewing Trims",
+   "options": "\nAvailable\nPartial\nNot Available"
+  },
+  {
+   "fieldname": "packing_trims",
+   "fieldtype": "Select",
+   "label": "Packing Trims",
+   "options": "\nAvailable\nPartial\nNot Available"
+  },
+  {
+   "fieldname": "c3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "prewashed_trims",
+   "fieldtype": "Select",
+   "label": "Pre-washed Trims",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "predyed_trims",
+   "fieldtype": "Select",
+   "label": "Pre-dyed Trims",
+   "options": "\nYes\nNo\nN/A"
+  },
+  {
+   "fieldname": "line_setting_checklist",
+   "fieldtype": "Check",
+   "label": "Line Setting Checklist Available"
+  },
+  {
+   "fieldname": "s_tech",
+   "fieldtype": "Section Break",
+   "label": "Technical Notes",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "critical_operations",
+   "fieldtype": "Small Text",
+   "label": "Critical Operations / Special Instructions"
+  },
+  {
+   "fieldname": "expected_problems",
+   "fieldtype": "Small Text",
+   "label": "Expected Problems"
+  },
+  {
+   "fieldname": "preventive_actions",
+   "fieldtype": "Small Text",
+   "label": "Corrective / Preventive Actions"
+  },
+  {
+   "fieldname": "checkpoints",
+   "fieldtype": "Small Text",
+   "label": "Check Point Locations"
+  },
+  {
+   "fieldname": "c4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "spi",
+   "fieldtype": "Data",
+   "label": "SPI"
+  },
+  {
+   "fieldname": "needle_size",
+   "fieldtype": "Data",
+   "label": "Needle Size"
+  },
+  {
+   "fieldname": "needle_type",
+   "fieldtype": "Data",
+   "label": "Needle Type"
+  },
+  {
+   "fieldname": "needle_change_frequency",
+   "fieldtype": "Data",
+   "label": "Needle Change Frequency"
+  },
+  {
+   "fieldname": "marking_method",
+   "fieldtype": "Data",
+   "label": "Marker for Marking"
+  },
+  {
+   "fieldname": "washing_method",
+   "fieldtype": "Data",
+   "label": "Washing Method"
+  },
+  {
+   "fieldname": "finishing_instructions",
+   "fieldtype": "Small Text",
+   "label": "Finishing Instructions"
+  },
+  {
+   "fieldname": "ironing",
+   "fieldtype": "Small Text",
+   "label": "Ironing"
+  },
+  {
+   "fieldname": "packing",
+   "fieldtype": "Small Text",
+   "label": "Packing"
+  },
+  {
+   "fieldname": "special_requirements",
+   "fieldtype": "Small Text",
+   "label": "Special Requirements"
+  },
+  {
+   "fieldname": "pp_corrections_for_cutting",
+   "fieldtype": "Check",
+   "label": "PP Corrections Relevant to Cutting"
+  },
+  {
+   "fieldname": "size_set_corrections_for_cutting",
+   "fieldtype": "Check",
+   "label": "Size Set Corrections Relevant to Cutting"
+  },
+  {
+   "fieldname": "s_act",
+   "fieldtype": "Section Break",
+   "label": "Comments and Actions"
+  },
+  {
+   "fieldname": "actions",
+   "fieldtype": "Table",
+   "label": "Every Buyer Comment \u2192 Owner and Date",
+   "options": "PP Meeting Action",
+   "allow_on_submit": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "PP Meeting",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "PP Meeting",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandising Manager",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandiser",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Manufacturing Manager",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Manufacturing User",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  },
+  {
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Sales User",
+   "submit": 1,
+   "cancel": 1,
+   "amend": 1
+  }
+ ],
+ "autoname": "format:PPM-{YY}-{#####}",
+ "title_field": "style_no",
+ "is_submittable": 1
+}

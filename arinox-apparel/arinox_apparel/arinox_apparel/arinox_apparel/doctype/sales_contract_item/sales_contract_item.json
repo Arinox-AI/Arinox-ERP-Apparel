@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "style_item",
+  "style_no",
+  "colour",
+  "qty",
+  "rate",
+  "amount",
+  "ex_factory_date",
+  "tolerance_pct",
+  "column_1",
+  "etd",
+  "in_warehouse_date",
+  "uom",
+  "finish",
+  "description",
+  "cost_sheet",
+  "tech_pack",
+  "buyer_po_code",
+  "fabric_description",
+  "pcd",
+  "category",
+  "price_term",
+  "line_remarks"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Style Item",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Style No"
+  },
+  {
+   "columns": 1,
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Colour"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Qty"
+  },
+  {
+   "columns": 1,
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "options": "currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ex_factory_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Ex-Factory"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tolerance_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Tol ± %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "etd",
+   "fieldtype": "Date",
+   "label": "ETD"
+  },
+  {
+   "fieldname": "in_warehouse_date",
+   "fieldtype": "Date",
+   "label": "In-Warehouse"
+  },
+  {
+   "default": "Nos",
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "finish",
+   "fieldtype": "Data",
+   "label": "Finish / Wash"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Product Description"
+  },
+  {
+   "fieldname": "cost_sheet",
+   "fieldtype": "Link",
+   "label": "Cost Sheet",
+   "options": "Cost Sheet"
+  },
+  {
+   "fetch_from": "cost_sheet.tech_pack",
+   "fieldname": "tech_pack",
+   "fieldtype": "Link",
+   "label": "Tech Pack",
+   "options": "Tech Pack",
+   "read_only": 1
+  },
+  {
+   "description": "e.g. 69785/EM92409",
+   "fieldname": "buyer_po_code",
+   "fieldtype": "Data",
+   "label": "Buyer PO Code"
+  },
+  {
+   "fieldname": "fabric_description",
+   "fieldtype": "Small Text",
+   "label": "Fabric (content, count, construction, GSM)"
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "Planned Cut Date (PCD)"
+  },
+  {
+   "description": "e.g. WOMEN WOVEN SHIRT",
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "description": "DDP, FOB...",
+   "fieldname": "price_term",
+   "fieldtype": "Link",
+   "label": "Price Term",
+   "options": "Incoterm"
+  },
+  {
+   "fieldname": "line_remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sales Contract Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

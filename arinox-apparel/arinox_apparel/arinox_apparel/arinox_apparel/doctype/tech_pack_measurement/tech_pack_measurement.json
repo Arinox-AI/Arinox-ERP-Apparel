@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "pom_code",
+  "point_of_measure",
+  "local_name",
+  "size",
+  "value",
+  "tolerance_plus",
+  "tolerance_minus",
+  "how_to_measure"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "pom_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "POM Code"
+  },
+  {
+   "columns": 3,
+   "fieldname": "point_of_measure",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Point of Measure",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "local_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Local Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Size",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "value",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Value"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tolerance_plus",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Tol +"
+  },
+  {
+   "columns": 1,
+   "fieldname": "tolerance_minus",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Tol −"
+  },
+  {
+   "fieldname": "how_to_measure",
+   "fieldtype": "Small Text",
+   "label": "How to Measure"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Tech Pack Measurement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

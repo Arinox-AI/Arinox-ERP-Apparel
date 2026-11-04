@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "roll_no",
+  "before_warp",
+  "before_weft",
+  "before_bias",
+  "after_warp",
+  "after_weft",
+  "after_bias",
+  "shrink_warp_pct",
+  "shrink_weft_pct",
+  "shrink_bias_pct",
+  "torque_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll / Lot",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "before_warp",
+   "fieldtype": "Float",
+   "label": "Before Warp",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "before_weft",
+   "fieldtype": "Float",
+   "label": "Before Weft",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "before_bias",
+   "fieldtype": "Float",
+   "label": "Before Bias"
+  },
+  {
+   "fieldname": "after_warp",
+   "fieldtype": "Float",
+   "label": "After Warp",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "after_weft",
+   "fieldtype": "Float",
+   "label": "After Weft",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "after_bias",
+   "fieldtype": "Float",
+   "label": "After Bias"
+  },
+  {
+   "fieldname": "shrink_warp_pct",
+   "fieldtype": "Percent",
+   "label": "Warp %",
+   "read_only": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shrink_weft_pct",
+   "fieldtype": "Percent",
+   "label": "Weft %",
+   "read_only": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shrink_bias_pct",
+   "fieldtype": "Percent",
+   "label": "Bias %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "torque_pct",
+   "fieldtype": "Percent",
+   "label": "Torque %"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Shrinkage Reading",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

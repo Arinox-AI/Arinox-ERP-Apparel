@@ -33,7 +33,8 @@ Arinox document and print formats use an **orange and black header**. Primary or
 - `CLAUDE.md` — this file (agent rules)
 - `BUILD_PLAN.md` — how we build, slice by slice
 - `DEPLOY.md` — how the app moves to the hosted ERPNext
-- `doctypes/` — one spec per doctype (`_TEMPLATE.md` is the blank form)
+- `doctypes/` — one spec per doctype (`_TEMPLATE.md` is the blank form). `PHASE1_ORDER_WIN.md` is the built Phase 1; `PHASE1_ORDER_BACKBONE_PLAN.md` is the plan from the reference documents; `PHASE_B_PLAN_AND_APPROVE.md` is Phase B (factory allocation, sample approvals, PP meeting, bulk gate); `PHASE_C_MATERIALS_PLAN.md` is Phase C (fabric and trim requisitions, purchasing, inspection, in-house, T&A / WIP chart)
+- `reference/DOCUMENT_INDEX.md` — index of the 176 Cortex sample documents (what each is, key fields, where it maps). Read this before opening the zip
 - `skills/frappe-doctype/SKILL.md` — how to build, change, and test doctypes in the `arinox_apparel` app. Load it before any doctype work.
 
 ## Working style

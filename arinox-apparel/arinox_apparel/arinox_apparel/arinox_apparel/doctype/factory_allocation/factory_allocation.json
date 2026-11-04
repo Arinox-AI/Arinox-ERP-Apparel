@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_order",
+  "sales_contract",
+  "customer",
+  "company",
+  "c1",
+  "status",
+  "planned_by",
+  "order_qty",
+  "allocated_qty",
+  "s_lines",
+  "lines",
+  "agent_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Sales Contract",
+   "options": "Sales Contract",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Unplanned\nPartly Planned\nPlanned",
+   "default": "Unplanned",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "planned_by",
+   "fieldtype": "Select",
+   "label": "Planned By",
+   "options": "Manual\nAI Agent",
+   "default": "Manual"
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Int",
+   "label": "Order Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "allocated_qty",
+   "fieldtype": "Int",
+   "label": "Allocated Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_lines",
+   "fieldtype": "Section Break",
+   "label": "Allocation"
+  },
+  {
+   "fieldname": "lines",
+   "fieldtype": "Table",
+   "label": "Allocation Lines",
+   "options": "Factory Allocation Line"
+  },
+  {
+   "fieldname": "agent_notes",
+   "fieldtype": "Small Text",
+   "label": "Agent Notes"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Factory Allocation",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandising Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandiser"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Manufacturing Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Manufacturing User"
+  },
+  {
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Sales User"
+  }
+ ],
+ "title_field": "sales_order"
+}

@@ -1,0 +1,625 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "customer",
+  "customer_name",
+  "contract_date",
+  "buyer_po_no",
+  "season",
+  "brand",
+  "division",
+  "buyer_contact",
+  "merchant",
+  "column_1",
+  "quotation",
+  "price_negotiation",
+  "opportunity",
+  "currency",
+  "company",
+  "bank_account",
+  "customer_address",
+  "column_2",
+  "status",
+  "sales_order",
+  "total_qty",
+  "total_amount",
+  "sku_count",
+  "section_3",
+  "revision_no",
+  "revision_date",
+  "column_4",
+  "revised_for",
+  "tab_5",
+  "items",
+  "section_6",
+  "sizes",
+  "tab_7",
+  "contract_template",
+  "section_8",
+  "incoterm",
+  "named_place",
+  "shipment_mode",
+  "country_of_origin",
+  "column_9",
+  "freight_by",
+  "insurance_by",
+  "port_of_loading",
+  "port_of_discharge",
+  "section_10",
+  "days_ex_factory_to_etd",
+  "transit_days",
+  "column_11",
+  "delay_days_allowed",
+  "late_shipment_terms",
+  "section_12",
+  "tolerance_bands",
+  "section_13",
+  "quantity_claim_days",
+  "quality_claim_days",
+  "objection_days",
+  "discrepancy_days",
+  "aql_level",
+  "column_14",
+  "inspection_terms",
+  "section_15",
+  "packing_instructions",
+  "column_16",
+  "shipping_marks",
+  "section_17",
+  "payment_basis",
+  "payment_days",
+  "payment_terms_template",
+  "documents_list",
+  "terms_and_conditions",
+  "column_18",
+  "arbitration",
+  "terms",
+  "tab_19",
+  "signed_by_buyer",
+  "buyer_signed_on",
+  "column_20",
+  "signed_by_company",
+  "company_signed_on",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "contract_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Contract Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_po_no",
+   "fieldtype": "Data",
+   "label": "Buyer PO No"
+  },
+  {
+   "fieldname": "season",
+   "fieldtype": "Data",
+   "label": "Season"
+  },
+  {
+   "description": "Buyer brand or label",
+   "fieldname": "brand",
+   "fieldtype": "Data",
+   "label": "Brand / Buyer Company"
+  },
+  {
+   "fieldname": "division",
+   "fieldtype": "Data",
+   "label": "Division"
+  },
+  {
+   "fieldname": "buyer_contact",
+   "fieldtype": "Data",
+   "label": "Buyer Contact"
+  },
+  {
+   "fieldname": "merchant",
+   "fieldtype": "Data",
+   "label": "Merchant"
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Quotation",
+   "options": "Quotation"
+  },
+  {
+   "fieldname": "price_negotiation",
+   "fieldtype": "Link",
+   "label": "Price Negotiation",
+   "options": "Price Negotiation"
+  },
+  {
+   "fieldname": "opportunity",
+   "fieldtype": "Link",
+   "label": "Inquiry (Opportunity)",
+   "options": "Opportunity"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Issuing Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "description": "Defaults to the Company's default bank account.",
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Link",
+   "label": "Buyer Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "column_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Draft\nSigned\nOrdered\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "no_copy": 1,
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Qty",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Total Amount",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sku_count",
+   "fieldtype": "Int",
+   "label": "SKUs",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_3",
+   "fieldtype": "Section Break",
+   "label": "Revision"
+  },
+  {
+   "fieldname": "revision_no",
+   "fieldtype": "Int",
+   "label": "Revision No",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "revision_date",
+   "fieldtype": "Date",
+   "label": "Revision Date",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "column_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "revised_for",
+   "fieldtype": "Small Text",
+   "label": "Revised For",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "tab_5",
+   "fieldtype": "Tab Break",
+   "label": "Items & Sizes"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "SKU Lines (style × colour)",
+   "options": "Sales Contract Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_6",
+   "fieldtype": "Section Break",
+   "label": "Size Breakdown"
+  },
+  {
+   "fieldname": "sizes",
+   "fieldtype": "Table",
+   "label": "Size Breakdown",
+   "options": "Sales Contract Size Qty"
+  },
+  {
+   "fieldname": "tab_7",
+   "fieldtype": "Tab Break",
+   "label": "Terms"
+  },
+  {
+   "fieldname": "contract_template",
+   "fieldtype": "Link",
+   "label": "Contract Template",
+   "options": "Sales Contract Template"
+  },
+  {
+   "fieldname": "section_8",
+   "fieldtype": "Section Break",
+   "label": "Shipment"
+  },
+  {
+   "fieldname": "incoterm",
+   "fieldtype": "Link",
+   "label": "Incoterm",
+   "options": "Incoterm"
+  },
+  {
+   "fieldname": "named_place",
+   "fieldtype": "Data",
+   "label": "Named Place"
+  },
+  {
+   "fieldname": "shipment_mode",
+   "fieldtype": "Select",
+   "label": "Shipment Mode",
+   "options": "\nSea\nAir\nSea-Air\nCourier\nRoad"
+  },
+  {
+      "fieldname": "country_of_origin",
+   "fieldtype": "Data",
+   "label": "Country of Origin"
+  },
+  {
+   "fieldname": "column_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "freight_by",
+   "fieldtype": "Select",
+   "label": "Freight Paid By",
+   "options": "\nSeller\nBuyer"
+  },
+  {
+   "fieldname": "insurance_by",
+   "fieldtype": "Select",
+   "label": "Insurance Paid By",
+   "options": "\nSeller\nBuyer"
+  },
+  {
+   "fieldname": "port_of_loading",
+   "fieldtype": "Data",
+   "label": "Port of Loading"
+  },
+  {
+   "fieldname": "port_of_discharge",
+   "fieldtype": "Data",
+   "label": "Port of Discharge"
+  },
+  {
+   "fieldname": "section_10",
+   "fieldtype": "Section Break",
+   "label": "Shipping Days"
+  },
+  {
+   "default": "7",
+   "fieldname": "days_ex_factory_to_etd",
+   "fieldtype": "Int",
+   "label": "Days Ex-Factory → ETD"
+  },
+  {
+   "default": "30",
+   "fieldname": "transit_days",
+   "fieldtype": "Int",
+   "label": "Transit Days ETD → In-Warehouse"
+  },
+  {
+   "fieldname": "column_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delay_days_allowed",
+   "fieldtype": "Int",
+   "label": "Delay in Shipment Allowed (days)"
+  },
+  {
+   "fieldname": "late_shipment_terms",
+   "fieldtype": "Small Text",
+   "label": "Late Shipment Terms"
+  },
+  {
+   "fieldname": "section_12",
+   "fieldtype": "Section Break",
+   "label": "Quantity Tolerance"
+  },
+  {
+   "fieldname": "tolerance_bands",
+   "fieldtype": "Table",
+   "label": "Tolerance Bands (by line quantity)",
+   "options": "Sales Contract Tolerance Band"
+  },
+  {
+   "fieldname": "section_13",
+   "fieldtype": "Section Break",
+   "label": "Claims & Quality"
+  },
+  {
+   "default": "30",
+   "fieldname": "quantity_claim_days",
+   "fieldtype": "Int",
+   "label": "Quantity Claim Window (days)"
+  },
+  {
+   "default": "60",
+   "fieldname": "quality_claim_days",
+   "fieldtype": "Int",
+   "label": "Quality Claim Window (days)"
+  },
+  {
+   "fieldname": "objection_days",
+   "fieldtype": "Int",
+   "label": "Objection Window (days)"
+  },
+  {
+   "fieldname": "discrepancy_days",
+   "fieldtype": "Int",
+   "label": "Quality / Quantity Discrepancy Window (days)"
+  },
+  {
+   "default": "2.5",
+   "fieldname": "aql_level",
+   "fieldtype": "Data",
+   "label": "AQL Level"
+  },
+  {
+   "fieldname": "column_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_terms",
+   "fieldtype": "Small Text",
+   "label": "Inspection Terms"
+  },
+  {
+   "fieldname": "section_15",
+   "fieldtype": "Section Break",
+   "label": "Packing"
+  },
+  {
+   "fieldname": "packing_instructions",
+   "fieldtype": "Small Text",
+   "label": "Packing Instructions"
+  },
+  {
+   "fieldname": "column_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_marks",
+   "fieldtype": "Small Text",
+   "label": "Shipping Marks"
+  },
+  {
+   "fieldname": "section_17",
+   "fieldtype": "Section Break",
+   "label": "Payment & Clauses"
+  },
+  {
+   "fieldname": "payment_basis",
+   "fieldtype": "Select",
+   "label": "Payment Basis",
+   "options": "\nDays after Receipt of Goods (ROG)\nDays after Invoice Date\nAdvance\nL/C"
+  },
+  {
+   "description": "e.g. 15 for 15 days ROG",
+   "fieldname": "payment_days",
+   "fieldtype": "Int",
+   "label": "Payment Days"
+  },
+  {
+   "description": "Optional. Used for the Sales Order payment schedule.",
+   "fieldname": "payment_terms_template",
+   "fieldtype": "Link",
+   "label": "Payment Terms Template",
+   "options": "Payment Terms Template"
+  },
+  {
+   "default": "Invoice, Packing List, FCR or MAWB",
+   "fieldname": "documents_list",
+   "fieldtype": "Small Text",
+   "label": "Documents With Shipment"
+  },
+  {
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Link",
+   "label": "Clauses (Terms and Conditions)",
+   "options": "Terms and Conditions"
+  },
+  {
+   "fieldname": "column_18",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "arbitration",
+   "fieldtype": "Small Text",
+   "label": "Arbitration / Governing Law"
+  },
+  {
+   "fieldname": "terms",
+   "fieldtype": "Text Editor",
+   "label": "Clauses"
+  },
+  {
+   "fieldname": "tab_19",
+   "fieldtype": "Tab Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "signed_by_buyer",
+   "fieldtype": "Data",
+   "label": "Signed by (Buyer)"
+  },
+  {
+   "fieldname": "buyer_signed_on",
+   "fieldtype": "Date",
+   "label": "Buyer Signed On"
+  },
+  {
+   "fieldname": "column_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "signed_by_company",
+   "fieldtype": "Link",
+   "label": "Signed by (Company)",
+   "options": "User"
+  },
+  {
+   "fieldname": "company_signed_on",
+   "fieldtype": "Date",
+   "label": "Company Signed On"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sales Contract",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sales Contract",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User"
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales Manager"
+  }
+ ],
+ "search_fields": "customer,buyer_po_no",
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "customer_name",
+ "track_changes": 1
+}

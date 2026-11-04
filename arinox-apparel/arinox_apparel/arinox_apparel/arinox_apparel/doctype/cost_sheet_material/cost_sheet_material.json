@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_type",
+  "option_group",
+  "is_selected",
+  "description",
+  "consumption",
+  "wastage_pct",
+  "rate",
+  "amount",
+  "column_1",
+  "item",
+  "uom",
+  "wastage_reason",
+  "supplier",
+  "lab_dip_status",
+  "cuttable_width",
+  "rate_uom",
+  "conversion_factor",
+  "price_currency",
+  "exchange_rate",
+  "per_carton",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Fabric\nLining\nContrast Fabric\nTrim\nLabel\nPackaging\nThread\nFusing\nOther",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "description": "Rows sharing a group are alternatives (2–4). Exactly one is selected.",
+   "fieldname": "option_group",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Option Group"
+  },
+  {
+   "columns": 1,
+   "default": "1",
+   "fieldname": "is_selected",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Selected"
+  },
+  {
+   "columns": 2,
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "consumption",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Consumption / pc",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "wastage_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Wastage %"
+  },
+  {
+   "columns": 1,
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Rate",
+   "options": "currency"
+  },
+  {
+   "columns": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount / pc",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "wastage_reason",
+   "fieldtype": "Data",
+   "label": "Wastage Reason",
+   "mandatory_depends_on": "eval:doc.wastage_pct>0"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "lab_dip_status",
+   "fieldtype": "Select",
+   "label": "Lab Dip Status",
+   "options": "\nNot Required\nSubmitted\nApproved\nRejected"
+  },
+  {
+   "description": "e.g. 56\" or 132CM",
+   "fieldname": "cuttable_width",
+   "fieldtype": "Data",
+   "label": "Cuttable Width"
+  },
+  {
+   "description": "Leave empty if the rate is per the consumption UOM.",
+   "fieldname": "rate_uom",
+   "fieldtype": "Link",
+   "label": "Rate UOM",
+   "options": "UOM"
+  },
+  {
+   "default": "1",
+   "description": "e.g. consumption in YD, rate per MTR: 0.9144",
+   "fieldname": "conversion_factor",
+   "fieldtype": "Float",
+   "label": "Rate UOM per Consumption UOM"
+  },
+  {
+   "description": "Leave empty if the rate is in the sheet currency.",
+   "fieldname": "price_currency",
+   "fieldtype": "Link",
+   "label": "Rate Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "1",
+   "fieldname": "exchange_rate",
+   "fieldtype": "Float",
+   "label": "Rate Currency to Sheet Currency"
+  },
+  {
+   "description": "Consumption = 1 ÷ pcs per carton (carton usage).",
+   "fieldname": "per_carton",
+   "fieldtype": "Check",
+   "label": "Per Carton"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Cost Sheet Material",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

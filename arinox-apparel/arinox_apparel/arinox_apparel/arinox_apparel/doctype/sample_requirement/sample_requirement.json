@@ -1,0 +1,230 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "scope_note",
+  "customer",
+  "sales_order",
+  "style_item",
+  "enabled",
+  "c1",
+  "sample_type",
+  "gate",
+  "per_colour",
+  "s_due",
+  "due_basis",
+  "days_before",
+  "c2",
+  "qty",
+  "sample_size",
+  "split_po_exempt",
+  "chargeback_amount",
+  "s_note",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "scope_note",
+   "fieldtype": "HTML",
+   "label": "Scope",
+   "options": "<p class='text-muted'>Overrides the sample rules in Apparel Settings. The most specific record wins: Sales Order + Style, then Sales Order, then Customer + Style, then Customer, then Style. Leave a field blank to keep the default.</p>"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style (Item template)",
+   "options": "Item",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Select",
+   "label": "Sample Type",
+   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gate",
+   "fieldtype": "Select",
+   "label": "Gate",
+   "options": "\nRequired\nIf Raised\nNo",
+   "description": "Blank = keep the default. 'If Raised' = only gates once a record exists; 'No' = not needed",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "per_colour",
+   "fieldtype": "Select",
+   "label": "Per Colour",
+   "options": "\nYes\nNo"
+  },
+  {
+   "fieldname": "s_due",
+   "fieldtype": "Section Break",
+   "label": "Due Date and Quantity"
+  },
+  {
+   "fieldname": "due_basis",
+   "fieldtype": "Select",
+   "label": "Due Basis",
+   "options": "\nPCD\nEx-Factory\nIn-Warehouse\nAfter Fit Approval",
+   "description": "Blank = keep default basis and days"
+  },
+  {
+   "fieldname": "days_before",
+   "fieldtype": "Int",
+   "label": "Days Offset",
+   "description": "Used only when a basis is set"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty per Colour"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "Sample Size / Mix"
+  },
+  {
+   "fieldname": "split_po_exempt",
+   "fieldtype": "Check",
+   "label": "Not Required on Split PO"
+  },
+  {
+   "fieldname": "chargeback_amount",
+   "fieldtype": "Currency",
+   "label": "Late Chargeback"
+  },
+  {
+   "fieldname": "s_note",
+   "fieldtype": "Section Break",
+   "label": "Source"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "description": "e.g. where the buyer states it (PO notes, routing guide)"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Requirement",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandising Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandiser"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Manufacturing Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Manufacturing User"
+  },
+  {
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Sales User"
+  }
+ ],
+ "autoname": "format:SRQ-{#####}",
+ "title_field": "sample_type"
+}

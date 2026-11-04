@@ -1,0 +1,337 @@
+{
+ "actions": [],
+ "autoname": "field:template_name",
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "template_name",
+  "customer",
+  "column_1",
+  "is_default",
+  "enabled",
+  "section_2",
+  "incoterm",
+  "named_place",
+  "shipment_mode",
+  "country_of_origin",
+  "column_3",
+  "freight_by",
+  "insurance_by",
+  "port_of_loading",
+  "port_of_discharge",
+  "section_4",
+  "days_ex_factory_to_etd",
+  "transit_days",
+  "column_5",
+  "delay_days_allowed",
+  "late_shipment_terms",
+  "section_6",
+  "tolerance_bands",
+  "section_7",
+  "quantity_claim_days",
+  "quality_claim_days",
+  "objection_days",
+  "discrepancy_days",
+  "aql_level",
+  "column_8",
+  "inspection_terms",
+  "section_9",
+  "packing_instructions",
+  "column_10",
+  "shipping_marks",
+  "section_11",
+  "payment_basis",
+  "payment_days",
+  "payment_terms_template",
+  "documents_list",
+  "terms_and_conditions",
+  "column_12",
+  "arbitration"
+ ],
+ "fields": [
+  {
+   "fieldname": "template_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Template Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Empty = usable for any customer",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "is_default",
+   "fieldtype": "Check",
+   "label": "Default for this Customer"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_2",
+   "fieldtype": "Section Break",
+   "label": "Shipment"
+  },
+  {
+   "fieldname": "incoterm",
+   "fieldtype": "Link",
+   "label": "Incoterm",
+   "options": "Incoterm"
+  },
+  {
+   "fieldname": "named_place",
+   "fieldtype": "Data",
+   "label": "Named Place"
+  },
+  {
+   "fieldname": "shipment_mode",
+   "fieldtype": "Select",
+   "label": "Shipment Mode",
+   "options": "\nSea\nAir\nSea-Air\nCourier\nRoad"
+  },
+  {
+      "fieldname": "country_of_origin",
+   "fieldtype": "Data",
+   "label": "Country of Origin"
+  },
+  {
+   "fieldname": "column_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "freight_by",
+   "fieldtype": "Select",
+   "label": "Freight Paid By",
+   "options": "\nSeller\nBuyer"
+  },
+  {
+   "fieldname": "insurance_by",
+   "fieldtype": "Select",
+   "label": "Insurance Paid By",
+   "options": "\nSeller\nBuyer"
+  },
+  {
+   "fieldname": "port_of_loading",
+   "fieldtype": "Data",
+   "label": "Port of Loading"
+  },
+  {
+   "fieldname": "port_of_discharge",
+   "fieldtype": "Data",
+   "label": "Port of Discharge"
+  },
+  {
+   "fieldname": "section_4",
+   "fieldtype": "Section Break",
+   "label": "Shipping Days"
+  },
+  {
+   "default": "7",
+   "fieldname": "days_ex_factory_to_etd",
+   "fieldtype": "Int",
+   "label": "Days Ex-Factory → ETD"
+  },
+  {
+   "default": "30",
+   "fieldname": "transit_days",
+   "fieldtype": "Int",
+   "label": "Transit Days ETD → In-Warehouse"
+  },
+  {
+   "fieldname": "column_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delay_days_allowed",
+   "fieldtype": "Int",
+   "label": "Delay in Shipment Allowed (days)"
+  },
+  {
+   "fieldname": "late_shipment_terms",
+   "fieldtype": "Small Text",
+   "label": "Late Shipment Terms"
+  },
+  {
+   "fieldname": "section_6",
+   "fieldtype": "Section Break",
+   "label": "Quantity Tolerance"
+  },
+  {
+   "fieldname": "tolerance_bands",
+   "fieldtype": "Table",
+   "label": "Tolerance Bands (by line quantity)",
+   "options": "Sales Contract Tolerance Band"
+  },
+  {
+   "fieldname": "section_7",
+   "fieldtype": "Section Break",
+   "label": "Claims & Quality"
+  },
+  {
+   "default": "30",
+   "fieldname": "quantity_claim_days",
+   "fieldtype": "Int",
+   "label": "Quantity Claim Window (days)"
+  },
+  {
+   "default": "60",
+   "fieldname": "quality_claim_days",
+   "fieldtype": "Int",
+   "label": "Quality Claim Window (days)"
+  },
+  {
+   "fieldname": "objection_days",
+   "fieldtype": "Int",
+   "label": "Objection Window (days)"
+  },
+  {
+   "fieldname": "discrepancy_days",
+   "fieldtype": "Int",
+   "label": "Quality / Quantity Discrepancy Window (days)"
+  },
+  {
+   "default": "2.5",
+   "fieldname": "aql_level",
+   "fieldtype": "Data",
+   "label": "AQL Level"
+  },
+  {
+   "fieldname": "column_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_terms",
+   "fieldtype": "Small Text",
+   "label": "Inspection Terms"
+  },
+  {
+   "fieldname": "section_9",
+   "fieldtype": "Section Break",
+   "label": "Packing"
+  },
+  {
+   "fieldname": "packing_instructions",
+   "fieldtype": "Small Text",
+   "label": "Packing Instructions"
+  },
+  {
+   "fieldname": "column_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "shipping_marks",
+   "fieldtype": "Small Text",
+   "label": "Shipping Marks"
+  },
+  {
+   "fieldname": "section_11",
+   "fieldtype": "Section Break",
+   "label": "Payment & Clauses"
+  },
+  {
+   "fieldname": "payment_basis",
+   "fieldtype": "Select",
+   "label": "Payment Basis",
+   "options": "\nDays after Receipt of Goods (ROG)\nDays after Invoice Date\nAdvance\nL/C"
+  },
+  {
+   "description": "e.g. 15 for 15 days ROG",
+   "fieldname": "payment_days",
+   "fieldtype": "Int",
+   "label": "Payment Days"
+  },
+  {
+   "description": "Optional. Used for the Sales Order payment schedule.",
+   "fieldname": "payment_terms_template",
+   "fieldtype": "Link",
+   "label": "Payment Terms Template",
+   "options": "Payment Terms Template"
+  },
+  {
+   "default": "Invoice, Packing List, FCR or MAWB",
+   "fieldname": "documents_list",
+   "fieldtype": "Small Text",
+   "label": "Documents With Shipment"
+  },
+  {
+   "fieldname": "terms_and_conditions",
+   "fieldtype": "Link",
+   "label": "Clauses (Terms and Conditions)",
+   "options": "Terms and Conditions"
+  },
+  {
+   "fieldname": "column_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "arbitration",
+   "fieldtype": "Small Text",
+   "label": "Arbitration / Governing Law"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sales Contract Template",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

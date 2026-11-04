@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "test_property",
+  "requirement",
+  "result",
+  "value",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "test_property",
+   "fieldtype": "Data",
+   "label": "Test Property",
+   "reqd": 1,
+   "columns": 3,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "requirement",
+   "fieldtype": "Data",
+   "label": "Requirement",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nPass\nFail\nN/A\nData",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "label": "Value",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks",
+   "columns": 2,
+   "in_list_view": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Test Result",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "autoname": "format:CP-{#####}",
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "title",
+  "customer",
+  "product_type",
+  "currency",
+  "column_1",
+  "effective_from",
+  "effective_to",
+  "margin_floor_pct",
+  "target_margin_pct",
+  "enabled",
+  "section_2",
+  "rates"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Title",
+   "read_only": 1
+  },
+  {
+   "description": "Empty = all customers",
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "description": "Empty = all product types",
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Product Type",
+   "options": "Product Type"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "effective_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Effective From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "effective_to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Effective To"
+  },
+  {
+   "fieldname": "margin_floor_pct",
+   "fieldtype": "Percent",
+   "in_list_view": 1,
+   "label": "Margin Floor %"
+  },
+  {
+   "fieldname": "target_margin_pct",
+   "fieldtype": "Percent",
+   "label": "Target Margin %"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_2",
+   "fieldtype": "Section Break",
+   "label": "Rates"
+  },
+  {
+   "fieldname": "rates",
+   "fieldtype": "Table",
+   "label": "Rates",
+   "options": "Costing Parameter Rate"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Costing Parameter",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser"
+  }
+ ],
+ "search_fields": "customer,product_type",
+ "show_title_field_in_link": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

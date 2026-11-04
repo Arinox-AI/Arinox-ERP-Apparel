@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "round_no",
+  "category",
+  "comment",
+  "relevant_to_cutting",
+  "status",
+  "closed_in"
+ ],
+ "fields": [
+  {
+   "fieldname": "round_no",
+   "fieldtype": "Int",
+   "label": "Round",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Fit\nColour\nFabric\nTrim\nConstruction\nLabel / Packing\nMeasurement\nOther",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Buyer Comment",
+   "reqd": 1,
+   "columns": 4,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "relevant_to_cutting",
+   "fieldtype": "Check",
+   "label": "Relevant to Cutting",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nClosed",
+   "default": "Open",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "closed_in",
+   "fieldtype": "Link",
+   "label": "Closed In",
+   "options": "PP Meeting",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Approval Comment",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

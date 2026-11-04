@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "material_type",
+  "description",
+  "item",
+  "placement",
+  "consumption",
+  "uom",
+  "column_1",
+  "composition",
+  "gsm",
+  "width",
+  "colour",
+  "nominated_supplier",
+  "buyer_supplied",
+  "buyer_item_code",
+  "job_code",
+  "size_applicability",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Fabric\nLining\nContrast Fabric\nTrim\nLabel\nPackaging\nThread\nFusing\nOther",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "columns": 1,
+   "fieldname": "placement",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Placement"
+  },
+  {
+   "columns": 1,
+   "fieldname": "consumption",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Consumption / pc"
+  },
+  {
+   "columns": 1,
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "column_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "composition",
+   "fieldtype": "Data",
+   "label": "Composition"
+  },
+  {
+   "fieldname": "gsm",
+   "fieldtype": "Data",
+   "label": "GSM / Weight"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Data",
+   "label": "Width"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour"
+  },
+  {
+   "fieldname": "nominated_supplier",
+   "fieldtype": "Link",
+   "label": "Nominated Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "buyer_supplied",
+   "fieldtype": "Check",
+   "label": "Buyer Supplied"
+  },
+  {
+   "description": "e.g. FUS001, LB030, BT088",
+   "fieldname": "buyer_item_code",
+   "fieldtype": "Data",
+   "label": "Buyer Item Code"
+  },
+  {
+   "fieldname": "job_code",
+   "fieldtype": "Data",
+   "label": "Job Code"
+  },
+  {
+   "default": "*",
+   "description": "* = all sizes",
+   "fieldname": "size_applicability",
+   "fieldtype": "Data",
+   "label": "Applies to Size"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Tech Pack Material",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

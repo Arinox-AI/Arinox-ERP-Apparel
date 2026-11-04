@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sample_type",
+  "gate",
+  "per_colour",
+  "due_basis",
+  "days_before",
+  "qty",
+  "sample_size",
+  "split_po_exempt",
+  "chargeback_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Select",
+   "label": "Sample Type",
+   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample",
+   "reqd": 1,
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "gate",
+   "fieldtype": "Select",
+   "label": "Gate",
+   "options": "Required\nIf Raised\nNo",
+   "reqd": 1,
+   "default": "No",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "per_colour",
+   "fieldtype": "Check",
+   "label": "Per Colour",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "due_basis",
+   "fieldtype": "Select",
+   "label": "Due Basis",
+   "options": "PCD\nEx-Factory\nIn-Warehouse\nAfter Fit Approval",
+   "default": "PCD",
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "days_before",
+   "fieldtype": "Int",
+   "label": "Days Offset",
+   "columns": 1,
+   "description": "Days before the basis date (days after, for After Fit Approval)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty per Colour"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "Sample Size / Mix",
+   "description": "e.g. S, or 2/S 1/L"
+  },
+  {
+   "fieldname": "split_po_exempt",
+   "fieldtype": "Check",
+   "label": "Not Required on Split PO",
+   "description": "Skip when the order ships to more than one destination"
+  },
+  {
+   "fieldname": "chargeback_amount",
+   "fieldtype": "Currency",
+   "label": "Late Chargeback"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Apparel Sample Rule",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

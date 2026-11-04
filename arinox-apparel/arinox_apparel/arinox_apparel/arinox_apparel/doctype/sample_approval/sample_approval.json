@@ -1,0 +1,445 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sample_type",
+  "status",
+  "sales_order",
+  "sales_contract",
+  "customer",
+  "c1",
+  "style_item",
+  "style_no",
+  "tech_pack",
+  "colour",
+  "s_mat",
+  "material_type",
+  "material_item",
+  "material_description",
+  "supplier",
+  "c2",
+  "buyer_reference",
+  "is_washed",
+  "wash_description",
+  "in_bulk_fabric",
+  "sample_size",
+  "sample_qty",
+  "s_dates",
+  "pcd",
+  "ex_factory_date",
+  "in_warehouse_date",
+  "due_date",
+  "c3",
+  "chargeback_amount",
+  "late_chargeback",
+  "requirement_note",
+  "submitted_on",
+  "approved_on",
+  "s_rounds",
+  "rounds",
+  "comments",
+  "s_meas",
+  "measurement_stage",
+  "measurements",
+  "s_shr",
+  "shrinkage",
+  "s_tests",
+  "lab_name",
+  "lab_report_no",
+  "lab_report",
+  "tests",
+  "s_waive",
+  "waived",
+  "waiver_reason",
+  "waived_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "sample_type",
+   "fieldtype": "Select",
+   "label": "Sample Type",
+   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample",
+   "reqd": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nSubmitted\nApproved\nApproved with Comments\nRejected\nResubmit\nNot Required",
+   "default": "Open",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "in_standard_filter": 1,
+   "description": "Empty = applies to the style on every order"
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Sales Contract",
+   "options": "Sales Contract",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style (Item template)",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tech_pack",
+   "fieldtype": "Link",
+   "label": "Tech Pack",
+   "options": "Tech Pack"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "description": "Blank = all colours",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "s_mat",
+   "fieldtype": "Section Break",
+   "label": "Material / Process"
+  },
+  {
+   "fieldname": "material_type",
+   "fieldtype": "Select",
+   "label": "Material Type",
+   "options": "\nFabric\nLining\nContrast Fabric\nTrim\nLabel\nPackaging\nThread\nFusing\nOther"
+  },
+  {
+   "fieldname": "material_item",
+   "fieldtype": "Link",
+   "label": "Material Item",
+   "options": "Item"
+  },
+  {
+   "fieldname": "material_description",
+   "fieldtype": "Data",
+   "label": "Material Description"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "buyer_reference",
+   "fieldtype": "Data",
+   "label": "Buyer Reference"
+  },
+  {
+   "fieldname": "is_washed",
+   "fieldtype": "Check",
+   "label": "Garment is Washed"
+  },
+  {
+   "fieldname": "wash_description",
+   "fieldtype": "Data",
+   "label": "Wash Description",
+   "depends_on": "is_washed"
+  },
+  {
+   "fieldname": "in_bulk_fabric",
+   "fieldtype": "Check",
+   "label": "Made in Bulk Fabric"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Data",
+   "label": "Sample Size"
+  },
+  {
+   "fieldname": "sample_qty",
+   "fieldtype": "Int",
+   "label": "Sample Qty"
+  },
+  {
+   "fieldname": "s_dates",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "PCD"
+  },
+  {
+   "fieldname": "ex_factory_date",
+   "fieldtype": "Date",
+   "label": "Ex-Factory"
+  },
+  {
+   "fieldname": "in_warehouse_date",
+   "fieldtype": "Date",
+   "label": "In-Warehouse"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "c3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "chargeback_amount",
+   "fieldtype": "Currency",
+   "label": "Late Chargeback (rule)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "late_chargeback",
+   "fieldtype": "Currency",
+   "label": "Chargeback Exposure",
+   "read_only": 1,
+   "description": "Set when the sample is late and the rule carries a chargeback"
+  },
+  {
+   "fieldname": "requirement_note",
+   "fieldtype": "Small Text",
+   "label": "Buyer Requirement",
+   "description": "Size mix, quantity or other instruction for this sample"
+  },
+  {
+   "fieldname": "submitted_on",
+   "fieldtype": "Date",
+   "label": "Submitted On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Date",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_rounds",
+   "fieldtype": "Section Break",
+   "label": "Rounds"
+  },
+  {
+   "fieldname": "rounds",
+   "fieldtype": "Table",
+   "label": "Submission Rounds",
+   "options": "Sample Approval Round"
+  },
+  {
+   "fieldname": "comments",
+   "fieldtype": "Table",
+   "label": "Buyer Comments",
+   "options": "Sample Approval Comment"
+  },
+  {
+   "fieldname": "s_meas",
+   "fieldtype": "Section Break",
+   "label": "Measurements",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "measurement_stage",
+   "fieldtype": "Select",
+   "label": "Measured",
+   "options": "\nBefore Wash\nAfter Wash\nFinal"
+  },
+  {
+   "fieldname": "measurements",
+   "fieldtype": "Table",
+   "label": "Measurements (up to 5 samples)",
+   "options": "Sample Measurement"
+  },
+  {
+   "fieldname": "s_shr",
+   "fieldtype": "Section Break",
+   "label": "Shrinkage",
+   "collapsible": 1,
+   "depends_on": "eval:doc.sample_type=='Bulk Fabric'"
+  },
+  {
+   "fieldname": "shrinkage",
+   "fieldtype": "Table",
+   "label": "Shrinkage Readings",
+   "options": "Sample Shrinkage Reading"
+  },
+  {
+   "fieldname": "s_tests",
+   "fieldtype": "Section Break",
+   "label": "Garment Test (GPT)",
+   "collapsible": 1,
+   "depends_on": "eval:doc.sample_type=='Garment Test (GPT)'"
+  },
+  {
+   "fieldname": "lab_name",
+   "fieldtype": "Data",
+   "label": "Lab"
+  },
+  {
+   "fieldname": "lab_report_no",
+   "fieldtype": "Data",
+   "label": "Report No"
+  },
+  {
+   "fieldname": "lab_report",
+   "fieldtype": "Attach",
+   "label": "Lab Report"
+  },
+  {
+   "fieldname": "tests",
+   "fieldtype": "Table",
+   "label": "Test Results",
+   "options": "Sample Test Result"
+  },
+  {
+   "fieldname": "s_waive",
+   "fieldtype": "Section Break",
+   "label": "Waiver",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "waived",
+   "fieldtype": "Check",
+   "label": "Not Required (Waived)",
+   "description": "Apparel Merchandising Manager only"
+  },
+  {
+   "fieldname": "waiver_reason",
+   "fieldtype": "Small Text",
+   "label": "Waiver Reason",
+   "depends_on": "waived"
+  },
+  {
+   "fieldname": "waived_by",
+   "fieldtype": "Link",
+   "label": "Waived By",
+   "options": "User",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Approval",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandising Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Apparel Merchandiser"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 1,
+   "role": "Manufacturing Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Manufacturing User"
+  },
+  {
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "report": 1,
+   "share": 0,
+   "role": "Sales User"
+  }
+ ],
+ "autoname": "format:SA-{YY}-{#####}",
+ "title_field": "style_no",
+ "search_fields": "style_no,sample_type,colour,customer"
+}

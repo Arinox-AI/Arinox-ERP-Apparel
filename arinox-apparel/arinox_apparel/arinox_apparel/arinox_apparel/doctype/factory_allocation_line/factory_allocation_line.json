@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "style_item",
+  "style_no",
+  "colour",
+  "buyer_po",
+  "ship_to",
+  "order_qty",
+  "qty",
+  "factory",
+  "line",
+  "pcd",
+  "sewing_start",
+  "sewing_end",
+  "ex_factory_date",
+  "reason"
+ ],
+ "fields": [
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "reqd": 1,
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "buyer_po",
+   "fieldtype": "Data",
+   "label": "Buyer PO",
+   "description": "Blank = the whole colour"
+  },
+  {
+   "fieldname": "ship_to",
+   "fieldtype": "Data",
+   "label": "Ship To",
+   "description": "Blank = all destinations"
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Int",
+   "label": "Order Qty",
+   "read_only": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Allocated Qty",
+   "reqd": 1,
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Plant Floor",
+   "reqd": 1,
+   "columns": 2,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "PCD",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sewing_start",
+   "fieldtype": "Date",
+   "label": "Sewing Start"
+  },
+  {
+   "fieldname": "sewing_end",
+   "fieldtype": "Date",
+   "label": "Sewing End"
+  },
+  {
+   "fieldname": "ex_factory_date",
+   "fieldtype": "Date",
+   "label": "Ex-Factory",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Factory Allocation Line",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

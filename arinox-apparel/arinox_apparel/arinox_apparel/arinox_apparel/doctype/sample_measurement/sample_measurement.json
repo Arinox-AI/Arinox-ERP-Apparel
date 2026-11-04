@@ -1,0 +1,118 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "pom_code",
+  "point_of_measure",
+  "size",
+  "spec",
+  "tol_plus",
+  "tol_minus",
+  "actual",
+  "reading_2",
+  "reading_3",
+  "reading_4",
+  "reading_5",
+  "deviation",
+  "in_tolerance"
+ ],
+ "fields": [
+  {
+   "fieldname": "pom_code",
+   "fieldtype": "Data",
+   "label": "POM",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "point_of_measure",
+   "fieldtype": "Data",
+   "label": "Point of Measure",
+   "reqd": 1,
+   "columns": 3,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "spec",
+   "fieldtype": "Float",
+   "label": "Spec",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tol_plus",
+   "fieldtype": "Float",
+   "label": "Tol +",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tol_minus",
+   "fieldtype": "Float",
+   "label": "Tol \u2212",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "actual",
+   "fieldtype": "Float",
+   "label": "Sample 1",
+   "columns": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reading_2",
+   "fieldtype": "Float",
+   "label": "Sample 2"
+  },
+  {
+   "fieldname": "reading_3",
+   "fieldtype": "Float",
+   "label": "Sample 3"
+  },
+  {
+   "fieldname": "reading_4",
+   "fieldtype": "Float",
+   "label": "Sample 4"
+  },
+  {
+   "fieldname": "reading_5",
+   "fieldtype": "Float",
+   "label": "Sample 5"
+  },
+  {
+   "fieldname": "deviation",
+   "fieldtype": "Float",
+   "label": "Worst Deviation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "in_tolerance",
+   "fieldtype": "Check",
+   "label": "In Tolerance",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-04 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Sample Measurement",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

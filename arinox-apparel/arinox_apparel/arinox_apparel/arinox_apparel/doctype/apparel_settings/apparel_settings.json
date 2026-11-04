@@ -1,0 +1,250 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_1",
+  "max_skus_per_contract",
+  "placeholder_words",
+  "column_2",
+  "default_contract_template",
+  "contract_prefix",
+  "colour_attribute",
+  "size_attribute",
+  "fg_warehouse",
+  "section_3",
+  "default_margin_floor_pct",
+  "approval_tolerance_pct",
+  "column_4",
+  "quote_item",
+  "style_item_group",
+  "buying_price_list",
+  "require_costing_signoff",
+  "section_b",
+  "enforce_bulk_gate",
+  "require_pp_meeting",
+  "sample_rules",
+  "section_b2",
+  "pp_required_departments",
+  "pilot_required_departments",
+  "column_b2",
+  "gpt_test_list",
+  "max_shrinkage_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_1",
+   "fieldtype": "Section Break",
+   "label": "Sales Contract"
+  },
+  {
+   "default": "8",
+   "description": "A SKU is one style \u00d7 colour line. A ninth needs a new contract.",
+   "fieldname": "max_skus_per_contract",
+   "fieldtype": "Int",
+   "label": "Max SKUs per Contract",
+   "reqd": 1
+  },
+  {
+   "default": "TBA\nTBD\nTBC\nN/A\nNA\n-\n--",
+   "description": "One per line. A submitted contract may not contain any of these as a value.",
+   "fieldname": "placeholder_words",
+   "fieldtype": "Small Text",
+   "label": "Placeholder Words"
+  },
+  {
+   "fieldname": "column_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_contract_template",
+   "fieldtype": "Link",
+   "label": "Default Contract Template",
+   "options": "Sales Contract Template"
+  },
+  {
+   "default": "SC",
+   "description": "Prefix of Sales Contract numbers, e.g. SC. Number format: PREFIX + YY.MM.###",
+   "fieldname": "contract_prefix",
+   "fieldtype": "Data",
+   "label": "Default Contract Prefix"
+  },
+  {
+   "description": "Filled with Colour on install.",
+   "fieldname": "colour_attribute",
+   "fieldtype": "Link",
+   "label": "Colour Attribute",
+   "options": "Item Attribute"
+  },
+  {
+   "description": "Filled with Size on install.",
+   "fieldname": "size_attribute",
+   "fieldtype": "Link",
+   "label": "Size Attribute",
+   "options": "Item Attribute"
+  },
+  {
+   "description": "Delivery warehouse set on Sales Orders made from a contract.",
+   "fieldname": "fg_warehouse",
+   "fieldtype": "Link",
+   "label": "Finished Goods Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "section_3",
+   "fieldtype": "Section Break",
+   "label": "Costing"
+  },
+  {
+   "default": "10",
+   "description": "Used when the Costing Parameter does not set a floor.",
+   "fieldname": "default_margin_floor_pct",
+   "fieldtype": "Percent",
+   "label": "Default Margin Floor %"
+  },
+  {
+   "default": "0.5",
+   "description": "A quoted price moving more than this after approval resets the approval.",
+   "fieldname": "approval_tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Re-approval Tolerance %"
+  },
+  {
+   "fieldname": "column_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Non-stock item used on Quotation lines for a style. Created as APPAREL-STYLE when empty.",
+   "fieldname": "quote_item",
+   "fieldtype": "Link",
+   "label": "Quotation Style Item",
+   "options": "Item"
+  },
+  {
+   "description": "Item Group for style templates created from a Tech Pack when the Product Type has none.",
+   "fieldname": "style_item_group",
+   "fieldtype": "Link",
+   "label": "Style Item Group",
+   "options": "Item Group"
+  },
+  {
+   "description": "Material rates on a new Cost Sheet are read from this list.",
+   "fieldname": "buying_price_list",
+   "fieldtype": "Link",
+   "label": "Buying Price List",
+   "options": "Price List"
+  },
+  {
+   "description": "All four sign-off steps (fabric checked, first costing, 2nd check, final approval) must be signed.",
+   "fieldname": "require_costing_signoff",
+   "fieldtype": "Check",
+   "label": "Require Costing Sign-off Before Submit"
+  },
+  {
+   "fieldname": "section_b",
+   "fieldtype": "Section Break",
+   "label": "Sampling and Bulk Gate"
+  },
+  {
+   "fieldname": "enforce_bulk_gate",
+   "fieldtype": "Check",
+   "label": "Enforce Bulk Gate on Work Orders",
+   "default": "1",
+   "description": "Block Work Order submit until the required approvals are in (G3)"
+  },
+  {
+   "fieldname": "require_pp_meeting",
+   "fieldtype": "Check",
+   "label": "Require PP Meeting Before Bulk",
+   "default": "1"
+  },
+  {
+   "fieldname": "sample_rules",
+   "fieldtype": "Table",
+   "label": "Sample Rules",
+   "options": "Apparel Sample Rule"
+  },
+  {
+   "fieldname": "section_b2",
+   "fieldtype": "Section Break",
+   "label": "Meetings, Tests and Shrinkage"
+  },
+  {
+   "fieldname": "pp_required_departments",
+   "fieldtype": "Small Text",
+   "label": "PP Meeting: Required Departments",
+   "default": "Planning\nPurchasing\nCutting\nSewing\nQC",
+   "description": "One per line. Washing is added when the garment is washed."
+  },
+  {
+   "fieldname": "pilot_required_departments",
+   "fieldtype": "Small Text",
+   "label": "Pilot Run: Required Departments",
+   "default": "Cutting\nSewing\nQC\nCAD",
+   "description": "One per line"
+  },
+  {
+   "fieldname": "column_b2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gpt_test_list",
+   "fieldtype": "Small Text",
+   "label": "Garment Test: Standard Test List",
+   "default": "Fiber Analysis\nDimensional stability\nAppearance After Wash\nSkew/Torque\nColourfastness to crocking\nColourfastness to bleach\nComponent functionality\nSeam slippage\nSeam strength\nAttachment strength\nRestricted substances\nDefects / workmanship\nLabelling and care instruction\nFibre content",
+   "description": "One per line. Loaded by 'Load Standard Tests' on a garment test. Use your buyer's protocol."
+  },
+  {
+   "fieldname": "max_shrinkage_pct",
+   "fieldtype": "Percent",
+   "label": "Fabric Shrinkage Warning Above %",
+   "description": "Warn when a fabric shrinks more than this in warp or weft. Blank = no check"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Apparel Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Costing Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

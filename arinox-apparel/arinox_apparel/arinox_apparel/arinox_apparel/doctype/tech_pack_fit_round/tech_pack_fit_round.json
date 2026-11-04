@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "fit_round",
+  "round_date",
+  "round_status",
+  "comments",
+  "comments_file"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "fit_round",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Round",
+   "options": "Proto\n1st Fit\n2nd Fit\n3rd Fit\nPP\nTOP\nOther",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "round_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date"
+  },
+  {
+   "columns": 2,
+   "default": "Pending",
+   "description": "AWC = approved with comments",
+   "fieldname": "round_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Result",
+   "options": "Pending\nSubmitted\nAWC\nApproved\nRejected",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "comments",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Buyer Comments"
+  },
+  {
+   "fieldname": "comments_file",
+   "fieldtype": "Attach",
+   "label": "Comment File"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Tech Pack Fit Round",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

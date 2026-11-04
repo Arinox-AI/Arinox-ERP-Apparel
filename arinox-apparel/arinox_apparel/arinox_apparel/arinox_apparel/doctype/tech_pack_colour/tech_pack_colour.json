@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "creation": "2026-11-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "colour",
+  "buyer_colour_code",
+  "pantone",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Colour",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_colour_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Buyer Colour Code"
+  },
+  {
+   "fieldname": "pantone",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Pantone / Reference"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-11-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Tech Pack Colour",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
