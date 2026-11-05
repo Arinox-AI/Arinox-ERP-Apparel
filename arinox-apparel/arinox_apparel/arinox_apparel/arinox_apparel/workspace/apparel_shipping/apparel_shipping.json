@@ -11,7 +11,7 @@
  "icon": "ship",
  "idx": 0,
  "is_hidden": 0,
- "label": "Shipping and Collections",
+ "label": "Apparel Shipping",
  "links": [
   {
    "hidden": 0,
@@ -168,7 +168,7 @@
    "type": "Link"
   }
  ],
- "modified": "2026-11-05 12:00:00.000000",
+ "modified": "2026-11-05 19:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arinox Apparel",
  "name": "Apparel Shipping",
@@ -256,6 +256,6 @@
    "stats_filter": "[]"
   }
  ],
- "title": "Shipping and Collections",
+ "title": "Apparel Shipping",
  "type": "Workspace"
 }
