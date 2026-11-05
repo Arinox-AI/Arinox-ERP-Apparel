@@ -1,0 +1,328 @@
+{
+ "group": "apparel_settings",
+ "mode": "single",
+ "records": [
+  {
+   "air_volumetric_divisor": 6000.0,
+   "approval_tolerance_pct": 0.5,
+   "auto_submit_material_request": 1,
+   "auto_submit_stock_entries": 0,
+   "bundle_size": 20,
+   "carton_max_gross_kg": 22.7,
+   "carton_pick_rule": "Square Root",
+   "claim_requires_evidence": 1,
+   "colour_attribute": "Colour",
+   "contract_prefix": "CTXGVN",
+   "controlled_trim_tolerance": 0,
+   "cost_overrun_warn_pct": 5.0,
+   "cut_cap_extra_pcs": 3,
+   "cut_cap_mode": "Block",
+   "default_extra_cut_pct": 5.0,
+   "default_margin_floor_pct": 10.0,
+   "default_purchase_terms": "Standard Fabric Terms",
+   "default_tna_template": "Standard 60-Day (forward)",
+   "default_trim_sampling_plan": "Trims 10 Percent",
+   "dhu_alert_threshold": 5.0,
+   "doctype": "Apparel Settings",
+   "enforce_bulk_gate": 1,
+   "escalation_days_1": 15,
+   "escalation_days_2": 30,
+   "escalation_days_3": 60,
+   "fabric_due_days_before_pcd": 10,
+   "fabric_points_basis": "Per 100 Linear Yards",
+   "fabric_points_threshold": 20.0,
+   "fabric_sampling_bands": [
+    {
+     "doctype": "Fabric Sampling Band",
+     "from_length_m": 0.0,
+     "inspect_pct": 50.0,
+     "to_length_m": 1000.0
+    },
+    {
+     "doctype": "Fabric Sampling Band",
+     "from_length_m": 1001.0,
+     "inspect_pct": 30.0,
+     "to_length_m": 2000.0
+    },
+    {
+     "doctype": "Fabric Sampling Band",
+     "from_length_m": 2001.0,
+     "inspect_pct": 20.0,
+     "to_length_m": 3000.0
+    },
+    {
+     "doctype": "Fabric Sampling Band",
+     "from_length_m": 3001.0,
+     "inspect_pct": 15.0,
+     "to_length_m": 5000.0
+    },
+    {
+     "doctype": "Fabric Sampling Band",
+     "from_length_m": 5001.0,
+     "inspect_pct": 10.0,
+     "to_length_m": 0.0
+    }
+   ],
+   "final_block_packed_pct": 50.0,
+   "final_inspection_plan": "Garment AQL 2.5 / 4.0 Level II",
+   "final_min_packed_pct": 80.0,
+   "fr_material_types": "Fabric\nLining\nContrast Fabric",
+   "fr_qty_basis": "Order Qty",
+   "freight_estimate_variance_pct": 10.0,
+   "gpt_test_list": "Fiber Analysis\nDimensional stability\nAppearance After Wash\nSkew/Torque\nColourfastness to crocking\nColourfastness to bleach\nComponent functionality\nSeam slippage\nSeam strength\nAttachment strength\nRestricted substances\nDefects / workmanship\nLabelling and care instruction\nFibre content",
+   "hold_po_until_approval": "Warn",
+   "inline_check_pieces": 5,
+   "kit_check": "Warn",
+   "learning_curve": [
+    {
+     "day_no": 1,
+     "doctype": "Learning Curve Day",
+     "pct_of_target": 53.85
+    },
+    {
+     "day_no": 2,
+     "doctype": "Learning Curve Day",
+     "pct_of_target": 69.23
+    },
+    {
+     "day_no": 3,
+     "doctype": "Learning Curve Day",
+     "pct_of_target": 84.62
+    },
+    {
+     "day_no": 4,
+     "doctype": "Learning Curve Day",
+     "pct_of_target": 92.31
+    },
+    {
+     "day_no": 5,
+     "doctype": "Learning Curve Day",
+     "pct_of_target": 100.0
+    }
+   ],
+   "marker_variance_pct": 5.0,
+   "material_gate_fabric": "Block",
+   "material_gate_min_pct": 100.0,
+   "material_gate_trims": "Warn",
+   "max_extra_cut_pct": 8.0,
+   "max_rejected_rolls_pct": 10.0,
+   "max_shrinkage_pct": 0.0,
+   "max_shrinkage_spread_pct": 3.0,
+   "max_skus_per_contract": 8,
+   "max_width_spread_cm": 1.0,
+   "measure_variance_warn_pct": 5.0,
+   "name": "Apparel Settings",
+   "needle_check_required": "Warn",
+   "needle_recheck_hours": 2.0,
+   "needle_test_piece_mm": 1.2,
+   "panel_inspection_pct": 100.0,
+   "pilot_default_qty": 30,
+   "pilot_min_order_qty": 1000,
+   "pilot_required_departments": "Cutting\nSewing\nQC\nCAD",
+   "placeholder_words": "TBA\nTBD\nTBC\nN/A\nNA\n-\n--",
+   "planned_efficiency_pct": 65.0,
+   "post_fg_receipt": 1,
+   "pp_required_departments": "Planning\nPurchasing\nCutting\nSewing\nQC",
+   "reinspection_limit": 2,
+   "reminder_days_before_due": 7,
+   "remnant_min_m": 5.0,
+   "require_bundle_on_input": 1,
+   "require_bundle_on_output": 0,
+   "require_costing_signoff": 0,
+   "require_pilot_before_bulk_wash": "Warn",
+   "require_pp_meeting": 1,
+   "rog_buffer_days": 5,
+   "sample_rules": [
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 90,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "No",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Proto",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 45,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "Required",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Fit",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 30,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "If Raised",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Size Set",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 60,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "Required",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "Lab Dip",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 60,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "If Raised",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "Strike Off",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 60,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "If Raised",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "Desk Loom",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 25,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "Required",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "Bulk Fabric",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 25,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "Required",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Bulk Trim",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 14,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "Required",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "PP",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 14,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "If Raised",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Garment Test (GPT)",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 10,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "Ex-Factory",
+     "gate": "No",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "TOP",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 30,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "No",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Salesman",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 30,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "No",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Photo Sample",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 10,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "After Fit Approval",
+     "gate": "No",
+     "per_colour": 0,
+     "qty": 0,
+     "sample_type": "Customer Sample",
+     "split_po_exempt": 0
+    },
+    {
+     "chargeback_amount": 0.0,
+     "days_before": 21,
+     "doctype": "Apparel Sample Rule",
+     "due_basis": "PCD",
+     "gate": "If Raised",
+     "per_colour": 1,
+     "qty": 0,
+     "sample_type": "Fabric Test (FPT)",
+     "split_po_exempt": 0
+    }
+   ],
+   "ship_gate_final_inspection": "Block",
+   "ship_tolerance_basis": "Both",
+   "size_attribute": "Size",
+   "subcontract_default_threshold_pct": 1.0,
+   "subcontract_penalty_basis": "Cost Sheet FOB",
+   "subcontract_penalty_scope": "All Damaged",
+   "subcontract_reconcile_days": 3,
+   "submit_inspection_stock_entry": 1,
+   "traffic_light_rules": [
+    {
+     "colour": "Yellow",
+     "defects_from": 1,
+     "doctype": "Traffic Light Rule"
+    },
+    {
+     "colour": "Red",
+     "defects_from": 2,
+     "doctype": "Traffic Light Rule"
+    }
+   ],
+   "trim_allowance_pct": 2.0,
+   "trim_due_days_before_pcd": 7,
+   "weight_variance_warn_pct": 2.0,
+   "work_minutes_per_day": 480
+  }
+ ]
+}

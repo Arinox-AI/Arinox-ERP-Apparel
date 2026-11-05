@@ -1,0 +1,83 @@
+{
+ "group": "property_setters",
+ "mode": "create",
+ "records": [
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "value_of_goods",
+   "is_system_generated": 1,
+   "name": "Shipment-value_of_goods-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "description_of_content",
+   "is_system_generated": 1,
+   "name": "Shipment-description_of_content-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "pickup_date",
+   "is_system_generated": 1,
+   "name": "Shipment-pickup_date-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "pickup_to",
+   "is_system_generated": 1,
+   "name": "Shipment-pickup_to-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "pickup_from",
+   "is_system_generated": 1,
+   "name": "Shipment-pickup_from-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "delivery_address_name",
+   "is_system_generated": 1,
+   "name": "Shipment-delivery_address_name-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  },
+  {
+   "doc_type": "Shipment",
+   "doctype": "Property Setter",
+   "doctype_or_field": "DocField",
+   "field_name": "pickup_address_name",
+   "is_system_generated": 1,
+   "name": "Shipment-pickup_address_name-reqd",
+   "property": "reqd",
+   "property_type": "Check",
+   "value": "0"
+  }
+ ]
+}

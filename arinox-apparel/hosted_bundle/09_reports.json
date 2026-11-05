@@ -1,0 +1,429 @@
+{
+ "group": "reports",
+ "mode": "create",
+ "records": [
+  {
+   "add_total_row": 1,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [
+    {
+     "fieldname": "production_card",
+     "fieldtype": "Link",
+     "label": "Production Card",
+     "mandatory": 1,
+     "options": "Production Card",
+     "wildcard_filter": 0
+    }
+   ],
+   "is_standard": "No",
+   "name": "Production Summary",
+   "prepared_report": 0,
+   "query": "select\n pm.colour as \"Colour::90\",\n pm.size as \"Size::60\",\n ifnull(max(l.order_qty), 0) as \"Order Qty:Int:80\",\n ifnull(max(l.planned_cut_qty), 0) as \"Planned Cut:Int:90\",\n sum(case when pm.stage = 'CUT' then pm.qty else 0 end) as \"Cut:Int:70\",\n sum(case when pm.stage = 'CUT_REJECT' then pm.qty else 0 end) as \"Cut Reject:Int:85\",\n (sum(case when pm.stage = 'CUT' then pm.qty else 0 end) - sum(case when pm.stage = 'CUT_REJECT' then pm.qty else 0 end)) as \"Good Cut:Int:80\",\n sum(case when pm.stage = 'SEW_IN' then pm.qty else 0 end) as \"Sewing In:Int:80\",\n sum(case when pm.stage = 'SEW_OUT' then pm.qty else 0 end) as \"Sewn Out:Int:80\",\n sum(case when pm.stage = 'SEW_REJECT' then pm.qty else 0 end) as \"Sewing Reject:Int:95\",\n sum(case when pm.stage = 'SC_OUT' then pm.qty else 0 end) as \"Sent Out:Int:75\",\n sum(case when pm.stage = 'SC_BACK_GOOD' then pm.qty else 0 end) as \"Back Good:Int:80\",\n sum(case when pm.stage = 'SC_BACK_REJECT_VENDOR' then pm.qty else 0 end) as \"Back Reject Vendor:Int:120\",\n sum(case when pm.stage = 'SC_BACK_REJECT_FACTORY' then pm.qty else 0 end) as \"Back Reject Factory:Int:125\",\n sum(case when pm.stage = 'FIN_IN' then pm.qty else 0 end) as \"Finishing In:Int:95\",\n sum(case when pm.stage = 'FIN_A' then pm.qty else 0 end) as \"A-grade:Int:75\",\n sum(case when pm.stage = 'FIN_B' then pm.qty else 0 end) as \"B-grade:Int:75\",\n sum(case when pm.stage = 'FIN_REJECT' then pm.qty else 0 end) as \"Finishing Reject:Int:110\",\n sum(case when pm.stage = 'SAMPLE_OUT' then pm.qty else 0 end) as \"Samples:Int:75\",\n sum(case when pm.stage = 'PACKED' then pm.qty else 0 end) as \"Packed:Int:70\",\n sum(case when pm.stage = 'SHIPPED' then pm.qty else 0 end) as \"Shipped:Int:75\",\n (sum(case when pm.stage = 'FIN_A' then pm.qty else 0 end) - sum(case when pm.stage = 'SAMPLE_OUT' then pm.qty else 0 end) - sum(case when pm.stage = 'PACKED' then pm.qty else 0 end)) as \"A-grade Not Packed:Int:125\",\n (sum(case when pm.stage = 'PACKED' then pm.qty else 0 end) - sum(case when pm.stage = 'SHIPPED' then pm.qty else 0 end)) as \"Packed Not Shipped:Int:125\",\n (sum(case when pm.stage = 'CUT_REJECT' then pm.qty else 0 end) + sum(case when pm.stage = 'SEW_REJECT' then pm.qty else 0 end) + sum(case when pm.stage = 'SC_BACK_REJECT_VENDOR' then pm.qty else 0 end) + sum(case when pm.stage = 'SC_BACK_REJECT_FACTORY' then pm.qty else 0 end) + sum(case when pm.stage = 'FIN_REJECT' then pm.qty else 0 end)) as \"All Rejects:Int:90\",\n round(100 * (sum(case when pm.stage = 'CUT_REJECT' then pm.qty else 0 end) + sum(case when pm.stage = 'SEW_REJECT' then pm.qty else 0 end) + sum(case when pm.stage = 'SC_BACK_REJECT_VENDOR' then pm.qty else 0 end) + sum(case when pm.stage = 'SC_BACK_REJECT_FACTORY' then pm.qty else 0 end) + sum(case when pm.stage = 'FIN_REJECT' then pm.qty else 0 end)) / nullif(sum(case when pm.stage = 'CUT' then pm.qty else 0 end) - sum(case when pm.stage = 'CUT_REJECT' then pm.qty else 0 end), 0), 2) as \"Rejection %%:Percent:90\",\n round(100 * sum(case when pm.stage = 'SHIPPED' then pm.qty else 0 end) / nullif(sum(case when pm.stage = 'CUT' then pm.qty else 0 end), 0), 2) as \"Cut to Ship %%:Percent:95\",\n round(100 * sum(case when pm.stage = 'SHIPPED' then pm.qty else 0 end) / nullif(ifnull(max(l.order_qty), 0), 0), 2) as \"Order to Ship %%:Percent:100\"\nfrom `tabProduction Movement` pm\nleft join `tabProduction Card Line` l on l.parent = pm.production_card and l.colour = pm.colour and l.size = pm.size\nwhere pm.production_card = %(production_card)s and pm.purpose in ('Bulk', 'Re-cut')\ngroup by pm.colour, pm.size\norder by pm.colour, pm.size",
+   "ref_doctype": "Production Card",
+   "report_name": "Production Summary",
+   "report_type": "Query Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Contract Delivery Schedule",
+   "prepared_report": 0,
+   "ref_doctype": "Sales Contract",
+   "report_name": "Contract Delivery Schedule",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        f = filters\n        conds = ['sc.docstatus = 1']\n        vals = {}\n        if f.customer:\n            conds.append('sc.customer = %(customer)s')\n            vals['customer'] = f.customer\n        if f.from_date and f.to_date:\n            conds.append('i.ex_factory_date between %(from_date)s and %(to_date)s')\n            vals.update(from_date=f.from_date, to_date=f.to_date)\n        if not f.include_ordered:\n            conds.append(\"ifnull(sc.sales_order, '') = ''\")\n        rows = frappe.db.sql(f\"select sc.name as contract, sc.customer, sc.currency, sc.sales_order, i.style_no, i.style_item, i.colour,\\n    \\t\\t\\ti.qty, i.tolerance_pct, i.rate, i.amount, i.ex_factory_date, i.etd, i.in_warehouse_date, sc.incoterm,\\n    \\t\\t\\tsc.port_of_loading, sc.shipment_mode\\n    \\t\\tfrom `tabSales Contract Item` i join `tabSales Contract` sc on sc.name = i.parent\\n    \\t\\twhere {' and '.join(conds)} order by i.ex_factory_date, sc.name\", vals, as_dict=True)\n        today = frappe.utils.getdate(frappe.utils.nowdate())\n        for r in rows:\n            r.days_to_ex_factory = frappe.utils.date_diff(r.ex_factory_date, today) if r.ex_factory_date else None\n        cols = [{'label': 'Contract', 'fieldname': 'contract', 'fieldtype': 'Link', 'options': 'Sales Contract', 'width': 150}, {'label': 'Customer', 'fieldname': 'customer', 'fieldtype': 'Link', 'options': 'Customer', 'width': 150}, {'label': 'Style', 'fieldname': 'style_no', 'fieldtype': 'Data', 'width': 100}, {'label': 'Colour', 'fieldname': 'colour', 'fieldtype': 'Data', 'width': 90}, {'label': 'Qty', 'fieldname': 'qty', 'fieldtype': 'Int', 'width': 75}, {'label': 'Tol \u00b1%', 'fieldname': 'tolerance_pct', 'fieldtype': 'Percent', 'width': 65}, {'label': 'Amount', 'fieldname': 'amount', 'fieldtype': 'Currency', 'options': 'currency', 'width': 105}, {'label': 'Ex-Factory', 'fieldname': 'ex_factory_date', 'fieldtype': 'Date', 'width': 95}, {'label': 'Days Left', 'fieldname': 'days_to_ex_factory', 'fieldtype': 'Int', 'width': 75}, {'label': 'ETD', 'fieldname': 'etd', 'fieldtype': 'Date', 'width': 95}, {'label': 'In-Warehouse', 'fieldname': 'in_warehouse_date', 'fieldtype': 'Date', 'width': 100}, {'label': 'Incoterm', 'fieldname': 'incoterm', 'fieldtype': 'Data', 'width': 70}, {'label': 'Mode', 'fieldname': 'shipment_mode', 'fieldtype': 'Data', 'width': 65}, {'label': 'Port of Loading', 'fieldname': 'port_of_loading', 'fieldtype': 'Data', 'width': 110}, {'label': 'Sales Order', 'fieldname': 'sales_order', 'fieldtype': 'Link', 'options': 'Sales Order', 'width': 130}, {'label': 'Currency', 'fieldname': 'currency', 'fieldtype': 'Link', 'options': 'Currency', 'hidden': 1}]\n        return (cols, rows)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Costing Manager"
+    },
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Sales Manager"
+    }
+   ],
+   "timeout": 0
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Contract Trail",
+   "prepared_report": 0,
+   "ref_doctype": "Sales Order",
+   "report_name": "Contract Trail",
+   "report_script": "def main(filters):\n    SOURCES = [('Sales Order', 'apparel_sales_contract', 'transaction_date', 'status', 'grand_total'), ('Production Card', 'sales_contract', 'issue_date', 'status', None), ('Subcontract Challan', 'sales_contract', 'challan_date', 'status', 'total_qty'), ('Subcontract Return', 'sales_contract', 'return_date', None, 'total_good'), ('Subcontract Settlement', 'sales_contract', 'settlement_date', None, 'net_amount'), ('Finishing Receipt', 'sales_contract', 'receipt_date', None, 'total_qty'), ('Packing List', 'sales_contract', 'packing_date', 'status', 'total_pieces'), ('Final Inspection', 'sales_contract', 'inspection_date', 'result', 'offered_qty'), ('Delivery Note', 'apparel_sales_contract', 'posting_date', 'status', 'total_qty'), ('Sales Invoice', 'apparel_sales_contract', 'posting_date', 'apparel_followup_status', 'grand_total'), ('Buyer Claim', 'sales_contract', 'reported_on', 'status', 'claimed_amount')]\n\n    def execute(filters):\n        filters = filters\n        columns = [{'fieldname': 'doctype', 'label': 'Document', 'fieldtype': 'Data', 'width': 150}, {'fieldname': 'name', 'label': 'Number', 'fieldtype': 'Dynamic Link', 'options': 'doctype', 'width': 190}, {'fieldname': 'date', 'label': 'Date', 'fieldtype': 'Date', 'width': 100}, {'fieldname': 'status', 'label': 'Status', 'fieldtype': 'Data', 'width': 130}, {'fieldname': 'amount', 'label': 'Qty / Amount', 'fieldtype': 'Float', 'width': 110}, {'fieldname': 'docstatus', 'label': 'Doc', 'fieldtype': 'Data', 'width': 70}]\n        if not filters.contract:\n            return (columns, [])\n        data = []\n        for dt, field, date_f, status_f, amount_f in SOURCES:\n            if not frappe.db.exists('DocType', dt) or not frappe.get_meta(dt).has_field(field):\n                continue\n            fields = ['name', f'{date_f} as date', 'docstatus'] + ([f'{status_f} as status'] if status_f else []) + ([f'{amount_f} as amount'] if amount_f else [])\n            for r in frappe.get_all(dt, {field: filters.contract}, fields, order_by='creation'):\n                data.append({'doctype': dt, 'name': r.name, 'date': r.date, 'status': r.get('status'), 'amount': r.get('amount'), 'docstatus': {0: 'Draft', 1: 'Submitted', 2: 'Cancelled'}[r.docstatus]})\n        for r in frappe.get_all('Shipment', {'apparel_contracts': ['like', f'%{filters.contract}%']}, ['name', 'apparel_etd as date', 'apparel_ship_status as status', 'docstatus']):\n            data.append({'doctype': 'Shipment', 'name': r.name, 'date': r.date, 'status': r.status, 'amount': None, 'docstatus': {0: 'Draft', 1: 'Submitted', 2: 'Cancelled'}[r.docstatus]})\n        return (columns, data)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Accounts User"
+    },
+    {
+     "role": "Accounts Manager"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Costing Margin Review",
+   "prepared_report": 0,
+   "ref_doctype": "Cost Sheet",
+   "report_name": "Costing Margin Review",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        f = filters\n        cond = {'docstatus': ('<', 2)}\n        if f.customer:\n            cond['customer'] = f.customer\n        if f.product_type:\n            cond['product_type'] = f.product_type\n        if f.from_date and f.to_date:\n            cond['costing_date'] = ('between', [f.from_date, f.to_date])\n        if f.below_floor:\n            cond['below_floor'] = 1\n        if f.approval_status:\n            cond['approval_status'] = f.approval_status\n        rows = frappe.get_all('Cost Sheet', filters=cond, order_by='costing_date desc', fields=['name', 'customer', 'style_no', 'product_type', 'costing_date', 'revision_no', 'currency', 'material_cost', 'conversion_cost', 'subtotal', 'computed_price', 'quoted_price', 'margin_pct', 'margin_floor_pct', 'below_floor', 'approval_status', 'approved_by', 'docstatus', 'order_qty', 'order_value'])\n        for r in rows:\n            r.state = {0: 'Draft', 1: 'Submitted'}[r.docstatus]\n        cols = [{'label': 'Cost Sheet', 'fieldname': 'name', 'fieldtype': 'Link', 'options': 'Cost Sheet', 'width': 140}, {'label': 'Customer', 'fieldname': 'customer', 'fieldtype': 'Link', 'options': 'Customer', 'width': 150}, {'label': 'Style', 'fieldname': 'style_no', 'fieldtype': 'Data', 'width': 110}, {'label': 'Product Type', 'fieldname': 'product_type', 'fieldtype': 'Data', 'width': 100}, {'label': 'Date', 'fieldname': 'costing_date', 'fieldtype': 'Date', 'width': 95}, {'label': 'Rev', 'fieldname': 'revision_no', 'fieldtype': 'Int', 'width': 50}, {'label': 'State', 'fieldname': 'state', 'fieldtype': 'Data', 'width': 85}, {'label': 'Material', 'fieldname': 'material_cost', 'fieldtype': 'Currency', 'options': 'currency', 'width': 95}, {'label': 'Other Heads', 'fieldname': 'conversion_cost', 'fieldtype': 'Currency', 'options': 'currency', 'width': 95}, {'label': 'Computed FOB', 'fieldname': 'computed_price', 'fieldtype': 'Currency', 'options': 'currency', 'width': 105}, {'label': 'Quoted FOB', 'fieldname': 'quoted_price', 'fieldtype': 'Currency', 'options': 'currency', 'width': 100}, {'label': 'Margin %', 'fieldname': 'margin_pct', 'fieldtype': 'Percent', 'width': 85}, {'label': 'Floor %', 'fieldname': 'margin_floor_pct', 'fieldtype': 'Percent', 'width': 75}, {'label': 'Below Floor', 'fieldname': 'below_floor', 'fieldtype': 'Check', 'width': 90}, {'label': 'Approval', 'fieldname': 'approval_status', 'fieldtype': 'Data', 'width': 95}, {'label': 'Approved By', 'fieldname': 'approved_by', 'fieldtype': 'Link', 'options': 'User', 'width': 130}, {'label': 'Order Qty', 'fieldname': 'order_qty', 'fieldtype': 'Int', 'width': 85}, {'label': 'Order Value', 'fieldname': 'order_value', 'fieldtype': 'Currency', 'options': 'currency', 'width': 115}, {'label': 'Currency', 'fieldname': 'currency', 'fieldtype': 'Link', 'options': 'Currency', 'hidden': 1}]\n        top = rows[:15]\n        chart = {'data': {'labels': [r.style_no for r in top], 'datasets': [{'name': 'Margin %', 'values': [r.margin_pct for r in top]}, {'name': 'Floor %', 'values': [r.margin_floor_pct for r in top]}]}, 'type': 'bar', 'colors': ['#e8590c', '#16120f']}\n        return (cols, rows, None, chart)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Costing Manager"
+    },
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Sales Manager"
+    }
+   ],
+   "timeout": 0
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Daily Cutting Report",
+   "prepared_report": 0,
+   "ref_doctype": "Production Card",
+   "report_name": "Daily Cutting Report",
+   "report_script": "def main(filters):\n    MAX_DAYS = 31\n\n    def execute(filters):\n        filters = filters\n        to_date = frappe.utils.getdate(filters.to_date or frappe.utils.nowdate())\n        from_date = frappe.utils.getdate(filters.from_date or frappe.utils.add_days(to_date, -6))\n        if (to_date - from_date).days >= MAX_DAYS:\n            frappe.throw('Choose at most %s days.' % (MAX_DAYS,))\n        days = [frappe.utils.add_days(from_date, i) for i in range((to_date - from_date).days + 1)]\n        cond = ['c.docstatus = 1', \"c.status not in ('Superseded', 'Cancelled')\"]\n        args = {}\n        for key in ('production_card', 'sales_order', 'customer'):\n            if filters.get(key):\n                cond.append(f\"c.{('name' if key == 'production_card' else key)} = %({key})s\")\n                args[key] = filters[key]\n        cards = frappe.db.sql(f\"select c.name, c.style_no, c.sales_order from `tabProduction Card` c where {' and '.join(cond)} order by c.creation desc limit 200\", args, as_dict=True)\n        columns = [{'fieldname': 'production_card', 'label': 'Production Card', 'fieldtype': 'Link', 'options': 'Production Card', 'width': 130}, {'fieldname': 'style_no', 'label': 'Style', 'fieldtype': 'Data', 'width': 110}, {'fieldname': 'colour', 'label': 'Colour', 'fieldtype': 'Data', 'width': 90}, {'fieldname': 'size', 'label': 'Size', 'fieldtype': 'Data', 'width': 60}, {'fieldname': 'order_qty', 'label': 'Order Qty', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'planned', 'label': 'Planned Cut', 'fieldtype': 'Int', 'width': 90}] + [{'fieldname': f'd{i}', 'label': frappe.utils.formatdate(d, 'dd MMM'), 'fieldtype': 'Int', 'width': 62} for i, d in enumerate(days)] + [{'fieldname': 'cut', 'label': 'Cut (total)', 'fieldtype': 'Int', 'width': 90}, {'fieldname': 'reject', 'label': 'Rejected', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'balance', 'label': 'Balance to Cut', 'fieldtype': 'Int', 'width': 100}, {'fieldname': 'cut_pct', 'label': 'Cut % of Plan', 'fieldtype': 'Percent', 'width': 100}]\n        if not cards:\n            return (columns, [])\n        names = [c.name for c in cards]\n        by_day = {}\n        for card, colour, size, d, qty in frappe.db.sql(\"select production_card, colour, size, posting_date, sum(qty) from `tabProduction Movement` where production_card in %s and stage = 'CUT' and purpose != 'Re-cut' group by 1, 2, 3, 4\", (tuple(names),)):\n            by_day[card, colour, size, frappe.utils.getdate(d)] = qty\n        totals = {}\n        for card, colour, size, stage, qty in frappe.db.sql(\"select production_card, colour, size, stage, sum(qty) from `tabProduction Movement` where production_card in %s and stage in ('CUT', 'CUT_REJECT') group by 1, 2, 3, 4\", (tuple(names),)):\n            totals[card, colour, size, stage] = qty\n        data = []\n        for c in cards:\n            for l in frappe.get_all('Production Card Line', {'parent': c.name}, ['colour', 'size', 'order_qty', 'planned_cut_qty'], order_by='idx'):\n                cut = frappe.utils.flt(totals.get((c.name, l.colour, l.size, 'CUT')))\n                row = {'production_card': c.name, 'style_no': c.style_no, 'colour': l.colour, 'size': l.size, 'order_qty': l.order_qty, 'planned': l.planned_cut_qty, 'cut': cut, 'reject': frappe.utils.flt(totals.get((c.name, l.colour, l.size, 'CUT_REJECT'))), 'balance': frappe.utils.flt(l.planned_cut_qty) - cut, 'cut_pct': cut * 100 / frappe.utils.flt(l.planned_cut_qty) if frappe.utils.flt(l.planned_cut_qty) else 0}\n                for i, d in enumerate(days):\n                    row[f'd{i}'] = by_day.get((c.name, l.colour, l.size, d)) or None\n                data.append(row)\n        return (columns, data)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Daily Production Report",
+   "prepared_report": 0,
+   "ref_doctype": "Production Card",
+   "report_name": "Daily Production Report",
+   "report_script": "def main(filters):\n    STAGES = [('cut', 'CUT', 'Cut'), ('sew', 'SEW_OUT', 'Sewn'), ('sent', 'SC_OUT', 'Sent Out'), ('back', 'SC_BACK_GOOD', 'Received Back'), ('fin', 'FIN_A', 'Finished A'), ('packed', 'PACKED', 'Packed'), ('shipped', 'SHIPPED', 'Shipped')]\n\n    def execute(filters):\n        filters = filters\n        day = frappe.utils.getdate(filters.date or frappe.utils.nowdate())\n        columns = [{'fieldname': 'production_card', 'label': 'Production Card', 'fieldtype': 'Link', 'options': 'Production Card', 'width': 130}, {'fieldname': 'customer', 'label': 'Buyer', 'fieldtype': 'Data', 'width': 110}, {'fieldname': 'style_no', 'label': 'Style', 'fieldtype': 'Data', 'width': 110}, {'fieldname': 'colour', 'label': 'Colour', 'fieldtype': 'Data', 'width': 90}, {'fieldname': 'order_qty', 'label': 'Order Qty', 'fieldtype': 'Int', 'width': 80}]\n        for key, x_stage, label in STAGES:\n            columns.append({'fieldname': f'{key}_today', 'label': '%s Today' % (label,), 'fieldtype': 'Int', 'width': 90})\n            columns.append({'fieldname': f'{key}_total', 'label': '%s Total' % (label,), 'fieldtype': 'Int', 'width': 90})\n        columns += [{'fieldname': 'rejects', 'label': 'Rejects', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'rejection_pct', 'label': 'Rejection %', 'fieldtype': 'Percent', 'width': 95}, {'fieldname': 'cut_to_ship', 'label': 'Cut to Ship', 'fieldtype': 'Percent', 'width': 90}]\n        cond = ['c.docstatus = 1', \"c.status not in ('Superseded', 'Cancelled', 'Closed')\"]\n        args = {}\n        for key, col in (('production_card', 'c.name'), ('customer', 'c.customer'), ('sales_order', 'c.sales_order')):\n            if filters.get(key):\n                cond.append(f'{col} = %({key})s')\n                args[key] = filters[key]\n        cards = frappe.db.sql(f\"select c.name, c.customer, c.style_no from `tabProduction Card` c where {' and '.join(cond)} order by c.creation desc limit 200\", args, as_dict=True)\n        data = []\n        for c in cards:\n            colours = frappe.db.sql('select colour, sum(order_qty) from `tabProduction Card Line` where parent = %s group by colour order by min(idx)', c.name)\n            for colour, order_qty in colours:\n                row = {'production_card': c.name, 'customer': c.customer, 'style_no': c.style_no, 'colour': colour, 'order_qty': order_qty}\n                for key, stage, x_label in STAGES:\n                    pair1 = frappe.db.sql(\"select ifnull(sum(qty), 0), ifnull(sum(case when posting_date = %s then qty else 0 end), 0) from `tabProduction Movement` where production_card = %s and colour = %s and stage = %s and purpose != 'Pilot'\", (day, c.name, colour, stage))[0]\n                    tot = pair1[0]\n                    today = pair1[1]\n                    row[f'{key}_total'] = tot\n                    row[f'{key}_today'] = today\n                rej = frappe.utils.flt(frappe.db.sql(\"select ifnull(sum(qty), 0) from `tabProduction Movement` where production_card = %s and colour = %s and stage in ('CUT_REJECT', 'SEW_REJECT', 'SC_BACK_REJECT_VENDOR', 'SC_BACK_REJECT_FACTORY', 'FIN_REJECT')\", (c.name, colour))[0][0])\n                row['rejects'] = rej\n                row['rejection_pct'] = rej * 100 / row['cut_total'] if row['cut_total'] else None\n                row['cut_to_ship'] = row['shipped_total'] * 100 / row['cut_total'] if row['cut_total'] else None\n                if any((row[f'{k}_total'] for k, x_s, x_l in STAGES)):\n                    data.append(row)\n        return (columns, data)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Factory Load",
+   "prepared_report": 0,
+   "ref_doctype": "Factory Allocation",
+   "report_name": "Factory Load",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        filters = filters\n        columns = [{'fieldname': 'factory', 'label': 'Factory', 'fieldtype': 'Link', 'options': 'Plant Floor', 'width': 150}, {'fieldname': 'line', 'label': 'Line', 'fieldtype': 'Link', 'options': 'Workstation', 'width': 170}, {'fieldname': 'week_start', 'label': 'PCD Week Of', 'fieldtype': 'Date', 'width': 110}, {'fieldname': 'orders', 'label': 'Orders', 'fieldtype': 'Int', 'width': 70}, {'fieldname': 'styles', 'label': 'Style x Colour', 'fieldtype': 'Int', 'width': 100}, {'fieldname': 'qty', 'label': 'Pieces', 'fieldtype': 'Int', 'width': 90}, {'fieldname': 'capacity', 'label': 'Line Capacity', 'fieldtype': 'Int', 'width': 100}]\n        cond = ''\n        values = {}\n        if filters.factory:\n            cond += ' and l.factory = %(factory)s'\n            values['factory'] = filters.factory\n        if filters.from_date:\n            cond += ' and l.pcd >= %(from_date)s'\n            values['from_date'] = filters.from_date\n        if filters.to_date:\n            cond += ' and l.pcd <= %(to_date)s'\n            values['to_date'] = filters.to_date\n        data = frappe.db.sql(f'select l.factory, l.line, date_sub(l.pcd, interval weekday(l.pcd) day) as week_start,\\n    \\t\\t\\tcount(distinct l.parent) as orders, count(*) as styles, sum(l.qty) as qty, max(w.production_capacity) as capacity\\n    \\t\\tfrom `tabFactory Allocation Line` l left join `tabWorkstation` w on w.name = l.line\\n    \\t\\twhere l.pcd is not null {cond}\\n    \\t\\tgroup by l.factory, l.line, week_start order by week_start, l.factory, l.line', values, as_dict=True)\n        return (columns, data)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Manufacturing Manager"
+    },
+    {
+     "role": "System Manager"
+    }
+   ],
+   "timeout": 0
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Inquiry to Contract Tracker",
+   "prepared_report": 0,
+   "ref_doctype": "Opportunity",
+   "report_name": "Inquiry to Contract Tracker",
+   "report_script": "def main(filters):\n    STAGES = ['Inquiry', 'Tech Pack', 'Costing', 'Negotiating', 'Quoted', 'Contract', 'Ordered', 'Lost']\n\n    def execute(filters):\n        filters = filters\n        return (columns(), data(filters), None, chart_for(data(filters)))\n\n    def columns():\n        return [{'label': 'Inquiry', 'fieldname': 'opportunity', 'fieldtype': 'Link', 'options': 'Opportunity', 'width': 150}, {'label': 'Customer', 'fieldname': 'customer', 'fieldtype': 'Link', 'options': 'Customer', 'width': 160}, {'label': 'Date', 'fieldname': 'transaction_date', 'fieldtype': 'Date', 'width': 95}, {'label': 'Stage', 'fieldname': 'stage', 'fieldtype': 'Data', 'width': 105}, {'label': 'Product Type', 'fieldname': 'product_type', 'fieldtype': 'Link', 'options': 'Product Type', 'width': 110}, {'label': 'Target FOB', 'fieldname': 'target_fob', 'fieldtype': 'Currency', 'options': 'currency', 'width': 95}, {'label': 'Tech Packs', 'fieldname': 'tech_packs', 'fieldtype': 'Int', 'width': 85}, {'label': 'Cost Sheets', 'fieldname': 'cost_sheets', 'fieldtype': 'Int', 'width': 90}, {'label': 'Avg Costed FOB', 'fieldname': 'costed_fob', 'fieldtype': 'Currency', 'options': 'currency', 'width': 110}, {'label': 'Negotiation', 'fieldname': 'negotiation', 'fieldtype': 'Link', 'options': 'Price Negotiation', 'width': 130}, {'label': 'Negotiation Status', 'fieldname': 'negotiation_status', 'fieldtype': 'Data', 'width': 110}, {'label': 'Rounds', 'fieldname': 'rounds', 'fieldtype': 'Int', 'width': 70}, {'label': 'Quotation', 'fieldname': 'quotation', 'fieldtype': 'Link', 'options': 'Quotation', 'width': 140}, {'label': 'Contract', 'fieldname': 'contract', 'fieldtype': 'Link', 'options': 'Sales Contract', 'width': 150}, {'label': 'Contract Value', 'fieldname': 'contract_value', 'fieldtype': 'Currency', 'options': 'currency', 'width': 115}, {'label': 'Sales Order', 'fieldname': 'sales_order', 'fieldtype': 'Link', 'options': 'Sales Order', 'width': 140}, {'label': 'Currency', 'fieldname': 'currency', 'fieldtype': 'Link', 'options': 'Currency', 'hidden': 1}]\n\n    def data(f):\n        cond = {'opportunity_from': 'Customer'}\n        if f.customer:\n            cond['party_name'] = f.customer\n        if f.from_date and f.to_date:\n            cond['transaction_date'] = ('between', [f.from_date, f.to_date])\n        opps = frappe.get_all('Opportunity', filters=cond, fields=['name', 'party_name', 'transaction_date', 'status', 'currency', 'apparel_product_type', 'apparel_target_fob'], order_by='transaction_date desc')\n        out = []\n        for o in opps:\n            n = o.name\n            tps = frappe.db.count('Tech Pack', {'opportunity': n, 'docstatus': ('<', 2)})\n            cs = frappe.get_all('Cost Sheet', {'opportunity': n, 'docstatus': 1}, ['quoted_price'])\n            cs_any = frappe.db.count('Cost Sheet', {'opportunity': n, 'docstatus': ('<', 2)})\n            pn = frappe.db.get_value('Price Negotiation', {'opportunity': n}, ['name', 'status'], as_dict=True, order_by='creation desc')\n            rounds = frappe.db.count('Price Negotiation Round', {'parent': pn.name}) if pn else 0\n            q = frappe.db.get_value('Quotation', {'opportunity': n, 'docstatus': 1}, 'name', order_by='creation desc')\n            sc = frappe.db.get_value('Sales Contract', {'opportunity': n, 'docstatus': ('<', 2)}, ['name', 'total_amount', 'sales_order', 'docstatus'], as_dict=True, order_by='creation desc')\n            stage = 'Inquiry'\n            if tps:\n                stage = 'Tech Pack'\n            if cs_any:\n                stage = 'Costing'\n            if pn:\n                stage = 'Negotiating'\n            if q:\n                stage = 'Quoted'\n            if sc:\n                stage = 'Contract'\n            if sc and sc.sales_order:\n                stage = 'Ordered'\n            if o.status == 'Lost' or (pn and pn.status == 'Lost'):\n                stage = 'Lost'\n            if f.stage and f.stage != stage:\n                continue\n            out.append({'opportunity': n, 'customer': o.party_name, 'transaction_date': o.transaction_date, 'stage': stage, 'product_type': o.apparel_product_type, 'target_fob': o.apparel_target_fob, 'currency': o.currency, 'tech_packs': tps, 'cost_sheets': cs_any, 'costed_fob': sum((c.quoted_price for c in cs)) / len(cs) if cs else None, 'negotiation': pn.name if pn else None, 'negotiation_status': pn.status if pn else None, 'rounds': rounds, 'quotation': q, 'contract': sc.name if sc else None, 'contract_value': sc.total_amount if sc else None, 'sales_order': sc.sales_order if sc else None})\n        return out\n\n    def chart_for(rows):\n        counts = [sum((1 for r in rows if r['stage'] == s)) for s in STAGES]\n        return {'data': {'labels': STAGES, 'datasets': [{'name': 'Inquiries', 'values': counts}]}, 'type': 'bar', 'colors': ['#e8590c']}\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Costing Manager"
+    },
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Sales Manager"
+    }
+   ],
+   "timeout": 0
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Line Efficiency and DHU",
+   "prepared_report": 0,
+   "ref_doctype": "Daily Line Report",
+   "report_name": "Line Efficiency and DHU",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        filters = filters\n        to_date = frappe.utils.getdate(filters.to_date or frappe.utils.nowdate())\n        from_date = frappe.utils.getdate(filters.from_date or frappe.utils.add_days(to_date, -6))\n        columns = [{'fieldname': 'report_date', 'label': 'Date', 'fieldtype': 'Date', 'width': 95}, {'fieldname': 'line', 'label': 'Line', 'fieldtype': 'Link', 'options': 'Workstation', 'width': 160}, {'fieldname': 'operators', 'label': 'Operators', 'fieldtype': 'Int', 'width': 85}, {'fieldname': 'output', 'label': 'Output', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'target', 'label': 'Target', 'fieldtype': 'Float', 'precision': 1, 'width': 80}, {'fieldname': 'variance', 'label': 'vs Target', 'fieldtype': 'Float', 'precision': 1, 'width': 85}, {'fieldname': 'efficiency', 'label': 'Efficiency %', 'fieldtype': 'Percent', 'width': 100}, {'fieldname': 'learning', 'label': 'Day on Line', 'fieldtype': 'Int', 'width': 90}, {'fieldname': 'checked', 'label': 'Checked', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'dhu', 'label': 'DHU', 'fieldtype': 'Float', 'precision': 2, 'width': 70}, {'fieldname': 'rft', 'label': 'RFT %', 'fieldtype': 'Percent', 'width': 80}, {'fieldname': 'downtime', 'label': 'Downtime (min)', 'fieldtype': 'Int', 'width': 110}]\n        cond = ''\n        args = {'f': from_date, 't': to_date}\n        if filters.line:\n            cond = ' and d.line = %(line)s'\n            args['line'] = filters.line\n        rows = frappe.db.sql(f'select d.report_date, d.line, d.operators_present operators, d.total_output output, d.target_qty target, d.variance_to_target variance,\\n    \\t\\td.efficiency_pct efficiency, d.learning_day learning, d.downtime_minutes downtime from `tabDaily Line Report` d\\n    \\t\\twhere d.docstatus = 1 and d.report_date between %(f)s and %(t)s{cond} order by d.report_date desc, d.line', args, as_dict=True)\n        for r in rows:\n            q = frappe.db.sql(\"select ifnull(sum(total_checked), 0), ifnull(sum(total_passed), 0), ifnull(sum(total_defects), 0) from `tabLine QC Report` where docstatus = 1 and line = %s and report_date = %s and audit_type = 'End-line'\", (r.line, r.report_date))[0]\n            r.checked = q[0]\n            r.dhu = round(q[2] * 100 / q[0], 2) if q[0] else None\n            r.rft = round(q[1] * 100 / q[0], 2) if q[0] else None\n        return (columns, rows)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Line Loading",
+   "prepared_report": 0,
+   "ref_doctype": "Line Input",
+   "report_name": "Line Loading",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        filters = filters\n        to_date = frappe.utils.getdate(filters.to_date or frappe.utils.nowdate())\n        from_date = frappe.utils.getdate(filters.from_date or frappe.utils.add_days(to_date, -6))\n        columns = [{'fieldname': 'line', 'label': 'Line', 'fieldtype': 'Link', 'options': 'Workstation', 'width': 160}, {'fieldname': 'style_no', 'label': 'Style', 'fieldtype': 'Data', 'width': 120}, {'fieldname': 'production_card', 'label': 'Production Card', 'fieldtype': 'Link', 'options': 'Production Card', 'width': 130}, {'fieldname': 'loaded', 'label': 'Loaded in Period', 'fieldtype': 'Int', 'width': 120}, {'fieldname': 'cumulative', 'label': 'Cumulative', 'fieldtype': 'Int', 'width': 100}, {'fieldname': 'note', 'label': 'Note', 'fieldtype': 'Data', 'width': 200}]\n        cond = ''\n        args = {'f': from_date, 't': to_date}\n        if filters.line:\n            cond += ' and m.line = %(line)s'\n            args['line'] = filters.line\n        if filters.production_card:\n            cond += ' and m.production_card = %(production_card)s'\n            args['production_card'] = filters.production_card\n        rows = frappe.db.sql(f\"select m.line, c.style_no, m.production_card,\\n    \\t\\tsum(case when m.posting_date between %(f)s and %(t)s then m.qty else 0 end) loaded, sum(case when m.posting_date <= %(t)s then m.qty else 0 end) cumulative\\n    \\t\\tfrom `tabProduction Movement` m join `tabProduction Card` c on c.name = m.production_card\\n    \\t\\twhere m.stage = 'SEW_IN' and m.line is not null{cond} group by m.line, m.production_card order by m.line, c.style_no\", args, as_dict=True)\n        return (columns, [r for r in rows if r.loaded or r.cumulative])\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Negotiation History",
+   "prepared_report": 0,
+   "ref_doctype": "Price Negotiation",
+   "report_name": "Negotiation History",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        f = filters\n        conds = ['1=1']\n        vals = {}\n        for key, col in (('customer', 'pn.customer'), ('price_negotiation', 'pn.name'), ('cost_sheet', 'r.cost_sheet'), ('direction', 'r.direction')):\n            if f.get(key):\n                conds.append(f'{col} = %({key})s')\n                vals[key] = f.get(key)\n        if f.style_no:\n            conds.append('r.style_no like %(style_no)s')\n            vals['style_no'] = f'%{f.style_no}%'\n        if f.from_date and f.to_date:\n            conds.append('r.round_date between %(from_date)s and %(to_date)s')\n            vals.update(from_date=f.from_date, to_date=f.to_date)\n        rows = frappe.db.sql(f\"select r.round_date, pn.name as price_negotiation, pn.customer, pn.currency, r.style_no, r.cost_sheet,\\n    \\t\\t\\tr.direction, r.price, r.qty, r.margin_pct, r.below_floor, r.channel, r.quotation, r.remarks,\\n    \\t\\t\\tr.recorded_by, r.recorded_by_ai, cs.quoted_price as costed_fob\\n    \\t\\tfrom `tabPrice Negotiation Round` r\\n    \\t\\tjoin `tabPrice Negotiation` pn on pn.name = r.parent and r.parenttype = 'Price Negotiation'\\n    \\t\\tleft join `tabCost Sheet` cs on cs.name = r.cost_sheet\\n    \\t\\twhere {' and '.join(conds)}\\n    \\t\\torder by pn.name, r.style_no, r.round_date, r.idx\", vals, as_dict=True)\n        cols = [{'label': 'Date', 'fieldname': 'round_date', 'fieldtype': 'Date', 'width': 95}, {'label': 'Negotiation', 'fieldname': 'price_negotiation', 'fieldtype': 'Link', 'options': 'Price Negotiation', 'width': 130}, {'label': 'Customer', 'fieldname': 'customer', 'fieldtype': 'Link', 'options': 'Customer', 'width': 150}, {'label': 'Style', 'fieldname': 'style_no', 'fieldtype': 'Data', 'width': 100}, {'label': 'Cost Sheet', 'fieldname': 'cost_sheet', 'fieldtype': 'Link', 'options': 'Cost Sheet', 'width': 130}, {'label': 'Who / What', 'fieldname': 'direction', 'fieldtype': 'Data', 'width': 110}, {'label': 'Price', 'fieldname': 'price', 'fieldtype': 'Currency', 'options': 'currency', 'width': 90}, {'label': 'Costed FOB', 'fieldname': 'costed_fob', 'fieldtype': 'Currency', 'options': 'currency', 'width': 95}, {'label': 'Qty', 'fieldname': 'qty', 'fieldtype': 'Int', 'width': 70}, {'label': 'Margin %', 'fieldname': 'margin_pct', 'fieldtype': 'Percent', 'width': 80}, {'label': 'Below Floor', 'fieldname': 'below_floor', 'fieldtype': 'Check', 'width': 85}, {'label': 'Channel', 'fieldname': 'channel', 'fieldtype': 'Data', 'width': 80}, {'label': 'Quotation', 'fieldname': 'quotation', 'fieldtype': 'Link', 'options': 'Quotation', 'width': 130}, {'label': 'By AI', 'fieldname': 'recorded_by_ai', 'fieldtype': 'Check', 'width': 60}, {'label': 'Recorded By', 'fieldname': 'recorded_by', 'fieldtype': 'Link', 'options': 'User', 'width': 130}, {'label': 'Remarks', 'fieldname': 'remarks', 'fieldtype': 'Data', 'width': 220}, {'label': 'Currency', 'fieldname': 'currency', 'fieldtype': 'Link', 'options': 'Currency', 'hidden': 1}]\n        return (cols, rows)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "Apparel Merchandiser"
+    },
+    {
+     "role": "Apparel Costing Manager"
+    },
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Sales Manager"
+    }
+   ],
+   "timeout": 0
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Receivables Follow-up",
+   "prepared_report": 0,
+   "ref_doctype": "Sales Invoice",
+   "report_name": "Receivables Follow-up",
+   "report_script": "def main(filters):\n    BUCKETS = [(0, 0, 'not_due'), (1, 30, 'd1_30'), (31, 60, 'd31_60'), (61, 90, 'd61_90'), (91, 10 ** 6, 'd90_plus')]\n\n    def bucket(days_overdue):\n        if days_overdue <= 0:\n            return 'not_due'\n        for lo, hi, key in BUCKETS[1:]:\n            if lo <= days_overdue <= hi:\n                return key\n        return 'd90_plus'\n\n    def execute(filters):\n        filters = filters\n        columns = [{'fieldname': 'sales_invoice', 'label': 'Invoice', 'fieldtype': 'Link', 'options': 'Sales Invoice', 'width': 150}, {'fieldname': 'commercial_invoice_no', 'label': 'Commercial Invoice No', 'fieldtype': 'Data', 'width': 190}, {'fieldname': 'customer', 'label': 'Customer', 'fieldtype': 'Link', 'options': 'Customer', 'width': 140}, {'fieldname': 'company', 'label': 'Company', 'fieldtype': 'Link', 'options': 'Company', 'width': 130}, {'fieldname': 'shipment', 'label': 'Shipment', 'fieldtype': 'Link', 'options': 'Shipment', 'width': 120}, {'fieldname': 'basis', 'label': 'Payment Basis', 'fieldtype': 'Data', 'width': 170}, {'fieldname': 'basis_date', 'label': 'Basis Date', 'fieldtype': 'Date', 'width': 95}, {'fieldname': 'basis_source', 'label': 'From', 'fieldtype': 'Data', 'width': 110}, {'fieldname': 'expected_due', 'label': 'Expected Due', 'fieldtype': 'Date', 'width': 100}, {'fieldname': 'erp_due', 'label': 'ERP Due', 'fieldtype': 'Date', 'width': 95}, {'fieldname': 'currency', 'label': 'Currency', 'fieldtype': 'Link', 'options': 'Currency', 'width': 70}, {'fieldname': 'amount', 'label': 'Amount', 'fieldtype': 'Currency', 'options': 'currency', 'width': 110}, {'fieldname': 'received', 'label': 'Received', 'fieldtype': 'Currency', 'options': 'currency', 'width': 110}, {'fieldname': 'outstanding', 'label': 'Outstanding', 'fieldtype': 'Currency', 'options': 'currency', 'width': 110}, {'fieldname': 'days_overdue', 'label': 'Days Overdue', 'fieldtype': 'Int', 'width': 90}, {'fieldname': 'status', 'label': 'Status', 'fieldtype': 'Data', 'width': 100}, {'fieldname': 'promise_date', 'label': 'Promise', 'fieldtype': 'Date', 'width': 95}, {'fieldname': 'next_action', 'label': 'Next Action', 'fieldtype': 'Date', 'width': 95}, {'fieldname': 'dispute', 'label': 'Dispute', 'fieldtype': 'Data', 'width': 160}]\n        for x_lo, x_hi, key in BUCKETS:\n            columns.append({'fieldname': key, 'label': {'not_due': 'Not Due', 'd1_30': '1-30', 'd31_60': '31-60', 'd61_90': '61-90', 'd90_plus': '90+'}[key], 'fieldtype': 'Currency', 'options': 'currency', 'width': 100})\n        cond = {'docstatus': 1, 'is_internal_customer': 0, 'is_return': 0}\n        for f in ('customer', 'company'):\n            if filters.get(f):\n                cond[f] = filters[f]\n        if filters.contract:\n            cond['apparel_sales_contract'] = filters.contract\n        today = frappe.utils.getdate(filters.as_on or frappe.utils.nowdate())\n        data = []\n        for si in frappe.get_all('Sales Invoice', cond, ['name', 'apparel_commercial_invoice_no', 'customer', 'company', 'apparel_shipment', 'apparel_due_basis', 'apparel_basis_date', 'apparel_basis_source', 'apparel_expected_due_date', 'due_date', 'currency', 'grand_total', 'outstanding_amount', 'apparel_promise_date', 'apparel_next_action_date', 'apparel_dispute_reason', 'apparel_followup_status'], order_by='apparel_expected_due_date', or_filters=[['apparel_shipment', 'is', 'set'], ['apparel_is_sample_invoice', '=', 1]]):\n            out = frappe.utils.flt(si.outstanding_amount)\n            if not filters.show_paid and out <= 0.005:\n                continue\n            due = si.apparel_expected_due_date or si.due_date\n            days = (today - frappe.utils.getdate(due)).days if due and out > 0.005 else 0\n            row = {'sales_invoice': si.name, 'commercial_invoice_no': si.apparel_commercial_invoice_no, 'customer': si.customer, 'company': si.company, 'shipment': si.apparel_shipment, 'basis': si.apparel_due_basis, 'basis_date': si.apparel_basis_date, 'basis_source': si.apparel_basis_source, 'expected_due': due, 'erp_due': si.due_date, 'currency': si.currency, 'amount': frappe.utils.flt(si.grand_total), 'received': frappe.utils.flt(si.grand_total) - out, 'outstanding': out, 'days_overdue': max(days, 0), 'status': si.apparel_followup_status, 'promise_date': si.apparel_promise_date, 'next_action': si.apparel_next_action_date, 'dispute': si.apparel_dispute_reason}\n            for x_lo, x_hi, key in BUCKETS:\n                row[key] = 0\n            if out > 0.005:\n                row[bucket(days)] = out\n            data.append(row)\n        return (columns, data)\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Accounts User"
+    },
+    {
+     "role": "Accounts Manager"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    }
+   ]
+  },
+  {
+   "add_total_row": 0,
+   "columns": [],
+   "disabled": 0,
+   "doctype": "Report",
+   "filters": [],
+   "is_standard": "No",
+   "name": "Sewing WIP",
+   "prepared_report": 0,
+   "ref_doctype": "Line Input",
+   "report_name": "Sewing WIP",
+   "report_script": "def main(filters):\n\n    def execute(filters):\n        filters = filters\n        columns = [{'fieldname': 'line', 'label': 'Line', 'fieldtype': 'Link', 'options': 'Workstation', 'width': 160}, {'fieldname': 'production_card', 'label': 'Production Card', 'fieldtype': 'Link', 'options': 'Production Card', 'width': 130}, {'fieldname': 'style_no', 'label': 'Style', 'fieldtype': 'Data', 'width': 110}, {'fieldname': 'colour', 'label': 'Colour', 'fieldtype': 'Data', 'width': 90}, {'fieldname': 'loaded', 'label': 'Loaded', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'sewn', 'label': 'Sewn', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'rejected', 'label': 'Rejected', 'fieldtype': 'Int', 'width': 80}, {'fieldname': 'wip', 'label': 'WIP', 'fieldtype': 'Int', 'width': 80}]\n        cond = ''\n        args = {}\n        for key in ('line', 'production_card'):\n            if filters.get(key):\n                cond += f' and m.{key} = %({key})s'\n                args[key] = filters[key]\n        rows = frappe.db.sql(f\"select m.line, m.production_card, c.style_no, m.colour,\\n    \\t\\tsum(case when m.stage = 'SEW_IN' then m.qty else 0 end) loaded, sum(case when m.stage = 'SEW_OUT' then m.qty else 0 end) sewn,\\n    \\t\\tsum(case when m.stage = 'SEW_REJECT' then m.qty else 0 end) rejected\\n    \\t\\tfrom `tabProduction Movement` m join `tabProduction Card` c on c.name = m.production_card\\n    \\t\\twhere m.stage in ('SEW_IN', 'SEW_OUT', 'SEW_REJECT') and m.line is not null{cond}\\n    \\t\\tgroup by m.line, m.production_card, m.colour order by m.line, c.style_no, m.colour\", args, as_dict=True)\n        for r in rows:\n            r.wip = r.loaded - r.sewn - r.rejected\n        return (columns, [r for r in rows if r.loaded or r.wip])\n    return execute(filters)\ndata = list(main(filters))\n",
+   "report_type": "Script Report",
+   "roles": [
+    {
+     "role": "System Manager"
+    },
+    {
+     "role": "Apparel Production Manager"
+    },
+    {
+     "role": "Apparel Production User"
+    },
+    {
+     "role": "Apparel QA"
+    },
+    {
+     "role": "Apparel Merchandising Manager"
+    },
+    {
+     "role": "Apparel Merchandiser"
+    }
+   ]
+  }
+ ]
+}

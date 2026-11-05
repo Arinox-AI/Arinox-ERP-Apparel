@@ -1,0 +1,48 @@
+{
+ "group": "dashboards",
+ "mode": "create",
+ "records": [
+  {
+   "cards": [
+    {
+     "card": "Open Inquiries"
+    },
+    {
+     "card": "Costings Pending Approval"
+    },
+    {
+     "card": "Open Negotiations"
+    },
+    {
+     "card": "Contracts Awaiting Order"
+    },
+    {
+     "card": "Contract Value This Month"
+    }
+   ],
+   "charts": [
+    {
+     "chart": "Apparel Inquiries",
+     "width": "Half"
+    },
+    {
+     "chart": "Signed Contract Value",
+     "width": "Half"
+    },
+    {
+     "chart": "Negotiations by Status",
+     "width": "Half"
+    },
+    {
+     "chart": "Costing Approvals",
+     "width": "Half"
+    }
+   ],
+   "dashboard_name": "Apparel Pre-Sales",
+   "doctype": "Dashboard",
+   "is_default": 0,
+   "is_standard": 0,
+   "name": "Apparel Pre-Sales"
+  }
+ ]
+}

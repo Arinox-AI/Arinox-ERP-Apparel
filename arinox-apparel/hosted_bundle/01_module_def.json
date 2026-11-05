@@ -1,0 +1,11 @@
+{
+ "group": "module_def",
+ "mode": "create",
+ "records": [
+  {
+   "app_name": "frappe",
+   "doctype": "Module Def",
+   "module_name": "Arinox Apparel"
+  }
+ ]
+}

@@ -1,0 +1,229 @@
+{
+ "note": "Server Scripts that only make sense on a site where the app is NOT installed (they rely on the hosted doctype definitions). Never loaded into the dev site.",
+ "server_scripts": [
+  {
+   "name": "arinox_naming_buyer_claim",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_fabric_requisition",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_final_inspection",
+   "script_type": "DocType Event",
+   "reference_doctype": "Final Inspection",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_packing_list",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_factory_allocation",
+   "script_type": "DocType Event",
+   "reference_doctype": "Factory Allocation",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_finishing_receipt",
+   "script_type": "DocType Event",
+   "reference_doctype": "Finishing Receipt",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_production_card",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_sales_contract",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_subcontract_challan",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Challan",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_subcontract_return",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Return",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_subcontract_settlement",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Settlement",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_naming_trim_requisition",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "Before Insert",
+   "file": "naming.py"
+  },
+  {
+   "name": "arinox_engine",
+   "script_type": "API",
+   "api_method": "arinox_engine",
+   "allow_guest": 0,
+   "file": "engine.py"
+  },
+  {
+   "name": "arinox_production_adjustment_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Adjustment",
+   "doctype_event": "Before Save",
+   "file": "production_adjustment_validate.py"
+  },
+  {
+   "name": "arinox_production_adjustment_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Adjustment",
+   "doctype_event": "Before Submit",
+   "file": "production_adjustment_submit.py"
+  },
+  {
+   "name": "arinox_production_adjustment_post",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Adjustment",
+   "doctype_event": "After Submit",
+   "file": "production_adjustment_post.py"
+  },
+  {
+   "name": "arinox_production_adjustment_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Adjustment",
+   "doctype_event": "After Cancel",
+   "file": "production_adjustment_cancel.py"
+  },
+  {
+   "name": "arinox_production_card_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "Before Save",
+   "file": "production_card_validate.py"
+  },
+  {
+   "name": "arinox_production_card_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "Before Submit",
+   "file": "production_card_submit.py"
+  },
+  {
+   "name": "arinox_production_card_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "After Submit",
+   "file": "production_card_after_submit.py"
+  },
+  {
+   "name": "arinox_production_card_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "Before Cancel",
+   "file": "production_card_before_cancel.py"
+  },
+  {
+   "name": "arinox_production_card_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Production Card",
+   "doctype_event": "After Cancel",
+   "file": "production_card_after_cancel.py"
+  },
+  {
+   "name": "arinox_delivery_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "Before Save",
+   "file": "delivery_validate.py"
+  },
+  {
+   "name": "arinox_delivery_gate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "Before Submit",
+   "file": "delivery_before_submit.py"
+  },
+  {
+   "name": "arinox_delivery_post",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "After Submit",
+   "file": "delivery_after_submit.py"
+  },
+  {
+   "name": "arinox_delivery_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "Before Cancel",
+   "file": "delivery_before_cancel.py"
+  },
+  {
+   "name": "arinox_delivery_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "After Cancel",
+   "file": "delivery_after_cancel.py"
+  },
+  {
+   "name": "arinox_sales_contract_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "Before Save",
+   "file": "sales_contract_validate.py"
+  },
+  {
+   "name": "arinox_sales_contract_sign",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "Before Submit",
+   "file": "sales_contract_before_submit.py"
+  },
+  {
+   "name": "arinox_sales_contract_signed",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "After Submit",
+   "file": "sales_contract_after_submit.py"
+  },
+  {
+   "name": "arinox_sales_contract_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "Before Cancel",
+   "file": "sales_contract_before_cancel.py"
+  },
+  {
+   "name": "arinox_sales_contract_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Contract",
+   "doctype_event": "After Cancel",
+   "file": "sales_contract_after_cancel.py"
+  }
+ ]
+}

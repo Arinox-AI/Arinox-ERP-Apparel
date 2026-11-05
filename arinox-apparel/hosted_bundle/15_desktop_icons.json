@@ -1,0 +1,66 @@
+{
+ "group": "desktop_icons",
+ "mode": "create",
+ "records": [
+  {
+   "app": "",
+   "doctype": "Desktop Icon",
+   "hidden": 0,
+   "icon": "briefcase",
+   "icon_type": "Link",
+   "label": "Apparel",
+   "link_to": "Apparel",
+   "link_type": "Workspace Sidebar",
+   "name": "Apparel",
+   "parent_icon": "",
+   "restrict_removal": 0,
+   "roles": [],
+   "standard": 0
+  },
+  {
+   "app": "",
+   "doctype": "Desktop Icon",
+   "hidden": 0,
+   "icon": "factory",
+   "icon_type": "Link",
+   "label": "Apparel Production",
+   "link_to": "Production",
+   "link_type": "Workspace Sidebar",
+   "name": "Apparel Production",
+   "parent_icon": "",
+   "restrict_removal": 0,
+   "roles": [],
+   "standard": 0
+  },
+  {
+   "app": "",
+   "doctype": "Desktop Icon",
+   "hidden": 0,
+   "icon": "badge-check",
+   "icon_type": "Link",
+   "label": "Apparel Quality",
+   "link_to": "Quality and Packing",
+   "link_type": "Workspace Sidebar",
+   "name": "Apparel Quality",
+   "parent_icon": "",
+   "restrict_removal": 0,
+   "roles": [],
+   "standard": 0
+  },
+  {
+   "app": "",
+   "doctype": "Desktop Icon",
+   "hidden": 0,
+   "icon": "ship",
+   "icon_type": "Link",
+   "label": "Apparel Shipping",
+   "link_to": "Shipping and Collections",
+   "link_type": "Workspace Sidebar",
+   "name": "Apparel Shipping",
+   "parent_icon": "",
+   "restrict_removal": 0,
+   "roles": [],
+   "standard": 0
+  }
+ ]
+}

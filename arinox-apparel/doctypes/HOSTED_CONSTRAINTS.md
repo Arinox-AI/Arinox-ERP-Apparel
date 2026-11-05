@@ -107,3 +107,27 @@ Build the **engine script** and port Phase D and E logic onto it in the order of
 3. Build the engine script (ledger, flow, maths, carton plan) and prove it on a second local site that has ERPNext only, using the existing tests as the specification.
 4. Port document by document in flow order: cutting and sewing, subcontract, finishing, packing, inspection, shipment, invoicing, follow-up, claims; Phases A to C last.
 5. Keep a switch (a setting that makes every script return at once). A faulty Before Save script on Shipment or Sales Invoice would otherwise stop everyone saving, and the agent cannot fix a server.
+
+## 6. Measured on a clean ERPNext-only site (2026-11-05, `hosted.localhost`, app not installed)
+
+The bundle in `hosted_bundle/` was loaded through the REST API (`portable/api_load.py`) and scripts were run on that site. New limits found by running, not reading:
+
+| Refused in the sandbox | Use instead |
+|---|---|
+| A function calling another module-level function (they sit in locals, not globals) | Put everything inside one enclosing function and call it at the end (`def run(doc): ... ; run(doc)`) |
+| `a, b = pair` (no `_unpack_sequence_`); `for a, b in rows` **is** fine | `x = pair` then `x[0]`, `x[1]` |
+| `"{0}".format(x)` | `"%s" % (x,)` or an f-string |
+| `date.strftime(...)` (`KeyError: '__import__'`) | `frappe.utils.formatdate(d, "dd MMM")`, or `str(d.year)` / `d.month` |
+| Bare `getdate`, `flt`, `cint`, `add_days`, `nowdate` | `frappe.utils.getdate(...)` etc. (or `u = frappe.utils`) |
+| Names that start with `_` | rename |
+| A line in a SQL string that starts with `from ` when stripping imports by hand | (converter bug, fixed) |
+
+What Frappe refuses on a site without developer mode, and how the exporter handles it (`portable/export_bundle.py`):
+- A standard DocType (`custom = 0`) cannot be created: every DocType is exported with `custom = 1`.
+- Print Format `standard`, Report `is_standard`, Number Card / Dashboard Chart `is_standard`, Desktop Icon `standard` must be off.
+- A custom DocType's permission table is validated, a standard one is not. The app had two latent errors that only show now: **PP Meeting** gives *Sales User* submit/cancel/amend without write (the three rights are removed in the bundle), and **Fabric Inspection** and **Trim Inspection** list *Quality Manager* (and two stock roles) twice (merged). Fix them in the app's JSON when convenient.
+- Doctypes must be created after the doctypes they link to; five point at each other (PP Meeting, PP Meeting Action, Recut Request, Final Inspection, Final Inspection Lot) and need a second pass.
+- A Workspace Sidebar is named by its *title* on such a site (not by the app's file name).
+- `bench execute` refuses a module from an app that is not installed on the site; the hosted tests run through `bench console` (`hosted_tests.sh`).
+
+Status of what was ported and tested is in `portable/HOSTED_STATUS.md`.

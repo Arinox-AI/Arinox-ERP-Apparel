@@ -1,0 +1,52 @@
+{
+ "reports": [
+  {
+   "slug": "contract_delivery_schedule",
+   "file": "contract_delivery_schedule.py"
+  },
+  {
+   "slug": "contract_trail",
+   "file": "contract_trail.py"
+  },
+  {
+   "slug": "costing_margin_review",
+   "file": "costing_margin_review.py"
+  },
+  {
+   "slug": "daily_cutting_report",
+   "file": "daily_cutting_report.py"
+  },
+  {
+   "slug": "daily_production_report",
+   "file": "daily_production_report.py"
+  },
+  {
+   "slug": "factory_load",
+   "file": "factory_load.py"
+  },
+  {
+   "slug": "inquiry_to_contract_tracker",
+   "file": "inquiry_to_contract_tracker.py"
+  },
+  {
+   "slug": "line_efficiency_and_dhu",
+   "file": "line_efficiency_and_dhu.py"
+  },
+  {
+   "slug": "line_loading",
+   "file": "line_loading.py"
+  },
+  {
+   "slug": "negotiation_history",
+   "file": "negotiation_history.py"
+  },
+  {
+   "slug": "receivables_follow_up",
+   "file": "receivables_follow_up.py"
+  },
+  {
+   "slug": "sewing_wip",
+   "file": "sewing_wip.py"
+  }
+ ]
+}

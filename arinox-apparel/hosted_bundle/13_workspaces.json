@@ -1,0 +1,1349 @@
+{
+ "group": "workspaces",
+ "mode": "create",
+ "records": [
+  {
+   "app": "arinox_apparel",
+   "charts": [
+    {
+     "chart_name": "Signed Contract Value",
+     "label": "Signed Contract Value"
+    }
+   ],
+   "content": "[{\"id\": \"apparel001\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Order Win: inquiry to contract</b></span>\", \"col\": 12}}, {\"id\": \"apparel002\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Inquiries\", \"col\": 4}}, {\"id\": \"apparel003\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Costings Pending Approval\", \"col\": 4}}, {\"id\": \"apparel004\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Negotiations\", \"col\": 4}}, {\"id\": \"apparel005\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contracts Awaiting Order\", \"col\": 6}}, {\"id\": \"apparel006\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contract Value This Month\", \"col\": 6}}, {\"id\": \"apparel007\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelB01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Plan and Approve: factory, samples, bulk gate</b></span>\", \"col\": 12}}, {\"id\": \"apparelB02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Orders Awaiting Plan\", \"col\": 4}}, {\"id\": \"apparelB03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Samples With Buyer\", \"col\": 4}}, {\"id\": \"apparelB04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue Samples\", \"col\": 4}}, {\"id\": \"apparelB05\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelC01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Materials: fabric and trims</b></span>\", \"col\": 12}}, {\"id\": \"apparelC03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rolls Awaiting Inspection\", \"col\": 3}}, {\"id\": \"apparelC04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rejected Lots 30 Days\", \"col\": 3}}, {\"id\": \"apparelC06\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel008\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"apparel010\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tech Pack\", \"col\": 4}}, {\"id\": \"apparel011\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cost Sheet\", \"col\": 4}}, {\"id\": \"apparel012\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Price Negotiation\", \"col\": 4}}, {\"id\": \"apparel013\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Contract\", \"col\": 4}}, {\"id\": \"apparel014\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inquiry to Contract Tracker\", \"col\": 4}}, {\"id\": \"apparelC11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Fabric Requisition\", \"col\": 4}}, {\"id\": \"apparelC12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Trim Requisition\", \"col\": 4}}, {\"id\": \"apparel015\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel016\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Signed Contract Value\", \"col\": 12}}, {\"id\": \"apparel017\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel018\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents, Reports &amp; Setup</b></span>\", \"col\": 12}}, {\"id\": \"apparel019\", \"type\": \"card\", \"data\": {\"card_name\": \"Pre-Sales\", \"col\": 4}}, {\"id\": \"apparel020\", \"type\": \"card\", \"data\": {\"card_name\": \"Contract & Order\", \"col\": 4}}, {\"id\": \"apparel021\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"apparel022\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"apparelB06\", \"type\": \"card\", \"data\": {\"card_name\": \"Plan and Approve\", \"col\": 4}}]",
+   "custom_blocks": [],
+   "doctype": "Workspace",
+   "for_user": "",
+   "hide_custom": 0,
+   "icon": "shirt",
+   "is_hidden": 0,
+   "label": "Apparel",
+   "links": [
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Pre-Sales",
+     "link_count": 5,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Inquiry (Opportunity)",
+     "link_count": 0,
+     "link_to": "Opportunity",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Tech Pack",
+     "link_count": 0,
+     "link_to": "Tech Pack",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Cost Sheet",
+     "link_count": 0,
+     "link_to": "Cost Sheet",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Price Negotiation",
+     "link_count": 0,
+     "link_to": "Price Negotiation",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Quotation",
+     "link_count": 0,
+     "link_to": "Quotation",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Contract & Order",
+     "link_count": 4,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Sales Contract",
+     "link_count": 0,
+     "link_to": "Sales Contract",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Sales Order",
+     "link_count": 0,
+     "link_to": "Sales Order",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Customer",
+     "link_count": 0,
+     "link_to": "Customer",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Item (Styles & SKUs)",
+     "link_count": 0,
+     "link_to": "Item",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Reports",
+     "link_count": 4,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Inquiry to Contract Tracker",
+     "link_count": 0,
+     "link_to": "Inquiry to Contract Tracker",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Costing Margin Review",
+     "link_count": 0,
+     "link_to": "Costing Margin Review",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Negotiation History",
+     "link_count": 0,
+     "link_to": "Negotiation History",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Contract Delivery Schedule",
+     "link_count": 0,
+     "link_to": "Contract Delivery Schedule",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Setup",
+     "link_count": 6,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Product Type",
+     "link_count": 0,
+     "link_to": "Product Type",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Cost Head",
+     "link_count": 0,
+     "link_to": "Cost Head",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Costing Parameter",
+     "link_count": 0,
+     "link_to": "Costing Parameter",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Sales Contract Template",
+     "link_count": 0,
+     "link_to": "Sales Contract Template",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Terms and Conditions",
+     "link_count": 0,
+     "link_to": "Terms and Conditions",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Apparel Settings",
+     "link_count": 0,
+     "link_to": "Apparel Settings",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Plan and Approve",
+     "link_count": 5,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Factory Allocation",
+     "link_count": 0,
+     "link_to": "Factory Allocation",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Sample Approval",
+     "link_count": 0,
+     "link_to": "Sample Approval",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "PP Meeting",
+     "link_count": 0,
+     "link_to": "PP Meeting",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Factory Load",
+     "link_count": 0,
+     "link_to": "Factory Load",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Materials",
+     "link_count": 6,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Fabric Requisition",
+     "link_count": 0,
+     "link_to": "Fabric Requisition",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Requisition",
+     "link_count": 0,
+     "link_to": "Trim Requisition",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Fabric Inspection",
+     "link_count": 0,
+     "link_to": "Fabric Inspection",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Inspection",
+     "link_count": 0,
+     "link_to": "Trim Inspection",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Time and Action",
+     "link_count": 6,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Order T&A",
+     "link_count": 0,
+     "link_to": "Order TNA",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Milestones (Gantt / Calendar)",
+     "link_count": 0,
+     "link_to": "TNA Milestone",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "T&A Template",
+     "link_count": 0,
+     "link_to": "TNA Template",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "T&A Milestone Type",
+     "link_count": 0,
+     "link_to": "TNA Milestone Type",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Materials Setup",
+     "link_count": 6,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Material Allowance Rule",
+     "link_count": 0,
+     "link_to": "Material Allowance Rule",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Material Purchase Terms",
+     "link_count": 0,
+     "link_to": "Material Purchase Terms",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Category",
+     "link_count": 0,
+     "link_to": "Trim Category",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Fabric Defect Code",
+     "link_count": 0,
+     "link_to": "Fabric Defect Code",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Defect Type",
+     "link_count": 0,
+     "link_to": "Trim Defect Type",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Sampling Plan",
+     "link_count": 0,
+     "link_to": "Trim Sampling Plan",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ],
+   "module": "Arinox Apparel",
+   "name": "Apparel",
+   "number_cards": [
+    {
+     "label": "Open Inquiries",
+     "number_card_name": "Open Inquiries"
+    },
+    {
+     "label": "Costings Pending Approval",
+     "number_card_name": "Costings Pending Approval"
+    },
+    {
+     "label": "Open Negotiations",
+     "number_card_name": "Open Negotiations"
+    },
+    {
+     "label": "Contracts Awaiting Order",
+     "number_card_name": "Contracts Awaiting Order"
+    },
+    {
+     "label": "Contract Value This Month",
+     "number_card_name": "Contract Value This Month"
+    },
+    {
+     "label": "Orders Awaiting Plan",
+     "number_card_name": "Orders Awaiting Plan"
+    },
+    {
+     "label": "Samples With Buyer",
+     "number_card_name": "Samples With Buyer"
+    },
+    {
+     "label": "Overdue Samples",
+     "number_card_name": "Overdue Samples"
+    },
+    {
+     "label": "Rolls Awaiting Inspection",
+     "number_card_name": "Rolls Awaiting Inspection"
+    },
+    {
+     "label": "Rejected Lots 30 Days",
+     "number_card_name": "Rejected Lots 30 Days"
+    }
+   ],
+   "parent_page": "",
+   "public": 1,
+   "quick_lists": [],
+   "restrict_to_domain": "",
+   "roles": [],
+   "sequence_id": 50.0,
+   "shortcuts": [
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Tech Pack",
+     "link_to": "Tech Pack",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Cost Sheet",
+     "link_to": "Cost Sheet",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Price Negotiation",
+     "link_to": "Price Negotiation",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Green",
+     "doc_view": "",
+     "label": "Sales Contract",
+     "link_to": "Sales Contract",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Grey",
+     "doc_view": "",
+     "label": "Inquiry to Contract Tracker",
+     "link_to": "Inquiry to Contract Tracker",
+     "stats_filter": "[]",
+     "type": "Report"
+    },
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Sample Approval",
+     "link_to": "Sample Approval",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Factory Allocation",
+     "link_to": "Factory Allocation",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "label": "Fabric Requisition",
+     "link_to": "Fabric Requisition",
+     "type": "DocType"
+    },
+    {
+     "label": "Trim Requisition",
+     "link_to": "Trim Requisition",
+     "type": "DocType"
+    }
+   ],
+   "title": "Apparel",
+   "type": "Workspace"
+  },
+  {
+   "app": "arinox_apparel",
+   "charts": [],
+   "content": "[{\"id\": \"p01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Floor: cut, sew, finish</b></span>\", \"col\": 12}}, {\"id\": \"p02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cards In Cutting\", \"col\": 3}}, {\"id\": \"p03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cards In Sewing\", \"col\": 3}}, {\"id\": \"p04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Challans Open\", \"col\": 3}}, {\"id\": \"p05\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Challans Overdue\", \"col\": 3}}, {\"id\": \"p07\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"p08\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents, reports and setup</b></span>\", \"col\": 12}}, {\"id\": \"p09\", \"type\": \"card\", \"data\": {\"card_name\": \"Cutting and Sewing\", \"col\": 4}}, {\"id\": \"p10\", \"type\": \"card\", \"data\": {\"card_name\": \"Subcontract and Finishing\", \"col\": 4}}, {\"id\": \"p11\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+   "custom_blocks": [],
+   "doctype": "Workspace",
+   "for_user": "",
+   "hide_custom": 0,
+   "icon": "factory",
+   "is_hidden": 0,
+   "label": "Apparel Production",
+   "links": [
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Cutting and Sewing",
+     "link_count": 8,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Production Card",
+     "link_to": "Production Card",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Pilot Run",
+     "link_to": "Pilot Run",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Cut Plan",
+     "link_to": "Cut Plan",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Lay Report",
+     "link_to": "Lay Report",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Operation Bulletin",
+     "link_to": "Operation Bulletin",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Line Input",
+     "link_to": "Line Input",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Daily Line Report",
+     "link_to": "Daily Line Report",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Line QC Report",
+     "link_to": "Line QC Report",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Subcontract and Finishing",
+     "link_count": 5,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Subcontract Challan",
+     "link_to": "Subcontract Challan",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Subcontract Return",
+     "link_to": "Subcontract Return",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Subcontract Settlement",
+     "link_to": "Subcontract Settlement",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Finishing Receipt",
+     "link_to": "Finishing Receipt",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Subcontract Process",
+     "link_to": "Subcontract Process",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Reports",
+     "link_count": 9,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Production Summary",
+     "link_to": "Production Summary",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Daily Production Report",
+     "link_to": "Daily Production Report",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Daily Cutting Report",
+     "link_to": "Daily Cutting Report",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Line Loading",
+     "link_to": "Line Loading",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Line Efficiency and DHU",
+     "link_to": "Line Efficiency and DHU",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Sewing WIP",
+     "link_to": "Sewing WIP",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ],
+   "module": "Arinox Apparel",
+   "name": "Apparel Production",
+   "number_cards": [
+    {
+     "label": "Cards In Cutting",
+     "number_card_name": "Cards In Cutting"
+    },
+    {
+     "label": "Cards In Sewing",
+     "number_card_name": "Cards In Sewing"
+    },
+    {
+     "label": "Challans Open",
+     "number_card_name": "Challans Open"
+    },
+    {
+     "label": "Challans Overdue",
+     "number_card_name": "Challans Overdue"
+    }
+   ],
+   "parent_page": "",
+   "public": 1,
+   "quick_lists": [],
+   "restrict_to_domain": "",
+   "roles": [],
+   "sequence_id": 51,
+   "shortcuts": [
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Production Card",
+     "link_to": "Production Card",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Lay Report",
+     "link_to": "Lay Report",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Daily Line Report",
+     "link_to": "Daily Line Report",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Subcontract Challan",
+     "link_to": "Subcontract Challan",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Finishing Receipt",
+     "link_to": "Finishing Receipt",
+     "stats_filter": "[]",
+     "type": "DocType"
+    }
+   ],
+   "title": "Apparel Production",
+   "type": "Workspace"
+  },
+  {
+   "app": "arinox_apparel",
+   "charts": [],
+   "content": "[{\"id\": \"q01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quality and packing</b></span>\", \"col\": 12}}, {\"id\": \"q02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Packing Lists Awaiting Inspection\", \"col\": 4}}, {\"id\": \"q03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Final Inspections Rejected 30 Days\", \"col\": 4}}, {\"id\": \"q04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Needle Checks Failed Not Re-scanned\", \"col\": 4}}, {\"id\": \"q06\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"q07\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents and setup</b></span>\", \"col\": 12}}, {\"id\": \"q08\", \"type\": \"card\", \"data\": {\"card_name\": \"Inspections and Packing\", \"col\": 4}}, {\"id\": \"q09\", \"type\": \"card\", \"data\": {\"card_name\": \"Quality Setup\", \"col\": 4}}]",
+   "custom_blocks": [],
+   "doctype": "Workspace",
+   "for_user": "",
+   "hide_custom": 0,
+   "icon": "badge-check",
+   "is_hidden": 0,
+   "label": "Apparel Quality",
+   "links": [
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Inspections and Packing",
+     "link_count": 5,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Fabric Inspection",
+     "link_to": "Fabric Inspection",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Inspection",
+     "link_to": "Trim Inspection",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Needle Detector Log",
+     "link_to": "Needle Detector Log",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Packing List",
+     "link_to": "Packing List",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Final Inspection",
+     "link_to": "Final Inspection",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Quality Setup",
+     "link_count": 6,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "AQL Plan",
+     "link_to": "AQL Plan",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Apparel Defect Code",
+     "link_to": "Apparel Defect Code",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Fabric Defect Code",
+     "link_to": "Fabric Defect Code",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Defect Type",
+     "link_to": "Trim Defect Type",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Trim Sampling Plan",
+     "link_to": "Trim Sampling Plan",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Carton Sizes",
+     "link_to": "Shipment Parcel Template",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ],
+   "module": "Arinox Apparel",
+   "name": "Apparel Quality",
+   "number_cards": [
+    {
+     "label": "Packing Lists Awaiting Inspection",
+     "number_card_name": "Packing Lists Awaiting Inspection"
+    },
+    {
+     "label": "Final Inspections Rejected 30 Days",
+     "number_card_name": "Final Inspections Rejected 30 Days"
+    },
+    {
+     "label": "Needle Checks Failed Not Re-scanned",
+     "number_card_name": "Needle Checks Failed Not Re-scanned"
+    }
+   ],
+   "parent_page": "",
+   "public": 1,
+   "quick_lists": [],
+   "restrict_to_domain": "",
+   "roles": [],
+   "sequence_id": 52,
+   "shortcuts": [
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Packing List",
+     "link_to": "Packing List",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Final Inspection",
+     "link_to": "Final Inspection",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Needle Detector Log",
+     "link_to": "Needle Detector Log",
+     "stats_filter": "[]",
+     "type": "DocType"
+    }
+   ],
+   "title": "Apparel Quality",
+   "type": "Workspace"
+  },
+  {
+   "app": "arinox_apparel",
+   "charts": [],
+   "content": "[{\"id\": \"s01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Shipping</b></span>\", \"col\": 12}}, {\"id\": \"s02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Lists Ready to Ship\", \"col\": 4}}, {\"id\": \"s03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Shipments Not Yet Delivered\", \"col\": 4}}, {\"id\": \"s04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Draft Invoices To Submit\", \"col\": 4}}, {\"id\": \"s05\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"s06\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Collections</b></span>\", \"col\": 12}}, {\"id\": \"s07\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue Invoices\", \"col\": 3}}, {\"id\": \"s08\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue Amount\", \"col\": 3}}, {\"id\": \"s09\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Promises Due This Week\", \"col\": 3}}, {\"id\": \"s010\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Disputed Invoices\", \"col\": 3}}, {\"id\": \"s011\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Buyer Claims\", \"col\": 3}}, {\"id\": \"s11a\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Letters of Credit Open\", \"col\": 3}}, {\"id\": \"s11b\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Credits Expiring in 14 Days\", \"col\": 3}}, {\"id\": \"s12\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"s13\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents and reports</b></span>\", \"col\": 12}}, {\"id\": \"s14\", \"type\": \"card\", \"data\": {\"card_name\": \"Shipping\", \"col\": 4}}, {\"id\": \"s15\", \"type\": \"card\", \"data\": {\"card_name\": \"Invoices and Payment\", \"col\": 4}}, {\"id\": \"s16\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+   "custom_blocks": [],
+   "doctype": "Workspace",
+   "for_user": "",
+   "hide_custom": 0,
+   "icon": "ship",
+   "is_hidden": 0,
+   "label": "Apparel Shipping",
+   "links": [
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Shipping",
+     "link_count": 4,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Packing List",
+     "link_to": "Packing List",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Shipment",
+     "link_to": "Shipment",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Delivery Note",
+     "link_to": "Delivery Note",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Freight Quotes",
+     "link_to": "Supplier Quotation",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Invoices and Payment",
+     "link_count": 5,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Sales Invoice",
+     "link_to": "Sales Invoice",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Payment Entry",
+     "link_to": "Payment Entry",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Dunning",
+     "link_to": "Dunning",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Buyer Claim",
+     "link_to": "Buyer Claim",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Letter of Credit",
+     "link_to": "Letter of Credit",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Reports",
+     "link_count": 3,
+     "onboard": 0,
+     "type": "Card Break"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Receivables Follow-up",
+     "link_to": "Receivables Follow-up",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Contract Trail",
+     "link_to": "Contract Trail",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 0,
+     "label": "Destination Filing Rule",
+     "link_to": "Destination Filing Rule",
+     "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    }
+   ],
+   "module": "Arinox Apparel",
+   "name": "Apparel Shipping",
+   "number_cards": [
+    {
+     "label": "Lists Ready to Ship",
+     "number_card_name": "Lists Ready to Ship"
+    },
+    {
+     "label": "Shipments Not Yet Delivered",
+     "number_card_name": "Shipments Not Yet Delivered"
+    },
+    {
+     "label": "Draft Invoices To Submit",
+     "number_card_name": "Draft Invoices To Submit"
+    },
+    {
+     "label": "Overdue Invoices",
+     "number_card_name": "Overdue Invoices"
+    },
+    {
+     "label": "Overdue Amount",
+     "number_card_name": "Overdue Amount"
+    },
+    {
+     "label": "Promises Due This Week",
+     "number_card_name": "Promises Due This Week"
+    },
+    {
+     "label": "Disputed Invoices",
+     "number_card_name": "Disputed Invoices"
+    },
+    {
+     "label": "Open Buyer Claims",
+     "number_card_name": "Open Buyer Claims"
+    },
+    {
+     "label": "Letters of Credit Open",
+     "number_card_name": "Letters of Credit Open"
+    },
+    {
+     "label": "Credits Expiring in 14 Days",
+     "number_card_name": "Credits Expiring in 14 Days"
+    }
+   ],
+   "parent_page": "",
+   "public": 1,
+   "quick_lists": [],
+   "restrict_to_domain": "",
+   "roles": [],
+   "sequence_id": 53,
+   "shortcuts": [
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Shipment",
+     "link_to": "Shipment",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Green",
+     "doc_view": "",
+     "label": "Sales Invoice",
+     "link_to": "Sales Invoice",
+     "stats_filter": "[]",
+     "type": "DocType"
+    },
+    {
+     "color": "Orange",
+     "doc_view": "",
+     "label": "Receivables Follow-up",
+     "link_to": "Receivables Follow-up",
+     "report_ref_doctype": "Sales Invoice",
+     "stats_filter": "[]",
+     "type": "Report"
+    },
+    {
+     "color": "Blue",
+     "doc_view": "",
+     "label": "Buyer Claim",
+     "link_to": "Buyer Claim",
+     "stats_filter": "[]",
+     "type": "DocType"
+    }
+   ],
+   "title": "Apparel Shipping",
+   "type": "Workspace"
+  }
+ ]
+}

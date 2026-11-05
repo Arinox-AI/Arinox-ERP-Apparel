@@ -1,0 +1,2411 @@
+{
+ "group": "seeds",
+ "mode": "create",
+ "records": [
+  {
+   "calc_type": "From Materials",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Material",
+   "head_name": "Fabric",
+   "is_mandatory": 1,
+   "material_scope": "Fabric",
+   "name": "Fabric",
+   "sequence": 10
+  },
+  {
+   "calc_type": "From Materials",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Material",
+   "head_name": "Trims",
+   "is_mandatory": 1,
+   "material_scope": "Non-Fabric",
+   "name": "Trims",
+   "sequence": 20
+  },
+  {
+   "calc_type": "Per Piece",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Conversion",
+   "head_name": "Stitching (CMT)",
+   "is_mandatory": 1,
+   "name": "Stitching (CMT)",
+   "sequence": 30
+  },
+  {
+   "calc_type": "Per Piece",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Conversion",
+   "head_name": "Washing",
+   "is_mandatory": 1,
+   "name": "Washing",
+   "sequence": 40
+  },
+  {
+   "calc_type": "Per Piece",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Conversion",
+   "head_name": "Embellishment",
+   "is_mandatory": 1,
+   "name": "Embellishment",
+   "sequence": 50
+  },
+  {
+   "calc_type": "Per Piece",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Conversion",
+   "head_name": "Testing",
+   "is_mandatory": 1,
+   "name": "Testing",
+   "sequence": 60
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Allowance",
+   "head_name": "Rejection Allowance",
+   "is_mandatory": 1,
+   "name": "Rejection Allowance",
+   "sequence": 70
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Overhead",
+   "head_name": "Overhead",
+   "is_mandatory": 1,
+   "name": "Overhead",
+   "sequence": 110
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Logistics",
+   "head_name": "Freight",
+   "is_mandatory": 1,
+   "name": "Freight",
+   "sequence": 100
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Financial",
+   "head_name": "Finance",
+   "is_mandatory": 1,
+   "name": "Finance",
+   "sequence": 80
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Financial",
+   "head_name": "Bank Charges",
+   "is_mandatory": 1,
+   "name": "Bank Charges",
+   "sequence": 90
+  },
+  {
+   "calc_type": "Percent of Subtotal",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Profit",
+   "head_name": "Profit",
+   "is_mandatory": 1,
+   "name": "Profit",
+   "sequence": 130
+  },
+  {
+   "calc_type": "Per Metre of Fabric",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Material",
+   "head_name": "Fabric Export Cost",
+   "is_mandatory": 1,
+   "name": "Fabric Export Cost",
+   "sequence": 25
+  },
+  {
+   "calc_type": "Per Metre of Fabric",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Material",
+   "head_name": "Fabric Import Cost",
+   "is_mandatory": 1,
+   "name": "Fabric Import Cost",
+   "sequence": 26
+  },
+  {
+   "calc_type": "Per Piece",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Conversion",
+   "head_name": "Printing",
+   "is_mandatory": 1,
+   "name": "Printing",
+   "sequence": 45
+  },
+  {
+   "calc_type": "Percent of Product Cost",
+   "doctype": "Cost Head",
+   "enabled": 1,
+   "head_group": "Financial",
+   "head_name": "Buying Agent Commission",
+   "is_mandatory": 0,
+   "name": "Buying Agent Commission",
+   "sequence": 120
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Knit Top",
+   "product_type": "Knit Top"
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Woven Top",
+   "product_type": "Woven Top"
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Bottom",
+   "product_type": "Bottom"
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Dress",
+   "product_type": "Dress"
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Outerwear",
+   "product_type": "Outerwear"
+  },
+  {
+   "default_sam": 0.0,
+   "doctype": "Product Type",
+   "name": "Sleepwear",
+   "product_type": "Sleepwear"
+  },
+  {
+   "defect_name": "Broken or Loose Stitch",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Broken or Loose Stitch",
+   "severity": "Major",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Open Seam or Raw Edge",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Open Seam or Raw Edge",
+   "severity": "Major",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Puckering",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Puckering",
+   "severity": "Minor",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Joint Stitch Visible",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Joint Stitch Visible",
+   "severity": "Minor",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Bar Tack Insecure",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Bar Tack Insecure",
+   "severity": "Major",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Button or Buttonhole Missing",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Button or Buttonhole Missing",
+   "severity": "Major",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Alignment Defect",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Alignment Defect",
+   "severity": "Minor",
+   "stage": "Sewing"
+  },
+  {
+   "defect_name": "Wrong Size Label",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Trims",
+   "name": "Wrong Size Label",
+   "severity": "Critical",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Incorrect Label Placement",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Incorrect Label Placement",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Crossed Label",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Crossed Label",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Poor Ironing",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Poor Ironing",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Shine or Crease Marks",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Shine or Crease Marks",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Stains",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Handling",
+   "name": "Stains",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Holes",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Holes",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Shade Variation",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Shade Variation",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Weaving Defect",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Weaving Defect",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Weak Seams",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Weak Seams",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Overlock Quality",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Overlock Quality",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Balancing of Garment",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Balancing of Garment",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Needle Marks",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Needle Marks",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Wavy Stitching",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Wavy Stitching",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Neck Shape",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Neck Shape",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Snagging",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Handling",
+   "name": "Snagging",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Uncut or Loose Threads",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Uncut or Loose Threads",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Inside Finishing",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Inside Finishing",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Elastic Quality",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Trims",
+   "name": "Elastic Quality",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Embroidery Placement",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Subcontractor",
+   "name": "Embroidery Placement",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Embroidery Fraying",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Subcontractor",
+   "name": "Embroidery Fraying",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Snaps, Studs or Zipper",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Trims",
+   "name": "Snaps, Studs or Zipper",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Pilling",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Pilling",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Hand Feel",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Hand Feel",
+   "severity": "Minor",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Print Defect",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Subcontractor",
+   "name": "Print Defect",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Measurement Out of Tolerance",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Spec or Pattern",
+   "name": "Measurement Out of Tolerance",
+   "severity": "Major",
+   "stage": "Final"
+  },
+  {
+   "defect_name": "Washing Rejection",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Subcontractor",
+   "name": "Washing Rejection",
+   "severity": "Major",
+   "stage": "Washing"
+  },
+  {
+   "defect_name": "Stain Garment",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Handling",
+   "name": "Stain Garment",
+   "severity": "Minor",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Factory Rejection",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Factory Rejection",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Fabric Rejection",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Fabric Rejection",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Spec Issue",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Spec or Pattern",
+   "name": "Spec Issue",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Damage",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Handling",
+   "name": "Damage",
+   "severity": "Major",
+   "stage": "Any"
+  },
+  {
+   "defect_name": "Cutting Damage",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Cutting",
+   "name": "Cutting Damage",
+   "severity": "Major",
+   "stage": "Cutting"
+  },
+  {
+   "defect_name": "Wrong Cut or Missing Notch",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Cutting",
+   "name": "Wrong Cut or Missing Notch",
+   "severity": "Major",
+   "stage": "Cutting"
+  },
+  {
+   "defect_name": "Fabric Hole in Panel",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Fabric Hole in Panel",
+   "severity": "Major",
+   "stage": "Cutting"
+  },
+  {
+   "defect_name": "Shade Mismatch in Panel",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Fabric",
+   "name": "Shade Mismatch in Panel",
+   "severity": "Major",
+   "stage": "Cutting"
+  },
+  {
+   "defect_name": "Metal or Needle Found",
+   "doctype": "Apparel Defect Code",
+   "enabled": 1,
+   "fault_source": "Factory Sewing",
+   "name": "Metal or Needle Found",
+   "severity": "Critical",
+   "stage": "Finishing"
+  },
+  {
+   "billing_uom": "Pcs",
+   "damage_threshold_pct": 1.0,
+   "default_position": "After Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Garments",
+   "name": "Wash",
+   "process_name": "Wash",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 3
+  },
+  {
+   "billing_uom": "Pcs",
+   "damage_threshold_pct": 1.0,
+   "default_position": "Before Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Cut Panels",
+   "name": "Embroidery",
+   "process_name": "Embroidery",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 3
+  },
+  {
+   "billing_uom": "Pcs",
+   "damage_threshold_pct": 1.0,
+   "default_position": "Before Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Cut Panels",
+   "name": "Print",
+   "process_name": "Print",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 3
+  },
+  {
+   "billing_uom": "Pcs",
+   "damage_threshold_pct": 1.0,
+   "default_position": "Before Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Cut Panels",
+   "name": "Appliqu\u00e9",
+   "process_name": "Appliqu\u00e9",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 3
+  },
+  {
+   "billing_uom": "Pcs",
+   "damage_threshold_pct": 1.0,
+   "default_position": "Before Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Cut Panels",
+   "name": "Heat Transfer",
+   "process_name": "Heat Transfer",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 2
+  },
+  {
+   "billing_uom": "Kg",
+   "damage_threshold_pct": 3.0,
+   "default_position": "After Sewing",
+   "doctype": "Subcontract Process",
+   "enabled": 1,
+   "item_state": "Garments",
+   "name": "Garment Dye",
+   "process_name": "Garment Dye",
+   "qty_tolerance_pct": 5.0,
+   "requires_approved_standard": 1,
+   "turnaround_days": 5
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Fit and measurements after wash",
+   "doctype": "Production Check Item",
+   "name": "Fit and measurements after wash",
+   "sequence": 10
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Construction",
+   "doctype": "Production Check Item",
+   "name": "Construction",
+   "sequence": 20
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Wash result vs approved standard",
+   "doctype": "Production Check Item",
+   "name": "Wash result vs approved standard",
+   "sequence": 30
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Trims and labels",
+   "doctype": "Production Check Item",
+   "name": "Trims and labels",
+   "sequence": 40
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Needle and thread",
+   "doctype": "Production Check Item",
+   "name": "Needle and thread",
+   "sequence": 50
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Shade",
+   "doctype": "Production Check Item",
+   "name": "Shade",
+   "sequence": 60
+  },
+  {
+   "applies_to": "Pilot Run",
+   "check_name": "Packing",
+   "doctype": "Production Check Item",
+   "name": "Packing",
+   "sequence": 70
+  },
+  {
+   "applies_to": "Line Setting",
+   "check_name": "Line setting",
+   "doctype": "Production Check Item",
+   "name": "Line setting",
+   "sequence": 80
+  },
+  {
+   "applies_to": "Line Setting",
+   "check_name": "Machines and attachments ready",
+   "doctype": "Production Check Item",
+   "name": "Machines and attachments ready",
+   "sequence": 90
+  },
+  {
+   "applies_to": "Line Setting",
+   "check_name": "Operators trained on critical operations",
+   "doctype": "Production Check Item",
+   "name": "Operators trained on critical operations",
+   "sequence": 100
+  },
+  {
+   "applies_to": "Pre-Pack",
+   "check_name": "Hang tag and sticker positions",
+   "doctype": "Production Check Item",
+   "name": "Hang tag and sticker positions",
+   "sequence": 110
+  },
+  {
+   "applies_to": "Pre-Pack",
+   "check_name": "Polybag warning and size",
+   "doctype": "Production Check Item",
+   "name": "Polybag warning and size",
+   "sequence": 120
+  },
+  {
+   "applies_to": "Pre-Pack",
+   "check_name": "Barcode matches size and colour",
+   "doctype": "Production Check Item",
+   "name": "Barcode matches size and colour",
+   "sequence": 130
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Woven Label",
+   "doctype": "Trim Category",
+   "name": "Woven Label",
+   "needed_for": "Sewing",
+   "sequence": 10
+  },
+  {
+   "calc_basis": "Per Size",
+   "category_name": "Size Label",
+   "doctype": "Trim Category",
+   "name": "Size Label",
+   "needed_for": "Sewing",
+   "sequence": 20
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Care Label",
+   "doctype": "Trim Category",
+   "name": "Care Label",
+   "needed_for": "Sewing",
+   "sequence": 30
+  },
+  {
+   "calc_basis": "By Length",
+   "category_name": "Thread",
+   "doctype": "Trim Category",
+   "name": "Thread",
+   "needed_for": "Sewing",
+   "sequence": 40
+  },
+  {
+   "calc_basis": "By Length",
+   "category_name": "Fusing / Interlining",
+   "doctype": "Trim Category",
+   "name": "Fusing / Interlining",
+   "needed_for": "Cutting",
+   "sequence": 50
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Security Tag",
+   "doctype": "Trim Category",
+   "name": "Security Tag",
+   "needed_for": "Finishing",
+   "sequence": 60
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Hang Tag",
+   "doctype": "Trim Category",
+   "name": "Hang Tag",
+   "needed_for": "Finishing",
+   "sequence": 70
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Button",
+   "doctype": "Trim Category",
+   "name": "Button",
+   "needed_for": "Sewing",
+   "sequence": 80
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Branding",
+   "doctype": "Trim Category",
+   "name": "Branding",
+   "needed_for": "Sewing",
+   "sequence": 90
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Zipper / Hooks / Fasteners",
+   "doctype": "Trim Category",
+   "name": "Zipper / Hooks / Fasteners",
+   "needed_for": "Sewing",
+   "sequence": 100
+  },
+  {
+   "calc_basis": "By Length",
+   "category_name": "Elastic / Tape",
+   "doctype": "Trim Category",
+   "name": "Elastic / Tape",
+   "needed_for": "Sewing",
+   "sequence": 110
+  },
+  {
+   "calc_basis": "Per Carton",
+   "category_name": "Packaging",
+   "doctype": "Trim Category",
+   "name": "Packaging",
+   "needed_for": "Packing",
+   "sequence": 120
+  },
+  {
+   "calc_basis": "Per Garment",
+   "category_name": "Others",
+   "doctype": "Trim Category",
+   "name": "Others",
+   "needed_for": "Finishing",
+   "sequence": 130
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Fabric",
+    "trim_category": ""
+   },
+   "allowance_pct": 5.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Fabric",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Lining",
+    "trim_category": ""
+   },
+   "allowance_pct": 5.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Lining",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Contrast Fabric",
+    "trim_category": ""
+   },
+   "allowance_pct": 5.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Contrast Fabric",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Label",
+    "trim_category": ""
+   },
+   "allowance_pct": 10.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Label",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Trim",
+    "trim_category": ""
+   },
+   "allowance_pct": 2.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Trim",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Packaging",
+    "trim_category": ""
+   },
+   "allowance_pct": 2.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Packaging",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0
+  },
+  {
+   "__match": {
+    "customer": "",
+    "material_type": "Trim",
+    "trim_category": "Button"
+   },
+   "allowance_pct": 10.0,
+   "doctype": "Material Allowance Rule",
+   "enabled": 1,
+   "material_type": "Trim",
+   "min_order_qty": 0.0,
+   "pack_size": 0.0,
+   "trim_category": "Button"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "A",
+   "defect_name": "Double Pick",
+   "doctype": "Fabric Defect Code",
+   "name": "A"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "B",
+   "defect_name": "Broken Pick",
+   "doctype": "Fabric Defect Code",
+   "name": "B"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Dyeing",
+   "code": "C",
+   "defect_name": "Colour Bar",
+   "doctype": "Fabric Defect Code",
+   "name": "C"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Dyeing",
+   "code": "D",
+   "defect_name": "Dye Streak",
+   "doctype": "Fabric Defect Code",
+   "name": "D"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Dyeing",
+   "code": "E",
+   "defect_name": "Dye Mistake",
+   "doctype": "Fabric Defect Code",
+   "name": "E"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "F",
+   "defect_name": "Foreign Yarn",
+   "doctype": "Fabric Defect Code",
+   "name": "F"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Dyeing",
+   "code": "G",
+   "defect_name": "Dye Patch",
+   "doctype": "Fabric Defect Code",
+   "name": "G"
+  },
+  {
+   "always_four_points": 1,
+   "category": "Weaving",
+   "code": "H",
+   "defect_name": "Hole",
+   "doctype": "Fabric Defect Code",
+   "name": "H"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Other",
+   "code": "I",
+   "defect_name": "Stain Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "I"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Other",
+   "code": "J",
+   "defect_name": "Crack",
+   "doctype": "Fabric Defect Code",
+   "name": "J"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "K",
+   "defect_name": "Knot",
+   "doctype": "Fabric Defect Code",
+   "name": "K"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "L",
+   "defect_name": "Loose Weave",
+   "doctype": "Fabric Defect Code",
+   "name": "L"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "M",
+   "defect_name": "Double End",
+   "doctype": "Fabric Defect Code",
+   "name": "M"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "N",
+   "defect_name": "Broken End",
+   "doctype": "Fabric Defect Code",
+   "name": "N"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Other",
+   "code": "O",
+   "defect_name": "Oil Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "O"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Printing",
+   "code": "P",
+   "defect_name": "Printing Mistake",
+   "doctype": "Fabric Defect Code",
+   "name": "P"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Finishing",
+   "code": "Q",
+   "defect_name": "Folding Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "Q"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Finishing",
+   "code": "R",
+   "defect_name": "Crease Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "R"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "S",
+   "defect_name": "Stop Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "S"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Printing",
+   "code": "T",
+   "defect_name": "Tiny Dot",
+   "doctype": "Fabric Defect Code",
+   "name": "T"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "U",
+   "defect_name": "Slub",
+   "doctype": "Fabric Defect Code",
+   "name": "U"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "V",
+   "defect_name": "Pull Yarn",
+   "doctype": "Fabric Defect Code",
+   "name": "V"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "W",
+   "defect_name": "Weaving Defect",
+   "doctype": "Fabric Defect Code",
+   "name": "W"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Finishing",
+   "code": "X",
+   "defect_name": "Shine Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "X"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Finishing",
+   "code": "Y",
+   "defect_name": "Press Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "Y"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Printing",
+   "code": "Z",
+   "defect_name": "Shift Print",
+   "doctype": "Fabric Defect Code",
+   "name": "Z"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Other",
+   "code": "MILL",
+   "defect_name": "Mill Mark",
+   "doctype": "Fabric Defect Code",
+   "name": "MILL"
+  },
+  {
+   "always_four_points": 0,
+   "category": "Weaving",
+   "code": "SL",
+   "defect_name": "Slack / Tight End",
+   "doctype": "Fabric Defect Code",
+   "name": "SL"
+  },
+  {
+   "defect_name": "Letter Missing",
+   "doctype": "Trim Defect Type",
+   "name": "Letter Missing",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Print Missing",
+   "doctype": "Trim Defect Type",
+   "name": "Print Missing",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Shape Out",
+   "doctype": "Trim Defect Type",
+   "name": "Shape Out",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Stains",
+   "doctype": "Trim Defect Type",
+   "name": "Stains",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Fusing Problem",
+   "doctype": "Trim Defect Type",
+   "name": "Fusing Problem",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Scratch",
+   "doctype": "Trim Defect Type",
+   "name": "Scratch",
+   "severity": "Minor"
+  },
+  {
+   "defect_name": "Needle Hole Missing",
+   "doctype": "Trim Defect Type",
+   "name": "Needle Hole Missing",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Damaged Button / Label",
+   "doctype": "Trim Defect Type",
+   "name": "Damaged Button / Label",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Colour Variation",
+   "doctype": "Trim Defect Type",
+   "name": "Colour Variation",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Size Variation",
+   "doctype": "Trim Defect Type",
+   "name": "Size Variation",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Size Mix-up",
+   "doctype": "Trim Defect Type",
+   "name": "Size Mix-up",
+   "severity": "Major"
+  },
+  {
+   "defect_name": "Unmatching Thread",
+   "doctype": "Trim Defect Type",
+   "name": "Unmatching Thread",
+   "severity": "Minor"
+  },
+  {
+   "claim_window_days": 45,
+   "delay_bands": [
+    {
+     "action": "Discount",
+     "doctype": "Delay Penalty Band",
+     "from_days": 1,
+     "penalty_pct": 0.0,
+     "to_days": 3
+    },
+    {
+     "action": "Discount",
+     "doctype": "Delay Penalty Band",
+     "from_days": 4,
+     "penalty_pct": 10.0,
+     "to_days": 11
+    },
+    {
+     "action": "Discount",
+     "doctype": "Delay Penalty Band",
+     "from_days": 12,
+     "penalty_pct": 25.0,
+     "to_days": 21
+    },
+    {
+     "action": "Cancel or Discount",
+     "doctype": "Delay Penalty Band",
+     "from_days": 22,
+     "penalty_pct": 50.0,
+     "to_days": 0
+    }
+   ],
+   "doctype": "Material Purchase Terms",
+   "extra_qty_policy": "Accept Unpaid",
+   "material_kind": "Fabric",
+   "name": "Standard Fabric Terms",
+   "points_threshold": 20.0,
+   "qty_bands": [
+    {
+     "doctype": "Purchase Qty Band",
+     "from_qty": 0.0,
+     "to_qty": 1000.0,
+     "tolerance_pct": 7.0
+    },
+    {
+     "doctype": "Purchase Qty Band",
+     "from_qty": 1001.0,
+     "to_qty": 3000.0,
+     "tolerance_pct": 5.0
+    },
+    {
+     "doctype": "Purchase Qty Band",
+     "from_qty": 3001.0,
+     "to_qty": 10000.0,
+     "tolerance_pct": 3.0
+    }
+   ],
+   "terms_name": "Standard Fabric Terms",
+   "terms_text": "<ol><li>Delivery: delay of 1-3 days 0%, 4-11 days 10%, 12-21 days 25%, over 21 days order cancellation or 50% discount.</li><li>Quantity allowance: up to 1000 m +/-7%, 1001-3000 m +/-5%, 3001-10000 m +/-3%. Extra fabric will not be taken or paid.</li><li>Inspection standard: 20 points per 100 linear yards.</li><li>Bulk testing is borne by the buyer; the cost of re-testing after a failure is borne by the supplier.</li><li>Quality or quantity issues found after receipt will be raised with the supplier within 45 days.</li><li>Shipping marks: colour, qty, roll no, lot no and consignee.</li></ol>"
+  },
+  {
+   "claim_window_days": 30,
+   "delay_bands": [],
+   "doctype": "Material Purchase Terms",
+   "extra_qty_policy": "Accept Unpaid",
+   "material_kind": "Trim",
+   "name": "Standard Trim Terms",
+   "points_threshold": 0.0,
+   "qty_bands": [
+    {
+     "doctype": "Purchase Qty Band",
+     "from_qty": 0.0,
+     "to_qty": 0.0,
+     "tolerance_pct": 5.0
+    }
+   ],
+   "terms_name": "Standard Trim Terms",
+   "terms_text": "<p>Quantity allowance +/-5%. Quality as per the approved trim card.</p>"
+  },
+  {
+   "doctype": "Trim Sampling Plan",
+   "full_inspect_up_to": 50,
+   "inspect_pct": 10.0,
+   "max_defective_pct": 5.0,
+   "method": "Percent",
+   "name": "Trims 10 Percent",
+   "plan_name": "Trims 10 Percent",
+   "rows": []
+  },
+  {
+   "doctype": "Trim Sampling Plan",
+   "full_inspect_up_to": 50,
+   "inspect_pct": 10.0,
+   "max_defective_pct": 5.0,
+   "method": "AQL Table",
+   "name": "AQL 2.5 General II (unconfirmed)",
+   "note": "Values not yet confirmed against ISO 2859-1. QA must check before use.",
+   "plan_name": "AQL 2.5 General II (unconfirmed)",
+   "rows": [
+    {
+     "accept_max": 1,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 51,
+     "lot_to": 90,
+     "reject_min": 2,
+     "sample_size": 13
+    },
+    {
+     "accept_max": 1,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 91,
+     "lot_to": 150,
+     "reject_min": 2,
+     "sample_size": 20
+    },
+    {
+     "accept_max": 2,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 151,
+     "lot_to": 280,
+     "reject_min": 3,
+     "sample_size": 32
+    },
+    {
+     "accept_max": 3,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 281,
+     "lot_to": 500,
+     "reject_min": 4,
+     "sample_size": 50
+    },
+    {
+     "accept_max": 5,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 501,
+     "lot_to": 1200,
+     "reject_min": 6,
+     "sample_size": 80
+    },
+    {
+     "accept_max": 7,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 1201,
+     "lot_to": 3200,
+     "reject_min": 8,
+     "sample_size": 125
+    },
+    {
+     "accept_max": 10,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 3201,
+     "lot_to": 10000,
+     "reject_min": 11,
+     "sample_size": 200
+    },
+    {
+     "accept_max": 14,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 10001,
+     "lot_to": 35000,
+     "reject_min": 15,
+     "sample_size": 315
+    },
+    {
+     "accept_max": 21,
+     "doctype": "Trim Sampling Plan Row",
+     "lot_from": 35001,
+     "lot_to": 150000,
+     "reject_min": 22,
+     "sample_size": 500
+    }
+   ]
+  },
+  {
+   "aql_critical": "0",
+   "aql_major": "2.5",
+   "aql_minor": "4.0",
+   "doctype": "AQL Plan",
+   "inspection_level": "General II",
+   "name": "Garment AQL 2.5 / 4.0 Level II",
+   "note": "Lot ranges and sample sizes: ISO 2859-1 Table 2-A, Level II. Accept/Reject numbers are confirmed only for codes K, L and M (two sources agreed). QA must fill in and tick Confirmed on every other row from the standard before it is used.",
+   "plan_name": "Garment AQL 2.5 / 4.0 Level II",
+   "rows": [
+    {
+     "code_letter": "A",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 2,
+     "lot_to": 8,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 2
+    },
+    {
+     "code_letter": "B",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 9,
+     "lot_to": 15,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 3
+    },
+    {
+     "code_letter": "C",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 16,
+     "lot_to": 25,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 5
+    },
+    {
+     "code_letter": "D",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 26,
+     "lot_to": 50,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 8
+    },
+    {
+     "code_letter": "E",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 51,
+     "lot_to": 90,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 13
+    },
+    {
+     "code_letter": "F",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 91,
+     "lot_to": 150,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 20
+    },
+    {
+     "code_letter": "G",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 151,
+     "lot_to": 280,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 32
+    },
+    {
+     "code_letter": "H",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 281,
+     "lot_to": 500,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 50
+    },
+    {
+     "code_letter": "J",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 501,
+     "lot_to": 1200,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 80
+    },
+    {
+     "code_letter": "K",
+     "confirmed": 1,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 1201,
+     "lot_to": 3200,
+     "major_ac": 7,
+     "major_re": 8,
+     "minor_ac": 10,
+     "minor_re": 11,
+     "sample_size": 125
+    },
+    {
+     "code_letter": "L",
+     "confirmed": 1,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 3201,
+     "lot_to": 10000,
+     "major_ac": 10,
+     "major_re": 11,
+     "minor_ac": 14,
+     "minor_re": 15,
+     "sample_size": 200
+    },
+    {
+     "code_letter": "M",
+     "confirmed": 1,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 10001,
+     "lot_to": 35000,
+     "major_ac": 14,
+     "major_re": 15,
+     "minor_ac": 21,
+     "minor_re": 22,
+     "sample_size": 315
+    },
+    {
+     "code_letter": "N",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 35001,
+     "lot_to": 150000,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 500
+    },
+    {
+     "code_letter": "P",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 150001,
+     "lot_to": 500000,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 800
+    },
+    {
+     "code_letter": "Q",
+     "confirmed": 0,
+     "critical_ac": 0,
+     "critical_re": 1,
+     "doctype": "AQL Plan Row",
+     "lot_from": 500001,
+     "lot_to": 99999999,
+     "major_ac": 0,
+     "major_re": 0,
+     "minor_ac": 0,
+     "minor_re": 0,
+     "sample_size": 1250
+    }
+   ]
+  },
+  {
+   "country": "United States",
+   "doctype": "Destination Filing Rule",
+   "enabled": 0,
+   "filed_by": "Forwarder",
+   "filing_name": "Importer Security Filing (US)",
+   "hours_before_loading": 24,
+   "incoterms": "DDP",
+   "mode": "Sea",
+   "name": "Importer Security Filing (US)",
+   "note": "Ocean cargo to the US: filed 24 hours before loading at the foreign port (19 CFR 149). Cut-off is used as the loading time. Verify before enabling."
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Sales Order",
+   "code": "ORDER_RECEIVED",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Order Received",
+   "name": "ORDER_RECEIVED",
+   "sample_type": "",
+   "sequence": 10
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Tech Pack",
+   "code": "TECH_PACK_RECEIVED",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Tech Pack Received",
+   "name": "TECH_PACK_RECEIVED",
+   "sample_type": "",
+   "sequence": 20
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Tech Pack",
+   "code": "BOM_RECEIVED",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "BOM Received",
+   "name": "BOM_RECEIVED",
+   "sample_type": "",
+   "sequence": 30
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "BULK_STANDARD_RECEIVED",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Bulk Standard Received",
+   "name": "BULK_STANDARD_RECEIVED",
+   "sample_type": "",
+   "sequence": 40
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Fabric Requisition",
+   "code": "MINI_MARKER",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Mini Marker",
+   "name": "MINI_MARKER",
+   "sample_type": "",
+   "sequence": 50
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Fabric Requisition",
+   "code": "FR_RAISED",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "FR Raised",
+   "name": "FR_RAISED",
+   "sample_type": "",
+   "sequence": 60
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Trim Requisition",
+   "code": "TR_RAISED",
+   "department": "Merchandising",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "TR Raised",
+   "name": "TR_RAISED",
+   "sample_type": "",
+   "sequence": 70
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Order",
+   "code": "FABRIC_BOOKED",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Fabric Booked (PO)",
+   "name": "FABRIC_BOOKED",
+   "sample_type": "",
+   "sequence": 80
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Order",
+   "code": "TRIM_PI",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Trim PI Received",
+   "name": "TRIM_PI",
+   "sample_type": "",
+   "sequence": 90
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "FIT",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Fit Approved",
+   "name": "FIT",
+   "sample_type": "Fit",
+   "sequence": 100
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "LAB_DIP",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Lab Dip Approved",
+   "name": "LAB_DIP",
+   "sample_type": "Lab Dip",
+   "sequence": 110
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "TRIMS_APPROVED",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Trims Approved",
+   "name": "TRIMS_APPROVED",
+   "sample_type": "Bulk Trim",
+   "sequence": 120
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Order",
+   "code": "BULK_FABRIC_READY_MILL",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Bulk Fabric Ready at Mill",
+   "name": "BULK_FABRIC_READY_MILL",
+   "sample_type": "",
+   "sequence": 130
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Order",
+   "code": "FABRIC_ETD",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Fabric ETD",
+   "name": "FABRIC_ETD",
+   "sample_type": "",
+   "sequence": 140
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Receipt",
+   "code": "FABRIC_IN_HOUSE",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Fabric In-house",
+   "name": "FABRIC_IN_HOUSE",
+   "sample_type": "",
+   "sequence": 150
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Fabric Inspection",
+   "code": "FABRIC_QC_PASSED",
+   "department": "Quality",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Fabric QC Passed",
+   "name": "FABRIC_QC_PASSED",
+   "sample_type": "",
+   "sequence": 160
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "FPT_PASSED",
+   "department": "Quality",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "FPT (Fabric Test) Passed",
+   "name": "FPT_PASSED",
+   "sample_type": "Fabric Test (FPT)",
+   "sequence": 170
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Purchase Receipt",
+   "code": "TRIMS_IN_HOUSE",
+   "department": "Purchasing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Trims In-house",
+   "name": "TRIMS_IN_HOUSE",
+   "sample_type": "",
+   "sequence": 180
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Trim Inspection",
+   "code": "TRIMS_QC_PASSED",
+   "department": "Quality",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Trims QC Passed",
+   "name": "TRIMS_QC_PASSED",
+   "sample_type": "",
+   "sequence": 190
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "BULK_FABRIC_APPROVED",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Bulk Fabric Approved by Buyer",
+   "name": "BULK_FABRIC_APPROVED",
+   "sample_type": "Bulk Fabric",
+   "sequence": 200
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "PP_GPT",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "PP Sample + GPT Approved",
+   "name": "PP_GPT",
+   "sample_type": "PP",
+   "sequence": 210
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "PP Meeting",
+   "code": "PP_MEETING",
+   "department": "Production",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "PP Meeting",
+   "name": "PP_MEETING",
+   "sample_type": "",
+   "sequence": 220
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Work Order",
+   "code": "PCD",
+   "department": "Production",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "PCD (Planned Cut Date)",
+   "name": "PCD",
+   "sample_type": "",
+   "sequence": 230
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "PP Meeting",
+   "code": "PILOT_RUN",
+   "department": "Production",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Pilot Run",
+   "name": "PILOT_RUN",
+   "sample_type": "",
+   "sequence": 240
+  },
+  {
+   "applies_when": "Sample Type Required",
+   "auto_source": "Sample Approval",
+   "code": "TOP",
+   "department": "Sampling",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "TOP / Size Set",
+   "name": "TOP",
+   "sample_type": "TOP",
+   "sequence": 250
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "BULK_FINISH",
+   "department": "Production",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Bulk Finish (Sewing)",
+   "name": "BULK_FINISH",
+   "sample_type": "",
+   "sequence": 260
+  },
+  {
+   "applies_when": "Washed Only",
+   "auto_source": "Manual",
+   "code": "WASH_FINISHED",
+   "department": "Washing",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Washing Finished",
+   "name": "WASH_FINISHED",
+   "sample_type": "",
+   "sequence": 270
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "PACK_FINISHED",
+   "department": "Production",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Packing Finished",
+   "name": "PACK_FINISHED",
+   "sample_type": "",
+   "sequence": 280
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "FINAL_INSPECTION",
+   "department": "Quality",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Final Inspection",
+   "name": "FINAL_INSPECTION",
+   "sample_type": "",
+   "sequence": 290
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "FREIGHT_BOOKING",
+   "department": "Shipping",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "Freight Booking",
+   "name": "FREIGHT_BOOKING",
+   "sample_type": "",
+   "sequence": 300
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Manual",
+   "code": "EX_FACTORY",
+   "department": "Shipping",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 1,
+   "label": "Ex-Factory",
+   "name": "EX_FACTORY",
+   "sample_type": "",
+   "sequence": 310
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Shipment",
+   "code": "ON_BOARD",
+   "department": "Shipping",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "On Board",
+   "name": "ON_BOARD",
+   "sample_type": "",
+   "sequence": 320
+  },
+  {
+   "applies_when": "Always",
+   "auto_source": "Shipment",
+   "code": "IN_WAREHOUSE",
+   "department": "Shipping",
+   "doctype": "TNA Milestone Type",
+   "is_critical": 0,
+   "label": "In Buyer's Warehouse",
+   "name": "IN_WAREHOUSE",
+   "sample_type": "",
+   "sequence": 330
+  },
+  {
+   "doctype": "TNA Template",
+   "is_default": 1,
+   "milestones": [
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "ORDER_RECEIVED",
+     "offset_days": 0
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TECH_PACK_RECEIVED",
+     "offset_days": 0
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "BOM_RECEIVED",
+     "offset_days": 0
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "MINI_MARKER",
+     "offset_days": 3
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FR_RAISED",
+     "offset_days": 6
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TR_RAISED",
+     "offset_days": 9
+    },
+    {
+     "after_milestone": "FR_RAISED",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FABRIC_BOOKED",
+     "offset_days": 2
+    },
+    {
+     "after_milestone": "TR_RAISED",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TRIM_PI",
+     "offset_days": 3
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FIT",
+     "offset_days": 12
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "LAB_DIP",
+     "offset_days": 13
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TRIMS_APPROVED",
+     "offset_days": 19
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "BULK_FABRIC_READY_MILL",
+     "offset_days": 28
+    },
+    {
+     "after_milestone": "BULK_FABRIC_READY_MILL",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FABRIC_ETD",
+     "offset_days": 2
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FPT_PASSED",
+     "offset_days": 29
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TRIMS_IN_HOUSE",
+     "offset_days": 29
+    },
+    {
+     "after_milestone": "TRIMS_IN_HOUSE",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TRIMS_QC_PASSED",
+     "offset_days": 2
+    },
+    {
+     "after_milestone": "FABRIC_ETD",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FABRIC_IN_HOUSE",
+     "offset_days": 7
+    },
+    {
+     "after_milestone": "FABRIC_IN_HOUSE",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FABRIC_QC_PASSED",
+     "offset_days": 3
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "BULK_FABRIC_APPROVED",
+     "offset_days": 31
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "PP_GPT",
+     "offset_days": 36
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "PP_MEETING",
+     "offset_days": 39
+    },
+    {
+     "basis": "Order Received",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "PCD",
+     "offset_days": 41
+    },
+    {
+     "after_milestone": "PCD",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "PILOT_RUN",
+     "offset_days": 3
+    },
+    {
+     "after_milestone": "PCD",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "TOP",
+     "offset_days": 4
+    },
+    {
+     "after_milestone": "TOP",
+     "basis": "After Milestone",
+     "daily_output": 300,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Qty / Daily Output",
+     "milestone_type": "BULK_FINISH",
+     "offset_days": 0
+    },
+    {
+     "after_milestone": "BULK_FINISH",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "WASH_FINISHED",
+     "offset_days": 3
+    },
+    {
+     "after_milestone": "WASH_FINISHED",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "PACK_FINISHED",
+     "offset_days": 3
+    },
+    {
+     "after_milestone": "PACK_FINISHED",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FINAL_INSPECTION",
+     "offset_days": 2
+    },
+    {
+     "after_milestone": "FINAL_INSPECTION",
+     "basis": "After Milestone",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "FREIGHT_BOOKING",
+     "offset_days": 3
+    },
+    {
+     "basis": "Ex-Factory",
+     "daily_output": 0,
+     "doctype": "TNA Template Milestone",
+     "duration_rule": "Fixed",
+     "milestone_type": "EX_FACTORY",
+     "offset_days": 0
+    }
+   ],
+   "name": "Standard 60-Day (forward)",
+   "remarks": "Offsets from the company T&A sheet. FABRIC_BOOKED, TRIM_PI, FABRIC_ETD, TRIMS_QC_PASSED, FABRIC_IN_HOUSE and FABRIC_QC_PASSED are assumed offsets (not on the sheet): check them against your suppliers.",
+   "shipment_mode": "",
+   "template_name": "Standard 60-Day (forward)"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Trim Size Mix-up",
+   "parameter": "Trim Size Mix-up"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Trim Defective %",
+   "parameter": "Trim Defective %"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Shrinkage Weft %",
+   "parameter": "Shrinkage Weft %"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Shrinkage Warp %",
+   "parameter": "Shrinkage Warp %"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Average Width (cm)",
+   "parameter": "Average Width (cm)"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Worst Roll Points per 100",
+   "parameter": "Worst Roll Points per 100"
+  },
+  {
+   "doctype": "Quality Inspection Parameter",
+   "name": "Average Points per 100 Linear Yards",
+   "parameter": "Average Points per 100 Linear Yards"
+  },
+  {
+   "attribute_name": "Colour",
+   "disabled": 0,
+   "doctype": "Item Attribute",
+   "from_range": 0.0,
+   "increment": 0.0,
+   "item_attribute_values": [
+    {
+     "abbr": "NAVY",
+     "attribute_value": "Navy",
+     "doctype": "Item Attribute Value"
+    },
+    {
+     "abbr": "BLACK",
+     "attribute_value": "Black",
+     "doctype": "Item Attribute Value"
+    }
+   ],
+   "name": "Colour",
+   "numeric_values": 0,
+   "to_range": 0.0
+  },
+  {
+   "attribute_name": "Size",
+   "disabled": 0,
+   "doctype": "Item Attribute",
+   "from_range": 0.0,
+   "increment": 0.0,
+   "item_attribute_values": [
+    {
+     "abbr": "S",
+     "attribute_value": "S",
+     "doctype": "Item Attribute Value"
+    },
+    {
+     "abbr": "M",
+     "attribute_value": "M",
+     "doctype": "Item Attribute Value"
+    },
+    {
+     "abbr": "L",
+     "attribute_value": "L",
+     "doctype": "Item Attribute Value"
+    }
+   ],
+   "name": "Size",
+   "numeric_values": 0,
+   "to_range": 0.0
+  }
+ ]
+}

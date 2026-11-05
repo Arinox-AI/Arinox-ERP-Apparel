@@ -1,0 +1,36 @@
+{
+ "group": "roles",
+ "mode": "create",
+ "records": [
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel QA"
+  },
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel Production User"
+  },
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel Production Manager"
+  },
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel Merchandising Manager"
+  },
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel Costing Manager"
+  },
+  {
+   "desk_access": 1,
+   "doctype": "Role",
+   "role_name": "Apparel Merchandiser"
+  }
+ ]
+}

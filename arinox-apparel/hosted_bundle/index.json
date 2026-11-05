@@ -1,0 +1,104 @@
+[
+ {
+  "file": "01_module_def.json",
+  "group": "module_def",
+  "mode": "create",
+  "count": 1
+ },
+ {
+  "file": "02_roles.json",
+  "group": "roles",
+  "mode": "create",
+  "count": 6
+ },
+ {
+  "file": "03_doctypes.json",
+  "group": "doctypes",
+  "mode": "doctypes",
+  "count": 131
+ },
+ {
+  "file": "04_custom_fields.json",
+  "group": "custom_fields",
+  "mode": "create",
+  "count": 188
+ },
+ {
+  "file": "05_property_setters.json",
+  "group": "property_setters",
+  "mode": "create",
+  "count": 7
+ },
+ {
+  "file": "06_seeds.json",
+  "group": "seeds",
+  "mode": "create",
+  "count": 194
+ },
+ {
+  "file": "07_apparel_settings.json",
+  "group": "apparel_settings",
+  "mode": "single",
+  "count": 1
+ },
+ {
+  "file": "08_print_formats.json",
+  "group": "print_formats",
+  "mode": "create",
+  "count": 10
+ },
+ {
+  "file": "09_reports.json",
+  "group": "reports",
+  "mode": "create",
+  "count": 13
+ },
+ {
+  "file": "10_number_cards.json",
+  "group": "number_cards",
+  "mode": "create",
+  "count": 27
+ },
+ {
+  "file": "11_dashboard_charts.json",
+  "group": "dashboard_charts",
+  "mode": "create",
+  "count": 4
+ },
+ {
+  "file": "12_dashboards.json",
+  "group": "dashboards",
+  "mode": "create",
+  "count": 1
+ },
+ {
+  "file": "13_workspaces.json",
+  "group": "workspaces",
+  "mode": "create",
+  "count": 4
+ },
+ {
+  "file": "14_workspace_sidebars.json",
+  "group": "workspace_sidebars",
+  "mode": "create",
+  "count": 4
+ },
+ {
+  "file": "15_desktop_icons.json",
+  "group": "desktop_icons",
+  "mode": "create",
+  "count": 4
+ },
+ {
+  "file": "16_client_scripts.json",
+  "group": "client_scripts",
+  "mode": "create",
+  "count": 30
+ },
+ {
+  "file": "17_server_scripts.json",
+  "group": "server_scripts",
+  "mode": "create",
+  "count": 40
+ }
+]
