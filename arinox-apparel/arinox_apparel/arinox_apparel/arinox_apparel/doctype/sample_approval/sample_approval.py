@@ -30,6 +30,7 @@ DEFAULT_RULES = {
 	"Salesman": ("No", 0, "PCD", 30),
 	"Photo Sample": ("No", 0, "PCD", 30),
 	"Customer Sample": ("No", 0, "After Fit Approval", 10),
+	"Fabric Test (FPT)": ("If Raised", 1, "PCD", 21),
 }
 
 
@@ -231,10 +232,10 @@ class SampleApproval(Document):
 			frappe.throw(_("This material is washed. The approval must come from a submission tested after wash."))
 		if self.sample_type == "PP" and not cint(self.in_bulk_fabric):
 			frappe.throw(_("A PP sample can only be approved when it is made in bulk fabric."))
-		if self.sample_type == "Garment Test (GPT)":
+		if self.sample_type in ("Garment Test (GPT)", "Fabric Test (FPT)"):
 			failed = [t.test_property for t in self.tests if t.result == "Fail"]
 			if failed:
-				frappe.throw(_("The garment test cannot be approved while these tests fail: {0}").format(", ".join(failed)))
+				frappe.throw(_("The lab test cannot be approved while these tests fail: {0}").format(", ".join(failed)))
 		off = [m.point_of_measure for m in self.measurements if m.actual not in (None, "") and not cint(m.in_tolerance)]
 		if off:
 			frappe.msgprint(_("Approved with measurements out of tolerance: {0}").format(", ".join(off)), indicator="orange")

@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lot_from",
+  "lot_to",
+  "sample_size",
+  "accept_max",
+  "reject_min"
+ ],
+ "fields": [
+  {
+   "fieldname": "lot_from",
+   "fieldtype": "Int",
+   "label": "Lot From",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lot_to",
+   "fieldtype": "Int",
+   "label": "Lot To",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Int",
+   "label": "Sample Size",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "accept_max",
+   "fieldtype": "Int",
+   "label": "Accept (max defects)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reject_min",
+   "fieldtype": "Int",
+   "label": "Reject (min defects)",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Trim Sampling Plan Row",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

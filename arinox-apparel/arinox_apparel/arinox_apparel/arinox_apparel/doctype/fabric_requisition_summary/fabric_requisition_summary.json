@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "fabric_item",
+  "fabric_description",
+  "supplier",
+  "total_order_qty",
+  "uom",
+  "earliest_required_by",
+  "line_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric Item",
+   "options": "Item",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "fabric_description",
+   "fieldtype": "Small Text",
+   "label": "Fabric",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_order_qty",
+   "fieldtype": "Float",
+   "label": "Order Qty",
+   "precision": "2",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "earliest_required_by",
+   "fieldtype": "Date",
+   "label": "Earliest Required By",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "line_count",
+   "fieldtype": "Int",
+   "label": "Lines"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Requisition Summary",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

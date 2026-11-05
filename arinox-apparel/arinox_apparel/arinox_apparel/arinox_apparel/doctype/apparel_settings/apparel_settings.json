@@ -30,7 +30,36 @@
   "pilot_required_departments",
   "column_b2",
   "gpt_test_list",
-  "max_shrinkage_pct"
+  "max_shrinkage_pct",
+  "section_mat",
+  "fr_material_types",
+  "fr_qty_basis",
+  "fabric_due_days_before_pcd",
+  "trim_due_days_before_pcd",
+  "auto_submit_material_request",
+  "col_mat1",
+  "inspection_warehouse_fabric",
+  "store_warehouse_fabric",
+  "inspection_warehouse_trim",
+  "store_warehouse_trim",
+  "rejected_warehouse",
+  "default_purchase_terms",
+  "section_mat2",
+  "fabric_points_basis",
+  "fabric_points_threshold",
+  "max_rejected_rolls_pct",
+  "submit_inspection_stock_entry",
+  "col_mat2",
+  "fabric_sampling_bands",
+  "default_trim_sampling_plan",
+  "section_mat3",
+  "material_gate_fabric",
+  "material_gate_trims",
+  "material_gate_min_pct",
+  "hold_po_until_approval",
+  "cost_overrun_warn_pct",
+  "col_mat3",
+  "default_tna_template"
  ],
  "fields": [
   {
@@ -200,6 +229,180 @@
    "fieldtype": "Percent",
    "label": "Fabric Shrinkage Warning Above %",
    "description": "Warn when a fabric shrinks more than this in warp or weft. Blank = no check"
+  },
+  {
+   "fieldname": "section_mat",
+   "fieldtype": "Section Break",
+   "label": "Materials (Phase C)"
+  },
+  {
+   "fieldname": "fr_material_types",
+   "fieldtype": "Small Text",
+   "label": "FR Material Types",
+   "default": "Fabric\nLining\nContrast Fabric",
+   "description": "Tech Pack material types that go on the Fabric Requisition. Everything else goes on the Trim Requisition"
+  },
+  {
+   "fieldname": "fr_qty_basis",
+   "fieldtype": "Select",
+   "label": "Requirement Quantity Basis",
+   "options": "Order Qty\nOrder Qty + Tolerance",
+   "default": "Order Qty"
+  },
+  {
+   "fieldname": "fabric_due_days_before_pcd",
+   "fieldtype": "Int",
+   "label": "Fabric Due (days before PCD)",
+   "default": "10"
+  },
+  {
+   "fieldname": "trim_due_days_before_pcd",
+   "fieldtype": "Int",
+   "label": "Trims Due (days before PCD)",
+   "default": "7"
+  },
+  {
+   "fieldname": "auto_submit_material_request",
+   "fieldtype": "Check",
+   "label": "Auto-submit Material Requests",
+   "default": "1"
+  },
+  {
+   "fieldname": "col_mat1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "inspection_warehouse_fabric",
+   "fieldtype": "Link",
+   "label": "Fabric Inspection Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "store_warehouse_fabric",
+   "fieldtype": "Link",
+   "label": "Fabric Store Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "inspection_warehouse_trim",
+   "fieldtype": "Link",
+   "label": "Trim Inspection Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "store_warehouse_trim",
+   "fieldtype": "Link",
+   "label": "Trim Store Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "rejected_warehouse",
+   "fieldtype": "Link",
+   "label": "Rejected Material Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "default_purchase_terms",
+   "fieldtype": "Link",
+   "label": "Default Purchase Terms",
+   "options": "Material Purchase Terms"
+  },
+  {
+   "fieldname": "section_mat2",
+   "fieldtype": "Section Break",
+   "label": "Inspection"
+  },
+  {
+   "fieldname": "fabric_points_basis",
+   "fieldtype": "Select",
+   "label": "Fabric Points Basis",
+   "options": "Per 100 Linear Yards\nPer 100 Square Yards",
+   "default": "Per 100 Linear Yards"
+  },
+  {
+   "fieldname": "fabric_points_threshold",
+   "fieldtype": "Float",
+   "label": "Fabric Points Threshold",
+   "default": "20"
+  },
+  {
+   "fieldname": "max_rejected_rolls_pct",
+   "fieldtype": "Percent",
+   "label": "Max Rejected Rolls %",
+   "default": "10"
+  },
+  {
+   "fieldname": "submit_inspection_stock_entry",
+   "fieldtype": "Check",
+   "label": "Submit Stock Entry after Inspection",
+   "default": "1"
+  },
+  {
+   "fieldname": "col_mat2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "fabric_sampling_bands",
+   "fieldtype": "Table",
+   "label": "Fabric Sampling Plan",
+   "options": "Fabric Sampling Band"
+  },
+  {
+   "fieldname": "default_trim_sampling_plan",
+   "fieldtype": "Link",
+   "label": "Default Trim Sampling Plan",
+   "options": "Trim Sampling Plan"
+  },
+  {
+   "fieldname": "section_mat3",
+   "fieldtype": "Section Break",
+   "label": "Gates and Checks"
+  },
+  {
+   "fieldname": "material_gate_fabric",
+   "fieldtype": "Select",
+   "label": "Fabric Gate on Work Order",
+   "options": "Block\nWarn\nOff",
+   "default": "Block"
+  },
+  {
+   "fieldname": "material_gate_trims",
+   "fieldtype": "Select",
+   "label": "Trim Gate on Work Order",
+   "options": "Block\nWarn\nOff",
+   "default": "Warn"
+  },
+  {
+   "fieldname": "material_gate_min_pct",
+   "fieldtype": "Percent",
+   "label": "Gate: Accepted % of Requirement",
+   "default": "100"
+  },
+  {
+   "fieldname": "hold_po_until_approval",
+   "fieldtype": "Select",
+   "label": "Hold PO until Approval",
+   "options": "Block\nWarn\nOff",
+   "default": "Warn"
+  },
+  {
+   "fieldname": "cost_overrun_warn_pct",
+   "fieldtype": "Percent",
+   "label": "Warn when PO Rate Exceeds Costing by %",
+   "default": "5"
+  },
+  {
+   "fieldname": "col_mat3",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "default_tna_template",
+   "fieldtype": "Link",
+   "label": "Default T&A Template",
+   "options": "TNA Template"
   }
  ],
  "index_web_pages_for_search": 0,

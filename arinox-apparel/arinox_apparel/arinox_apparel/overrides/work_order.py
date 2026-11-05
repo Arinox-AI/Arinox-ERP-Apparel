@@ -60,7 +60,11 @@ def get_bulk_gate(production_item, sales_order):
 			blockers.append(_("PP Meeting: not held (no submitted PP Meeting for this style on this order)."))
 		for r in open_rows:
 			blockers.append(_("PP Meeting: cutting comment still open: {0}").format((r.comment or "")[:80]))
-	return {"applies": True, "style": style, "colour": colour, "blockers": blockers}
+	from arinox_apparel.materials.status import material_gate
+
+	m_blockers, m_warnings = material_gate(sales_order, style, colour)
+	blockers += m_blockers
+	return {"applies": True, "style": style, "colour": colour, "blockers": blockers, "warnings": m_warnings}
 
 
 def has_manager_role():
@@ -81,11 +85,13 @@ def before_submit(doc, method=None):
 	if not cint(frappe.db.get_single_value("Apparel Settings", "enforce_bulk_gate")) or not doc.get("sales_order"):
 		return
 	gate = get_bulk_gate(doc.production_item, doc.sales_order)
+	for w in gate.get("warnings") or []:
+		frappe.msgprint(w, indicator="orange", title=_("Materials"))
 	if not gate["blockers"]:
 		return
 	if cint(doc.get("apparel_gate_override")) and has_manager_role() and (doc.get("apparel_gate_override_reason") or "").strip():
 		return
 	frappe.throw(
-		_("Bulk production is blocked until the buyer approvals are complete:") + "<br>• " + "<br>• ".join(gate["blockers"]),
+		_("Bulk production is blocked until the buyer approvals and materials are complete:") + "<br>• " + "<br>• ".join(gate["blockers"]),
 		title=_("Bulk Gate (G3)"),
 	)

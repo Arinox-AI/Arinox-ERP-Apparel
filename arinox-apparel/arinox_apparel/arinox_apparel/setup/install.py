@@ -46,6 +46,12 @@ def after_migrate():
 	seed_sample_rules()
 	setup_variant_attributes()
 	set_settings_defaults()
+	from arinox_apparel.setup import materials
+
+	materials.run()
+	from arinox_apparel.tna import seed as tna_seed
+
+	tna_seed.seed()
 	frappe.db.commit()
 
 

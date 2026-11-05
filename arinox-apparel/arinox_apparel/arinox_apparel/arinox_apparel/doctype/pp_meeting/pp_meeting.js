@@ -14,6 +14,8 @@ frappe.ui.form.on("PP Meeting", {
 		if (frm.doc.docstatus === 0 && !frm.is_new()) {
 			frm.add_custom_button(__("Get Buyer Comments"), () =>
 				frm.call("get_buyer_comments").then((r) => { frm.refresh_fields(); frappe.show_alert(__("{0} comment(s) added", [r.message])); }), __("Tools"));
+			frm.add_custom_button(__("Load Fabric and Trims from Requisitions"), () =>
+				frm.call("load_from_requisitions").then((r) => { frm.refresh_fields(); frappe.show_alert(__("{0} colour(s) updated", [r.message])); }), __("Tools"));
 			frm.add_custom_button(__("Add Required Departments"), () => frm.call("add_standard_participants").then(() => frm.refresh_fields()), __("Tools"));
 		}
 	},

@@ -1,5 +1,7 @@
 # Handoff — Arinox Apparel
 
+> **Update 2026-11-05:** Phases A, B and C are built on the local dev site (bench at `/workspaces/frappe-bench`, site `apparel.localhost`). 195 tests pass. The "Where we are" section below is from the first session and is out of date. See `doctypes/PHASE1_ORDER_BACKBONE_PLAN.md`, `PHASE_B_PLAN_AND_APPROVE.md` and `PHASE_C_MATERIALS_PLAN.md` (status log at the end) for what exists. After a Codespace restart, start the database first: `docker start apparel-mariadb apparel-redis`. The hosted site still has none of this: someone with shell access must run `bench get-app`, `install-app` and `migrate` (see `DEPLOY.md`).
+
 Read this first in any new session, then `CLAUDE.md`.
 
 ## Where we are

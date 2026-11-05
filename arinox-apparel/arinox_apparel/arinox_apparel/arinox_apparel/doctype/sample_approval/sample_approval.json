@@ -60,7 +60,7 @@
    "fieldname": "sample_type",
    "fieldtype": "Select",
    "label": "Sample Type",
-   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample",
+   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample\nFabric Test (FPT)",
    "reqd": 1,
    "in_standard_filter": 1,
    "in_list_view": 1
@@ -303,9 +303,9 @@
   {
    "fieldname": "s_tests",
    "fieldtype": "Section Break",
-   "label": "Garment Test (GPT)",
+   "label": "Lab Test (GPT / FPT)",
    "collapsible": 1,
-   "depends_on": "eval:doc.sample_type=='Garment Test (GPT)'"
+   "depends_on": "eval:['Garment Test (GPT)','Fabric Test (FPT)'].includes(doc.sample_type)"
   },
   {
    "fieldname": "lab_name",

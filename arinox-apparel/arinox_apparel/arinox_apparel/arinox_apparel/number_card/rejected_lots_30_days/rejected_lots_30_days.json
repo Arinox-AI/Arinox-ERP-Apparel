@@ -1,0 +1,18 @@
+{
+ "creation": "2026-11-05 09:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "idx": 0,
+ "is_public": 1,
+ "is_standard": 1,
+ "label": "Rejected Lots 30 Days",
+ "method": "arinox_apparel.materials.cards.rejected_lots",
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Rejected Lots 30 Days",
+ "owner": "Administrator",
+ "show_percentage_stats": 0,
+ "stats_time_interval": "Daily",
+ "type": "Custom"
+}

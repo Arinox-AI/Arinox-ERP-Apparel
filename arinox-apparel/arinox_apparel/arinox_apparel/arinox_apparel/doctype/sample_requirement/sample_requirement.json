@@ -67,7 +67,7 @@
    "fieldname": "sample_type",
    "fieldtype": "Select",
    "label": "Sample Type",
-   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample",
+   "options": "Proto\nFit\nSize Set\nLab Dip\nStrike Off\nDesk Loom\nBulk Fabric\nBulk Trim\nPP\nGarment Test (GPT)\nTOP\nSalesman\nPhoto Sample\nCustomer Sample\nFabric Test (FPT)",
    "reqd": 1,
    "in_standard_filter": 1,
    "in_list_view": 1

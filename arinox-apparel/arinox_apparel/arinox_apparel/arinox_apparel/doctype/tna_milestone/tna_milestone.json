@@ -1,0 +1,323 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "order_tna",
+  "sales_order",
+  "customer",
+  "style_no",
+  "colour",
+  "factory",
+  "c1",
+  "milestone_type",
+  "label",
+  "sequence",
+  "department",
+  "owner_user",
+  "is_critical",
+  "not_applicable",
+  "s_dates",
+  "planned_start",
+  "planned_date",
+  "revised_date",
+  "revision_reason",
+  "delay_reason_category",
+  "c2",
+  "actual_date",
+  "partial",
+  "status",
+  "delay_days",
+  "s_src",
+  "source_doctype",
+  "source_name",
+  "depends_on_tasks",
+  "color",
+  "progress",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "order_tna",
+   "fieldtype": "Link",
+   "label": "Order TNA",
+   "options": "Order TNA",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "read_only": 1
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Plant Floor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "milestone_type",
+   "fieldtype": "Link",
+   "label": "Milestone",
+   "options": "TNA Milestone Type",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "read_only": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Select",
+   "label": "Department",
+   "options": "Merchandising\nSampling\nPurchasing\nQuality\nProduction\nWashing\nShipping",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "owner_user",
+   "fieldtype": "Link",
+   "label": "Owner",
+   "options": "User"
+  },
+  {
+   "fieldname": "is_critical",
+   "fieldtype": "Check",
+   "label": "Critical"
+  },
+  {
+   "fieldname": "not_applicable",
+   "fieldtype": "Check",
+   "label": "Not Applicable"
+  },
+  {
+   "fieldname": "s_dates",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "planned_start",
+   "fieldtype": "Date",
+   "label": "Start"
+  },
+  {
+   "fieldname": "planned_date",
+   "fieldtype": "Date",
+   "label": "Planned (Baseline)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "revised_date",
+   "fieldtype": "Date",
+   "label": "Revised",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "revision_reason",
+   "fieldtype": "Small Text",
+   "label": "Revision Reason"
+  },
+  {
+   "fieldname": "delay_reason_category",
+   "fieldtype": "Select",
+   "label": "Delay Caused By",
+   "options": "\nBuyer\nSupplier\nFactory\nLogistics\nOther"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "actual_date",
+   "fieldtype": "Date",
+   "label": "Actual",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "partial",
+   "fieldtype": "Check",
+   "label": "Partly Done",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Not Started\nIn Progress\nDone\nLate\nNot Applicable",
+   "default": "Not Started",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "delay_days",
+   "fieldtype": "Int",
+   "label": "Delay (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_src",
+   "fieldtype": "Section Break",
+   "label": "Source and Chart"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Data",
+   "label": "Stamped By Document Type",
+   "read_only": 1
+  },
+  {
+   "fieldname": "source_name",
+   "fieldtype": "Data",
+   "label": "Stamped By Document",
+   "read_only": 1
+  },
+  {
+   "fieldname": "depends_on_tasks",
+   "fieldtype": "Data",
+   "label": "Depends On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "color",
+   "fieldtype": "Data",
+   "label": "Chart Colour",
+   "read_only": 1
+  },
+  {
+   "fieldname": "progress",
+   "fieldtype": "Int",
+   "label": "Progress",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "TNA Milestone",
+ "owner": "Administrator",
+ "sort_field": "planned_date",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Manufacturing User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Manufacturing Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:TAM-{#####}",
+ "title_field": "label",
+ "search_fields": "style_no,label,status"
+}

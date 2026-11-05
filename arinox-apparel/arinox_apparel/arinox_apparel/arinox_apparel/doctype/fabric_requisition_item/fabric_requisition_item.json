@@ -1,0 +1,354 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_order",
+  "sales_contract",
+  "buyer_po",
+  "style_item",
+  "style_no",
+  "style_name",
+  "colour",
+  "material_role",
+  "tech_pack_material",
+  "s_fabric",
+  "fabric_item",
+  "fabric_description",
+  "fabric_colour",
+  "supplier",
+  "nominated_by_buyer",
+  "c_f1",
+  "cuttable_width_cm",
+  "gsm",
+  "lab_dip_status",
+  "hold",
+  "s_qty",
+  "garment_qty",
+  "consumption",
+  "consumption_uom",
+  "consumption_source",
+  "costed_consumption",
+  "c_q1",
+  "allowance_pct",
+  "allowance_reason",
+  "pack_size",
+  "gross_qty",
+  "stock_warehouse",
+  "stock_used",
+  "net_qty",
+  "order_uom",
+  "order_qty",
+  "required_by",
+  "s_track",
+  "material_request",
+  "material_request_item",
+  "ordered_qty",
+  "received_qty",
+  "accepted_qty",
+  "rejected_qty",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Data",
+   "label": "Sales Contract",
+   "read_only": 1
+  },
+  {
+   "fieldname": "buyer_po",
+   "fieldtype": "Data",
+   "label": "Buyer PO"
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "style_name",
+   "fieldtype": "Data",
+   "label": "Style Name"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "material_role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "Shell\nLining\nPocketing\nContrast\nOther",
+   "default": "Shell"
+  },
+  {
+   "fieldname": "tech_pack_material",
+   "fieldtype": "Data",
+   "label": "Tech Pack Row",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_fabric",
+   "fieldtype": "Section Break",
+   "label": "Fabric"
+  },
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric Item",
+   "options": "Item",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "fabric_description",
+   "fieldtype": "Small Text",
+   "label": "Fabric Description"
+  },
+  {
+   "fieldname": "fabric_colour",
+   "fieldtype": "Data",
+   "label": "Fabric Colour"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "nominated_by_buyer",
+   "fieldtype": "Check",
+   "label": "Nominated by Buyer"
+  },
+  {
+   "fieldname": "c_f1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "cuttable_width_cm",
+   "fieldtype": "Float",
+   "label": "Cuttable Width (cm)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gsm",
+   "fieldtype": "Float",
+   "label": "GSM"
+  },
+  {
+   "fieldname": "lab_dip_status",
+   "fieldtype": "Data",
+   "label": "Lab Dip",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hold",
+   "fieldtype": "Check",
+   "label": "On Hold",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_qty",
+   "fieldtype": "Section Break",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "garment_qty",
+   "fieldtype": "Int",
+   "label": "Garment Qty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "consumption",
+   "fieldtype": "Float",
+   "label": "Consumption / pc",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "consumption_uom",
+   "fieldtype": "Link",
+   "label": "Consumption UOM",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "consumption_source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "\nMini Marker\nBulk Marker\nCost Sheet\nTech Pack\nManual",
+   "reqd": 1
+  },
+  {
+   "fieldname": "costed_consumption",
+   "fieldtype": "Float",
+   "label": "Costed Consumption",
+   "precision": "4",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c_q1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "allowance_pct",
+   "fieldtype": "Percent",
+   "label": "Allowance %",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "allowance_reason",
+   "fieldtype": "Data",
+   "label": "Allowance Reason"
+  },
+  {
+   "fieldname": "pack_size",
+   "fieldtype": "Float",
+   "label": "Pack Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gross_qty",
+   "fieldtype": "Float",
+   "label": "Gross (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_warehouse",
+   "fieldtype": "Link",
+   "label": "Stock Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "stock_used",
+   "fieldtype": "Float",
+   "label": "Stock Used (m)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "net_qty",
+   "fieldtype": "Float",
+   "label": "Net (m)",
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "order_uom",
+   "fieldtype": "Link",
+   "label": "Order UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Float",
+   "label": "Order Qty",
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "required_by",
+   "fieldtype": "Date",
+   "label": "Required By"
+  },
+  {
+   "fieldname": "s_track",
+   "fieldtype": "Section Break",
+   "label": "Tracking"
+  },
+  {
+   "fieldname": "material_request",
+   "fieldtype": "Link",
+   "label": "Material Request",
+   "options": "Material Request",
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_request_item",
+   "fieldtype": "Data",
+   "label": "MR Row",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ordered_qty",
+   "fieldtype": "Float",
+   "label": "Ordered (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "received_qty",
+   "fieldtype": "Float",
+   "label": "Received (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accepted_qty",
+   "fieldtype": "Float",
+   "label": "Accepted (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_qty",
+   "fieldtype": "Float",
+   "label": "Rejected (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Requisition Item",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

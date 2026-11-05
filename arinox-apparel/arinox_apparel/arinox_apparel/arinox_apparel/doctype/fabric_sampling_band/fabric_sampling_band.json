@@ -1,0 +1,44 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from_length_m",
+  "to_length_m",
+  "inspect_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_length_m",
+   "fieldtype": "Float",
+   "label": "From Length (m)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "to_length_m",
+   "fieldtype": "Float",
+   "label": "To Length (m)",
+   "in_list_view": 1,
+   "description": "0 = no upper limit"
+  },
+  {
+   "fieldname": "inspect_pct",
+   "fieldtype": "Percent",
+   "label": "Inspect %",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Sampling Band",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

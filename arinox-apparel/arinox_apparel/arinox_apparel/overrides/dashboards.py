@@ -30,4 +30,4 @@ def quotation(data):
 
 def sales_order(data):
 	data.setdefault("internal_links", {})["Sales Contract"] = "apparel_sales_contract"
-	return _add(data, "Apparel", ["Sales Contract", "Factory Allocation", "Sample Approval", "PP Meeting"])
+	return _add(data, "Apparel", ["Sales Contract", "Factory Allocation", "Sample Approval", "PP Meeting", "Order TNA"])

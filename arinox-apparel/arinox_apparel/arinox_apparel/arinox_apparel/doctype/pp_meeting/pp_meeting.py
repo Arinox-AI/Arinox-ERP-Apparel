@@ -7,7 +7,7 @@ Submitting the meeting issues the minutes; action rows stay editable so they can
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import cint, getdate, nowdate
+from frappe.utils import cint, flt, getdate, nowdate
 
 from arinox_apparel.arinox_apparel.doctype.sample_approval.sample_approval import APPROVED, get_rules, scope_filters
 
@@ -159,6 +159,33 @@ class PPMeeting(Document):
 				)
 
 	# -- tools used from the form
+	@frappe.whitelist()
+	def load_from_requisitions(self):
+		"""Fabric required and received, shade count and trim readiness from the requisitions of this order and style."""
+		from arinox_apparel.materials.status import trim_readiness
+
+		self.check_permission("write")
+		rows = frappe.db.sql(
+			"""select c.colour, sum(c.net_qty) net, sum(c.accepted_qty) accepted, group_concat(distinct i.shade_bands_found) shades
+			from `tabFabric Requisition Item` c join `tabFabric Requisition` p on p.name = c.parent
+			left join `tabFabric Inspection` i on i.fabric_requisition = p.name and i.docstatus = 1 and i.colour = c.colour
+			where p.docstatus = 1 and p.status not in ('Superseded', 'Cancelled') and c.sales_order = %s and c.style_item = %s group by c.colour""",
+			(self.sales_order, self.style_item), as_dict=True)
+		have = {(r.colour or "").strip().upper(): r for r in self.colours}
+		for r in rows:
+			row = have.get((r.colour or "").strip().upper())
+			if not row:
+				row = self.append("colours", {"colour": r.colour})
+			row.fabric_required_m = flt(r.net, 2)
+			row.fabric_received_m = flt(r.accepted, 2)
+			bands = {b.strip() for b in (r.shades or "").replace(";", ",").split(",") if b.strip()}
+			row.no_of_shades = len(bands) or row.no_of_shades
+		for field, need in (("sewing_trims", "Sewing"), ("packing_trims", "Packing")):
+			status = trim_readiness(self.sales_order, self.style_item, need)
+			if status:
+				self.set(field, status)
+		return len(rows)
+
 	@frappe.whitelist()
 	def get_buyer_comments(self):
 		listed = {a.comment_ref for a in self.actions if a.comment_ref}

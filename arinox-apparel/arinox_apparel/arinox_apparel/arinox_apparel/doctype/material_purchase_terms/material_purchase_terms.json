@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "terms_name",
+  "material_kind",
+  "claim_window_days",
+  "points_threshold",
+  "extra_qty_policy",
+  "s1",
+  "qty_bands",
+  "s2",
+  "delay_bands",
+  "s3",
+  "terms_text"
+ ],
+ "fields": [
+  {
+   "fieldname": "terms_name",
+   "fieldtype": "Data",
+   "label": "Terms Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "material_kind",
+   "fieldtype": "Select",
+   "label": "Used For",
+   "options": "Fabric\nTrim",
+   "default": "Fabric"
+  },
+  {
+   "fieldname": "claim_window_days",
+   "fieldtype": "Int",
+   "label": "Claim Window (days)",
+   "default": "45"
+  },
+  {
+   "fieldname": "points_threshold",
+   "fieldtype": "Float",
+   "label": "Fabric Points Threshold",
+   "description": "Points per 100 linear yards; blank = Apparel Settings"
+  },
+  {
+   "fieldname": "extra_qty_policy",
+   "fieldtype": "Select",
+   "label": "Quantity Over the Band",
+   "options": "Reject\nAccept Unpaid\nAccept Paid",
+   "default": "Accept Unpaid"
+  },
+  {
+   "fieldname": "s1",
+   "fieldtype": "Section Break",
+   "label": "Quantity Allowance"
+  },
+  {
+   "fieldname": "qty_bands",
+   "fieldtype": "Table",
+   "label": "Quantity Bands",
+   "options": "Purchase Qty Band"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Late Delivery"
+  },
+  {
+   "fieldname": "delay_bands",
+   "fieldtype": "Table",
+   "label": "Delay Penalty Bands",
+   "options": "Delay Penalty Band"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Terms Text"
+  },
+  {
+   "fieldname": "terms_text",
+   "fieldtype": "Text Editor",
+   "label": "Printed on the PO"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Material Purchase Terms",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "field:terms_name",
+ "title_field": "terms_name"
+}

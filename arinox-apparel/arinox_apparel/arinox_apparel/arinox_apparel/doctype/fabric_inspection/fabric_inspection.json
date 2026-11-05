@@ -1,0 +1,527 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_receipt",
+  "purchase_receipt_item",
+  "company",
+  "supplier",
+  "purchase_order",
+  "fabric_requisition",
+  "c1",
+  "fabric_item",
+  "colour",
+  "customer",
+  "sales_orders",
+  "style_nos",
+  "s_h",
+  "inspection_date",
+  "inspected_by",
+  "inspection_machine",
+  "light_source",
+  "c2",
+  "points_basis",
+  "points_threshold",
+  "required_width_cm",
+  "s_s",
+  "total_rolls",
+  "total_received_m",
+  "sampling_pct",
+  "required_inspect_m",
+  "c3",
+  "inspected_m",
+  "inspected_pct",
+  "inspected_rolls",
+  "s_rolls",
+  "rolls",
+  "s_def",
+  "defects",
+  "s_shr",
+  "shrinkage",
+  "s_res",
+  "avg_points",
+  "avg_points_sq",
+  "rejected_rolls",
+  "accepted_m",
+  "rejected_m",
+  "hold_m",
+  "avg_actual_width_cm",
+  "width_shortfall_m",
+  "shade_bands_found",
+  "c4",
+  "on_hold",
+  "lot_result",
+  "result_override",
+  "override_reason",
+  "claim_deadline",
+  "fpt_sample_approval",
+  "quality_inspection",
+  "stock_entry",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "purchase_receipt_item",
+   "fieldtype": "Data",
+   "label": "Receipt Row",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fabric_requisition",
+   "fieldtype": "Link",
+   "label": "Fabric Requisition",
+   "options": "Fabric Requisition",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric Item",
+   "options": "Item",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sales_orders",
+   "fieldtype": "Small Text",
+   "label": "Sales Orders",
+   "read_only": 1
+  },
+  {
+   "fieldname": "style_nos",
+   "fieldtype": "Small Text",
+   "label": "Styles",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_h",
+   "fieldtype": "Section Break",
+   "label": "Inspection"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Link",
+   "label": "Inspected By",
+   "options": "User"
+  },
+  {
+   "fieldname": "inspection_machine",
+   "fieldtype": "Data",
+   "label": "Inspection Machine"
+  },
+  {
+   "fieldname": "light_source",
+   "fieldtype": "Select",
+   "label": "Light Source",
+   "options": "\nD65\nTL84\nCWF\nDaylight"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "points_basis",
+   "fieldtype": "Select",
+   "label": "Points Basis",
+   "options": "Per 100 Linear Yards\nPer 100 Square Yards",
+   "read_only": 1
+  },
+  {
+   "fieldname": "points_threshold",
+   "fieldtype": "Float",
+   "label": "Points Threshold",
+   "description": "Blank = supplier terms, then Apparel Settings"
+  },
+  {
+   "fieldname": "required_width_cm",
+   "fieldtype": "Float",
+   "label": "Required Width (cm)"
+  },
+  {
+   "fieldname": "s_s",
+   "fieldtype": "Section Break",
+   "label": "Sampling"
+  },
+  {
+   "fieldname": "total_rolls",
+   "fieldtype": "Int",
+   "label": "Rolls Received",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_received_m",
+   "fieldtype": "Float",
+   "label": "Received (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sampling_pct",
+   "fieldtype": "Percent",
+   "label": "Sampling %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "required_inspect_m",
+   "fieldtype": "Float",
+   "label": "Must Inspect (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c3",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "inspected_m",
+   "fieldtype": "Float",
+   "label": "Inspected (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspected_pct",
+   "fieldtype": "Percent",
+   "label": "Inspected %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspected_rolls",
+   "fieldtype": "Int",
+   "label": "Rolls Inspected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_rolls",
+   "fieldtype": "Section Break",
+   "label": "Rolls"
+  },
+  {
+   "fieldname": "rolls",
+   "fieldtype": "Table",
+   "label": "Rolls",
+   "options": "Fabric Inspection Roll"
+  },
+  {
+   "fieldname": "s_def",
+   "fieldtype": "Section Break",
+   "label": "Defects"
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Table",
+   "label": "Defects",
+   "options": "Fabric Inspection Defect"
+  },
+  {
+   "fieldname": "s_shr",
+   "fieldtype": "Section Break",
+   "label": "Shrinkage"
+  },
+  {
+   "fieldname": "shrinkage",
+   "fieldtype": "Table",
+   "label": "Shrinkage Readings",
+   "options": "Sample Shrinkage Reading"
+  },
+  {
+   "fieldname": "s_res",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "avg_points",
+   "fieldtype": "Float",
+   "label": "Average Points",
+   "precision": "2",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "avg_points_sq",
+   "fieldtype": "Float",
+   "label": "Points / 100 sq yd",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_rolls",
+   "fieldtype": "Int",
+   "label": "Rolls Rejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accepted_m",
+   "fieldtype": "Float",
+   "label": "Accepted (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_m",
+   "fieldtype": "Float",
+   "label": "Rejected (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "hold_m",
+   "fieldtype": "Float",
+   "label": "On Hold (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "avg_actual_width_cm",
+   "fieldtype": "Float",
+   "label": "Average Actual Width (cm)",
+   "precision": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "width_shortfall_m",
+   "fieldtype": "Float",
+   "label": "Extra Fabric Needed (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shade_bands_found",
+   "fieldtype": "Data",
+   "label": "Shade Bands",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c4",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "on_hold",
+   "fieldtype": "Check",
+   "label": "Put Lot on Hold"
+  },
+  {
+   "fieldname": "lot_result",
+   "fieldtype": "Select",
+   "label": "Lot Result",
+   "options": "\nPass\nFail\nRe-inspect 100%\nHold",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_override",
+   "fieldtype": "Check",
+   "label": "Override Inspection Rules",
+   "description": "Apparel Merchandising Manager only"
+  },
+  {
+   "fieldname": "override_reason",
+   "fieldtype": "Small Text",
+   "label": "Override Reason",
+   "depends_on": "result_override"
+  },
+  {
+   "fieldname": "claim_deadline",
+   "fieldtype": "Date",
+   "label": "Claim Deadline",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fpt_sample_approval",
+   "fieldtype": "Link",
+   "label": "FPT (Fabric Test)",
+   "options": "Sample Approval"
+  },
+  {
+   "fieldname": "quality_inspection",
+   "fieldtype": "Link",
+   "label": "Quality Inspection",
+   "options": "Quality Inspection",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Fabric Inspection",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Inspection",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:FI-{YY}-{#####}",
+ "is_submittable": 1,
+ "search_fields": "supplier,fabric_item,colour,lot_result"
+}

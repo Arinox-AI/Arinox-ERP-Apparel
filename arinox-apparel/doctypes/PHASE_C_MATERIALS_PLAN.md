@@ -1,6 +1,6 @@
 # Phase C — Materials: FR → TR → Purchase → Inspection → In-house, plus T&A / WIP
 
-**Status:** Plan only. Nothing built. Written 2026-11-04 for a Sonnet build session.
+**Status:** Built on the dev site (slices C0 to C8), migrate clean, 195 tests pass (1 pre-existing skip). Pending user review. Plan written 2026-11-04, built 2026-11-05.
 **Module:** Arinox Apparel
 **Spec form:** one consolidated spec for the phase, same as Phase B (`PHASE_B_PLAN_AND_APPROVE.md`).
 **Sources (all read for this plan):**
@@ -655,4 +655,41 @@ Cutting (bulk marker doctype, lay plans, roll-to-lay allocation by shade band, a
 
 ## Status log
 
-(Builder: add one dated entry per slice: what was built, migrate and test output, what was not verified.)
+
+
+### 2026-11-05: C0 to C8 built
+
+**What exists now**
+
+| Slice | Built |
+|---|---|
+| C0 | Settings section (Materials, Inspection, Gates), 7 masters with seeds (allowance rules incl. Button 10 %, 13 trim categories, 28 fabric defect codes, 12 trim defects, Standard Fabric / Trim terms, sampling plans), custom fields on Company, Supplier, Item, MR/PO items, PO, PR, Batch, five warehouses per company, stock setting for QI after receipt |
+| C1 | Fabric Requisition (+ item, summary): computed totals, leftover-stock claims, red flags, Material Requests by supplier, revisions that request only the increase, agent API, print format |
+| C2 | Trim Requisition: six quantity bases, Tech Pack explode (size labels per size, DTM per colour, carton), buyer-supplied trims, hold, revisions, print format |
+| C3 | PO and PR extensions: terms, approval hold (warn or block, manager override), cost check, ETD/PI fields, quantity bands, delay penalty, requisition roll-up, "Create Purchase Orders" button |
+| C4 | Roll list import (paste or JSON, m / yd / kg), one Batch per roll, bundle, submit blocked without rolls |
+| C5 | Fabric Inspection (4-point, sampling plan, lot decision, width and shade flags, shrinkage), Trim Inspection (percent or AQL plan), Quality Inspection, Stock Entry release, purchase return of rejected rolls, new sample type Fabric Test (FPT) |
+| C6 | Reports Material Status and Running Fabric Stock, material gate on Work Order, PP Meeting auto-fill, 4 number cards |
+| C7 | Order TNA, TNA Milestone, TNA Template, TNA Milestone Type; planner with holidays and not-applicable pass-through; auto-stamping from 13 document events; baseline lock; Calendar and Gantt views on TNA Milestone; WIP Board page (grid, Gantt, calendar); WIP Report; daily reminder job |
+| C8 | Workspace and sidebar entries, Sales Order buttons (Materials, Time and Action) and connection, two print formats, permission checks on every whitelisted method |
+
+**Tests:** 123 new, 195 in total. Files: `tests/test_materials.py` (49), `test_inspection.py` (27), `test_status.py` (8), `test_tna.py` (39).
+
+**Verified in a browser** (headless Chromium driven over the DevTools protocol, dev site, demo orders): WIP Board grid, Gantt and Calendar tabs, dark mode, TNA Milestone Gantt view, Order TNA form, new Fabric Requisition form, Apparel workspace. Print formats rendered against real documents.
+
+**Not verified**
+- Forms with data for Fabric Inspection, Trim Inspection, and the Import Roll List and Get Lines dialogs were not opened in a browser. Their server logic is tested; their JavaScript is not.
+- No test was run as a non-admin business user in the browser. The workspace shows a permission error for a user without Sales roles because of the Phase A "Open Inquiries" card, not Phase C.
+- Number cards, reports and the board were not load-tested with large data. The board is limited to 200 orders per load and tested at 30 queries for any number of cells.
+- The assumed T&A offsets (see below) and the AQL rows are not confirmed by you or QA.
+
+**Differences from the plan**
+1. **Names:** doctypes are called `TNA ...` and `Order TNA`, not `T&A ...`. Frappe derives folder names from the doctype name, and `&` breaks them and URLs. Labels still say T&A.
+2. **Grain of Order TNA** is style x colour x ex-factory date (ship-tos are listed on it), not one per ship-to. The WIP Report row is the same grain.
+3. **Customer-provided trims** can be requested (Customer Provided Material Request) but there is no receiving or inspection path for them yet: Trim Inspection starts from a Purchase Receipt.
+4. **Fabric In-house, Fabric QC Passed, Fabric Booked, Trim PI, Fabric ETD, Trims QC Passed** offsets in the seeded template (7, 3, 2, 3, 2, 2 days) are assumptions. The others come from the company T&A sheet.
+5. **Baseline lock:** planned dates move freely until you press Lock Baseline; after that only revised dates move.
+6. **Reports are not row-permission filtered** (they use SQL and the report roles). A user restricted by User Permissions to one customer can still see other customers' rows in Material Status, Running Fabric Stock and WIP Report. The WIP Board and calendar events respect permissions.
+7. **Gantt colours** on the built-in TNA Milestone Gantt view come from a stored colour, refreshed on every change and by the daily job. The WIP Board computes status live.
+
+**Decisions taken (D1 to D9 defaults):** all nine plan defaults were used. D1 (who installs on the hosted site), D8 (10 % above 5,000 m) and D9 (AQL rows) still need your answer.

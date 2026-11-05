@@ -1,0 +1,406 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_receipt",
+  "purchase_receipt_item",
+  "company",
+  "supplier",
+  "purchase_order",
+  "trim_requisition",
+  "c1",
+  "trim_item",
+  "material_description",
+  "colour",
+  "customer",
+  "style_nos",
+  "s_h",
+  "received_date",
+  "invoice_no",
+  "received_qty",
+  "sampling_plan",
+  "sample_size",
+  "c2",
+  "inspected_qty",
+  "defective_qty",
+  "defective_pct",
+  "accepted_qty",
+  "rejected_qty",
+  "rejected_pct",
+  "s_d",
+  "defects",
+  "s_ref",
+  "approved_trim_ref",
+  "original_sample",
+  "defective_sample",
+  "c3",
+  "result",
+  "result_override",
+  "override_reason",
+  "warehouse_incharge",
+  "trim_sourcing_manager",
+  "quality_inspection",
+  "stock_entry",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_receipt",
+   "fieldtype": "Link",
+   "label": "Purchase Receipt",
+   "options": "Purchase Receipt",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "purchase_receipt_item",
+   "fieldtype": "Data",
+   "label": "Receipt Row",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "trim_requisition",
+   "fieldtype": "Link",
+   "label": "Trim Requisition",
+   "options": "Trim Requisition",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "trim_item",
+   "fieldtype": "Link",
+   "label": "Trim Item",
+   "options": "Item",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "material_description",
+   "fieldtype": "Data",
+   "label": "Material Description"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Customer",
+   "read_only": 1
+  },
+  {
+   "fieldname": "style_nos",
+   "fieldtype": "Small Text",
+   "label": "Styles",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_h",
+   "fieldtype": "Section Break",
+   "label": "Inspection"
+  },
+  {
+   "fieldname": "received_date",
+   "fieldtype": "Date",
+   "label": "Received Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "invoice_no",
+   "fieldtype": "Data",
+   "label": "Invoice No"
+  },
+  {
+   "fieldname": "received_qty",
+   "fieldtype": "Float",
+   "label": "Received Qty",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "sampling_plan",
+   "fieldtype": "Link",
+   "label": "Sampling Plan",
+   "options": "Trim Sampling Plan"
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Float",
+   "label": "Sample Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "inspected_qty",
+   "fieldtype": "Float",
+   "label": "Inspected Qty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "defective_qty",
+   "fieldtype": "Float",
+   "label": "Defective Found",
+   "read_only": 1
+  },
+  {
+   "fieldname": "defective_pct",
+   "fieldtype": "Percent",
+   "label": "Defective %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accepted_qty",
+   "fieldtype": "Float",
+   "label": "Accepted Qty",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_qty",
+   "fieldtype": "Float",
+   "label": "Rejected Qty",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rejected_pct",
+   "fieldtype": "Percent",
+   "label": "Rejected %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_d",
+   "fieldtype": "Section Break",
+   "label": "Defects"
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Table",
+   "label": "Defects Found",
+   "options": "Trim Inspection Defect"
+  },
+  {
+   "fieldname": "s_ref",
+   "fieldtype": "Section Break",
+   "label": "References"
+  },
+  {
+   "fieldname": "approved_trim_ref",
+   "fieldtype": "Link",
+   "label": "Approved Trim (Bulk Trim)",
+   "options": "Sample Approval"
+  },
+  {
+   "fieldname": "original_sample",
+   "fieldtype": "Attach Image",
+   "label": "Original Sample"
+  },
+  {
+   "fieldname": "defective_sample",
+   "fieldtype": "Attach Image",
+   "label": "Defective Sample"
+  },
+  {
+   "fieldname": "c3",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nPass\nFail\nHold",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "result_override",
+   "fieldtype": "Check",
+   "label": "Override Inspection Rules",
+   "description": "Apparel Merchandising Manager only"
+  },
+  {
+   "fieldname": "override_reason",
+   "fieldtype": "Small Text",
+   "label": "Override Reason",
+   "depends_on": "result_override"
+  },
+  {
+   "fieldname": "warehouse_incharge",
+   "fieldtype": "Link",
+   "label": "Warehouse In-charge",
+   "options": "User"
+  },
+  {
+   "fieldname": "trim_sourcing_manager",
+   "fieldtype": "Link",
+   "label": "Trim Sourcing Manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "quality_inspection",
+   "fieldtype": "Link",
+   "label": "Quality Inspection",
+   "options": "Quality Inspection",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stock_entry",
+   "fieldtype": "Link",
+   "label": "Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Trim Inspection",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Trim Inspection",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:TI-{YY}-{#####}",
+ "is_submittable": 1,
+ "search_fields": "supplier,trim_item,result"
+}

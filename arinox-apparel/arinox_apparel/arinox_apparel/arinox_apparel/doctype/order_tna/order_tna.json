@@ -1,0 +1,272 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_order",
+  "customer",
+  "company",
+  "style_item",
+  "style_no",
+  "colour",
+  "c1",
+  "order_qty",
+  "ship_tos",
+  "merchant",
+  "factory",
+  "s_d",
+  "order_received_date",
+  "order_date_missing",
+  "pcd",
+  "c2",
+  "ex_factory_date",
+  "template",
+  "baseline_locked",
+  "s_s",
+  "status",
+  "critical_delay_days",
+  "plan_feasible",
+  "feasibility_note"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Customer",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "order_qty",
+   "fieldtype": "Int",
+   "label": "Order Qty",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ship_tos",
+   "fieldtype": "Small Text",
+   "label": "Ship To",
+   "read_only": 1
+  },
+  {
+   "fieldname": "merchant",
+   "fieldtype": "Link",
+   "label": "Merchant",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Plant Floor",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "s_d",
+   "fieldtype": "Section Break",
+   "label": "Dates"
+  },
+  {
+   "fieldname": "order_received_date",
+   "fieldtype": "Date",
+   "label": "Order Received"
+  },
+  {
+   "fieldname": "order_date_missing",
+   "fieldtype": "Check",
+   "label": "Order Date Estimated",
+   "read_only": 1,
+   "description": "No buyer PO date; the Sales Order date was used"
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "PCD"
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "ex_factory_date",
+   "fieldtype": "Date",
+   "label": "Ex-Factory",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "template",
+   "fieldtype": "Link",
+   "label": "Template",
+   "options": "TNA Template"
+  },
+  {
+   "fieldname": "baseline_locked",
+   "fieldtype": "Check",
+   "label": "Baseline Locked",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_s",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "On Track\nAt Risk\nLate\nCompleted\nCancelled",
+   "default": "On Track",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "critical_delay_days",
+   "fieldtype": "Int",
+   "label": "Critical Delay (days)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "plan_feasible",
+   "fieldtype": "Check",
+   "label": "Plan Fits Ex-Factory",
+   "default": "1",
+   "read_only": 1
+  },
+  {
+   "fieldname": "feasibility_note",
+   "fieldtype": "Small Text",
+   "label": "Plan Note",
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Order TNA",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Manufacturing User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Manufacturing Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:TNA-{#####}",
+ "title_field": "style_no",
+ "search_fields": "sales_order,style_no,colour,status"
+}

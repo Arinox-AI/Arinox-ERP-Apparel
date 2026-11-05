@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from_days",
+  "to_days",
+  "penalty_pct",
+  "action"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_days",
+   "fieldtype": "Int",
+   "label": "From Days",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "to_days",
+   "fieldtype": "Int",
+   "label": "To Days",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "0 = no upper limit"
+  },
+  {
+   "fieldname": "penalty_pct",
+   "fieldtype": "Percent",
+   "label": "Penalty % of Value",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Select",
+   "label": "Action",
+   "options": "Discount\nCancel or Discount",
+   "default": "Discount",
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Delay Penalty Band",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

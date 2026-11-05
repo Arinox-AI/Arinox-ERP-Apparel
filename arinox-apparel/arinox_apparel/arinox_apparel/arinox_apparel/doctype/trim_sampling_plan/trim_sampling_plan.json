@@ -1,0 +1,137 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "plan_name",
+  "method",
+  "inspect_pct",
+  "max_defective_pct",
+  "full_inspect_up_to",
+  "rows",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "plan_name",
+   "fieldtype": "Data",
+   "label": "Plan Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "method",
+   "fieldtype": "Select",
+   "label": "Method",
+   "options": "Percent\nAQL Table",
+   "default": "Percent"
+  },
+  {
+   "fieldname": "inspect_pct",
+   "fieldtype": "Percent",
+   "label": "Inspect %",
+   "default": "10",
+   "depends_on": "eval:doc.method=='Percent'"
+  },
+  {
+   "fieldname": "max_defective_pct",
+   "fieldtype": "Percent",
+   "label": "Max Defective % (Percent plan)",
+   "default": "5",
+   "depends_on": "eval:doc.method=='Percent'"
+  },
+  {
+   "fieldname": "full_inspect_up_to",
+   "fieldtype": "Int",
+   "label": "Inspect 100% Up To (pcs)",
+   "default": "50",
+   "depends_on": "eval:doc.method=='AQL Table'"
+  },
+  {
+   "fieldname": "rows",
+   "fieldtype": "Table",
+   "label": "AQL Rows",
+   "options": "Trim Sampling Plan Row",
+   "depends_on": "eval:doc.method=='AQL Table'"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note",
+   "description": "AQL rows must be confirmed against ISO 2859-1 by QA before use"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Trim Sampling Plan",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Purchase User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Purchase Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Stock Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Quality Manager",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "field:plan_name",
+ "title_field": "plan_name"
+}

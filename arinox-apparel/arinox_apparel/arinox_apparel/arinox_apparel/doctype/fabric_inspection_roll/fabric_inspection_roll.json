@@ -1,0 +1,192 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "batch",
+  "roll_no",
+  "dye_lot",
+  "ticket_length",
+  "actual_length",
+  "length_variance",
+  "inspected",
+  "inspected_length_m",
+  "s_w",
+  "width_required_cm",
+  "width_start_cm",
+  "width_middle_cm",
+  "width_end_cm",
+  "width_ok",
+  "s_r",
+  "total_points",
+  "points_per_100",
+  "shade_band",
+  "csv_ok",
+  "bowing_skew_pct",
+  "face_side_marked",
+  "roll_result",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Batch",
+   "options": "Batch",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "dye_lot",
+   "fieldtype": "Data",
+   "label": "Dye Lot",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "ticket_length",
+   "fieldtype": "Float",
+   "label": "Ticket Length (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "actual_length",
+   "fieldtype": "Float",
+   "label": "Actual Length (m)",
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "length_variance",
+   "fieldtype": "Float",
+   "label": "Variance (m)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspected",
+   "fieldtype": "Check",
+   "label": "Inspected",
+   "default": "1",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "inspected_length_m",
+   "fieldtype": "Float",
+   "label": "Inspected (m)",
+   "precision": "2",
+   "description": "Blank = the whole roll"
+  },
+  {
+   "fieldname": "s_w",
+   "fieldtype": "Section Break",
+   "label": "Width"
+  },
+  {
+   "fieldname": "width_required_cm",
+   "fieldtype": "Float",
+   "label": "Required Width (cm)"
+  },
+  {
+   "fieldname": "width_start_cm",
+   "fieldtype": "Float",
+   "label": "Width Start"
+  },
+  {
+   "fieldname": "width_middle_cm",
+   "fieldtype": "Float",
+   "label": "Width Middle"
+  },
+  {
+   "fieldname": "width_end_cm",
+   "fieldtype": "Float",
+   "label": "Width End"
+  },
+  {
+   "fieldname": "width_ok",
+   "fieldtype": "Check",
+   "label": "Width OK",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s_r",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "total_points",
+   "fieldtype": "Int",
+   "label": "Points",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "points_per_100",
+   "fieldtype": "Float",
+   "label": "Points / 100 yd",
+   "precision": "2",
+   "in_list_view": 1,
+   "columns": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade Band"
+  },
+  {
+   "fieldname": "csv_ok",
+   "fieldtype": "Check",
+   "label": "Centre-Selvedge OK",
+   "default": "1"
+  },
+  {
+   "fieldname": "bowing_skew_pct",
+   "fieldtype": "Percent",
+   "label": "Bowing / Skew %"
+  },
+  {
+   "fieldname": "face_side_marked",
+   "fieldtype": "Check",
+   "label": "Face Side Marked"
+  },
+  {
+   "fieldname": "roll_result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nAccept\nReject\nHold",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Inspection Roll",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

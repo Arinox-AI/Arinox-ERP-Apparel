@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "milestone_type",
+  "basis",
+  "after_milestone",
+  "offset_days",
+  "duration_rule",
+  "daily_output",
+  "owner_role"
+ ],
+ "fields": [
+  {
+   "fieldname": "milestone_type",
+   "fieldtype": "Link",
+   "label": "Milestone",
+   "options": "TNA Milestone Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "basis",
+   "fieldtype": "Select",
+   "label": "Counted From",
+   "options": "Order Received\nEx-Factory\nPCD\nAfter Milestone",
+   "reqd": 1,
+   "default": "Order Received",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "after_milestone",
+   "fieldtype": "Link",
+   "label": "After",
+   "options": "TNA Milestone Type",
+   "in_list_view": 1,
+   "columns": 2,
+   "depends_on": "eval:doc.basis=='After Milestone'"
+  },
+  {
+   "fieldname": "offset_days",
+   "fieldtype": "Int",
+   "label": "Days",
+   "in_list_view": 1,
+   "columns": 1,
+   "description": "Negative = before (Ex-Factory basis)"
+  },
+  {
+   "fieldname": "duration_rule",
+   "fieldtype": "Select",
+   "label": "Duration",
+   "options": "Fixed\nQty / Daily Output",
+   "default": "Fixed"
+  },
+  {
+   "fieldname": "daily_output",
+   "fieldtype": "Int",
+   "label": "Daily Output (pcs)",
+   "depends_on": "eval:doc.duration_rule=='Qty / Daily Output'"
+  },
+  {
+   "fieldname": "owner_role",
+   "fieldtype": "Link",
+   "label": "Owner Role",
+   "options": "Role"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "TNA Template Milestone",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

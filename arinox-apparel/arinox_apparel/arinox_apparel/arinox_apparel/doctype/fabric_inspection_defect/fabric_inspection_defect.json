@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "roll_no",
+  "yard_position",
+  "defect_code",
+  "defect_length_in",
+  "points",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "yard_position",
+   "fieldtype": "Int",
+   "label": "Yard No",
+   "in_list_view": 1,
+   "description": "Defects in the same yard share a 4-point cap"
+  },
+  {
+   "fieldname": "defect_code",
+   "fieldtype": "Link",
+   "label": "Defect",
+   "options": "Fabric Defect Code",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "defect_length_in",
+   "fieldtype": "Float",
+   "label": "Length (in)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "points",
+   "fieldtype": "Int",
+   "label": "Points",
+   "in_list_view": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Fabric Inspection Defect",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

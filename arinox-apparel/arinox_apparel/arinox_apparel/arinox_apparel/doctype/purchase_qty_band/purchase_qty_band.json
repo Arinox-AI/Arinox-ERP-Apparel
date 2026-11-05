@@ -1,0 +1,53 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 09:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from_qty",
+  "to_qty",
+  "uom",
+  "tolerance_pct"
+ ],
+ "fields": [
+  {
+   "fieldname": "from_qty",
+   "fieldtype": "Float",
+   "label": "From Qty",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "to_qty",
+   "fieldtype": "Float",
+   "label": "To Qty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "description": "0 = no upper limit"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Tolerance \u00b1 %",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 09:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Purchase Qty Band",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}
