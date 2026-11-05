@@ -1,0 +1,186 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "sales_order",
+  "style_item",
+  "colour",
+  "size",
+  "stage",
+  "purpose",
+  "subcontract_process",
+  "qty",
+  "posting_date",
+  "line",
+  "supplier",
+  "shade_band",
+  "fault_source",
+  "source_doctype",
+  "source_name",
+  "source_row"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "search_index": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "label": "Stage",
+   "options": "CUT\nCUT_REJECT\nSEW_IN\nSEW_OUT\nSEW_REJECT\nSC_OUT\nSC_BACK_GOOD\nSC_BACK_REJECT_VENDOR\nSC_BACK_REJECT_FACTORY\nFIN_IN\nFIN_A\nFIN_B\nFIN_REJECT\nSAMPLE_OUT\nPACKED\nSHIPPED",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Bulk\nPilot\nRe-cut\nSample",
+   "default": "Bulk",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "subcontract_process",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Subcontract Process"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "label": "Qty",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "search_index": 1
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade Band"
+  },
+  {
+   "fieldname": "fault_source",
+   "fieldtype": "Select",
+   "label": "Fault Source",
+   "options": "\nFactory Sewing\nFabric\nCutting\nSubcontractor\nTrims\nSpec or Pattern\nHandling\nUnknown"
+  },
+  {
+   "fieldname": "source_doctype",
+   "fieldtype": "Link",
+   "label": "Source Document Type",
+   "options": "DocType",
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_name",
+   "fieldtype": "Dynamic Link",
+   "label": "Source Document",
+   "options": "source_doctype",
+   "search_index": 1
+  },
+  {
+   "fieldname": "source_row",
+   "fieldtype": "Data",
+   "label": "Source Row"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Production Movement",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 0,
+ "autoname": "hash"
+}

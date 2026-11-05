@@ -1,0 +1,131 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "process_name",
+  "default_position",
+  "item_state",
+  "billing_uom",
+  "requires_approved_standard",
+  "enabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "process_name",
+   "fieldtype": "Data",
+   "label": "Process",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "default_position",
+   "fieldtype": "Select",
+   "label": "Default Position",
+   "options": "After Sewing\nBefore Sewing",
+   "default": "After Sewing",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "item_state",
+   "fieldtype": "Select",
+   "label": "Item State Sent",
+   "options": "Garments\nCut Panels",
+   "default": "Garments",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "billing_uom",
+   "fieldtype": "Select",
+   "label": "Billing UOM",
+   "options": "Pcs\nKg",
+   "default": "Pcs"
+  },
+  {
+   "fieldname": "requires_approved_standard",
+   "fieldtype": "Check",
+   "label": "Needs Approved Standard",
+   "description": "Wash recipe, embroidery artwork, print strike-off"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "1"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Subcontract Process",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "Apparel Production Manager"
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "field:process_name",
+ "title_field": "process_name"
+}

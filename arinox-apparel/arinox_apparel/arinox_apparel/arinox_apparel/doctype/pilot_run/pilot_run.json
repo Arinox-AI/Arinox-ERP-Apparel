@@ -1,0 +1,365 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "sales_order",
+  "style_item",
+  "style_no",
+  "col_a",
+  "status",
+  "decision",
+  "run_date",
+  "line",
+  "pilot_pp_meeting",
+  "sec_people",
+  "line_supervisor",
+  "line_qc",
+  "col_b",
+  "cutting_supervisor",
+  "cad_incharge",
+  "sec_colours",
+  "colours",
+  "sec_checks",
+  "checks",
+  "sec_cut",
+  "pattern_cutting_qc_comment",
+  "pattern_cutting_supervisor_comment",
+  "sec_sam",
+  "operations",
+  "achieved_efficiency_pct",
+  "bottleneck_count",
+  "sec_meas",
+  "measurements",
+  "measurement_note",
+  "sec_def",
+  "defects",
+  "sec_res",
+  "result_notes",
+  "approved_by",
+  "approved_on",
+  "participants",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1,
+   "fetch_from": "production_card.sales_order"
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "read_only": 1,
+   "fetch_from": "production_card.style_item"
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "read_only": 1,
+   "fetch_from": "production_card.style_no",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "Draft\nApproved\nApproved with Comments\nRejected\nRe-run",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Select",
+   "label": "Decision",
+   "options": "\nApproved\nApproved with Comments\nRejected\nRe-run",
+   "no_copy": 1,
+   "description": "Set by QA before submitting"
+  },
+  {
+   "fieldname": "run_date",
+   "fieldtype": "Date",
+   "label": "Run Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "pilot_pp_meeting",
+   "fieldtype": "Link",
+   "label": "Pilot Review Meeting (PP Meeting)",
+   "options": "PP Meeting"
+  },
+  {
+   "fieldname": "sec_people",
+   "fieldtype": "Section Break",
+   "label": "People",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "line_supervisor",
+   "fieldtype": "Link",
+   "label": "Line Supervisor",
+   "options": "User"
+  },
+  {
+   "fieldname": "line_qc",
+   "fieldtype": "Link",
+   "label": "Line QC",
+   "options": "User"
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "cutting_supervisor",
+   "fieldtype": "Link",
+   "label": "Cutting Supervisor",
+   "options": "User"
+  },
+  {
+   "fieldname": "cad_incharge",
+   "fieldtype": "Link",
+   "label": "CAD In-charge",
+   "options": "User"
+  },
+  {
+   "fieldname": "sec_colours",
+   "fieldtype": "Section Break",
+   "label": "Pieces (from the ledger, purpose Pilot)"
+  },
+  {
+   "fieldname": "colours",
+   "fieldtype": "Table",
+   "label": "Colours",
+   "options": "Pilot Run Colour",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_checks",
+   "fieldtype": "Section Break",
+   "label": "Checks"
+  },
+  {
+   "fieldname": "checks",
+   "fieldtype": "Table",
+   "label": "Checks",
+   "options": "Pilot Run Check"
+  },
+  {
+   "fieldname": "sec_cut",
+   "fieldtype": "Section Break",
+   "label": "Pattern and Cutting Comments"
+  },
+  {
+   "fieldname": "pattern_cutting_qc_comment",
+   "fieldtype": "Small Text",
+   "label": "QC Comment (pattern and cutting)"
+  },
+  {
+   "fieldname": "pattern_cutting_supervisor_comment",
+   "fieldtype": "Small Text",
+   "label": "Supervisor Comment (pattern and cutting)"
+  },
+  {
+   "fieldname": "sec_sam",
+   "fieldtype": "Section Break",
+   "label": "SAM Validation"
+  },
+  {
+   "fieldname": "operations",
+   "fieldtype": "Table",
+   "label": "Operations",
+   "options": "Pilot Run Operation"
+  },
+  {
+   "fieldname": "achieved_efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Planned vs Actual SAM %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "bottleneck_count",
+   "fieldtype": "Int",
+   "label": "Bottlenecks",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sec_meas",
+   "fieldtype": "Section Break",
+   "label": "Measurements After Wash"
+  },
+  {
+   "fieldname": "measurements",
+   "fieldtype": "Table",
+   "label": "Measurements",
+   "options": "Sample Measurement"
+  },
+  {
+   "fieldname": "measurement_note",
+   "fieldtype": "Small Text",
+   "label": "Reason for Out-of-Tolerance Readings"
+  },
+  {
+   "fieldname": "sec_def",
+   "fieldtype": "Section Break",
+   "label": "Defects Found"
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Table",
+   "label": "Defects",
+   "options": "Pilot Run Defect"
+  },
+  {
+   "fieldname": "sec_res",
+   "fieldtype": "Section Break",
+   "label": "Outcome"
+  },
+  {
+   "fieldname": "result_notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "participants",
+   "fieldtype": "Table",
+   "label": "Participants",
+   "options": "Pilot Run Participant"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Pilot Run",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Pilot Run",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel QA",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:PR-{YY}-{#####}",
+ "title_field": "style_no",
+ "search_fields": "production_card,style_no,status"
+}

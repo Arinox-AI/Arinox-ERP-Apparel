@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "operation",
+  "planned_sam",
+  "actual_sam",
+  "bottleneck",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "operation",
+   "fieldtype": "Data",
+   "label": "Operation",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "planned_sam",
+   "fieldtype": "Float",
+   "label": "Planned SAM",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "actual_sam",
+   "fieldtype": "Float",
+   "label": "Actual SAM",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "bottleneck",
+   "fieldtype": "Check",
+   "label": "Bottleneck",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Data",
+   "label": "Note",
+   "in_list_view": 1,
+   "columns": 2
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Pilot Run Operation",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

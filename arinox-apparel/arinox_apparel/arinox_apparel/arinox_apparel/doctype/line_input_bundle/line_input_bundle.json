@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "bundle",
+  "colour",
+  "size",
+  "qty",
+  "component",
+  "shade_band"
+ ],
+ "fields": [
+  {
+   "fieldname": "bundle",
+   "fieldtype": "Link",
+   "label": "Bundle",
+   "options": "Cut Bundle",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Data",
+   "label": "Component",
+   "read_only": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade",
+   "read_only": 1,
+   "columns": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Line Input Bundle",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

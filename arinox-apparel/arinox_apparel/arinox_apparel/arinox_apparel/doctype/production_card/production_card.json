@@ -1,0 +1,460 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "customer",
+  "sales_order",
+  "style_item",
+  "style_no",
+  "style_name",
+  "season",
+  "col_a",
+  "status",
+  "ex_factory_date",
+  "pcd",
+  "factory",
+  "line",
+  "issue_date",
+  "sec_refs",
+  "sales_contract",
+  "buyer_pos",
+  "local_contract_no",
+  "declaration_no",
+  "col_b",
+  "top_sample_size",
+  "top_sample_qty_per_colour",
+  "top_sample_eta",
+  "is_washed",
+  "sec_pilot",
+  "pilot_required",
+  "pilot_waiver",
+  "pilot_waiver_reason",
+  "bundle_size",
+  "col_c",
+  "default_extra_cut_pct",
+  "trim_allowance_pct",
+  "sec_lines",
+  "lines",
+  "sec_fabric",
+  "fabrics",
+  "sec_route",
+  "processes",
+  "sec_pack",
+  "packing_instruction",
+  "packing_requirements",
+  "sec_rev",
+  "revision_no",
+  "previous_card",
+  "revision_reason",
+  "made_by",
+  "checked_by",
+  "qc_assigned",
+  "remarks",
+  "action_plan_for_fabric",
+  "red_flags",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "style_name",
+   "fieldtype": "Data",
+   "label": "Style Name"
+  },
+  {
+   "fieldname": "season",
+   "fieldtype": "Data",
+   "label": "Season"
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nIssued\nIn Cutting\nIn Sewing\nAt Subcontractor\nIn Finishing\nPacked\nShipped\nClosed\nSuperseded\nCancelled",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "ex_factory_date",
+   "fieldtype": "Date",
+   "label": "Ex-Factory Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pcd",
+   "fieldtype": "Date",
+   "label": "PCD (Planned Cut Date)"
+  },
+  {
+   "fieldname": "factory",
+   "fieldtype": "Link",
+   "label": "Factory",
+   "options": "Plant Floor"
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "issue_date",
+   "fieldtype": "Date",
+   "label": "Issue Date",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sec_refs",
+   "fieldtype": "Section Break",
+   "label": "References",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Sales Contract",
+   "options": "Sales Contract",
+   "read_only": 1
+  },
+  {
+   "fieldname": "buyer_pos",
+   "fieldtype": "Small Text",
+   "label": "Buyer POs",
+   "read_only": 1
+  },
+  {
+   "fieldname": "local_contract_no",
+   "fieldtype": "Data",
+   "label": "Local Contract No"
+  },
+  {
+   "fieldname": "declaration_no",
+   "fieldtype": "Data",
+   "label": "Declaration No"
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "top_sample_size",
+   "fieldtype": "Data",
+   "label": "TOP Sample Size"
+  },
+  {
+   "fieldname": "top_sample_qty_per_colour",
+   "fieldtype": "Int",
+   "label": "TOP Pcs per Colour",
+   "default": "2"
+  },
+  {
+   "fieldname": "top_sample_eta",
+   "fieldtype": "Date",
+   "label": "TOP Sample ETA"
+  },
+  {
+   "fieldname": "is_washed",
+   "fieldtype": "Check",
+   "label": "Washed Style"
+  },
+  {
+   "fieldname": "sec_pilot",
+   "fieldtype": "Section Break",
+   "label": "Pilot Run",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "pilot_required",
+   "fieldtype": "Check",
+   "label": "Pilot Run Required",
+   "read_only": 1
+  },
+  {
+   "fieldname": "pilot_waiver",
+   "fieldtype": "Check",
+   "label": "Waive Pilot Run",
+   "no_copy": 1,
+   "description": "Production Manager only"
+  },
+  {
+   "fieldname": "pilot_waiver_reason",
+   "fieldtype": "Small Text",
+   "label": "Waiver Reason",
+   "depends_on": "pilot_waiver",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "bundle_size",
+   "fieldtype": "Int",
+   "label": "Bundle Size (pcs)"
+  },
+  {
+   "fieldname": "col_c",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "default_extra_cut_pct",
+   "fieldtype": "Percent",
+   "label": "Default Extra Cut %"
+  },
+  {
+   "fieldname": "trim_allowance_pct",
+   "fieldtype": "Percent",
+   "label": "Trim Allowance %"
+  },
+  {
+   "fieldname": "sec_lines",
+   "fieldtype": "Section Break",
+   "label": "Size Breakup"
+  },
+  {
+   "fieldname": "lines",
+   "fieldtype": "Table",
+   "label": "Colour x Size",
+   "options": "Production Card Line",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_fabric",
+   "fieldtype": "Section Break",
+   "label": "Fabric"
+  },
+  {
+   "fieldname": "fabrics",
+   "fieldtype": "Table",
+   "label": "Fabric Required",
+   "options": "Production Card Fabric"
+  },
+  {
+   "fieldname": "sec_route",
+   "fieldtype": "Section Break",
+   "label": "Subcontract Route"
+  },
+  {
+   "fieldname": "processes",
+   "fieldtype": "Table",
+   "label": "Processes",
+   "options": "Production Card Process"
+  },
+  {
+   "fieldname": "sec_pack",
+   "fieldtype": "Section Break",
+   "label": "Packing"
+  },
+  {
+   "fieldname": "packing_instruction",
+   "fieldtype": "Data",
+   "label": "Packing Instruction"
+  },
+  {
+   "fieldname": "packing_requirements",
+   "fieldtype": "Small Text",
+   "label": "Packing Requirements"
+  },
+  {
+   "fieldname": "sec_rev",
+   "fieldtype": "Section Break",
+   "label": "Revision and Sign-off",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "revision_no",
+   "fieldtype": "Int",
+   "label": "Revision No",
+   "read_only": 1,
+   "default": "0",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "previous_card",
+   "fieldtype": "Link",
+   "label": "Previous Card",
+   "options": "Production Card",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "revision_reason",
+   "fieldtype": "Small Text",
+   "label": "Revision Reason",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "made_by",
+   "fieldtype": "Link",
+   "label": "Made By",
+   "options": "User"
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "Checked By",
+   "options": "User"
+  },
+  {
+   "fieldname": "qc_assigned",
+   "fieldtype": "Link",
+   "label": "QC for This Style",
+   "options": "User"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "action_plan_for_fabric",
+   "fieldtype": "Small Text",
+   "label": "Plan of Action for Fabric, Cutting and Sewing"
+  },
+  {
+   "fieldname": "red_flags",
+   "fieldtype": "Small Text",
+   "label": "Red Flags",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Production Card",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Production Card",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Merchandising Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "title_field": "style_no",
+ "search_fields": "sales_order,style_no,customer,status"
+}

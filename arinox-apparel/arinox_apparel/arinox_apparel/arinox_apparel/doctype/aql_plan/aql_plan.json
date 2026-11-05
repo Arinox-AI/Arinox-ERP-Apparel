@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "plan_name",
+  "inspection_level",
+  "aql_critical",
+  "aql_major",
+  "aql_minor",
+  "rows",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "plan_name",
+   "fieldtype": "Data",
+   "label": "Plan Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "inspection_level",
+   "fieldtype": "Select",
+   "label": "Inspection Level",
+   "options": "General I\nGeneral II\nGeneral III",
+   "default": "General II"
+  },
+  {
+   "fieldname": "aql_critical",
+   "fieldtype": "Data",
+   "label": "AQL Critical",
+   "default": "0"
+  },
+  {
+   "fieldname": "aql_major",
+   "fieldtype": "Data",
+   "label": "AQL Major",
+   "default": "2.5"
+  },
+  {
+   "fieldname": "aql_minor",
+   "fieldtype": "Data",
+   "label": "AQL Minor",
+   "default": "4.0"
+  },
+  {
+   "fieldname": "rows",
+   "fieldtype": "Table",
+   "label": "Rows",
+   "options": "AQL Plan Row"
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note",
+   "description": "Rows must be confirmed against ISO 2859-1 by QA before use"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "AQL Plan",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel QA"
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "field:plan_name",
+ "title_field": "plan_name"
+}

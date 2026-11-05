@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "colour",
+  "size",
+  "qty",
+  "reason",
+  "col_a",
+  "status",
+  "replaces_lay",
+  "replaces_bundle",
+  "source_roll",
+  "different_roll_approved",
+  "approved_by",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Link",
+   "label": "Reason",
+   "options": "Apparel Defect Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nCut\nClosed",
+   "default": "Open",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "replaces_lay",
+   "fieldtype": "Link",
+   "label": "Replaces Lay",
+   "options": "Lay Report"
+  },
+  {
+   "fieldname": "replaces_bundle",
+   "fieldtype": "Link",
+   "label": "Replaces Bundle",
+   "options": "Cut Bundle"
+  },
+  {
+   "fieldname": "source_roll",
+   "fieldtype": "Link",
+   "label": "Roll to Cut From",
+   "options": "Batch"
+  },
+  {
+   "fieldname": "different_roll_approved",
+   "fieldtype": "Check",
+   "label": "Different Roll / Dye Lot Approved",
+   "description": "Needed when the roll's shade differs from the original panels"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Recut Request",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Recut Request",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:RC-{YY}-{#####}",
+ "search_fields": "production_card,colour,size,status"
+}

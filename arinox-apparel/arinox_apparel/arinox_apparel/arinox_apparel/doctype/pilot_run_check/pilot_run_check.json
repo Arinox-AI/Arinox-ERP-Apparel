@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "check_item",
+  "result",
+  "comment",
+  "action_taken",
+  "responsible",
+  "location"
+ ],
+ "fields": [
+  {
+   "fieldname": "check_item",
+   "fieldtype": "Link",
+   "label": "Check",
+   "options": "Production Check Item",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nYes\nNo\nN/A",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "comment",
+   "fieldtype": "Small Text",
+   "label": "Comment",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "action_taken",
+   "fieldtype": "Small Text",
+   "label": "Action Taken",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "responsible",
+   "fieldtype": "Data",
+   "label": "Who"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Where"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Pilot Run Check",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "batch",
+  "roll_no",
+  "dye_lot",
+  "shade_band",
+  "width_cm",
+  "roll_length_m",
+  "plies",
+  "length_laid_m",
+  "end_bit_m",
+  "damage_m",
+  "splices",
+  "balance_returned_m",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "batch",
+   "fieldtype": "Link",
+   "label": "Roll (Batch)",
+   "options": "Batch",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "roll_no",
+   "fieldtype": "Data",
+   "label": "Roll No",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "dye_lot",
+   "fieldtype": "Data",
+   "label": "Dye Lot",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "width_cm",
+   "fieldtype": "Float",
+   "label": "Width (cm)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "roll_length_m",
+   "fieldtype": "Float",
+   "label": "Available (m)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "plies",
+   "fieldtype": "Int",
+   "label": "Plies",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "length_laid_m",
+   "fieldtype": "Float",
+   "label": "Laid (m)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "end_bit_m",
+   "fieldtype": "Float",
+   "label": "End Bit (m)",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "damage_m",
+   "fieldtype": "Float",
+   "label": "Damage (m)"
+  },
+  {
+   "fieldname": "splices",
+   "fieldtype": "Int",
+   "label": "Splices"
+  },
+  {
+   "fieldname": "balance_returned_m",
+   "fieldtype": "Float",
+   "label": "Balance (m)",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Lay Roll",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

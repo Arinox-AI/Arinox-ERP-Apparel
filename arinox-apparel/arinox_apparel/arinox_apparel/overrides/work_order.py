@@ -5,15 +5,7 @@ import frappe
 from frappe import _
 from frappe.utils import cint
 
-from arinox_apparel.arinox_apparel.doctype.pp_meeting.pp_meeting import cutting_actions_open
-from arinox_apparel.arinox_apparel.doctype.sample_approval.sample_approval import (
-	GATE_OK,
-	MANAGER_ROLES,
-	effective_gate,
-	get_rules,
-	norm,
-	scope_filters,
-)
+from arinox_apparel.arinox_apparel.doctype.sample_approval.sample_approval import MANAGER_ROLES
 
 
 def style_and_colour(production_item):
@@ -34,37 +26,9 @@ def get_bulk_gate(production_item, sales_order):
 	style, colour = style_and_colour(production_item)
 	if not style or not sales_order:
 		return {"applies": False, "blockers": []}
-	rules = get_rules(None, sales_order, style)
-	samples = frappe.get_all(
-		"Sample Approval", scope_filters(sales_order, style), ["name", "sample_type", "status", "colour"]
-	)
+	from arinox_apparel.production.gate import bulk_gate_for
 
-	def in_scope(s, rule):
-		return not rule.per_colour or not (s.colour or "").strip() or norm(s.colour) == norm(colour)
-
-	blockers = []
-	for stype, rule in rules.items():
-		gate = effective_gate(rule, sales_order)
-		if gate == "No":
-			continue
-		mine = [s for s in samples if s.sample_type == stype and in_scope(s, rule)]
-		where = f"{stype}" + (f" ({colour})" if rule.per_colour and colour else "")
-		if gate == "Required" and not mine:
-			blockers.append(_("{0}: no approval record yet.").format(where))
-		for s in mine:
-			if s.status not in GATE_OK:
-				blockers.append(_("{0}: {1} is {2}.").format(where, s.name, s.status))
-	if cint(frappe.db.get_single_value("Apparel Settings", "require_pp_meeting")):
-		meetings, open_rows = cutting_actions_open(sales_order, style)
-		if not meetings:
-			blockers.append(_("PP Meeting: not held (no submitted PP Meeting for this style on this order)."))
-		for r in open_rows:
-			blockers.append(_("PP Meeting: cutting comment still open: {0}").format((r.comment or "")[:80]))
-	from arinox_apparel.materials.status import material_gate
-
-	m_blockers, m_warnings = material_gate(sales_order, style, colour)
-	blockers += m_blockers
-	return {"applies": True, "style": style, "colour": colour, "blockers": blockers, "warnings": m_warnings}
+	return bulk_gate_for(sales_order, style, colour, stage="bulk")
 
 
 def has_manager_role():

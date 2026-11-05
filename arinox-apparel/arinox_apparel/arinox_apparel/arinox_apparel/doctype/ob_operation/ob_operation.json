@@ -1,0 +1,98 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "seq",
+  "part_group",
+  "operation",
+  "machine_type",
+  "machine_sam",
+  "manual_sam",
+  "operators_needed",
+  "target_per_hr",
+  "pitch_flag"
+ ],
+ "fields": [
+  {
+   "fieldname": "seq",
+   "fieldtype": "Int",
+   "label": "No",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "part_group",
+   "fieldtype": "Data",
+   "label": "Part / Group",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "operation",
+   "fieldtype": "Data",
+   "label": "Operation",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "machine_type",
+   "fieldtype": "Data",
+   "label": "Machine",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "machine_sam",
+   "fieldtype": "Float",
+   "label": "M/C SAM",
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "manual_sam",
+   "fieldtype": "Float",
+   "label": "Manual SAM",
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "operators_needed",
+   "fieldtype": "Float",
+   "label": "Operators Needed",
+   "read_only": 1,
+   "columns": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_per_hr",
+   "fieldtype": "Float",
+   "label": "Target / hr",
+   "read_only": 1,
+   "columns": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "pitch_flag",
+   "fieldtype": "Select",
+   "label": "Vs Pitch",
+   "options": "\nAbove\nBelow",
+   "read_only": 1,
+   "columns": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "OB Operation",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

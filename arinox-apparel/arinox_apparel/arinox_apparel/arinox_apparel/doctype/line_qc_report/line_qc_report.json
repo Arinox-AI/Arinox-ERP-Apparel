@@ -1,0 +1,278 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "audit_type",
+  "report_date",
+  "line",
+  "production_card",
+  "col_a",
+  "inspected_by",
+  "line_qa",
+  "sec_hours",
+  "hours",
+  "defects",
+  "sec_disp",
+  "dispositions",
+  "passes",
+  "sec_tl",
+  "traffic",
+  "sec_res",
+  "total_checked",
+  "total_passed",
+  "total_defects",
+  "col_b",
+  "reworked_passed",
+  "dhu",
+  "defect_pct",
+  "rft_pct",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "audit_type",
+   "fieldtype": "Select",
+   "label": "Audit Type",
+   "options": "Inline (Traffic Light)\nEnd-line\nFinishing",
+   "default": "End-line",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "report_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "default": "Today",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "inspected_by",
+   "fieldtype": "Link",
+   "label": "Inspected By",
+   "options": "User"
+  },
+  {
+   "fieldname": "line_qa",
+   "fieldtype": "Link",
+   "label": "Line QA",
+   "options": "User"
+  },
+  {
+   "fieldname": "sec_hours",
+   "fieldtype": "Section Break",
+   "label": "Hourly Check"
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Table",
+   "label": "Hourly",
+   "options": "Line QC Hour"
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Table",
+   "label": "Defect Analysis",
+   "options": "Line QC Defect"
+  },
+  {
+   "fieldname": "sec_disp",
+   "fieldtype": "Section Break",
+   "label": "Dispositions (rework, reject, B-grade)"
+  },
+  {
+   "fieldname": "dispositions",
+   "fieldtype": "Table",
+   "label": "Dispositions",
+   "options": "Line QC Disposition"
+  },
+  {
+   "fieldname": "passes",
+   "fieldtype": "Table",
+   "label": "Passed A-Grade by Colour and Size (finishing)",
+   "options": "Line QC Pass",
+   "depends_on": "eval:doc.audit_type=='Finishing'"
+  },
+  {
+   "fieldname": "sec_tl",
+   "fieldtype": "Section Break",
+   "label": "Traffic Light (inline)",
+   "depends_on": "eval:doc.audit_type=='Inline (Traffic Light)'"
+  },
+  {
+   "fieldname": "traffic",
+   "fieldtype": "Table",
+   "label": "Operators Checked",
+   "options": "Line QC Traffic",
+   "depends_on": "eval:doc.audit_type=='Inline (Traffic Light)'"
+  },
+  {
+   "fieldname": "sec_res",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "total_checked",
+   "fieldtype": "Int",
+   "label": "Total Checked",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_passed",
+   "fieldtype": "Int",
+   "label": "Total Passed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_defects",
+   "fieldtype": "Int",
+   "label": "Total Defects",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "reworked_passed",
+   "fieldtype": "Int",
+   "label": "Repaired and Passed Later",
+   "description": "Not counted toward RFT"
+  },
+  {
+   "fieldname": "dhu",
+   "fieldtype": "Float",
+   "label": "DHU",
+   "read_only": 1,
+   "in_list_view": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "defect_pct",
+   "fieldtype": "Percent",
+   "label": "Defective %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rft_pct",
+   "fieldtype": "Percent",
+   "label": "RFT %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Line QC Report",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Line QC Report",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:LQC-{YY}-{#####}",
+ "search_fields": "line,report_date,audit_type,production_card"
+}

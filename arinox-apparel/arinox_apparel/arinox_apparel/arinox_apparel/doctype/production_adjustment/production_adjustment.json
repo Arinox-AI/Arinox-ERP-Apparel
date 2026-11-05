@@ -1,0 +1,142 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "posting_date",
+  "stage",
+  "purpose",
+  "subcontract_process",
+  "colour",
+  "size",
+  "qty",
+  "reason",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1,
+   "default": "Today"
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Select",
+   "label": "Stage",
+   "options": "CUT\nCUT_REJECT\nSEW_IN\nSEW_OUT\nSEW_REJECT\nSC_OUT\nSC_BACK_GOOD\nSC_BACK_REJECT_VENDOR\nSC_BACK_REJECT_FACTORY\nFIN_IN\nFIN_A\nFIN_B\nFIN_REJECT\nSAMPLE_OUT\nPACKED\nSHIPPED",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Bulk\nPilot\nRe-cut\nSample",
+   "default": "Bulk"
+  },
+  {
+   "fieldname": "subcontract_process",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Subcontract Process"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "label": "Qty (+ or -)",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Production Adjustment",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Production Adjustment",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:PADJ-{YY}-{#####}"
+}

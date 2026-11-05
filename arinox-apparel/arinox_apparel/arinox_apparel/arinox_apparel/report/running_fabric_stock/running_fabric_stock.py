@@ -1,12 +1,13 @@
 # Copyright (c) 2026, Arinox AI and contributors
 """Replaces the warehouse fabric workbook: one row per fabric purchase-order line with what was ordered, received, issued and left.
-Cut quantity and actual consumption stay empty until the cutting phase exists."""
+Cut quantity and actual consumption come from the production ledger."""
 
 import frappe
 from frappe import _
 from frappe.utils import date_diff, flt
 
 from arinox_apparel.materials import common as mc
+from arinox_apparel.production.summary import fabric_usage
 
 
 def execute(filters=None):
@@ -23,7 +24,7 @@ def columns():
 		C("received_date", "Received On", "Date", 95), C("received", "Received", "Float", 90), C("over_short", "Over / Short", "Float", 90),
 		C("over_short_pct", "Over / Short %", "Percent", 90), C("issued", "Issued", "Float", 90), C("balance", "Balance", "Float", 90),
 		C("balance_pct_order", "% of Order", "Percent", 80), C("balance_pct_received", "% of Received", "Percent", 90), C("stock_value", "Stock Value", "Currency", 100),
-		C("garment_qty", "Garment Qty", "Int", 90), C("cut_qty", "Cut Qty (cutting phase)", "Int", 120), C("used_consumption", "Actual Used / pc (cutting phase)", "Float", 150),
+		C("garment_qty", "Garment Qty", "Int", 90), C("cut_qty", "Cut Qty", "Int", 120), C("used_consumption", "Actual Used / pc", "Float", 150),
 	]
 
 
@@ -38,7 +39,7 @@ def data(filters):
 	rows = frappe.db.sql(
 		f"""select o.name po, o.transaction_date po_date, o.supplier, o.apparel_supplier_contract_no contract_no, i.name poi, i.item_code, i.item_name, i.description,
 		i.stock_qty ordered, i.stock_uom uom, i.rate price, i.amount, i.schedule_date delivery_date, i.apparel_style_no style_no, i.apparel_colour colour,
-		i.apparel_requisition, i.material_request_item, r.customer, r.ordered_by
+		i.apparel_requisition, i.material_request_item, i.sales_order, (select variant_of from `tabItem` where name = (select item_code from `tabSales Order Item` where parent = i.sales_order and apparel_colour = i.apparel_colour limit 1)) style_item, r.customer, r.ordered_by
 		from `tabPurchase Order Item` i join `tabPurchase Order` o on o.name = i.parent
 		left join `tabFabric Requisition` r on r.name = i.apparel_requisition where {' and '.join(cond)} order by o.transaction_date, o.name""", args, as_dict=True)
 	stores = {mc.company_warehouse("store_warehouse_fabric", c) for c in frappe.get_all("Company", pluck="name")}
@@ -58,6 +59,10 @@ def data(filters):
 		balance = received - issued
 		merchant = frappe.db.get_value("User", r.ordered_by, "full_name") if r.ordered_by else None
 		garment = frappe.db.get_value("Fabric Requisition Item", {"parent": r.apparel_requisition, "material_request_item": r.material_request_item}, "garment_qty") if r.apparel_requisition else None
+		cut_qty = used = None
+		if r.sales_order and r.style_item:
+			cq, _net, uc = fabric_usage(r.sales_order, r.style_item, r.colour, r.item_code)
+			cut_qty, used = (cq or None), uc
 		out.append({
 			"po_date": r.po_date, "customer": r.customer, "merchant": merchant, "style_no": r.style_no, "supplier": r.supplier, "contract_no": r.contract_no, "po": r.po,
 			"fabric": (r.description or r.item_name or r.item_code)[:120], "colour": r.colour, "ordered": r.ordered, "uom": r.uom, "price": r.price,
@@ -65,6 +70,6 @@ def data(filters):
 			"received_date": first, "received": received, "over_short": received - flt(r.ordered),
 			"over_short_pct": (received - flt(r.ordered)) * 100 / flt(r.ordered) if flt(r.ordered) else 0, "issued": issued, "balance": balance,
 			"balance_pct_order": balance * 100 / flt(r.ordered) if flt(r.ordered) else 0, "balance_pct_received": balance * 100 / received if received else 0,
-			"stock_value": balance * flt(r.price), "garment_qty": garment, "cut_qty": None, "used_consumption": None,
+			"stock_value": balance * flt(r.price), "garment_qty": garment, "cut_qty": cut_qty, "used_consumption": used,
 		})
 	return out

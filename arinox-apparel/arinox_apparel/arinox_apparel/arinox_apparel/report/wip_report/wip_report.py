@@ -1,12 +1,13 @@
 # Copyright (c) 2026, Arinox AI and contributors
 """The WIP workbook as a report: one row per style x colour x ex-factory date, milestones in the workbook's order. A milestone
-shows its actual date, else the revised date, else the plan. Cut, sew, wash, pack and ship quantities stay empty until the
-production phase exists."""
+shows its actual date, else the revised date, else the plan. Cut, sew, wash, pack and ship quantities come from the
+production ledger."""
 
 import frappe
 from frappe import _
 from frappe.utils import flt
 
+from arinox_apparel.production.summary import good_cut, stage_qty
 from arinox_apparel.tna.api import wip_board_data
 
 # (fieldname, label, milestone code or None)
@@ -40,8 +41,8 @@ def columns():
 		cols += [C(f"fit{n}_submit", f"Fit {n} Submitted", "Date", 95), C(f"fit{n}_comments", f"Fit {n} Comments", "Date", 95)]
 	cols += [C(f, l, "Date", 100) for f, l, _c in DATE_COLS[3:]]
 	cols += [C("fabric_ordered", "Fabric Ordered (m)", "Float", 100), C("fabric_received", "Fabric Received (m)", "Float", 100), C("fabric_yy", "Fabric Yield (m/pc)", "Float", 90),
-		C("cut_qty", "Cut Qty (production phase)", "Int", 110), C("sew_qty", "Sew Qty (production phase)", "Int", 110), C("wash_qty", "Wash Qty (production phase)", "Int", 110),
-		C("pack_qty", "Pack Qty (production phase)", "Int", 110), C("ship_qty", "Ship Qty (production phase)", "Int", 110), C("price", "Price", "Currency", 80), C("total_value", "Total", "Currency", 100)]
+		C("cut_qty", "Cut Qty", "Int", 110), C("sew_qty", "Sew Qty", "Int", 110), C("wash_qty", "Wash Qty", "Int", 110),
+		C("pack_qty", "Pack Qty", "Int", 110), C("ship_qty", "Ship Qty", "Int", 110), C("price", "Price", "Currency", 80), C("total_value", "Total", "Currency", 100)]
 	return cols
 
 
@@ -75,6 +76,12 @@ def data(filters):
 			(o.sales_order, style_item, o.colour or ""), as_dict=True)[0]
 		row["fabric_ordered"], row["fabric_received"] = fab.net, fab.received
 		row["fabric_yy"] = flt(fab.net) / flt(o.order_qty) if flt(o.order_qty) and flt(fab.net) else None
+		for key, stages, process in (("cut_qty", None, None), ("sew_qty", ["SEW_OUT"], None), ("wash_qty", ["SC_BACK_GOOD"], "Wash"), ("pack_qty", ["PACKED"], None), ("ship_qty", ["SHIPPED"], None)):
+			if key == "cut_qty":
+				v = good_cut(o.sales_order, style_item, o.colour)
+			else:
+				v = stage_qty(o.sales_order, style_item, o.colour, stages, process=process)
+			row[key] = v or None
 		row["price"] = item[0].rate if item else None
 		row["total_value"] = flt(row["price"]) * flt(o.order_qty) if row["price"] else None
 		out.append(row)

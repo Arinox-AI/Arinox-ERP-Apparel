@@ -7,7 +7,10 @@ Seeds are only inserted when missing; edits made on the site are never overwritt
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
-ROLES = ("Apparel Merchandiser", "Apparel Costing Manager", "Apparel Merchandising Manager")
+ROLES = (
+	"Apparel Merchandiser", "Apparel Costing Manager", "Apparel Merchandising Manager",
+	"Apparel Production Manager", "Apparel Production User", "Apparel QA",
+)
 
 # name, group, calc type, material scope, sequence, mandatory
 # From "APPAREL_COSTING_DETAILED_REVISED.xlsx": raw materials, process charges, other expenses as % of
@@ -49,6 +52,9 @@ def after_migrate():
 	from arinox_apparel.setup import materials
 
 	materials.run()
+	from arinox_apparel.setup import production
+
+	production.run()
 	from arinox_apparel.tna import seed as tna_seed
 
 	tna_seed.seed()
@@ -97,6 +103,21 @@ def get_custom_fields():
 			dict(fieldname="apparel_contract_prefix", fieldtype="Data", label="Apparel Contract Prefix",
 				 insert_after="abbr", description="Prefix of Sales Contract numbers issued by this company, e.g. SC. "
 				 "Number format: PREFIX + YY.MM.### (counter restarts each month)."),
+			dict(fieldname="apparel_pc_prefix", fieldtype="Data", label="Production Card Prefix", default="PC",
+				 insert_after="apparel_contract_prefix", description="Number format: PREFIX + YY.MM.### (counter restarts each month)."),
+		],
+		"Workstation": [
+			dict(fieldname="apparel_line_section", fieldtype="Section Break", label="Apparel Line", collapsible=1),
+			dict(fieldname="apparel_line_type", fieldtype="Select", label="Line Type", options="\nCutting\nSewing\nFinishing\nPacking",
+				 insert_after="apparel_line_section"),
+			dict(fieldname="apparel_default_operators", fieldtype="Int", label="Default Operators", insert_after="apparel_line_type"),
+			dict(fieldname="apparel_default_helpers", fieldtype="Int", label="Default Helpers", insert_after="apparel_default_operators"),
+		],
+		"Stock Entry": [
+			dict(fieldname="apparel_production_card", fieldtype="Link", options="Production Card", label="Production Card",
+				 insert_after="purpose", read_only=1, no_copy=1, search_index=1),
+			dict(fieldname="apparel_issue_kind", fieldtype="Select", label="Production Issue Kind",
+				 options="\nFabric Issue\nRemnant Return\nTrim Issue", insert_after="apparel_production_card", read_only=1, no_copy=1),
 		],
 		"Opportunity": [
 			dict(fieldname="apparel_section", fieldtype="Section Break", label="Apparel Inquiry",

@@ -1,0 +1,273 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "sales_order",
+  "style_no",
+  "colour",
+  "fabric_item",
+  "component",
+  "col_a",
+  "status",
+  "pattern_version",
+  "nap_direction",
+  "match_pattern",
+  "sec_cons",
+  "fr_consumption",
+  "marker_consumption",
+  "variance_pct",
+  "col_b",
+  "approved_by",
+  "approved_on",
+  "approval_note",
+  "sec_lays",
+  "lays",
+  "ratios",
+  "sec_sum",
+  "size_summary",
+  "red_flags",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1,
+   "fetch_from": "production_card.sales_order"
+  },
+  {
+   "fieldname": "style_no",
+   "fieldtype": "Data",
+   "label": "Style No",
+   "read_only": 1,
+   "fetch_from": "production_card.style_no",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Select",
+   "label": "Component",
+   "options": "Shell\nLining\nPocketing\nContrast\nOther",
+   "default": "Shell"
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nPending Approval\nReleased\nSuperseded",
+   "default": "Draft",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "pattern_version",
+   "fieldtype": "Data",
+   "label": "Pattern Version"
+  },
+  {
+   "fieldname": "nap_direction",
+   "fieldtype": "Check",
+   "label": "Directional Fabric (nap)"
+  },
+  {
+   "fieldname": "match_pattern",
+   "fieldtype": "Check",
+   "label": "Check / Stripe Matching"
+  },
+  {
+   "fieldname": "sec_cons",
+   "fieldtype": "Section Break",
+   "label": "Consumption",
+   "collapsible": 0
+  },
+  {
+   "fieldname": "fr_consumption",
+   "fieldtype": "Float",
+   "label": "Card Consumption (m / pc)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "marker_consumption",
+   "fieldtype": "Float",
+   "label": "Marker Consumption (m / pc)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "variance_pct",
+   "fieldtype": "Percent",
+   "label": "Variance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "approval_note",
+   "fieldtype": "Small Text",
+   "label": "Approval Note"
+  },
+  {
+   "fieldname": "sec_lays",
+   "fieldtype": "Section Break",
+   "label": "Lays"
+  },
+  {
+   "fieldname": "lays",
+   "fieldtype": "Table",
+   "label": "Lays",
+   "options": "Cut Plan Lay"
+  },
+  {
+   "fieldname": "ratios",
+   "fieldtype": "Table",
+   "label": "Size Ratios",
+   "options": "Cut Plan Ratio"
+  },
+  {
+   "fieldname": "sec_sum",
+   "fieldtype": "Section Break",
+   "label": "Plan vs Card"
+  },
+  {
+   "fieldname": "size_summary",
+   "fieldtype": "Small Text",
+   "label": "Planned Output per Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "red_flags",
+   "fieldtype": "Small Text",
+   "label": "Red Flags",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Cut Plan",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager"
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:CP-{YY}-{#####}",
+ "title_field": "style_no",
+ "search_fields": "production_card,colour,status"
+}

@@ -1,0 +1,80 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "colour",
+  "sizes_run",
+  "qty_planned",
+  "cut_qty",
+  "sewn_qty",
+  "washed_qty",
+  "rejected_qty"
+ ],
+ "fields": [
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "sizes_run",
+   "fieldtype": "Data",
+   "label": "Sizes Run",
+   "in_list_view": 1,
+   "columns": 2,
+   "description": "e.g. S, M, L or jump sizes"
+  },
+  {
+   "fieldname": "qty_planned",
+   "fieldtype": "Int",
+   "label": "Planned Pcs",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "cut_qty",
+   "fieldtype": "Int",
+   "label": "Cut",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "sewn_qty",
+   "fieldtype": "Int",
+   "label": "Sewn",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "washed_qty",
+   "fieldtype": "Int",
+   "label": "Washed",
+   "read_only": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "rejected_qty",
+   "fieldtype": "Int",
+   "label": "Rejected",
+   "read_only": 1,
+   "columns": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Pilot Run Colour",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

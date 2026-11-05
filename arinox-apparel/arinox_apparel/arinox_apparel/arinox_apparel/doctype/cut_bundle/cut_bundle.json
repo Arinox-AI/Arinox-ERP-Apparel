@@ -1,0 +1,224 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "lay_report",
+  "colour",
+  "size",
+  "component",
+  "purpose",
+  "bundle_no",
+  "body_no",
+  "ply_from",
+  "ply_to",
+  "qty",
+  "shade_band",
+  "roll_nos",
+  "kit_key",
+  "status",
+  "sewn_qty",
+  "rejected_qty",
+  "line",
+  "is_short"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "search_index": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "lay_report",
+   "fieldtype": "Link",
+   "label": "Lay Report",
+   "options": "Lay Report",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Select",
+   "label": "Component",
+   "options": "Shell\nLining\nPocketing\nContrast\nOther",
+   "default": "Shell"
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Bulk\nPilot\nRe-cut\nSample",
+   "default": "Bulk"
+  },
+  {
+   "fieldname": "bundle_no",
+   "fieldtype": "Int",
+   "label": "Bundle No",
+   "in_list_view": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "body_no",
+   "fieldtype": "Int",
+   "label": "Body",
+   "default": "1"
+  },
+  {
+   "fieldname": "ply_from",
+   "fieldtype": "Int",
+   "label": "Ply From",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ply_to",
+   "fieldtype": "Int",
+   "label": "Ply To",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade Band"
+  },
+  {
+   "fieldname": "roll_nos",
+   "fieldtype": "Small Text",
+   "label": "Rolls"
+  },
+  {
+   "fieldname": "kit_key",
+   "fieldtype": "Data",
+   "label": "Kit Key",
+   "search_index": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Cut\nIssued\nAt Subcontractor\nBack\nComplete\nClosed\nVoided",
+   "default": "Cut",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "sewn_qty",
+   "fieldtype": "Int",
+   "label": "Sewn",
+   "default": "0"
+  },
+  {
+   "fieldname": "rejected_qty",
+   "fieldtype": "Int",
+   "label": "Rejected",
+   "default": "0"
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "is_short",
+   "fieldtype": "Check",
+   "label": "Short Bundle"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Cut Bundle",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager"
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 0,
+ "autoname": "format:BDL-{#######}",
+ "title_field": "bundle_no"
+}

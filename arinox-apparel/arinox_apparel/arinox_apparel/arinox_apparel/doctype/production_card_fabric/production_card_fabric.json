@@ -1,0 +1,125 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "colour",
+  "fabric_requisition_item",
+  "fabric_item",
+  "material_role",
+  "material_code_ref",
+  "consumption",
+  "consumption_uom",
+  "consumption_source",
+  "required_m",
+  "fr_net_m",
+  "accepted_m",
+  "issued_m",
+  "shortage_m"
+ ],
+ "fields": [
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "fabric_requisition_item",
+   "fieldtype": "Data",
+   "label": "FR Row",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric",
+   "options": "Item",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "material_role",
+   "fieldtype": "Select",
+   "label": "Role",
+   "options": "Shell\nLining\nPocketing\nContrast\nOther",
+   "default": "Shell",
+   "columns": 1
+  },
+  {
+   "fieldname": "material_code_ref",
+   "fieldtype": "Data",
+   "label": "Material Code (reference)"
+  },
+  {
+   "fieldname": "consumption",
+   "fieldtype": "Float",
+   "label": "Consumption",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "consumption_uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM",
+   "default": "Meter"
+  },
+  {
+   "fieldname": "consumption_source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "FR\nCost Sheet\nMarker\nManual",
+   "default": "FR"
+  },
+  {
+   "fieldname": "required_m",
+   "fieldtype": "Float",
+   "label": "Required (m)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "fr_net_m",
+   "fieldtype": "Float",
+   "label": "FR Net (m)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "accepted_m",
+   "fieldtype": "Float",
+   "label": "Accepted (m)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "issued_m",
+   "fieldtype": "Float",
+   "label": "Issued (m)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "shortage_m",
+   "fieldtype": "Float",
+   "label": "Shortage (m)",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Production Card Fabric",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

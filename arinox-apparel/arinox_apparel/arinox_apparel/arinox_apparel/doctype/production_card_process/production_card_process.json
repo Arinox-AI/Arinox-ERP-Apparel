@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "subcontract_process",
+  "position",
+  "sequence",
+  "item_state",
+  "supplier",
+  "colour",
+  "purchase_order",
+  "approved_standard",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "subcontract_process",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Subcontract Process",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Select",
+   "label": "Position",
+   "options": "Before Sewing\nAfter Sewing",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "default": "10",
+   "columns": 1
+  },
+  {
+   "fieldname": "item_state",
+   "fieldtype": "Select",
+   "label": "Sent As",
+   "options": "Garments\nCut Panels",
+   "columns": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Vendor",
+   "options": "Supplier",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour (blank = all)"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_standard",
+   "fieldtype": "Link",
+   "label": "Approved Standard",
+   "options": "Sample Approval"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Production Card Process",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

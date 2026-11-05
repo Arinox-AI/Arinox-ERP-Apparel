@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "colour",
+  "size",
+  "disposition",
+  "qty",
+  "defect_code",
+  "fault_source",
+  "replace"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "in_list_view": 0
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "disposition",
+   "fieldtype": "Select",
+   "label": "Disposition",
+   "options": "Rework\nReject\nB-Grade",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Qty",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "defect_code",
+   "fieldtype": "Link",
+   "label": "Defect",
+   "options": "Apparel Defect Code",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "fault_source",
+   "fieldtype": "Select",
+   "label": "Fault",
+   "options": "\nFactory Sewing\nFabric\nCutting\nSubcontractor\nTrims\nSpec or Pattern\nHandling\nUnknown",
+   "columns": 1
+  },
+  {
+   "fieldname": "replace",
+   "fieldtype": "Check",
+   "label": "Needs Re-cut"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Line QC Disposition",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

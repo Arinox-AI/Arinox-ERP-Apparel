@@ -38,7 +38,7 @@ def get_custom_fields():
 			D(fieldname="apparel_section", fieldtype="Section Break", label="Apparel", collapsible=1),
 			D(fieldname="apparel_purchase_terms", fieldtype="Link", options="Material Purchase Terms", label="Purchase Terms"),
 			D(fieldname="apparel_supplier_type", fieldtype="Select", label="Apparel Supplier Type",
-			  options="\nMill\nConverter\nTrim Supplier\nWashing\nOther"),
+			  options="\nMill\nConverter\nTrim Supplier\nWashing\nEmbroidery\nPrinting\nAppliqué\nGarment Dye\nOther"),
 		], "default_currency"),
 		"Item": _chain("Item", [
 			D(fieldname="apparel_item_section", fieldtype="Section Break", label="Apparel Material", collapsible=1),

@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "operator",
+  "round_no",
+  "pieces_checked",
+  "defects",
+  "light"
+ ],
+ "fields": [
+  {
+   "fieldname": "operator",
+   "fieldtype": "Data",
+   "label": "Operator",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 3
+  },
+  {
+   "fieldname": "round_no",
+   "fieldtype": "Int",
+   "label": "Round",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "pieces_checked",
+   "fieldtype": "Int",
+   "label": "Checked",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Int",
+   "label": "Defects",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "light",
+   "fieldtype": "Select",
+   "label": "Light",
+   "options": "\nGreen\nYellow\nRed",
+   "read_only": 1,
+   "in_list_view": 1,
+   "columns": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Line QC Traffic",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

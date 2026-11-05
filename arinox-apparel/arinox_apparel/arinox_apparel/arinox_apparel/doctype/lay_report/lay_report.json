@@ -1,0 +1,408 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "cut_plan",
+  "lay_no",
+  "colour",
+  "fabric_item",
+  "component",
+  "paired_with",
+  "col_a",
+  "purpose",
+  "recut_request",
+  "lay_date",
+  "table_no",
+  "line",
+  "shade_band",
+  "sec_marker",
+  "marker_ref",
+  "marker_length_m",
+  "marker_width_cm",
+  "col_b",
+  "marker_efficiency_pct",
+  "cutting_supervisor",
+  "spreading_operator",
+  "cutting_operator",
+  "sec_rolls",
+  "rolls",
+  "sec_sizes",
+  "sizes",
+  "sec_rej",
+  "panel_rejects",
+  "sec_tot",
+  "total_plies",
+  "laid_m",
+  "pieces_cut",
+  "col_c",
+  "rejected_pieces",
+  "lay_consumption",
+  "cad_consumption",
+  "consumption_difference",
+  "sec_gate",
+  "gate_override",
+  "gate_override_reason",
+  "remnant_entry",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "cut_plan",
+   "fieldtype": "Link",
+   "label": "Cut Plan",
+   "options": "Cut Plan"
+  },
+  {
+   "fieldname": "lay_no",
+   "fieldtype": "Int",
+   "label": "Lay No",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "fabric_item",
+   "fieldtype": "Link",
+   "label": "Fabric",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "component",
+   "fieldtype": "Select",
+   "label": "Component",
+   "options": "Shell\nLining\nPocketing\nContrast\nOther",
+   "default": "Shell"
+  },
+  {
+   "fieldname": "paired_with",
+   "fieldtype": "Link",
+   "label": "Paired Shell Lay",
+   "options": "Lay Report",
+   "description": "For lining / pocketing: the shell lay whose ply numbers this lay shares"
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Select",
+   "label": "Purpose",
+   "options": "Bulk\nPilot\nRe-cut\nSample",
+   "default": "Bulk",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "recut_request",
+   "fieldtype": "Link",
+   "label": "Re-cut Request",
+   "options": "Recut Request",
+   "depends_on": "eval:doc.purpose=='Re-cut'"
+  },
+  {
+   "fieldname": "lay_date",
+   "fieldtype": "Date",
+   "label": "Lay Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "table_no",
+   "fieldtype": "Data",
+   "label": "Table No"
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation"
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade Band",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sec_marker",
+   "fieldtype": "Section Break",
+   "label": "Marker"
+  },
+  {
+   "fieldname": "marker_ref",
+   "fieldtype": "Data",
+   "label": "Marker"
+  },
+  {
+   "fieldname": "marker_length_m",
+   "fieldtype": "Float",
+   "label": "Marker Length (m)",
+   "reqd": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "marker_width_cm",
+   "fieldtype": "Float",
+   "label": "Marker Width (cm)"
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "marker_efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Marker Efficiency %"
+  },
+  {
+   "fieldname": "cutting_supervisor",
+   "fieldtype": "Link",
+   "label": "Cutting Supervisor",
+   "options": "User"
+  },
+  {
+   "fieldname": "spreading_operator",
+   "fieldtype": "Data",
+   "label": "Spreading Operator"
+  },
+  {
+   "fieldname": "cutting_operator",
+   "fieldtype": "Data",
+   "label": "Cutting Operator"
+  },
+  {
+   "fieldname": "sec_rolls",
+   "fieldtype": "Section Break",
+   "label": "Rolls Laid"
+  },
+  {
+   "fieldname": "rolls",
+   "fieldtype": "Table",
+   "label": "Rolls",
+   "options": "Lay Roll",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_sizes",
+   "fieldtype": "Section Break",
+   "label": "Sizes Cut"
+  },
+  {
+   "fieldname": "sizes",
+   "fieldtype": "Table",
+   "label": "Sizes",
+   "options": "Lay Size",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sec_rej",
+   "fieldtype": "Section Break",
+   "label": "Panels Rejected at Cutting"
+  },
+  {
+   "fieldname": "panel_rejects",
+   "fieldtype": "Table",
+   "label": "Rejected Panels",
+   "options": "Lay Panel Reject"
+  },
+  {
+   "fieldname": "sec_tot",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "total_plies",
+   "fieldtype": "Int",
+   "label": "Total Plies",
+   "read_only": 1
+  },
+  {
+   "fieldname": "laid_m",
+   "fieldtype": "Float",
+   "label": "Laid (m)",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "pieces_cut",
+   "fieldtype": "Int",
+   "label": "Pieces Cut",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_c",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "rejected_pieces",
+   "fieldtype": "Int",
+   "label": "Rejected Panels",
+   "read_only": 1
+  },
+  {
+   "fieldname": "lay_consumption",
+   "fieldtype": "Float",
+   "label": "Lay Consumption (m / pc)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "cad_consumption",
+   "fieldtype": "Float",
+   "label": "CAD Consumption (m / pc)",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "consumption_difference",
+   "fieldtype": "Float",
+   "label": "Difference",
+   "read_only": 1,
+   "precision": "4"
+  },
+  {
+   "fieldname": "sec_gate",
+   "fieldtype": "Section Break",
+   "label": "Bulk Gate",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "gate_override",
+   "fieldtype": "Check",
+   "label": "Override Bulk Gate",
+   "no_copy": 1,
+   "description": "Production Manager only"
+  },
+  {
+   "fieldname": "gate_override_reason",
+   "fieldtype": "Small Text",
+   "label": "Override Reason",
+   "depends_on": "gate_override",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "remnant_entry",
+   "fieldtype": "Link",
+   "label": "Remnant Return Stock Entry",
+   "options": "Stock Entry",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Lay Report",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Lay Report",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:LAY-{YY}-{#####}",
+ "title_field": "colour",
+ "search_fields": "production_card,colour,lay_no,purpose"
+}

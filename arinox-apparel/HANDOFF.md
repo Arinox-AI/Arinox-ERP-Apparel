@@ -1,5 +1,7 @@
 # Handoff — Arinox Apparel
 
+> **Update 2026-11-05 (Phase D):** Production slices D0 to D4 (foundations and ledger, Production Card, Pilot Run, bulk cutting, bulk sewing) are built on the dev site. D5 to D9 (subcontracting, finishing, packing, final inspection, order close) are not started. Read `doctypes/PHASE_D_BUILD_STATUS.md` first for the state, the deviations from the plan and what is unverified (the sewing tests were not re-run after the last fixes; nothing from Phase D has been opened in a browser). The plan is `doctypes/PHASE_D_PRODUCTION_PLAN.md`. Decisions from the user: build for any country, no QR for now, wash penalty on all damaged pieces.
+
 > **Update 2026-11-05:** Phases A, B and C are built on the local dev site (bench at `/workspaces/frappe-bench`, site `apparel.localhost`). 195 tests pass. The "Where we are" section below is from the first session and is out of date. See `doctypes/PHASE1_ORDER_BACKBONE_PLAN.md`, `PHASE_B_PLAN_AND_APPROVE.md` and `PHASE_C_MATERIALS_PLAN.md` (status log at the end) for what exists. After a Codespace restart, start the database first: `docker start apparel-mariadb apparel-redis`. The hosted site still has none of this: someone with shell access must run `bench get-app`, `install-app` and `migrate` (see `DEPLOY.md`).
 
 Read this first in any new session, then `CLAUDE.md`.

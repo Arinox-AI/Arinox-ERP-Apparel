@@ -59,7 +59,62 @@
   "hold_po_until_approval",
   "cost_overrun_warn_pct",
   "col_mat3",
-  "default_tna_template"
+  "default_tna_template",
+  "section_prod",
+  "default_extra_cut_pct",
+  "max_extra_cut_pct",
+  "trim_allowance_pct",
+  "bundle_size",
+  "cut_cap_mode",
+  "cut_cap_extra_pcs",
+  "col_prod1",
+  "marker_variance_pct",
+  "max_width_spread_cm",
+  "max_shrinkage_spread_pct",
+  "panel_inspection_pct",
+  "remnant_min_m",
+  "kit_check",
+  "section_prod_pilot",
+  "pilot_min_order_qty",
+  "pilot_default_qty",
+  "col_prod2",
+  "require_pilot_before_bulk_wash",
+  "section_prod_sewing",
+  "work_minutes_per_day",
+  "planned_efficiency_pct",
+  "learning_curve",
+  "require_bundle_on_input",
+  "require_bundle_on_output",
+  "col_prod3",
+  "inline_check_pieces",
+  "traffic_light_rules",
+  "dhu_alert_threshold",
+  "section_prod_sub",
+  "subcontract_default_threshold_pct",
+  "subcontract_penalty_scope",
+  "subcontract_penalty_basis",
+  "col_prod4",
+  "subcontract_reconcile_days",
+  "section_prod_fin",
+  "needle_check_required",
+  "needle_test_piece_mm",
+  "needle_recheck_hours",
+  "controlled_trim_tolerance",
+  "carton_max_gross_kg",
+  "gs1_company_prefix",
+  "col_prod5",
+  "final_inspection_plan",
+  "carton_pick_rule",
+  "ship_gate_final_inspection",
+  "ship_tolerance_basis",
+  "section_prod_stock",
+  "auto_submit_stock_entries",
+  "post_fg_receipt",
+  "col_prod6",
+  "cutting_wip_warehouse",
+  "line_wip_warehouse",
+  "seconds_warehouse",
+  "scrap_warehouse"
  ],
  "fields": [
   {
@@ -403,6 +458,335 @@
    "fieldtype": "Link",
    "label": "Default T&A Template",
    "options": "TNA Template"
+  },
+  {
+   "fieldname": "section_prod",
+   "fieldtype": "Section Break",
+   "label": "Production: Cutting"
+  },
+  {
+   "fieldname": "default_extra_cut_pct",
+   "fieldtype": "Percent",
+   "label": "Default Extra Cut %",
+   "default": "5"
+  },
+  {
+   "fieldname": "max_extra_cut_pct",
+   "fieldtype": "Percent",
+   "label": "Max Extra Cut % (warn above)",
+   "default": "8"
+  },
+  {
+   "fieldname": "trim_allowance_pct",
+   "fieldtype": "Percent",
+   "label": "Trim Allowance % (printed on card)",
+   "default": "2"
+  },
+  {
+   "fieldname": "bundle_size",
+   "fieldtype": "Int",
+   "label": "Bundle Size (pcs)",
+   "default": "20"
+  },
+  {
+   "fieldname": "cut_cap_mode",
+   "fieldtype": "Select",
+   "label": "Cutting Above Plan",
+   "options": "Block\nWarn\nOff",
+   "default": "Block"
+  },
+  {
+   "fieldname": "cut_cap_extra_pcs",
+   "fieldtype": "Int",
+   "label": "Spare Pcs per Colour x Size",
+   "default": "3"
+  },
+  {
+   "fieldname": "col_prod1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "marker_variance_pct",
+   "fieldtype": "Percent",
+   "label": "Marker Variance Needing Approval %",
+   "default": "5"
+  },
+  {
+   "fieldname": "max_width_spread_cm",
+   "fieldtype": "Float",
+   "label": "Max Width Spread in One Lay (cm)",
+   "default": "1"
+  },
+  {
+   "fieldname": "max_shrinkage_spread_pct",
+   "fieldtype": "Float",
+   "label": "Max Shrinkage Spread in One Lay %",
+   "default": "3"
+  },
+  {
+   "fieldname": "panel_inspection_pct",
+   "fieldtype": "Percent",
+   "label": "Cut Panels Inspected %",
+   "default": "100"
+  },
+  {
+   "fieldname": "remnant_min_m",
+   "fieldtype": "Float",
+   "label": "Remnant Roll Minimum (m)",
+   "default": "5"
+  },
+  {
+   "fieldname": "kit_check",
+   "fieldtype": "Select",
+   "label": "Kit Check (lining / pocketing bundles)",
+   "options": "Block\nWarn\nOff",
+   "default": "Warn"
+  },
+  {
+   "fieldname": "section_prod_pilot",
+   "fieldtype": "Section Break",
+   "label": "Production: Pilot Run"
+  },
+  {
+   "fieldname": "pilot_min_order_qty",
+   "fieldtype": "Int",
+   "label": "Pilot Required from Order Qty",
+   "default": "1000"
+  },
+  {
+   "fieldname": "pilot_default_qty",
+   "fieldtype": "Int",
+   "label": "Pilot Pieces per Style",
+   "default": "30"
+  },
+  {
+   "fieldname": "col_prod2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "require_pilot_before_bulk_wash",
+   "fieldtype": "Select",
+   "label": "Pilot Before Bulk Wash",
+   "options": "Block\nWarn\nOff",
+   "default": "Warn"
+  },
+  {
+   "fieldname": "section_prod_sewing",
+   "fieldtype": "Section Break",
+   "label": "Production: Sewing"
+  },
+  {
+   "fieldname": "work_minutes_per_day",
+   "fieldtype": "Int",
+   "label": "Working Minutes per Day",
+   "default": "480"
+  },
+  {
+   "fieldname": "planned_efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Planned Efficiency %",
+   "default": "65"
+  },
+  {
+   "fieldname": "learning_curve",
+   "fieldtype": "Table",
+   "label": "Learning Curve",
+   "options": "Learning Curve Day",
+   "description": "Assumption, not sourced. Percent of target by day on a new style"
+  },
+  {
+   "fieldname": "require_bundle_on_input",
+   "fieldtype": "Check",
+   "label": "Line Input Needs Bundles",
+   "default": "1"
+  },
+  {
+   "fieldname": "require_bundle_on_output",
+   "fieldtype": "Check",
+   "label": "Line Output Needs Bundles",
+   "default": "0"
+  },
+  {
+   "fieldname": "col_prod3",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "inline_check_pieces",
+   "fieldtype": "Int",
+   "label": "Inline Check Pieces per Operator",
+   "default": "5"
+  },
+  {
+   "fieldname": "traffic_light_rules",
+   "fieldtype": "Table",
+   "label": "Traffic Light Rules",
+   "options": "Traffic Light Rule"
+  },
+  {
+   "fieldname": "dhu_alert_threshold",
+   "fieldtype": "Float",
+   "label": "DHU Alert Above",
+   "default": "5"
+  },
+  {
+   "fieldname": "section_prod_sub",
+   "fieldtype": "Section Break",
+   "label": "Production: Subcontracting"
+  },
+  {
+   "fieldname": "subcontract_default_threshold_pct",
+   "fieldtype": "Percent",
+   "label": "Default Rejection Threshold %",
+   "default": "1"
+  },
+  {
+   "fieldname": "subcontract_penalty_scope",
+   "fieldtype": "Select",
+   "label": "Penalty Applies To",
+   "options": "All Damaged\nExcess Only",
+   "default": "All Damaged"
+  },
+  {
+   "fieldname": "subcontract_penalty_basis",
+   "fieldtype": "Select",
+   "label": "Penalty Basis",
+   "options": "Cost Sheet FOB\nSales Order Rate\nFixed Per Piece",
+   "default": "Cost Sheet FOB"
+  },
+  {
+   "fieldname": "col_prod4",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "subcontract_reconcile_days",
+   "fieldtype": "Int",
+   "label": "Quantity Confirmation Window (days)",
+   "default": "3"
+  },
+  {
+   "fieldname": "section_prod_fin",
+   "fieldtype": "Section Break",
+   "label": "Production: Finishing, Packing, Inspection"
+  },
+  {
+   "fieldname": "needle_check_required",
+   "fieldtype": "Select",
+   "label": "Metal Detector Check Required",
+   "options": "Block\nWarn\nOff",
+   "default": "Warn"
+  },
+  {
+   "fieldname": "needle_test_piece_mm",
+   "fieldtype": "Float",
+   "label": "Detector Test Piece (mm)",
+   "default": "1.2"
+  },
+  {
+   "fieldname": "needle_recheck_hours",
+   "fieldtype": "Float",
+   "label": "Detector Re-check Every (hours)",
+   "default": "2"
+  },
+  {
+   "fieldname": "controlled_trim_tolerance",
+   "fieldtype": "Int",
+   "label": "Controlled Trim Tolerance (pcs)",
+   "default": "0"
+  },
+  {
+   "fieldname": "carton_max_gross_kg",
+   "fieldtype": "Float",
+   "label": "Carton Max Gross (kg)",
+   "default": "22.7"
+  },
+  {
+   "fieldname": "gs1_company_prefix",
+   "fieldtype": "Data",
+   "label": "GS1 Company Prefix",
+   "description": "Blank = SSCC numbers off"
+  },
+  {
+   "fieldname": "col_prod5",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "final_inspection_plan",
+   "fieldtype": "Link",
+   "label": "Final Inspection AQL Plan",
+   "options": "AQL Plan"
+  },
+  {
+   "fieldname": "carton_pick_rule",
+   "fieldtype": "Select",
+   "label": "Final Inspection Carton Pick",
+   "options": "Square Root\nFixed Pct",
+   "default": "Square Root"
+  },
+  {
+   "fieldname": "ship_gate_final_inspection",
+   "fieldtype": "Select",
+   "label": "Delivery Note Needs Passed Final Inspection",
+   "options": "Block\nWarn\nOff",
+   "default": "Block"
+  },
+  {
+   "fieldname": "ship_tolerance_basis",
+   "fieldtype": "Select",
+   "label": "Over / Short Ship Check",
+   "options": "Total\nEach Size\nBoth",
+   "default": "Both"
+  },
+  {
+   "fieldname": "section_prod_stock",
+   "fieldtype": "Section Break",
+   "label": "Production: Stock Postings"
+  },
+  {
+   "fieldname": "auto_submit_stock_entries",
+   "fieldtype": "Check",
+   "label": "Submit Finished Goods and Consumption Entries",
+   "default": "0",
+   "description": "Off: they are drafted for the accountant"
+  },
+  {
+   "fieldname": "post_fg_receipt",
+   "fieldtype": "Check",
+   "label": "Draft Finished Goods Receipt at Packing",
+   "default": "1"
+  },
+  {
+   "fieldname": "col_prod6",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "cutting_wip_warehouse",
+   "fieldtype": "Link",
+   "label": "Cutting WIP Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "line_wip_warehouse",
+   "fieldtype": "Link",
+   "label": "Line WIP Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "seconds_warehouse",
+   "fieldtype": "Link",
+   "label": "Seconds (B-Grade) Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "fieldname": "scrap_warehouse",
+   "fieldtype": "Link",
+   "label": "Scrap Warehouse",
+   "options": "Warehouse"
   }
  ],
  "index_web_pages_for_search": 0,

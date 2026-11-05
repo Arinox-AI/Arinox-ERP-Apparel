@@ -1,0 +1,260 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "report_date",
+  "line",
+  "shift_minutes",
+  "operators_present",
+  "helpers_present",
+  "col_a",
+  "overtime_minutes",
+  "downtime_minutes",
+  "downtime_reason",
+  "sec_out",
+  "outputs",
+  "hours",
+  "sec_calc",
+  "total_output",
+  "produced_minutes",
+  "available_minutes",
+  "efficiency_pct",
+  "col_b",
+  "target_qty",
+  "variance_to_target",
+  "learning_day",
+  "learning_factor_pct",
+  "notes",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "report_date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "default": "Today",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "shift_minutes",
+   "fieldtype": "Int",
+   "label": "Shift Minutes"
+  },
+  {
+   "fieldname": "operators_present",
+   "fieldtype": "Int",
+   "label": "Operators Present",
+   "reqd": 1
+  },
+  {
+   "fieldname": "helpers_present",
+   "fieldtype": "Int",
+   "label": "Helpers Present",
+   "description": "Counted in the available minutes (the bulletin's SAM includes helper time)"
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "overtime_minutes",
+   "fieldtype": "Int",
+   "label": "Overtime Minutes"
+  },
+  {
+   "fieldname": "downtime_minutes",
+   "fieldtype": "Int",
+   "label": "Downtime Minutes"
+  },
+  {
+   "fieldname": "downtime_reason",
+   "fieldtype": "Select",
+   "label": "Downtime Reason",
+   "options": "\nNo Work\nMachine\nPower\nMaterial\nAbsence\nChangeover\nOther"
+  },
+  {
+   "fieldname": "sec_out",
+   "fieldtype": "Section Break",
+   "label": "Output"
+  },
+  {
+   "fieldname": "outputs",
+   "fieldtype": "Table",
+   "label": "Output",
+   "options": "Daily Line Report Output",
+   "reqd": 1
+  },
+  {
+   "fieldname": "hours",
+   "fieldtype": "Table",
+   "label": "Hourly",
+   "options": "Daily Line Report Hour"
+  },
+  {
+   "fieldname": "sec_calc",
+   "fieldtype": "Section Break",
+   "label": "Result",
+   "collapsible": 0
+  },
+  {
+   "fieldname": "total_output",
+   "fieldtype": "Int",
+   "label": "Total Output",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "produced_minutes",
+   "fieldtype": "Float",
+   "label": "Produced Minutes",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "available_minutes",
+   "fieldtype": "Float",
+   "label": "Available Minutes",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Efficiency %",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "target_qty",
+   "fieldtype": "Float",
+   "label": "Target",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "variance_to_target",
+   "fieldtype": "Float",
+   "label": "Output vs Target",
+   "read_only": 1,
+   "precision": "1"
+  },
+  {
+   "fieldname": "learning_day",
+   "fieldtype": "Int",
+   "label": "Day on Line",
+   "read_only": 1
+  },
+  {
+   "fieldname": "learning_factor_pct",
+   "fieldtype": "Percent",
+   "label": "Learning Curve %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Daily Line Report",
+   "no_copy": 1,
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Daily Line Report",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1,
+   "submit": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "autoname": "format:DLR-{YY}-{#####}",
+ "search_fields": "line,report_date"
+}

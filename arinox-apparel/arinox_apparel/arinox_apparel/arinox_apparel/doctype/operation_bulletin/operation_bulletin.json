@@ -1,0 +1,246 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "style_item",
+  "version",
+  "status",
+  "buyer",
+  "description",
+  "colour",
+  "col_a",
+  "operators",
+  "working_minutes",
+  "expected_efficiency_pct",
+  "sec_totals",
+  "total_sam",
+  "sewing_sam",
+  "manual_sam",
+  "operation_count",
+  "col_b",
+  "target_per_day",
+  "target_per_hour",
+  "pcs_per_machine",
+  "pitch_time",
+  "sec_ops",
+  "operations",
+  "source_file"
+ ],
+ "fields": [
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style",
+   "options": "Item",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "version",
+   "fieldtype": "Int",
+   "label": "Version",
+   "default": "1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Draft\nActive\nSuperseded",
+   "default": "Draft",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "buyer",
+   "fieldtype": "Link",
+   "label": "Buyer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour (reference)"
+  },
+  {
+   "fieldname": "col_a",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "operators",
+   "fieldtype": "Int",
+   "label": "Workers Planned (operators + helpers)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "working_minutes",
+   "fieldtype": "Int",
+   "label": "Working Minutes / Day"
+  },
+  {
+   "fieldname": "expected_efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Expected Efficiency %"
+  },
+  {
+   "fieldname": "sec_totals",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "total_sam",
+   "fieldtype": "Float",
+   "label": "Total SAM / Garment",
+   "read_only": 1,
+   "in_list_view": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "sewing_sam",
+   "fieldtype": "Float",
+   "label": "Sewing (M/C) SAM",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "manual_sam",
+   "fieldtype": "Float",
+   "label": "Manual SAM",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "operation_count",
+   "fieldtype": "Int",
+   "label": "Operations",
+   "read_only": 1
+  },
+  {
+   "fieldname": "col_b",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "target_per_day",
+   "fieldtype": "Float",
+   "label": "Target / Day",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "target_per_hour",
+   "fieldtype": "Float",
+   "label": "Target / Hour",
+   "read_only": 1,
+   "precision": "2"
+  },
+  {
+   "fieldname": "pcs_per_machine",
+   "fieldtype": "Float",
+   "label": "Pcs / Machine / Day",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "pitch_time",
+   "fieldtype": "Float",
+   "label": "Pitch Time (min)",
+   "read_only": 1,
+   "precision": "3"
+  },
+  {
+   "fieldname": "sec_ops",
+   "fieldtype": "Section Break",
+   "label": "Operations"
+  },
+  {
+   "fieldname": "operations",
+   "fieldtype": "Table",
+   "label": "Operations",
+   "options": "OB Operation"
+  },
+  {
+   "fieldname": "source_file",
+   "fieldtype": "Attach",
+   "label": "Source Workbook"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Operation Bulletin",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 0,
+   "role": "Apparel Production Manager"
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "write": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1
+  }
+ ],
+ "track_changes": 1,
+ "autoname": "format:OB-{YY}-{#####}",
+ "title_field": "style_item",
+ "search_fields": "style_item,status"
+}
