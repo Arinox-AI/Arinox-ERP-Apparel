@@ -1,0 +1,104 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "challan_row",
+  "colour",
+  "size",
+  "sent_qty",
+  "good_qty",
+  "reject_vendor_qty",
+  "reject_factory_qty",
+  "accepted_for_repair",
+  "defect_code",
+  "shade_band"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "challan_row",
+   "fieldtype": "Data",
+   "label": "Challan Row",
+   "read_only": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "colour",
+   "fieldtype": "Data",
+   "label": "Colour",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "label": "Size",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sent_qty",
+   "fieldtype": "Int",
+   "label": "Sent",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "good_qty",
+   "fieldtype": "Int",
+   "label": "Good",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reject_vendor_qty",
+   "fieldtype": "Int",
+   "label": "Vendor Fault",
+   "in_list_view": 1,
+   "description": "Damaged by the vendor: not paid, may carry a penalty"
+  },
+  {
+   "fieldname": "reject_factory_qty",
+   "fieldtype": "Int",
+   "label": "Factory Fault",
+   "in_list_view": 1,
+   "description": "Defective before it was sent"
+  },
+  {
+   "fieldname": "accepted_for_repair",
+   "fieldtype": "Int",
+   "label": "Taken Back to Repair",
+   "description": "Factory-fault pieces repaired and sent on to finishing"
+  },
+  {
+   "fieldname": "defect_code",
+   "fieldtype": "Link",
+   "label": "Defect Code",
+   "options": "Apparel Defect Code"
+  },
+  {
+   "fieldname": "shade_band",
+   "fieldtype": "Data",
+   "label": "Shade / Wash Lot"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Subcontract Return Row",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

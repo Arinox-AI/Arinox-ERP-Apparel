@@ -114,7 +114,22 @@
   "cutting_wip_warehouse",
   "line_wip_warehouse",
   "seconds_warehouse",
-  "scrap_warehouse"
+  "scrap_warehouse",
+  "shipping_section",
+  "final_min_packed_pct",
+  "final_block_packed_pct",
+  "reinspection_limit",
+  "measure_variance_warn_pct",
+  "weight_variance_warn_pct",
+  "rog_buffer_days",
+  "freight_estimate_variance_pct",
+  "shipping_col",
+  "reminder_days_before_due",
+  "escalation_days_1",
+  "escalation_days_2",
+  "escalation_days_3",
+  "claim_requires_evidence",
+  "air_volumetric_divisor"
  ],
  "fields": [
   {
@@ -787,6 +802,95 @@
    "fieldtype": "Link",
    "label": "Scrap Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "shipping_section",
+   "fieldtype": "Section Break",
+   "label": "Shipping and Collections"
+  },
+  {
+   "fieldname": "final_min_packed_pct",
+   "fieldtype": "Percent",
+   "label": "Final Inspection: Packed % Expected",
+   "default": "80"
+  },
+  {
+   "fieldname": "final_block_packed_pct",
+   "fieldtype": "Percent",
+   "label": "Final Inspection: Packed % Required",
+   "default": "50"
+  },
+  {
+   "fieldname": "reinspection_limit",
+   "fieldtype": "Int",
+   "label": "Re-inspections Before a Manager Must Approve",
+   "default": "2"
+  },
+  {
+   "fieldname": "measure_variance_warn_pct",
+   "fieldtype": "Percent",
+   "label": "Warn When CBM Differs by %",
+   "default": "5"
+  },
+  {
+   "fieldname": "weight_variance_warn_pct",
+   "fieldtype": "Percent",
+   "label": "Warn When Weight Differs by %",
+   "default": "2"
+  },
+  {
+   "fieldname": "rog_buffer_days",
+   "fieldtype": "Int",
+   "label": "Days from Arrival to Receipt of Goods",
+   "default": "5",
+   "description": "Used until the delivery date is recorded"
+  },
+  {
+   "fieldname": "freight_estimate_variance_pct",
+   "fieldtype": "Percent",
+   "label": "Warn When Forwarder Bills Differ from Quote by %",
+   "default": "10"
+  },
+  {
+   "fieldname": "shipping_col",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reminder_days_before_due",
+   "fieldtype": "Int",
+   "label": "Remind This Many Days Before Due",
+   "default": "7"
+  },
+  {
+   "fieldname": "escalation_days_1",
+   "fieldtype": "Int",
+   "label": "First Reminder When Overdue (days)",
+   "default": "15"
+  },
+  {
+   "fieldname": "escalation_days_2",
+   "fieldtype": "Int",
+   "label": "Second Reminder When Overdue (days)",
+   "default": "30"
+  },
+  {
+   "fieldname": "escalation_days_3",
+   "fieldtype": "Int",
+   "label": "Escalate to Management When Overdue (days)",
+   "default": "60"
+  },
+  {
+   "fieldname": "claim_requires_evidence",
+   "fieldtype": "Check",
+   "label": "Buyer Claims Need Evidence",
+   "default": "1"
+  },
+  {
+   "fieldname": "air_volumetric_divisor",
+   "fieldtype": "Float",
+   "label": "Air Freight Volumetric Divisor",
+   "default": "6000",
+   "description": "L x W x H in cm, divided by this, gives the volumetric kg"
   }
  ],
  "index_web_pages_for_search": 0,

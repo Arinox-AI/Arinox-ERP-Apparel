@@ -22,3 +22,27 @@ frappe.ui.form.on("Sales Order", {
 		}
 	},
 });
+
+// Phase E: the contract trail and the commercial close checklist
+frappe.ui.form.on("Sales Order", {
+	refresh(frm) {
+		if (frm.doc.docstatus !== 1) return;
+		if (frm.doc.apparel_sales_contract) {
+			frm.add_custom_button(__("Contract Trail"), () => frappe.set_route("query-report", "Contract Trail", { contract: frm.doc.apparel_sales_contract }), __("Apparel"));
+		}
+		frm.add_custom_button(__("Commercial Close"), () => {
+			frappe.call({ method: "arinox_apparel.shipping.close.get_checklist", args: { sales_order: frm.doc.name }, callback: (r) => {
+				const rows = r.message.map((x) => `${x.ok ? "✔" : "✘"} ${frappe.utils.escape_html(x.label)}${x.detail ? ": " + frappe.utils.escape_html(x.detail) : ""}`).join("<br>");
+				const d = new frappe.ui.Dialog({
+					title: __("Close the order commercially"),
+					fields: [{ fieldtype: "HTML", options: rows }, { fieldname: "waive", label: __("Reason to close with a claim window still open"), fieldtype: "Small Text" }],
+					primary_action_label: __("Close Order"),
+					primary_action(v) {
+						frappe.call({ method: "arinox_apparel.shipping.close.commercial_close", args: { sales_order: frm.doc.name, waive_reason: v.waive }, callback: () => { d.hide(); frm.reload_doc(); } });
+					},
+				});
+				d.show();
+			} });
+		}, __("Apparel"));
+	},
+});

@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "rule",
+  "filing_name",
+  "due_by",
+  "filed_by",
+  "filed_on",
+  "reference"
+ ],
+ "fields": [
+  {
+   "fieldname": "rule",
+   "fieldtype": "Link",
+   "label": "Rule",
+   "options": "Destination Filing Rule",
+   "read_only": 1
+  },
+  {
+   "fieldname": "filing_name",
+   "fieldtype": "Data",
+   "label": "Filing",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "due_by",
+   "fieldtype": "Datetime",
+   "label": "Due By",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "filed_by",
+   "fieldtype": "Select",
+   "label": "Filed By",
+   "options": "\nUs\nForwarder\nBuyer\nCustoms Broker",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "filed_on",
+   "fieldtype": "Date",
+   "label": "Filed On",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Data",
+   "label": "Reference No",
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Shipment Filing",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

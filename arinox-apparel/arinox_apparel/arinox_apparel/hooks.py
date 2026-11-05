@@ -32,6 +32,8 @@ doctype_js = {
 	"Work Order": "public/js/work_order.js",
 	"Purchase Order": "public/js/purchase_order.js",
 	"Purchase Receipt": "public/js/purchase_receipt.js",
+	"Shipment": "public/js/shipment.js",
+	"Sales Invoice": "public/js/sales_invoice.js",
 }
 
 doc_events = {
@@ -63,6 +65,25 @@ doc_events = {
 		"on_submit": "arinox_apparel.overrides.purchase_receipt.on_submit",
 		"on_cancel": "arinox_apparel.overrides.purchase_receipt.on_cancel",
 	},
+	# Phase E: shipping, invoicing and freight
+	"Delivery Note": {
+		"validate": "arinox_apparel.shipping.delivery.validate",
+		"before_submit": "arinox_apparel.shipping.delivery.before_submit",
+		"on_submit": "arinox_apparel.shipping.delivery.on_submit",
+		"on_cancel": "arinox_apparel.shipping.delivery.on_cancel",
+	},
+	"Shipment": {
+		"before_validate": "arinox_apparel.shipping.shipment.before_validate",
+		"validate": "arinox_apparel.shipping.shipment.validate",
+		"on_update": "arinox_apparel.shipping.shipment.on_update",
+		"on_update_after_submit": "arinox_apparel.shipping.shipment.on_update",
+		"on_cancel": "arinox_apparel.shipping.shipment.on_cancel",
+	},
+	"Purchase Invoice": {
+		"on_update": "arinox_apparel.shipping.freight.on_purchase_invoice",
+		"on_submit": "arinox_apparel.shipping.freight.on_purchase_invoice",
+		"on_cancel": "arinox_apparel.shipping.freight.on_purchase_invoice",
+	},
 	# Phase B: bulk gate (G3)
 	"Work Order": {
 		"validate": "arinox_apparel.overrides.work_order.validate",
@@ -80,4 +101,4 @@ override_doctype_dashboards = {
 
 # The T&A statuses are computed from today's date wherever they are shown, so nothing depends on this job.
 # It only refreshes stored values and sends reminders.
-scheduler_events = {"daily": ["arinox_apparel.tna.status.refresh_all"]}
+scheduler_events = {"daily": ["arinox_apparel.tna.status.refresh_all", "arinox_apparel.shipping.followup.daily"]}

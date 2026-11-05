@@ -55,6 +55,9 @@ def after_migrate():
 	from arinox_apparel.setup import production
 
 	production.run()
+	from arinox_apparel.setup import shipping
+
+	shipping.run()
 	from arinox_apparel.tna import seed as tna_seed
 
 	tna_seed.seed()
@@ -117,7 +120,7 @@ def get_custom_fields():
 			dict(fieldname="apparel_production_card", fieldtype="Link", options="Production Card", label="Production Card",
 				 insert_after="purpose", read_only=1, no_copy=1, search_index=1),
 			dict(fieldname="apparel_issue_kind", fieldtype="Select", label="Production Issue Kind",
-				 options="\nFabric Issue\nRemnant Return\nTrim Issue", insert_after="apparel_production_card", read_only=1, no_copy=1),
+				 options="\nFabric Issue\nRemnant Return\nTrim Issue\nFinished Goods Receipt", insert_after="apparel_production_card", read_only=1, no_copy=1),
 		],
 		"Opportunity": [
 			dict(fieldname="apparel_section", fieldtype="Section Break", label="Apparel Inquiry",

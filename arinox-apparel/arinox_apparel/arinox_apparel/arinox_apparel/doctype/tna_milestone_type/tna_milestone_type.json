@@ -41,7 +41,7 @@
    "fieldname": "auto_source",
    "fieldtype": "Select",
    "label": "Stamped By",
-   "options": "Manual\nTech Pack\nSales Order\nFactory Allocation\nSample Approval\nPP Meeting\nFabric Requisition\nTrim Requisition\nPurchase Order\nPurchase Receipt\nFabric Inspection\nTrim Inspection\nWork Order",
+   "options": "Manual\nTech Pack\nSales Order\nFactory Allocation\nSample Approval\nPP Meeting\nFabric Requisition\nTrim Requisition\nPurchase Order\nPurchase Receipt\nFabric Inspection\nTrim Inspection\nWork Order\nShipment",
    "default": "Manual",
    "in_list_view": 1
   },

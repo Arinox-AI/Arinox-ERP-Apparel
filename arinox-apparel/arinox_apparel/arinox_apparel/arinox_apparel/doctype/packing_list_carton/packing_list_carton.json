@@ -1,0 +1,127 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "carton_from",
+  "carton_to",
+  "carton_count",
+  "carton_type",
+  "length_cm",
+  "width_cm",
+  "height_cm",
+  "cbm_per_carton",
+  "total_cbm",
+  "pieces_per_carton",
+  "total_pieces",
+  "net_weight_kg",
+  "gross_weight_kg",
+  "shade",
+  "tail"
+ ],
+ "fields": [
+  {
+   "fieldname": "carton_from",
+   "fieldtype": "Int",
+   "label": "From Carton",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "carton_to",
+   "fieldtype": "Int",
+   "label": "To Carton",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "carton_count",
+   "fieldtype": "Int",
+   "label": "Cartons",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "carton_type",
+   "fieldtype": "Link",
+   "label": "Carton Size",
+   "options": "Shipment Parcel Template"
+  },
+  {
+   "fieldname": "length_cm",
+   "fieldtype": "Float",
+   "label": "L (cm)"
+  },
+  {
+   "fieldname": "width_cm",
+   "fieldtype": "Float",
+   "label": "W (cm)"
+  },
+  {
+   "fieldname": "height_cm",
+   "fieldtype": "Float",
+   "label": "H (cm)",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cbm_per_carton",
+   "fieldtype": "Float",
+   "label": "CBM / Carton",
+   "read_only": 1,
+   "precision": "6"
+  },
+  {
+   "fieldname": "total_cbm",
+   "fieldtype": "Float",
+   "label": "CBM",
+   "read_only": 1,
+   "precision": "6"
+  },
+  {
+   "fieldname": "pieces_per_carton",
+   "fieldtype": "Int",
+   "label": "Pcs / Carton",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "total_pieces",
+   "fieldtype": "Int",
+   "label": "Pieces",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "net_weight_kg",
+   "fieldtype": "Float",
+   "label": "Net kg / Carton"
+  },
+  {
+   "fieldname": "gross_weight_kg",
+   "fieldtype": "Float",
+   "label": "Gross kg / Carton",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "shade",
+   "fieldtype": "Data",
+   "label": "Shade"
+  },
+  {
+   "fieldname": "tail",
+   "fieldtype": "Check",
+   "label": "Tail Carton"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Packing List Carton",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

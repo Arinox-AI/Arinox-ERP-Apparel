@@ -125,6 +125,14 @@ def rebuild_movements(card):
 			before = frappe.db.count("Production Movement", {"production_card": card})
 			doc.post_movements(check=False)
 			written += frappe.db.count("Production Movement", {"production_card": card}) - before
+	# Delivery Notes are ERPNext documents: their rows carry the card, and our poster reads them
+	if frappe.get_meta("Delivery Note Item").has_field("apparel_production_card"):
+		from arinox_apparel.shipping import delivery
+
+		for name in frappe.db.sql_list("select distinct parent from `tabDelivery Note Item` where apparel_production_card = %s and docstatus = 1", card):
+			before = frappe.db.count("Production Movement", {"production_card": card})
+			delivery.post_movements(frappe.get_doc("Delivery Note", name), check=False, only_card=card)
+			written += frappe.db.count("Production Movement", {"production_card": card}) - before
 	return written
 
 

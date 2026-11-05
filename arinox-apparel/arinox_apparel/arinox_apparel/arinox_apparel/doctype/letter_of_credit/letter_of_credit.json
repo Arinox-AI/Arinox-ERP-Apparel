@@ -1,0 +1,234 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lc_no",
+  "sales_contract",
+  "customer",
+  "issuing_bank",
+  "advising_bank",
+  "col1",
+  "currency",
+  "amount",
+  "tolerance_pct",
+  "latest_shipment_date",
+  "expiry_date",
+  "presentation_days",
+  "s2",
+  "shipment",
+  "on_board_date",
+  "presentation_deadline",
+  "col2",
+  "drawn_amount",
+  "available_amount",
+  "status",
+  "check_note",
+  "s3",
+  "required_documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "lc_no",
+   "fieldtype": "Data",
+   "label": "L/C Number",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Applicant",
+   "options": "Customer",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "issuing_bank",
+   "fieldtype": "Data",
+   "label": "Issuing Bank"
+  },
+  {
+   "fieldname": "advising_bank",
+   "fieldtype": "Data",
+   "label": "Advising Bank"
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "L/C Amount",
+   "reqd": 1,
+   "options": "currency",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Amount Tolerance \u00b1%",
+   "default": "0"
+  },
+  {
+   "fieldname": "latest_shipment_date",
+   "fieldtype": "Date",
+   "label": "Latest Shipment Date"
+  },
+  {
+   "fieldname": "expiry_date",
+   "fieldtype": "Date",
+   "label": "Expiry Date",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "presentation_days",
+   "fieldtype": "Int",
+   "label": "Days to Present Documents After Shipment",
+   "default": "21",
+   "description": "UCP 600 default when the credit is silent"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Shipment and Presentation"
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment",
+   "options": "Shipment"
+  },
+  {
+   "fieldname": "on_board_date",
+   "fieldtype": "Date",
+   "label": "On-board Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "presentation_deadline",
+   "fieldtype": "Date",
+   "label": "Present Documents By",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "drawn_amount",
+   "fieldtype": "Currency",
+   "label": "Invoiced Against This L/C",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "available_amount",
+   "fieldtype": "Currency",
+   "label": "Still Available",
+   "read_only": 1,
+   "options": "currency"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nDocuments Presented\nPaid\nExpired\nCancelled",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "check_note",
+   "fieldtype": "Small Text",
+   "label": "Checks",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Terms"
+  },
+  {
+   "fieldname": "required_documents",
+   "fieldtype": "Small Text",
+   "label": "Documents Required by the Credit"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Letter of Credit",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "lc_no",
+ "autoname": "format:LC-{YY}.{MM}-{####}"
+}

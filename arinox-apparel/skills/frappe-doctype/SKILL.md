@@ -204,3 +204,10 @@ Export with `bench --site apparel.localhost export-fixtures`, then review the JS
 - Changing `fieldname` of a field that already has data. Add a new field and write a patch instead.
 - Writing a patch under `patches/` without adding it to `patches.txt`.
 - Using `frappe.get_all` without `ignore_permissions` consideration in server code that runs for other users.
+- Naming a controller class after a doctype with an acronym (`Packing List SSCC`): the class must be `PackingListSSCC` (the doctype name with spaces removed, case kept). A wrong class makes `bench migrate` treat the doctype as an orphan and **delete it** ("Orphaned DocType(s) found"). Read the migrate output for that line every time.
+- `frappe.get_doc({...}).insert()` does not apply a field's `default` (only the desk form does). Anything a controller or test relies on must be set in the controller or passed explicitly.
+- After a failed `save()` or `submit()` the in-memory document is stale; `reload()` before reusing it, or you get `TimestampMismatchError`.
+- A report folder named like a standard-library module (`collections`) breaks any `python3` run started inside its parent folder. Name report folders for what they are (`receivables_follow_up`).
+- Prefer extending an ERPNext doctype with Custom Fields (and a `doc_events` hook) over a new doctype when ERPNext already holds the object: Shipment, Supplier Quotation, Sales Invoice and Customer are extended this way in Phase E. Mandatory fields that do not fit can be relaxed with a Property Setter (`setup/shipping.py`).
+- Names that carry the contract: `common.next_serial(root, code)` gives `<contract>-<code>-<nn>`; call it from `autoname`.
+

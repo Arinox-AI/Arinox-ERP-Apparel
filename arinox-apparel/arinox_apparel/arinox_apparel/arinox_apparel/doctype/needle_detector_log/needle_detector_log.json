@@ -1,0 +1,180 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "check_date",
+  "check_time",
+  "line",
+  "machine",
+  "c1",
+  "test_piece_mm",
+  "result",
+  "checked_by",
+  "s2",
+  "last_good_check",
+  "garments_rescanned",
+  "rescan_done",
+  "action"
+ ],
+ "fields": [
+  {
+   "fieldname": "check_date",
+   "fieldtype": "Date",
+   "label": "Check Date",
+   "default": "Today",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "check_time",
+   "fieldtype": "Time",
+   "label": "Check Time",
+   "default": "Now"
+  },
+  {
+   "fieldname": "line",
+   "fieldtype": "Link",
+   "label": "Line",
+   "options": "Workstation",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "machine",
+   "fieldtype": "Data",
+   "label": "Detector"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "test_piece_mm",
+   "fieldtype": "Float",
+   "label": "Test Piece (mm)",
+   "default": "1.2"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "Pass\nFail",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "checked_by",
+   "fieldtype": "Link",
+   "label": "Checked By",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "If the check failed"
+  },
+  {
+   "fieldname": "last_good_check",
+   "fieldtype": "Datetime",
+   "label": "Last Good Check",
+   "depends_on": "eval:doc.result=='Fail'",
+   "description": "Everything passed since this time is scanned again"
+  },
+  {
+   "fieldname": "garments_rescanned",
+   "fieldtype": "Int",
+   "label": "Garments Rescanned",
+   "depends_on": "eval:doc.result=='Fail'"
+  },
+  {
+   "fieldname": "rescan_done",
+   "fieldtype": "Check",
+   "label": "Re-scan Done",
+   "depends_on": "eval:doc.result=='Fail'"
+  },
+  {
+   "fieldname": "action",
+   "fieldtype": "Small Text",
+   "label": "Action",
+   "depends_on": "eval:doc.result=='Fail'"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Needle Detector Log",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager"
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "line",
+ "autoname": "format:ND-{YY}.{MM}-{####}"
+}

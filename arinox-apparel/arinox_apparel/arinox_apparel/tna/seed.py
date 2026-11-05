@@ -36,6 +36,8 @@ TYPES = [
 	("FINAL_INSPECTION", "Final Inspection", "Quality", "Manual", 1, "Always", None),
 	("FREIGHT_BOOKING", "Freight Booking", "Shipping", "Manual", 0, "Always", None),
 	("EX_FACTORY", "Ex-Factory", "Shipping", "Manual", 1, "Always", None),
+	("ON_BOARD", "On Board", "Shipping", "Shipment", 0, "Always", None),
+	("IN_WAREHOUSE", "In Buyer's Warehouse", "Shipping", "Shipment", 0, "Always", None),
 ]
 
 # code, basis, after, offset, duration rule, daily output
@@ -87,3 +89,18 @@ def seed():
 				for c, b, a, o, d, q in TEMPLATE_ROWS]}).insert(ignore_permissions=True)
 	if not frappe.db.get_single_value("Apparel Settings", "default_tna_template") and frappe.db.exists("TNA Template", TEMPLATE_NAME):
 		frappe.db.set_single_value("Apparel Settings", "default_tna_template", TEMPLATE_NAME)
+	remove_shipping_rows()
+
+
+def remove_shipping_rows():
+	"""ON_BOARD and IN_WAREHOUSE exist as milestone types, but are not in the default template: with assumed offsets they pushed a
+	fresh order past the buyer's in-warehouse date. Add them to your own template with your own offsets. An earlier run of this
+	seed added them to the default template; take them out again."""
+	if not frappe.db.exists("TNA Template", TEMPLATE_NAME):
+		return
+	tpl = frappe.get_doc("TNA Template", TEMPLATE_NAME)
+	keep = [m for m in tpl.milestones if m.milestone_type not in ("ON_BOARD", "IN_WAREHOUSE")]
+	if len(keep) != len(tpl.milestones):
+		tpl.set("milestones", keep)
+		tpl.flags.ignore_permissions = True
+		tpl.save()

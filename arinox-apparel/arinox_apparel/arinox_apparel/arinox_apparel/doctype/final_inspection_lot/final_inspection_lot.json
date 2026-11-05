@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "packing_list",
+  "pieces",
+  "cartons"
+ ],
+ "fields": [
+  {
+   "fieldname": "packing_list",
+   "fieldtype": "Link",
+   "label": "Packing List",
+   "options": "Packing List",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "pieces",
+   "fieldtype": "Int",
+   "label": "Pieces",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "cartons",
+   "fieldtype": "Int",
+   "label": "Cartons",
+   "read_only": 1,
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Final Inspection Lot",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

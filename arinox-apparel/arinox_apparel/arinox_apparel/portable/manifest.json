@@ -1,0 +1,60 @@
+{
+ "note": "Server Scripts as data. Each entry becomes one Server Script record. Written for Frappe's Server Script sandbox, so they can be created on a site that cannot install an app.",
+ "server_scripts": [
+  {
+   "name": "arinox_shipment_checks",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "Before Save",
+   "file": "shipment_checks.py"
+  },
+  {
+   "name": "arinox_quote_checks",
+   "script_type": "DocType Event",
+   "reference_doctype": "Supplier Quotation",
+   "doctype_event": "Before Validate",
+   "file": "quote_checks.py"
+  },
+  {
+   "name": "arinox_sample_invoice",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Invoice",
+   "doctype_event": "Before Save",
+   "file": "sample_invoice.py"
+  },
+  {
+   "name": "arinox_letter_of_credit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Letter of Credit",
+   "doctype_event": "Before Save",
+   "file": "letter_of_credit.py"
+  },
+  {
+   "name": "arinox_lc_watch",
+   "script_type": "Scheduler Event",
+   "event_frequency": "Daily",
+   "file": "lc_watch.py"
+  },
+  {
+   "name": "arinox_tna_stamps_on_save",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save",
+   "file": "tna_shipping_stamps.py"
+  },
+  {
+   "name": "arinox_tna_stamps_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save (Submitted Document)",
+   "file": "tna_shipping_stamps.py"
+  },
+  {
+   "name": "arinox_close_production",
+   "script_type": "API",
+   "api_method": "arinox_close_production",
+   "allow_guest": 0,
+   "file": "close_production.py"
+  }
+ ]
+}

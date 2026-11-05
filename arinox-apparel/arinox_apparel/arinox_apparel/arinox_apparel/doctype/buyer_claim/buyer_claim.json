@@ -1,0 +1,349 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "sales_invoice",
+  "sales_contract",
+  "customer",
+  "company",
+  "shipment",
+  "production_card",
+  "c1",
+  "claim_type",
+  "reported_on",
+  "buyer_ref",
+  "status",
+  "s2",
+  "rows",
+  "claimed_amount",
+  "currency",
+  "evidence",
+  "description",
+  "s3",
+  "arrival_date",
+  "window_days",
+  "days_since_arrival",
+  "window_note",
+  "cap_amount",
+  "override_reason",
+  "s4",
+  "accepted_amount",
+  "settlement",
+  "fault_source",
+  "recover_from_supplier",
+  "recovery_amount",
+  "credit_note",
+  "supplier_debit_note",
+  "decision_note",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Customer Invoice",
+   "options": "Sales Invoice",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1,
+   "fetch_from": "sales_invoice.customer",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "fetch_from": "sales_invoice.company"
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment",
+   "options": "Shipment",
+   "read_only": 1
+  },
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "claim_type",
+   "fieldtype": "Select",
+   "label": "Claim Type",
+   "options": "Quality\nQuantity Short\nQuantity Over\nWrong Item\nLate Delivery\nChargeback\nConcession\nOther",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "reported_on",
+   "fieldtype": "Date",
+   "label": "Reported On",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_ref",
+   "fieldtype": "Data",
+   "label": "Buyer Reference"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nUnder Review\nAccepted\nPartly Accepted\nRejected\nSettled",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "What is claimed"
+  },
+  {
+   "fieldname": "rows",
+   "fieldtype": "Table",
+   "label": "Pieces",
+   "options": "Buyer Claim Row"
+  },
+  {
+   "fieldname": "claimed_amount",
+   "fieldtype": "Currency",
+   "label": "Claimed Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency",
+   "read_only": 1,
+   "fetch_from": "sales_invoice.currency"
+  },
+  {
+   "fieldname": "evidence",
+   "fieldtype": "Attach",
+   "label": "Evidence"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Window and cap"
+  },
+  {
+   "fieldname": "arrival_date",
+   "fieldtype": "Date",
+   "label": "Arrival Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "window_days",
+   "fieldtype": "Int",
+   "label": "Window Days",
+   "read_only": 1
+  },
+  {
+   "fieldname": "days_since_arrival",
+   "fieldtype": "Int",
+   "label": "Days Since Arrival",
+   "read_only": 1
+  },
+  {
+   "fieldname": "window_note",
+   "fieldtype": "Small Text",
+   "label": "Window Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cap_amount",
+   "fieldtype": "Currency",
+   "label": "Cap (CIF value of the pieces)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "override_reason",
+   "fieldtype": "Small Text",
+   "label": "Override Reason",
+   "description": "Required to accept outside the claim window or above the cap"
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Decision"
+  },
+  {
+   "fieldname": "accepted_amount",
+   "fieldtype": "Currency",
+   "label": "Accepted Amount"
+  },
+  {
+   "fieldname": "settlement",
+   "fieldtype": "Select",
+   "label": "Settlement",
+   "options": "\nCredit Note\nDeduction from Payment\nReplacement\nReturn of Goods\nNone"
+  },
+  {
+   "fieldname": "fault_source",
+   "fieldtype": "Select",
+   "label": "Fault Source",
+   "options": "\nFactory Sewing\nFabric\nCutting\nSubcontractor\nTrims\nSpec or Pattern\nHandling\nLogistics\nUnknown"
+  },
+  {
+   "fieldname": "recover_from_supplier",
+   "fieldtype": "Link",
+   "label": "Recover From Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "recovery_amount",
+   "fieldtype": "Currency",
+   "label": "Recovery Amount"
+  },
+  {
+   "fieldname": "credit_note",
+   "fieldtype": "Link",
+   "label": "Credit Note",
+   "options": "Sales Invoice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "supplier_debit_note",
+   "fieldtype": "Link",
+   "label": "Supplier Debit Note",
+   "options": "Purchase Invoice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "decision_note",
+   "fieldtype": "Small Text",
+   "label": "Decision Note"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Buyer Claim",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Buyer Claim",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "title_field": "claim_type"
+}

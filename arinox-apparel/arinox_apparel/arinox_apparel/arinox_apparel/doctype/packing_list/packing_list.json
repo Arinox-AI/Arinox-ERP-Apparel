@@ -1,0 +1,368 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "sales_contract",
+  "sales_order",
+  "customer",
+  "style_item",
+  "c1",
+  "packing_date",
+  "buyer_po",
+  "ship_to",
+  "ship_via",
+  "status",
+  "s2",
+  "pack_type",
+  "pcs_per_carton",
+  "carton_type",
+  "tail_carton_rule",
+  "carton_start",
+  "ratios",
+  "s3",
+  "cartons",
+  "contents",
+  "s4",
+  "total_cartons",
+  "total_pieces",
+  "total_net_kg",
+  "total_gross_kg",
+  "total_cbm",
+  "size_summary",
+  "total_vs_order_pct",
+  "s5",
+  "final_inspection",
+  "shipment",
+  "fg_stock_entry",
+  "sscc",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "fetch_from": "production_card.sales_contract"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1,
+   "fetch_from": "production_card.sales_order"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1,
+   "fetch_from": "production_card.customer"
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style Item",
+   "options": "Item",
+   "read_only": 1,
+   "fetch_from": "production_card.style_item"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "packing_date",
+   "fieldtype": "Date",
+   "label": "Packing Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "buyer_po",
+   "fieldtype": "Data",
+   "label": "Buyer PO",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ship_to",
+   "fieldtype": "Data",
+   "label": "Ship To",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "ship_via",
+   "fieldtype": "Select",
+   "label": "Ship Via",
+   "options": "\nSea\nAir\nCourier\nRoad"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "read_only": 1,
+   "options": "Open\nOn Shipment\nShipped",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "How it is packed"
+  },
+  {
+   "fieldname": "pack_type",
+   "fieldtype": "Select",
+   "label": "Pack Type",
+   "options": "Solid Colour Solid Size\nSolid Colour Assorted Size\nAssorted",
+   "default": "Solid Colour Solid Size",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pcs_per_carton",
+   "fieldtype": "Int",
+   "label": "Pieces per Carton",
+   "reqd": 1
+  },
+  {
+   "fieldname": "carton_type",
+   "fieldtype": "Link",
+   "label": "Carton Size",
+   "options": "Shipment Parcel Template"
+  },
+  {
+   "fieldname": "tail_carton_rule",
+   "fieldtype": "Select",
+   "label": "Tail Carton Rule",
+   "options": "Mixed Colour and Size\nMixed Size Only\nOwn Carton",
+   "default": "Mixed Colour and Size"
+  },
+  {
+   "fieldname": "carton_start",
+   "fieldtype": "Int",
+   "label": "First Carton No",
+   "default": "1"
+  },
+  {
+   "fieldname": "ratios",
+   "fieldtype": "Table",
+   "label": "Ratio (assorted packs)",
+   "options": "Packing List Ratio",
+   "depends_on": "eval:doc.pack_type=='Solid Colour Assorted Size'"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Cartons"
+  },
+  {
+   "fieldname": "cartons",
+   "fieldtype": "Table",
+   "label": "Cartons",
+   "options": "Packing List Carton"
+  },
+  {
+   "fieldname": "contents",
+   "fieldtype": "Table",
+   "label": "Carton Contents",
+   "options": "Packing List Content"
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "total_cartons",
+   "fieldtype": "Int",
+   "label": "Total Cartons",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_pieces",
+   "fieldtype": "Int",
+   "label": "Total Pieces",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_net_kg",
+   "fieldtype": "Float",
+   "label": "Net kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_gross_kg",
+   "fieldtype": "Float",
+   "label": "Gross kg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cbm",
+   "fieldtype": "Float",
+   "label": "CBM",
+   "read_only": 1,
+   "precision": "6"
+  },
+  {
+   "fieldname": "size_summary",
+   "fieldtype": "Small Text",
+   "label": "Over / Short by Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_vs_order_pct",
+   "fieldtype": "Percent",
+   "label": "Total vs Order %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s5",
+   "fieldtype": "Section Break",
+   "label": "Links"
+  },
+  {
+   "fieldname": "final_inspection",
+   "fieldtype": "Link",
+   "label": "Final Inspection",
+   "options": "Final Inspection",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "shipment",
+   "fieldtype": "Link",
+   "label": "Shipment",
+   "options": "Shipment",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "fg_stock_entry",
+   "fieldtype": "Link",
+   "label": "Finished Goods Receipt",
+   "options": "Stock Entry",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sscc",
+   "fieldtype": "Table",
+   "label": "SSCC",
+   "options": "Packing List SSCC",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Packing List",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Packing List",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "title_field": "buyer_po"
+}

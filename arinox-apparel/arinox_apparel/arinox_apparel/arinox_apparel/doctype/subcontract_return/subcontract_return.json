@@ -1,0 +1,207 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "challan",
+  "production_card",
+  "sales_contract",
+  "supplier",
+  "subcontract_process",
+  "c1",
+  "return_date",
+  "vendor_dn",
+  "s2",
+  "rows",
+  "total_good",
+  "total_reject_vendor",
+  "total_reject_factory",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "challan",
+   "fieldtype": "Link",
+   "label": "Challan",
+   "options": "Subcontract Challan",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "read_only": 1,
+   "fetch_from": "challan.production_card"
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "fetch_from": "challan.sales_contract"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "read_only": 1,
+   "fetch_from": "challan.supplier",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "subcontract_process",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Subcontract Process",
+   "read_only": 1,
+   "fetch_from": "challan.subcontract_process"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "return_date",
+   "fieldtype": "Date",
+   "label": "Return Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vendor_dn",
+   "fieldtype": "Data",
+   "label": "Vendor Delivery Note"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Pieces Received"
+  },
+  {
+   "fieldname": "rows",
+   "fieldtype": "Table",
+   "label": "Pieces",
+   "options": "Subcontract Return Row",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_good",
+   "fieldtype": "Int",
+   "label": "Total Good",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_reject_vendor",
+   "fieldtype": "Int",
+   "label": "Total Reject Vendor",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_reject_factory",
+   "fieldtype": "Int",
+   "label": "Total Reject Factory",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Subcontract Return",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Subcontract Return",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1
+}

@@ -1,0 +1,119 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "filing_name",
+  "country",
+  "mode",
+  "hours_before_loading",
+  "incoterms",
+  "filed_by",
+  "enabled",
+  "note"
+ ],
+ "fields": [
+  {
+   "fieldname": "filing_name",
+   "fieldtype": "Data",
+   "label": "Filing",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Destination Country",
+   "options": "Country",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "mode",
+   "fieldtype": "Select",
+   "label": "Mode",
+   "options": "Any\nSea\nAir\nCourier\nRoad",
+   "default": "Any",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "hours_before_loading",
+   "fieldtype": "Int",
+   "label": "Due This Many Hours Before Cut-off / Loading",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "incoterms",
+   "fieldtype": "Data",
+   "label": "Only for Incoterms",
+   "description": "Comma separated, e.g. DDP, DAP. Blank = all"
+  },
+  {
+   "fieldname": "filed_by",
+   "fieldtype": "Select",
+   "label": "Usually Filed By",
+   "options": "\nUs\nForwarder\nBuyer\nCustoms Broker"
+  },
+  {
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled",
+   "default": "0",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "note",
+   "fieldtype": "Small Text",
+   "label": "Note"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Destination Filing Rule",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1
+  }
+ ],
+ "track_changes": 1,
+ "title_field": "filing_name",
+ "autoname": "field:filing_name"
+}

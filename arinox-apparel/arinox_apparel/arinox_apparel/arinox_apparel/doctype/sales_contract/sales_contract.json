@@ -273,7 +273,7 @@
   {
    "fieldname": "items",
    "fieldtype": "Table",
-   "label": "SKU Lines (style × colour)",
+   "label": "SKU Lines (style \u00d7 colour)",
    "options": "Sales Contract Item",
    "reqd": 1
   },
@@ -322,7 +322,7 @@
    "options": "\nSea\nAir\nSea-Air\nCourier\nRoad"
   },
   {
-      "fieldname": "country_of_origin",
+   "fieldname": "country_of_origin",
    "fieldtype": "Data",
    "label": "Country of Origin"
   },
@@ -361,13 +361,13 @@
    "default": "7",
    "fieldname": "days_ex_factory_to_etd",
    "fieldtype": "Int",
-   "label": "Days Ex-Factory → ETD"
+   "label": "Days Ex-Factory \u2192 ETD"
   },
   {
    "default": "30",
    "fieldname": "transit_days",
    "fieldtype": "Int",
-   "label": "Transit Days ETD → In-Warehouse"
+   "label": "Transit Days ETD \u2192 In-Warehouse"
   },
   {
    "fieldname": "column_11",
@@ -464,7 +464,7 @@
    "fieldname": "payment_basis",
    "fieldtype": "Select",
    "label": "Payment Basis",
-   "options": "\nDays after Receipt of Goods (ROG)\nDays after Invoice Date\nAdvance\nL/C"
+   "options": "\nDays after Receipt of Goods (ROG)\nDays after Invoice Date\nDays after B/L Date\nDays after ETA\nAdvance\nL/C"
   },
   {
    "description": "e.g. 15 for 15 days ROG",

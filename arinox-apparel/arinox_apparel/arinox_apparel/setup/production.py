@@ -121,8 +121,8 @@ def seed_checks():
 
 def seed_cartons():
 	for name, length, width, height in CARTONS:
-		if not frappe.db.exists("Carton Type", name):
-			frappe.get_doc({"doctype": "Carton Type", "type_name": name, "length_cm": length, "width_cm": width, "height_cm": height}).insert(ignore_permissions=True)
+		if not frappe.db.exists("Shipment Parcel Template", name):
+			frappe.get_doc({"doctype": "Shipment Parcel Template", "parcel_template_name": name, "length": length, "width": width, "height": height, "weight": 0}).insert(ignore_permissions=True)
 
 
 def seed_settings_rows():

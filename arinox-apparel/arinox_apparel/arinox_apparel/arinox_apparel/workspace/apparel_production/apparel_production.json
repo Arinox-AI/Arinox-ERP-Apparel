@@ -1,0 +1,334 @@
+{
+ "app": "arinox_apparel",
+ "charts": [],
+ "content": "[{\"id\": \"p01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Floor: cut, sew, finish</b></span>\", \"col\": 12}}, {\"id\": \"p02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cards In Cutting\", \"col\": 3}}, {\"id\": \"p03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Cards In Sewing\", \"col\": 3}}, {\"id\": \"p04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Challans Open\", \"col\": 3}}, {\"id\": \"p05\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Challans Overdue\", \"col\": 3}}, {\"id\": \"p07\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"p08\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents, reports and setup</b></span>\", \"col\": 12}}, {\"id\": \"p09\", \"type\": \"card\", \"data\": {\"card_name\": \"Cutting and Sewing\", \"col\": 4}}, {\"id\": \"p10\", \"type\": \"card\", \"data\": {\"card_name\": \"Subcontract and Finishing\", \"col\": 4}}, {\"id\": \"p11\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}]",
+ "creation": "2026-11-05 12:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "factory",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Production",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cutting and Sewing",
+   "link_count": 8,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Production Card",
+   "link_to": "Production Card",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Pilot Run",
+   "link_to": "Pilot Run",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Cut Plan",
+   "link_to": "Cut Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Lay Report",
+   "link_to": "Lay Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Operation Bulletin",
+   "link_to": "Operation Bulletin",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Line Input",
+   "link_to": "Line Input",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Daily Line Report",
+   "link_to": "Daily Line Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Line QC Report",
+   "link_to": "Line QC Report",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subcontract and Finishing",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subcontract Challan",
+   "link_to": "Subcontract Challan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subcontract Return",
+   "link_to": "Subcontract Return",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subcontract Settlement",
+   "link_to": "Subcontract Settlement",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Finishing Receipt",
+   "link_to": "Finishing Receipt",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subcontract Process",
+   "link_to": "Subcontract Process",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Reports",
+   "link_count": 9,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Production Summary",
+   "link_to": "Production Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daily Production Report",
+   "link_to": "Daily Production Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Daily Cutting Report",
+   "link_to": "Daily Cutting Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Fabric Consumption",
+   "link_to": "Fabric Consumption",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Line Loading",
+   "link_to": "Line Loading",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Line Efficiency and DHU",
+   "link_to": "Line Efficiency and DHU",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Sewing WIP",
+   "link_to": "Sewing WIP",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Running Fabric Stock",
+   "link_to": "Running Fabric Stock",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "WIP Report",
+   "link_to": "WIP Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Apparel Production",
+ "number_cards": [
+  {
+   "label": "Cards In Cutting",
+   "number_card_name": "Cards In Cutting"
+  },
+  {
+   "label": "Cards In Sewing",
+   "number_card_name": "Cards In Sewing"
+  },
+  {
+   "label": "Challans Open",
+   "number_card_name": "Challans Open"
+  },
+  {
+   "label": "Challans Overdue",
+   "number_card_name": "Challans Overdue"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 51,
+ "shortcuts": [
+  {
+   "label": "Production Card",
+   "link_to": "Production Card",
+   "type": "DocType",
+   "color": "Orange",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Lay Report",
+   "link_to": "Lay Report",
+   "type": "DocType",
+   "color": "Blue",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Daily Line Report",
+   "link_to": "Daily Line Report",
+   "type": "DocType",
+   "color": "Blue",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Subcontract Challan",
+   "link_to": "Subcontract Challan",
+   "type": "DocType",
+   "color": "Blue",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Finishing Receipt",
+   "link_to": "Finishing Receipt",
+   "type": "DocType",
+   "color": "Blue",
+   "doc_view": "",
+   "stats_filter": "[]"
+  }
+ ],
+ "title": "Production",
+ "type": "Workspace"
+}

@@ -1,0 +1,588 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "production_card",
+  "sales_contract",
+  "sales_order",
+  "inspection_type",
+  "customer",
+  "style_item",
+  "c1",
+  "inspection_date",
+  "inspector",
+  "inspected_by_party",
+  "third_party_name",
+  "report_ref",
+  "previous_inspection",
+  "s2",
+  "lots",
+  "po_qty",
+  "offered_qty",
+  "packed_pct",
+  "total_cartons",
+  "fibre_content",
+  "size_range",
+  "country_of_origin",
+  "s3",
+  "aql_plan",
+  "inspection_level",
+  "sample_size",
+  "inspected_cartons",
+  "c2",
+  "critical_ac",
+  "critical_re",
+  "major_ac",
+  "major_re",
+  "minor_ac",
+  "minor_re",
+  "draw_seed",
+  "s4",
+  "cartons_picked",
+  "s5",
+  "fpt",
+  "gpt",
+  "azo",
+  "wash_care_ok",
+  "fibre_ok",
+  "c3",
+  "sealer_style",
+  "sealer_material",
+  "sealer_colour",
+  "sealer_construction",
+  "c4",
+  "metal_detection_ok",
+  "measurement_ok",
+  "drop_test_ok",
+  "barcode_ok",
+  "packing_ok",
+  "s6",
+  "defects",
+  "critical_found",
+  "major_found",
+  "minor_found",
+  "s7",
+  "result",
+  "computed_result",
+  "concession_ref",
+  "concession_discount_pct",
+  "approved_by",
+  "reinspection_date",
+  "reinspection_fee",
+  "fee_borne_by",
+  "remarks",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "read_only": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "fetch_from": "production_card.sales_contract"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1,
+   "fetch_from": "production_card.sales_order"
+  },
+  {
+   "fieldname": "inspection_type",
+   "fieldtype": "Select",
+   "label": "Inspection Type",
+   "options": "In Line\nPre-Final\nFinal\nRe-inspection\n2nd Re-inspection\nOther",
+   "default": "Final",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "read_only": 1,
+   "fetch_from": "production_card.customer"
+  },
+  {
+   "fieldname": "style_item",
+   "fieldtype": "Link",
+   "label": "Style Item",
+   "options": "Item",
+   "read_only": 1,
+   "fetch_from": "production_card.style_item"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "inspection_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "inspector",
+   "fieldtype": "Link",
+   "label": "Inspector",
+   "options": "User",
+   "default": "__user"
+  },
+  {
+   "fieldname": "inspected_by_party",
+   "fieldtype": "Select",
+   "label": "Inspected By Party",
+   "options": "Factory QA\nBuyer QA\nThird Party",
+   "default": "Factory QA"
+  },
+  {
+   "fieldname": "third_party_name",
+   "fieldtype": "Data",
+   "label": "Third Party Name",
+   "depends_on": "eval:doc.inspected_by_party=='Third Party'"
+  },
+  {
+   "fieldname": "report_ref",
+   "fieldtype": "Data",
+   "label": "External Report No",
+   "depends_on": "eval:doc.inspected_by_party!='Factory QA'"
+  },
+  {
+   "fieldname": "previous_inspection",
+   "fieldtype": "Link",
+   "label": "Previous Inspection",
+   "options": "Final Inspection",
+   "depends_on": "eval:doc.inspection_type.indexOf('Re-inspection')>=0"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "Lot"
+  },
+  {
+   "fieldname": "lots",
+   "fieldtype": "Table",
+   "label": "Packing Lists in the Lot",
+   "options": "Final Inspection Lot",
+   "reqd": 1
+  },
+  {
+   "fieldname": "po_qty",
+   "fieldtype": "Int",
+   "label": "Order Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "offered_qty",
+   "fieldtype": "Int",
+   "label": "Offered Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "packed_pct",
+   "fieldtype": "Percent",
+   "label": "Packed % of Order",
+   "read_only": 1
+  },
+  {
+   "fieldname": "total_cartons",
+   "fieldtype": "Int",
+   "label": "Total Cartons",
+   "read_only": 1
+  },
+  {
+   "fieldname": "fibre_content",
+   "fieldtype": "Data",
+   "label": "Fibre Content per Test Report"
+  },
+  {
+   "fieldname": "size_range",
+   "fieldtype": "Data",
+   "label": "Size Range"
+  },
+  {
+   "fieldname": "country_of_origin",
+   "fieldtype": "Data",
+   "label": "Country Of Origin"
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Sampling (ISO 2859-1, single, normal)"
+  },
+  {
+   "fieldname": "aql_plan",
+   "fieldtype": "Link",
+   "label": "Aql Plan",
+   "options": "AQL Plan"
+  },
+  {
+   "fieldname": "inspection_level",
+   "fieldtype": "Data",
+   "label": "Level",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sample_size",
+   "fieldtype": "Int",
+   "label": "Sample Size",
+   "read_only": 1
+  },
+  {
+   "fieldname": "inspected_cartons",
+   "fieldtype": "Int",
+   "label": "Cartons to Inspect",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "critical_ac",
+   "fieldtype": "Int",
+   "label": "Critical Ac",
+   "read_only": 1
+  },
+  {
+   "fieldname": "critical_re",
+   "fieldtype": "Int",
+   "label": "Critical Re",
+   "read_only": 1
+  },
+  {
+   "fieldname": "major_ac",
+   "fieldtype": "Int",
+   "label": "Major Ac",
+   "read_only": 1
+  },
+  {
+   "fieldname": "major_re",
+   "fieldtype": "Int",
+   "label": "Major Re",
+   "read_only": 1
+  },
+  {
+   "fieldname": "minor_ac",
+   "fieldtype": "Int",
+   "label": "Minor Ac",
+   "read_only": 1
+  },
+  {
+   "fieldname": "minor_re",
+   "fieldtype": "Int",
+   "label": "Minor Re",
+   "read_only": 1
+  },
+  {
+   "fieldname": "draw_seed",
+   "fieldtype": "Int",
+   "label": "Carton Draw Seed",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Cartons Inspected"
+  },
+  {
+   "fieldname": "cartons_picked",
+   "fieldtype": "Table",
+   "label": "Cartons Picked",
+   "options": "Final Inspection Carton"
+  },
+  {
+   "fieldname": "s5",
+   "fieldtype": "Section Break",
+   "label": "Tests and Conformity"
+  },
+  {
+   "fieldname": "fpt",
+   "fieldtype": "Select",
+   "label": "FPT",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "gpt",
+   "fieldtype": "Select",
+   "label": "GPT",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "azo",
+   "fieldtype": "Select",
+   "label": "Azo",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "wash_care_ok",
+   "fieldtype": "Select",
+   "label": "Wash Care per Test Report",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "fibre_ok",
+   "fieldtype": "Select",
+   "label": "Fibre Content per Test Report",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "c3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sealer_style",
+   "fieldtype": "Select",
+   "label": "Style as Sealer Sample",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "sealer_material",
+   "fieldtype": "Select",
+   "label": "Material as Sealer Sample",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "sealer_colour",
+   "fieldtype": "Select",
+   "label": "Colour as Sealer Sample",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "sealer_construction",
+   "fieldtype": "Select",
+   "label": "Construction as Sealer Sample",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "c4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "metal_detection_ok",
+   "fieldtype": "Select",
+   "label": "Metal Detection Ok",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "measurement_ok",
+   "fieldtype": "Select",
+   "label": "Measurements within Tolerance",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "drop_test_ok",
+   "fieldtype": "Select",
+   "label": "Carton Drop Test",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "barcode_ok",
+   "fieldtype": "Select",
+   "label": "Barcode Scan",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "packing_ok",
+   "fieldtype": "Select",
+   "label": "Packing as Instructed",
+   "options": "\nYes\nNo\nNA"
+  },
+  {
+   "fieldname": "s6",
+   "fieldtype": "Section Break",
+   "label": "Defects Found"
+  },
+  {
+   "fieldname": "defects",
+   "fieldtype": "Table",
+   "label": "Defects",
+   "options": "Final Inspection Defect"
+  },
+  {
+   "fieldname": "critical_found",
+   "fieldtype": "Int",
+   "label": "Critical Found",
+   "read_only": 1
+  },
+  {
+   "fieldname": "major_found",
+   "fieldtype": "Int",
+   "label": "Major Found",
+   "read_only": 1
+  },
+  {
+   "fieldname": "minor_found",
+   "fieldtype": "Int",
+   "label": "Minor Found",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s7",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Select",
+   "label": "Result",
+   "options": "\nAccepted\nRejected\nOn Hold\nAccepted with Concession",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "computed_result",
+   "fieldtype": "Data",
+   "label": "Result by the Numbers",
+   "read_only": 1
+  },
+  {
+   "fieldname": "concession_ref",
+   "fieldtype": "Data",
+   "label": "Buyer Approval Reference",
+   "depends_on": "eval:doc.result=='Accepted with Concession'"
+  },
+  {
+   "fieldname": "concession_discount_pct",
+   "fieldtype": "Percent",
+   "label": "Agreed Discount %",
+   "depends_on": "eval:doc.result=='Accepted with Concession'"
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Data",
+   "label": "Shipment Approved By"
+  },
+  {
+   "fieldname": "reinspection_date",
+   "fieldtype": "Date",
+   "label": "Reinspection Date",
+   "depends_on": "eval:doc.result=='Rejected'"
+  },
+  {
+   "fieldname": "reinspection_fee",
+   "fieldtype": "Currency",
+   "label": "Reinspection Fee"
+  },
+  {
+   "fieldname": "fee_borne_by",
+   "fieldtype": "Select",
+   "label": "Fee Borne By",
+   "options": "\nFactory\nBuyer\nSupplier"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Final Inspection",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Final Inspection",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel QA",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Production User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1,
+ "title_field": "inspection_type"
+}

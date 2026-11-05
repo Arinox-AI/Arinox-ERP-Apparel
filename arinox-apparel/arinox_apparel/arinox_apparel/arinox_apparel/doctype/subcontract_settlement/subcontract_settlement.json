@@ -1,0 +1,347 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "challan",
+  "production_card",
+  "sales_contract",
+  "supplier",
+  "subcontract_process",
+  "purchase_order",
+  "c1",
+  "settlement_date",
+  "rate",
+  "invoiced_qty",
+  "vendor_invoice_ref",
+  "s2",
+  "sent_qty",
+  "good_qty",
+  "reject_vendor_qty",
+  "reject_factory_qty",
+  "short_qty",
+  "c2",
+  "threshold_pct",
+  "vendor_reject_pct",
+  "penalty_qty",
+  "unit_value",
+  "s3",
+  "payable_qty",
+  "gross_amount",
+  "penalty_amount",
+  "net_amount",
+  "qty_tolerance_pct",
+  "invoice_variance_pct",
+  "variance_note",
+  "s4",
+  "purchase_invoice",
+  "debit_note",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "challan",
+   "fieldtype": "Link",
+   "label": "Challan",
+   "options": "Subcontract Challan",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "production_card",
+   "fieldtype": "Link",
+   "label": "Production Card",
+   "options": "Production Card",
+   "read_only": 1,
+   "fetch_from": "challan.production_card"
+  },
+  {
+   "fieldname": "sales_contract",
+   "fieldtype": "Link",
+   "label": "Contract",
+   "options": "Sales Contract",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "search_index": 1,
+   "fetch_from": "challan.sales_contract"
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier",
+   "read_only": 1,
+   "fetch_from": "challan.supplier",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "subcontract_process",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Subcontract Process",
+   "read_only": 1,
+   "fetch_from": "challan.subcontract_process"
+  },
+  {
+   "fieldname": "purchase_order",
+   "fieldtype": "Link",
+   "label": "Purchase Order",
+   "options": "Purchase Order",
+   "read_only": 1,
+   "fetch_from": "challan.purchase_order"
+  },
+  {
+   "fieldname": "c1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "settlement_date",
+   "fieldtype": "Date",
+   "label": "Settlement Date",
+   "default": "Today",
+   "reqd": 1
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate per Piece",
+   "reqd": 1
+  },
+  {
+   "fieldname": "invoiced_qty",
+   "fieldtype": "Int",
+   "label": "Quantity on Vendor Invoice"
+  },
+  {
+   "fieldname": "vendor_invoice_ref",
+   "fieldtype": "Data",
+   "label": "Vendor Invoice"
+  },
+  {
+   "fieldname": "s2",
+   "fieldtype": "Section Break",
+   "label": "What came back"
+  },
+  {
+   "fieldname": "sent_qty",
+   "fieldtype": "Int",
+   "label": "Sent Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "good_qty",
+   "fieldtype": "Int",
+   "label": "Good Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reject_vendor_qty",
+   "fieldtype": "Int",
+   "label": "Vendor Fault",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reject_factory_qty",
+   "fieldtype": "Int",
+   "label": "Factory Fault",
+   "read_only": 1
+  },
+  {
+   "fieldname": "short_qty",
+   "fieldtype": "Int",
+   "label": "Short Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "c2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "threshold_pct",
+   "fieldtype": "Percent",
+   "label": "Damage Limit %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "vendor_reject_pct",
+   "fieldtype": "Percent",
+   "label": "Vendor Fault %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "penalty_qty",
+   "fieldtype": "Int",
+   "label": "Penalty Qty",
+   "read_only": 1
+  },
+  {
+   "fieldname": "unit_value",
+   "fieldtype": "Currency",
+   "label": "Penalty per Piece",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s3",
+   "fieldtype": "Section Break",
+   "label": "Amounts"
+  },
+  {
+   "fieldname": "payable_qty",
+   "fieldtype": "Int",
+   "label": "Payable Qty",
+   "read_only": 1,
+   "description": "Good and factory-fault pieces the vendor processed; vendor-damaged and missing pieces are not paid"
+  },
+  {
+   "fieldname": "gross_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "penalty_amount",
+   "fieldtype": "Currency",
+   "label": "Penalty Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "qty_tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Quantity Tolerance %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "invoice_variance_pct",
+   "fieldtype": "Percent",
+   "label": "Invoice vs Order %",
+   "read_only": 1
+  },
+  {
+   "fieldname": "variance_note",
+   "fieldtype": "Small Text",
+   "label": "Variance Note",
+   "read_only": 1
+  },
+  {
+   "fieldname": "s4",
+   "fieldtype": "Section Break",
+   "label": "Accounts"
+  },
+  {
+   "fieldname": "purchase_invoice",
+   "fieldtype": "Link",
+   "label": "Purchase Invoice",
+   "options": "Purchase Invoice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "debit_note",
+   "fieldtype": "Link",
+   "label": "Debit Note",
+   "options": "Purchase Invoice",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "options": "Subcontract Settlement",
+   "read_only": 1,
+   "no_copy": 1,
+   "print_hide": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Subcontract Settlement",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "permissions": [
+  {
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "delete": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Accounts Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Accounts User",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandising Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1,
+   "write": 1,
+   "create": 1,
+   "submit": 1,
+   "cancel": 1
+  },
+  {
+   "role": "Apparel Merchandiser",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Apparel Production Manager",
+   "read": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "track_changes": 1,
+ "is_submittable": 1
+}

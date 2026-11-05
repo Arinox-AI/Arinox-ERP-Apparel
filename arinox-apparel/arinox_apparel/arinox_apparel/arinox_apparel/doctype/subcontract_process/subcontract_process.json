@@ -9,7 +9,12 @@
   "item_state",
   "billing_uom",
   "requires_approved_standard",
-  "enabled"
+  "enabled",
+  "terms_section",
+  "turnaround_days",
+  "qty_tolerance_pct",
+  "damage_threshold_pct",
+  "service_item"
  ],
  "fields": [
   {
@@ -54,6 +59,38 @@
    "fieldtype": "Check",
    "label": "Enabled",
    "default": "1"
+  },
+  {
+   "fieldname": "terms_section",
+   "fieldtype": "Section Break",
+   "label": "Default Terms"
+  },
+  {
+   "fieldname": "turnaround_days",
+   "fieldtype": "Int",
+   "label": "Turnaround (working days)",
+   "description": "Sundays and holidays are skipped. The return date on a challan counts from the day of receipt."
+  },
+  {
+   "fieldname": "qty_tolerance_pct",
+   "fieldtype": "Percent",
+   "label": "Quantity Tolerance %",
+   "default": "5",
+   "description": "How far the vendor's invoice may differ from the order"
+  },
+  {
+   "fieldname": "damage_threshold_pct",
+   "fieldtype": "Percent",
+   "label": "Damage Limit %",
+   "default": "1",
+   "description": "Vendor-damaged pieces above this share of the quantity sent attract the penalty"
+  },
+  {
+   "fieldname": "service_item",
+   "fieldtype": "Link",
+   "options": "Item",
+   "label": "Service Item",
+   "description": "Billed on the vendor's invoice"
   }
  ],
  "modified": "2026-11-05 12:00:00.000000",

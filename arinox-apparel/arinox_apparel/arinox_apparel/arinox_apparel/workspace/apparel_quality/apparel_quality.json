@@ -1,0 +1,196 @@
+{
+ "app": "arinox_apparel",
+ "charts": [],
+ "content": "[{\"id\": \"q01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Quality and packing</b></span>\", \"col\": 12}}, {\"id\": \"q02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Packing Lists Awaiting Inspection\", \"col\": 4}}, {\"id\": \"q03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Final Inspections Rejected 30 Days\", \"col\": 4}}, {\"id\": \"q04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Needle Checks Failed Not Re-scanned\", \"col\": 4}}, {\"id\": \"q06\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"q07\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents and setup</b></span>\", \"col\": 12}}, {\"id\": \"q08\", \"type\": \"card\", \"data\": {\"card_name\": \"Inspections and Packing\", \"col\": 4}}, {\"id\": \"q09\", \"type\": \"card\", \"data\": {\"card_name\": \"Quality Setup\", \"col\": 4}}]",
+ "creation": "2026-11-05 12:00:00.000000",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "badge-check",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Quality and Packing",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Inspections and Packing",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fabric Inspection",
+   "link_to": "Fabric Inspection",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trim Inspection",
+   "link_to": "Trim Inspection",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Needle Detector Log",
+   "link_to": "Needle Detector Log",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Packing List",
+   "link_to": "Packing List",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Final Inspection",
+   "link_to": "Final Inspection",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Quality Setup",
+   "link_count": 6,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "AQL Plan",
+   "link_to": "AQL Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Apparel Defect Code",
+   "link_to": "Apparel Defect Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Fabric Defect Code",
+   "link_to": "Fabric Defect Code",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trim Defect Type",
+   "link_to": "Trim Defect Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Trim Sampling Plan",
+   "link_to": "Trim Sampling Plan",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "dependencies": "",
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Carton Sizes",
+   "link_to": "Shipment Parcel Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Apparel Quality",
+ "number_cards": [
+  {
+   "label": "Packing Lists Awaiting Inspection",
+   "number_card_name": "Packing Lists Awaiting Inspection"
+  },
+  {
+   "label": "Final Inspections Rejected 30 Days",
+   "number_card_name": "Final Inspections Rejected 30 Days"
+  },
+  {
+   "label": "Needle Checks Failed Not Re-scanned",
+   "number_card_name": "Needle Checks Failed Not Re-scanned"
+  }
+ ],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [],
+ "sequence_id": 52,
+ "shortcuts": [
+  {
+   "label": "Packing List",
+   "link_to": "Packing List",
+   "type": "DocType",
+   "color": "Orange",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Final Inspection",
+   "link_to": "Final Inspection",
+   "type": "DocType",
+   "color": "Orange",
+   "doc_view": "",
+   "stats_filter": "[]"
+  },
+  {
+   "label": "Needle Detector Log",
+   "link_to": "Needle Detector Log",
+   "type": "DocType",
+   "color": "Blue",
+   "doc_view": "",
+   "stats_filter": "[]"
+  }
+ ],
+ "title": "Quality and Packing",
+ "type": "Workspace"
+}

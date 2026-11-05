@@ -13,10 +13,10 @@
 | **D2** Pilot Run | Pilot Run, checks, SAM validation, pilot part of the bulk gate | **Built, migrated, tested** |
 | **D3** Bulk cutting | Cut Plan, Lay Report, Cut Bundle, Recut Request, fabric issue, remnant return, two reports, two print formats, form scripts | **Built, migrated, tested** |
 | **D4** Bulk sewing | Operation Bulletin (with workbook import), Line Input, Daily Line Report, Line QC Report, four reports | **Built and migrated. Tests written but not verified after the last round of fixes** (section 9) |
-| **D5** Subcontracting (wash, embroidery, print, appliqué) | Terms, Challan, Return, Settlement, debit note, scorecard | **Not started** |
-| **D6** Finishing | Finishing Receipt, needle detector log, label control | **Not started** (the finishing quality form exists: it is the Line QC Report with audit type Finishing) |
-| **D7** Packing | Packing Instruction, Packing List, cartons, SSCC, labels, Delivery Note button | **Not started** |
-| **D8** Final inspection and reconciliation | AQL plan seeding, Final Inspection, ship gate, Production Summary, Order Close | **Not started** |
+| **D5** Subcontracting (wash, embroidery, print, appliqué) | Challan, Return, Settlement, debit note (terms are fields on Subcontract Process; no scorecard) | **Built in Phase E, 2026-11-05**, tested |
+| **D6** Finishing | Finishing Receipt, needle detector log (label control not built) | **Built in Phase E**, tested |
+| **D7** Packing | Packing List, cartons, SSCC (no Packing Instruction doctype; no GS1-128 label) | **Built in Phase E**, tested |
+| **D8** Final inspection and reconciliation | AQL plan seeding, Final Inspection, ship gate | **Final Inspection and ship gate built in Phase E** (AQL confirmed for codes K, L, M only). Production Summary and Order Close **not started** |
 | **D9** Close-out | Production board tab, number cards, workspace, Sales Order buttons, security review, status log | **Not started** |
 
 **Counts:** 42 new doctypes, 55 new Apparel Settings fields, 3 new roles, 6 new reports, 4 new print formats, about 20 new Python modules and controllers. Nothing under `erpnext/` was edited.

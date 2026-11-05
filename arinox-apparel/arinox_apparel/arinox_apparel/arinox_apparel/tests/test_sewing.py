@@ -309,7 +309,7 @@ class TestDailyLineReport(SewingBase):
 		_c, rows = wip({"production_card": self.card.name})
 		self.assertEqual(rows[0]["wip"], loaded - 100)
 		_c, rows = eff({"line": self.line})
-		self.assertEqual(rows[0]["output"], 100)
+		self.assertIn(100, [r["output"] for r in rows])  # other tests of the class leave reports on the same line and date
 		_c, rows = daily({"production_card": self.card.name})
 		navy = next(r for r in rows if r["colour"] == "Navy")
 		self.assertEqual((navy["sew_total"], navy["sew_today"]), (100, 100))

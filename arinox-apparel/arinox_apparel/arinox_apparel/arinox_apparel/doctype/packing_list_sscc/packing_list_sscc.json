@@ -1,0 +1,36 @@
+{
+ "actions": [],
+ "creation": "2026-11-05 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "carton_no",
+  "sscc"
+ ],
+ "fields": [
+  {
+   "fieldname": "carton_no",
+   "fieldtype": "Int",
+   "label": "Carton No",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sscc",
+   "fieldtype": "Data",
+   "label": "SSCC",
+   "reqd": 1,
+   "in_list_view": 1
+  }
+ ],
+ "modified": "2026-11-05 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Packing List SSCC",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}
