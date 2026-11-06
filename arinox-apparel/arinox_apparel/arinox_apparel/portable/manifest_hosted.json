@@ -224,6 +224,1475 @@
    "reference_doctype": "Sales Contract",
    "doctype_event": "After Cancel",
    "file": "sales_contract_after_cancel.py"
+  },
+  {
+   "name": "arinox_sales_order_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Order",
+   "doctype_event": "Before Save",
+   "file": "sales_order_validate.py"
+  },
+  {
+   "name": "arinox_sales_order_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Order",
+   "doctype_event": "After Submit",
+   "file": "sales_order_submit.py"
+  },
+  {
+   "name": "arinox_sales_order_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Order",
+   "doctype_event": "After Cancel",
+   "file": "sales_order_cancel.py"
+  },
+  {
+   "name": "arinox_cost_sheet_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Cost Sheet",
+   "doctype_event": "Before Save",
+   "file": "cost_sheet_validate.py"
+  },
+  {
+   "name": "arinox_cost_sheet_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Cost Sheet",
+   "doctype_event": "Before Submit",
+   "file": "cost_sheet_submit.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_set_charges_from_parameter",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_set_charges_from_parameter",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_charges.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_get_margin_at_price",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_get_margin_at_price",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_margin.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_sign_off",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_sign_off",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_signoff.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_approve",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_approve",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_approve.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_reject",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_reject",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_reject.py"
+  },
+  {
+   "name": "arinox_packing_list_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "Before Save",
+   "file": "packing_list_validate.py"
+  },
+  {
+   "name": "arinox_packing_list_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "Before Submit",
+   "file": "packing_list_submit.py"
+  },
+  {
+   "name": "arinox_packing_list_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "After Submit",
+   "file": "packing_list_after_submit.py"
+  },
+  {
+   "name": "arinox_packing_list_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "Before Cancel",
+   "file": "packing_list_before_cancel.py"
+  },
+  {
+   "name": "arinox_packing_list_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Packing List",
+   "doctype_event": "After Cancel",
+   "file": "packing_list_after_cancel.py"
+  },
+  {
+   "name": "arinox_packing_list_api_generate",
+   "script_type": "API",
+   "api_method": "arinox_packing_list_generate_cartons",
+   "allow_guest": 0,
+   "file": "packing_list_api_generate.py"
+  },
+  {
+   "name": "arinox_scripts_switch",
+   "script_type": "API",
+   "api_method": "arinox_scripts_switch",
+   "allow_guest": 0,
+   "file": "scripts_switch.py"
+  },
+  {
+   "name": "arinox_final_inspection_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Final Inspection",
+   "doctype_event": "Before Save",
+   "file": "final_inspection_validate.py"
+  },
+  {
+   "name": "arinox_final_inspection_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Final Inspection",
+   "doctype_event": "Before Submit",
+   "file": "final_inspection_submit.py"
+  },
+  {
+   "name": "arinox_final_inspection_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Final Inspection",
+   "doctype_event": "After Submit",
+   "file": "final_inspection_after_submit.py"
+  },
+  {
+   "name": "arinox_final_inspection_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Final Inspection",
+   "doctype_event": "After Cancel",
+   "file": "final_inspection_after_cancel.py"
+  },
+  {
+   "name": "arinox_final_inspection_api_pick",
+   "script_type": "API",
+   "api_method": "arinox_final_inspection_pick_cartons",
+   "allow_guest": 0,
+   "file": "final_inspection_api_pick.py"
+  },
+  {
+   "name": "arinox_sales_contract_api_make_order",
+   "script_type": "API",
+   "api_method": "arinox_sales_contract_make_sales_order",
+   "allow_guest": 0,
+   "file": "sales_contract_api_make_order.py"
+  },
+  {
+   "name": "arinox_sales_contract_api_apply_template",
+   "script_type": "API",
+   "api_method": "arinox_sales_contract_apply_template",
+   "allow_guest": 0,
+   "file": "sales_contract_api_apply_template.py"
+  },
+  {
+   "name": "arinox_production_card_api_lines",
+   "script_type": "API",
+   "api_method": "arinox_production_card_get_card_lines",
+   "allow_guest": 0,
+   "file": "production_card_api_lines.py"
+  },
+  {
+   "name": "arinox_production_card_api_styles",
+   "script_type": "API",
+   "api_method": "arinox_production_card_get_order_styles",
+   "allow_guest": 0,
+   "file": "production_card_api_styles.py"
+  },
+  {
+   "name": "arinox_production_card_api_summary",
+   "script_type": "API",
+   "api_method": "arinox_production_card_get_summary",
+   "allow_guest": 0,
+   "file": "production_card_api_summary.py"
+  },
+  {
+   "name": "arinox_production_card_api_revise",
+   "script_type": "API",
+   "api_method": "arinox_production_card_revise_production_card",
+   "allow_guest": 0,
+   "file": "production_card_api_revise.py"
+  },
+  {
+   "name": "arinox_invoicing_api_prepare",
+   "script_type": "API",
+   "api_method": "arinox_invoicing_prepare_invoices",
+   "allow_guest": 0,
+   "file": "invoicing_api_prepare.py"
+  },
+  {
+   "name": "arinox_invoicing_api_submit",
+   "script_type": "API",
+   "api_method": "arinox_invoicing_submit_invoices",
+   "allow_guest": 0,
+   "file": "invoicing_api_submit.py"
+  },
+  {
+   "name": "arinox_followup_api_log",
+   "script_type": "API",
+   "api_method": "arinox_followup_log_follow_up",
+   "allow_guest": 0,
+   "file": "followup_api_log.py"
+  },
+  {
+   "name": "arinox_followup_daily",
+   "script_type": "Scheduler Event",
+   "event_frequency": "Daily",
+   "file": "followup_daily.py"
+  },
+  {
+   "name": "arinox_shipment_refresh_invoices",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save",
+   "file": "shipment_refresh_invoices.py"
+  },
+  {
+   "name": "arinox_shipment_refresh_invoices_submitted",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save (Submitted Document)",
+   "file": "shipment_refresh_invoices.py"
+  },
+  {
+   "name": "arinox_tech_pack_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Tech Pack",
+   "doctype_event": "Before Save",
+   "file": "tech_pack_validate.py"
+  },
+  {
+   "name": "arinox_tech_pack_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Tech Pack",
+   "doctype_event": "After Submit",
+   "file": "tech_pack_after_submit.py"
+  },
+  {
+   "name": "arinox_tech_pack_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Tech Pack",
+   "doctype_event": "After Cancel",
+   "file": "tech_pack_after_cancel.py"
+  },
+  {
+   "name": "arinox_tech_pack_api_make_tech_pack",
+   "script_type": "API",
+   "api_method": "arinox_tech_pack_make_tech_pack",
+   "allow_guest": 0,
+   "file": "tech_pack_api_make_tech_pack.py"
+  },
+  {
+   "name": "arinox_tech_pack_api_merge_measurements",
+   "script_type": "API",
+   "api_method": "arinox_tech_pack_merge_measurements",
+   "allow_guest": 0,
+   "file": "tech_pack_api_merge_measurements.py"
+  },
+  {
+   "name": "arinox_tech_pack_api_make_cost_sheet",
+   "script_type": "API",
+   "api_method": "arinox_tech_pack_make_cost_sheet",
+   "allow_guest": 0,
+   "file": "tech_pack_api_make_cost_sheet.py"
+  },
+  {
+   "name": "arinox_tech_pack_api_create_style_item",
+   "script_type": "API",
+   "api_method": "arinox_tech_pack_create_style_item",
+   "allow_guest": 0,
+   "file": "tech_pack_api_create_style_item.py"
+  },
+  {
+   "name": "arinox_price_negotiation_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Price Negotiation",
+   "doctype_event": "Before Save",
+   "file": "price_negotiation_validate.py"
+  },
+  {
+   "name": "arinox_price_negotiation_api_make_quotation",
+   "script_type": "API",
+   "api_method": "arinox_price_negotiation_make_quotation",
+   "allow_guest": 0,
+   "file": "price_negotiation_api_make_quotation.py"
+  },
+  {
+   "name": "arinox_quotation_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Quotation",
+   "doctype_event": "Before Save",
+   "file": "quotation_validate.py"
+  },
+  {
+   "name": "arinox_quotation_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Quotation",
+   "doctype_event": "After Submit",
+   "file": "quotation_after_submit.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_make_quotation",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_make_quotation",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_make_quotation.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_make_price_negotiation",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_make_price_negotiation",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_make_negotiation.py"
+  },
+  {
+   "name": "arinox_factory_allocation_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Factory Allocation",
+   "doctype_event": "Before Save",
+   "file": "factory_allocation_validate.py"
+  },
+  {
+   "name": "arinox_factory_allocation_api_get_lines_from_order",
+   "script_type": "API",
+   "api_method": "arinox_factory_allocation_get_lines_from_order",
+   "allow_guest": 0,
+   "file": "factory_allocation_api_lines.py"
+  },
+  {
+   "name": "arinox_factory_allocation_api_save_allocation",
+   "script_type": "API",
+   "api_method": "arinox_factory_allocation_save_allocation",
+   "allow_guest": 0,
+   "file": "factory_allocation_api_save.py"
+  },
+  {
+   "name": "arinox_factory_allocation_api_get_planning_context",
+   "script_type": "API",
+   "api_method": "arinox_factory_allocation_get_planning_context",
+   "allow_guest": 0,
+   "file": "factory_allocation_api_context.py"
+  },
+  {
+   "name": "arinox_sample_approval_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sample Approval",
+   "doctype_event": "Before Save",
+   "file": "sample_approval_validate.py"
+  },
+  {
+   "name": "arinox_sample_approval_after_save",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sample Approval",
+   "doctype_event": "After Save",
+   "file": "sample_approval_after_save.py"
+  },
+  {
+   "name": "arinox_sample_approval_api_load_spec",
+   "script_type": "API",
+   "api_method": "arinox_sample_approval_load_spec_from_tech_pack",
+   "allow_guest": 0,
+   "file": "sample_approval_api_spec.py"
+  },
+  {
+   "name": "arinox_sample_approval_api_load_tests",
+   "script_type": "API",
+   "api_method": "arinox_sample_approval_load_standard_tests",
+   "allow_guest": 0,
+   "file": "sample_approval_api_tests.py"
+  },
+  {
+   "name": "arinox_sample_approval_api_get_sample_rules",
+   "script_type": "API",
+   "api_method": "arinox_sample_approval_get_sample_rules",
+   "allow_guest": 0,
+   "file": "sample_approval_api_rules.py"
+  },
+  {
+   "name": "arinox_sample_approval_api_get_sampling_milestones",
+   "script_type": "API",
+   "api_method": "arinox_sample_approval_get_sampling_milestones",
+   "allow_guest": 0,
+   "file": "sample_approval_api_milestones.py"
+  },
+  {
+   "name": "arinox_pp_meeting_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "Before Save",
+   "file": "pp_meeting_validate.py"
+  },
+  {
+   "name": "arinox_pp_meeting_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "Before Submit",
+   "file": "pp_meeting_before_submit.py"
+  },
+  {
+   "name": "arinox_pp_meeting_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "After Submit",
+   "file": "pp_meeting_after_submit.py"
+  },
+  {
+   "name": "arinox_pp_meeting_before_update",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "Before Save (Submitted Document)",
+   "file": "pp_meeting_before_update.py"
+  },
+  {
+   "name": "arinox_pp_meeting_after_update",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "After Save (Submitted Document)",
+   "file": "pp_meeting_after_submit.py"
+  },
+  {
+   "name": "arinox_pp_meeting_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "After Cancel",
+   "file": "pp_meeting_after_cancel.py"
+  },
+  {
+   "name": "arinox_pp_meeting_api_get_buyer_comments",
+   "script_type": "API",
+   "api_method": "arinox_pp_meeting_get_buyer_comments",
+   "allow_guest": 0,
+   "file": "pp_meeting_api_buyer_comments.py"
+  },
+  {
+   "name": "arinox_pp_meeting_api_add_standard_participants",
+   "script_type": "API",
+   "api_method": "arinox_pp_meeting_add_standard_participants",
+   "allow_guest": 0,
+   "file": "pp_meeting_api_participants.py"
+  },
+  {
+   "name": "arinox_pp_meeting_api_load_from_requisitions",
+   "script_type": "API",
+   "api_method": "arinox_pp_meeting_load_from_requisitions",
+   "allow_guest": 0,
+   "file": "pp_meeting_api_requisitions.py"
+  },
+  {
+   "name": "arinox_work_order_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Work Order",
+   "doctype_event": "Before Save",
+   "file": "work_order_validate.py"
+  },
+  {
+   "name": "arinox_work_order_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Work Order",
+   "doctype_event": "Before Submit",
+   "file": "work_order_before_submit.py"
+  },
+  {
+   "name": "arinox_work_order_api_get_bulk_gate",
+   "script_type": "API",
+   "api_method": "arinox_work_order_get_bulk_gate",
+   "allow_guest": 0,
+   "file": "work_order_api_gate.py"
+  },
+  {
+   "name": "arinox_cost_head_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Cost Head",
+   "doctype_event": "Before Save",
+   "file": "cost_head_validate.py"
+  },
+  {
+   "name": "arinox_costing_parameter_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Costing Parameter",
+   "doctype_event": "Before Save",
+   "file": "costing_parameter_validate.py"
+  },
+  {
+   "name": "arinox_sales_contract_api_make_contract",
+   "script_type": "API",
+   "api_method": "arinox_sales_contract_make_sales_contract",
+   "allow_guest": 0,
+   "file": "sales_contract_api_make_contract.py"
+  },
+  {
+   "name": "arinox_tna",
+   "script_type": "API",
+   "api_method": "arinox_tna",
+   "allow_guest": 0,
+   "file": "tna_engine.py"
+  },
+  {
+   "name": "arinox_tna_milestone_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "TNA Milestone",
+   "doctype_event": "Before Save",
+   "file": "tna_milestone_validate.py"
+  },
+  {
+   "name": "arinox_tna_milestone_after_save",
+   "script_type": "DocType Event",
+   "reference_doctype": "TNA Milestone",
+   "doctype_event": "After Save",
+   "file": "tna_milestone_after_save.py"
+  },
+  {
+   "name": "arinox_tna_milestone_before_delete",
+   "script_type": "DocType Event",
+   "reference_doctype": "TNA Milestone",
+   "doctype_event": "Before Delete",
+   "file": "tna_milestone_after_save.py"
+  },
+  {
+   "name": "arinox_tna_milestone_api_get_events",
+   "script_type": "API",
+   "api_method": "arinox_tna_milestone_get_events",
+   "allow_guest": 0,
+   "file": "tna_milestone_api_events.py"
+  },
+  {
+   "name": "arinox_order_tna_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Order TNA",
+   "doctype_event": "Before Save",
+   "file": "order_tna_validate.py"
+  },
+  {
+   "name": "arinox_order_tna_api_lock",
+   "script_type": "API",
+   "api_method": "arinox_order_tna_lock_baseline",
+   "allow_guest": 0,
+   "file": "order_tna_api_lock.py"
+  },
+  {
+   "name": "arinox_order_tna_api_unlock",
+   "script_type": "API",
+   "api_method": "arinox_order_tna_unlock_baseline",
+   "allow_guest": 0,
+   "file": "order_tna_api_unlock.py"
+  },
+  {
+   "name": "arinox_order_tna_api_replan",
+   "script_type": "API",
+   "api_method": "arinox_order_tna_replan",
+   "allow_guest": 0,
+   "file": "order_tna_api_replan.py"
+  },
+  {
+   "name": "arinox_tna_template_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "TNA Template",
+   "doctype_event": "Before Save",
+   "file": "tna_template_validate.py"
+  },
+  {
+   "name": "arinox_planner_api_make_order_tnas",
+   "script_type": "API",
+   "api_method": "arinox_planner_make_order_tnas",
+   "allow_guest": 0,
+   "file": "planner_api_make.py"
+  },
+  {
+   "name": "arinox_tna_api_update_milestone",
+   "script_type": "API",
+   "api_method": "arinox_api_update_milestone",
+   "allow_guest": 0,
+   "file": "tna_api_update_milestone.py"
+  },
+  {
+   "name": "arinox_tna_api_get_tna",
+   "script_type": "API",
+   "api_method": "arinox_api_get_tna",
+   "allow_guest": 0,
+   "file": "tna_api_get_tna.py"
+  },
+  {
+   "name": "arinox_tna_api_wip_board_data",
+   "script_type": "API",
+   "api_method": "arinox_api_wip_board_data",
+   "allow_guest": 0,
+   "file": "tna_api_board.py"
+  },
+  {
+   "name": "arinox_tna_hook_tech_pack",
+   "script_type": "DocType Event",
+   "reference_doctype": "Tech Pack",
+   "doctype_event": "After Submit",
+   "file": "tna_hook_tech_pack.py"
+  },
+  {
+   "name": "arinox_tna_hook_sample_approval",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sample Approval",
+   "doctype_event": "After Save",
+   "file": "tna_hook_sample_approval.py"
+  },
+  {
+   "name": "arinox_tna_hook_pp_meeting",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "After Submit",
+   "file": "tna_hook_pp_meeting.py"
+  },
+  {
+   "name": "arinox_tna_hook_pp_meeting_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "PP Meeting",
+   "doctype_event": "After Cancel",
+   "file": "tna_hook_pp_meeting_cancel.py"
+  },
+  {
+   "name": "arinox_tna_hook_factory_allocation",
+   "script_type": "DocType Event",
+   "reference_doctype": "Factory Allocation",
+   "doctype_event": "After Save",
+   "file": "tna_hook_factory_allocation.py"
+  },
+  {
+   "name": "arinox_tna_hook_work_order",
+   "script_type": "DocType Event",
+   "reference_doctype": "Work Order",
+   "doctype_event": "After Save",
+   "file": "tna_hook_work_order.py"
+  },
+  {
+   "name": "arinox_tna_hook_sales_order_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Order",
+   "doctype_event": "After Submit",
+   "file": "tna_hook_sales_order_submit.py"
+  },
+  {
+   "name": "arinox_tna_hook_sales_order_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Sales Order",
+   "doctype_event": "After Cancel",
+   "file": "tna_hook_sales_order_cancel.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "Before Save",
+   "file": "fabric_requisition_validate.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "Before Submit",
+   "file": "fabric_requisition_before_submit.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "After Submit",
+   "file": "fabric_requisition_after_submit.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "Before Cancel",
+   "file": "fabric_requisition_before_cancel.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Requisition",
+   "doctype_event": "After Cancel",
+   "file": "fabric_requisition_after_cancel.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_api_get_lines_from_sales_orders",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_get_lines_from_sales_orders",
+   "allow_guest": 0,
+   "file": "fabric_requisition_api_lines.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_api_revise",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_revise_fabric_requisition",
+   "allow_guest": 0,
+   "file": "fabric_requisition_api_revise.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_api_save",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_save_fabric_requisition",
+   "allow_guest": 0,
+   "file": "fabric_requisition_api_save.py"
+  },
+  {
+   "name": "arinox_trim_requisition_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "Before Save",
+   "file": "trim_requisition_validate.py"
+  },
+  {
+   "name": "arinox_trim_requisition_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "Before Submit",
+   "file": "trim_requisition_before_submit.py"
+  },
+  {
+   "name": "arinox_trim_requisition_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "After Submit",
+   "file": "trim_requisition_after_submit.py"
+  },
+  {
+   "name": "arinox_trim_requisition_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "Before Cancel",
+   "file": "trim_requisition_before_cancel.py"
+  },
+  {
+   "name": "arinox_trim_requisition_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Requisition",
+   "doctype_event": "After Cancel",
+   "file": "trim_requisition_after_cancel.py"
+  },
+  {
+   "name": "arinox_trim_requisition_api_get_lines_from_sales_orders",
+   "script_type": "API",
+   "api_method": "arinox_trim_requisition_get_lines_from_sales_orders",
+   "allow_guest": 0,
+   "file": "trim_requisition_api_lines.py"
+  },
+  {
+   "name": "arinox_trim_requisition_api_revise",
+   "script_type": "API",
+   "api_method": "arinox_trim_requisition_revise_trim_requisition",
+   "allow_guest": 0,
+   "file": "trim_requisition_api_revise.py"
+  },
+  {
+   "name": "arinox_trim_requisition_api_save",
+   "script_type": "API",
+   "api_method": "arinox_trim_requisition_save_trim_requisition",
+   "allow_guest": 0,
+   "file": "trim_requisition_api_save.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_api_create_fabric_items",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_create_fabric_items",
+   "allow_guest": 0,
+   "file": "fabric_requisition_api_items.py"
+  },
+  {
+   "name": "arinox_trim_requisition_api_create_trim_items",
+   "script_type": "API",
+   "api_method": "arinox_trim_requisition_create_trim_items",
+   "allow_guest": 0,
+   "file": "trim_requisition_api_items.py"
+  },
+  {
+   "name": "arinox_fabric_requisition_api_get_requisition_context",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_get_requisition_context",
+   "allow_guest": 0,
+   "file": "fabric_requisition_api_context.py"
+  },
+  {
+   "name": "arinox_purchase_order_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Order",
+   "doctype_event": "Before Save",
+   "file": "purchase_order_validate.py"
+  },
+  {
+   "name": "arinox_purchase_order_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Order",
+   "doctype_event": "Before Submit",
+   "file": "purchase_order_before_submit.py"
+  },
+  {
+   "name": "arinox_purchase_order_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Order",
+   "doctype_event": "After Submit",
+   "file": "purchase_order_after_submit.py"
+  },
+  {
+   "name": "arinox_purchase_order_after_update",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Order",
+   "doctype_event": "After Save (Submitted Document)",
+   "file": "purchase_order_after_submit.py"
+  },
+  {
+   "name": "arinox_purchase_order_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Order",
+   "doctype_event": "After Cancel",
+   "file": "purchase_order_after_cancel.py"
+  },
+  {
+   "name": "arinox_purchase_order_api_make_purchase_orders",
+   "script_type": "API",
+   "api_method": "arinox_purchase_order_make_purchase_orders",
+   "allow_guest": 0,
+   "file": "purchase_order_api_make.py"
+  },
+  {
+   "name": "arinox_purchase_receipt_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Receipt",
+   "doctype_event": "Before Save",
+   "file": "purchase_receipt_validate.py"
+  },
+  {
+   "name": "arinox_purchase_receipt_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Receipt",
+   "doctype_event": "Before Submit",
+   "file": "purchase_receipt_before_submit.py"
+  },
+  {
+   "name": "arinox_purchase_receipt_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Receipt",
+   "doctype_event": "After Submit",
+   "file": "purchase_receipt_after_submit.py"
+  },
+  {
+   "name": "arinox_purchase_receipt_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Receipt",
+   "doctype_event": "After Cancel",
+   "file": "purchase_receipt_after_cancel.py"
+  },
+  {
+   "name": "arinox_rolls_api_import_roll_list",
+   "script_type": "API",
+   "api_method": "arinox_rolls_import_roll_list",
+   "allow_guest": 0,
+   "file": "rolls_api_import.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Inspection",
+   "doctype_event": "Before Save",
+   "file": "fabric_inspection_validate.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Inspection",
+   "doctype_event": "Before Submit",
+   "file": "fabric_inspection_before_submit.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Inspection",
+   "doctype_event": "After Submit",
+   "file": "fabric_inspection_after_submit.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Fabric Inspection",
+   "doctype_event": "After Cancel",
+   "file": "fabric_inspection_after_cancel.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_api_load_rolls",
+   "script_type": "API",
+   "api_method": "arinox_fabric_inspection_load_rolls",
+   "allow_guest": 0,
+   "file": "fabric_inspection_api_load_rolls.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_api_make_inspection",
+   "script_type": "API",
+   "api_method": "arinox_fabric_inspection_make_inspection",
+   "allow_guest": 0,
+   "file": "fabric_inspection_api_make.py"
+  },
+  {
+   "name": "arinox_fabric_inspection_api_make_purchase_return",
+   "script_type": "API",
+   "api_method": "arinox_fabric_inspection_make_purchase_return",
+   "allow_guest": 0,
+   "file": "fabric_inspection_api_return.py"
+  },
+  {
+   "name": "arinox_trim_inspection_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Inspection",
+   "doctype_event": "Before Save",
+   "file": "trim_inspection_validate.py"
+  },
+  {
+   "name": "arinox_trim_inspection_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Inspection",
+   "doctype_event": "Before Submit",
+   "file": "trim_inspection_before_submit.py"
+  },
+  {
+   "name": "arinox_trim_inspection_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Inspection",
+   "doctype_event": "After Submit",
+   "file": "trim_inspection_after_submit.py"
+  },
+  {
+   "name": "arinox_trim_inspection_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Trim Inspection",
+   "doctype_event": "After Cancel",
+   "file": "trim_inspection_after_cancel.py"
+  },
+  {
+   "name": "arinox_trim_inspection_api_make_inspection",
+   "script_type": "API",
+   "api_method": "arinox_trim_inspection_make_inspection",
+   "allow_guest": 0,
+   "file": "trim_inspection_api_make.py"
+  },
+  {
+   "name": "arinox_cut_plan_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Cut Plan",
+   "doctype_event": "Before Save",
+   "file": "cut_plan_validate.py"
+  },
+  {
+   "name": "arinox_cut_plan_api_release",
+   "script_type": "API",
+   "api_method": "arinox_cut_plan_release",
+   "allow_guest": 0,
+   "file": "cut_plan_api_release.py"
+  },
+  {
+   "name": "arinox_cut_plan_api_approve",
+   "script_type": "API",
+   "api_method": "arinox_cut_plan_approve",
+   "allow_guest": 0,
+   "file": "cut_plan_api_approve.py"
+  },
+  {
+   "name": "arinox_cut_plan_api_reopen",
+   "script_type": "API",
+   "api_method": "arinox_cut_plan_reopen",
+   "allow_guest": 0,
+   "file": "cut_plan_api_reopen.py"
+  },
+  {
+   "name": "arinox_cut_plan_api_suggest_rolls",
+   "script_type": "API",
+   "api_method": "arinox_cut_plan_suggest_rolls",
+   "allow_guest": 0,
+   "file": "cut_plan_api_suggest.py"
+  },
+  {
+   "name": "arinox_cutting_api_get_issuable_rolls",
+   "script_type": "API",
+   "api_method": "arinox_cutting_get_issuable_rolls",
+   "allow_guest": 0,
+   "file": "cutting_api_issuable.py"
+  },
+  {
+   "name": "arinox_cutting_api_issue_fabric",
+   "script_type": "API",
+   "api_method": "arinox_cutting_issue_fabric",
+   "allow_guest": 0,
+   "file": "cutting_api_issue.py"
+  },
+  {
+   "name": "arinox_lay_report_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Lay Report",
+   "doctype_event": "Before Save",
+   "file": "lay_report_validate.py"
+  },
+  {
+   "name": "arinox_lay_report_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Lay Report",
+   "doctype_event": "Before Submit",
+   "file": "lay_report_before_submit.py"
+  },
+  {
+   "name": "arinox_lay_report_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Lay Report",
+   "doctype_event": "After Submit",
+   "file": "lay_report_after_submit.py"
+  },
+  {
+   "name": "arinox_lay_report_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Lay Report",
+   "doctype_event": "After Cancel",
+   "file": "lay_report_after_cancel.py"
+  },
+  {
+   "name": "arinox_recut_request_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Recut Request",
+   "doctype_event": "Before Save",
+   "file": "recut_request_validate.py"
+  },
+  {
+   "name": "arinox_recut_request_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Recut Request",
+   "doctype_event": "After Cancel",
+   "file": "recut_request_after_cancel.py"
+  },
+  {
+   "name": "arinox_cut_bundle_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Cut Bundle",
+   "doctype_event": "Before Save",
+   "file": "cut_bundle_validate.py"
+  },
+  {
+   "name": "arinox_operation_bulletin_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Operation Bulletin",
+   "doctype_event": "Before Save",
+   "file": "operation_bulletin_validate.py"
+  },
+  {
+   "name": "arinox_operation_bulletin_api_activate",
+   "script_type": "API",
+   "api_method": "arinox_operation_bulletin_activate",
+   "allow_guest": 0,
+   "file": "operation_bulletin_api_activate.py"
+  },
+  {
+   "name": "arinox_line_input_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line Input",
+   "doctype_event": "Before Save",
+   "file": "line_input_validate.py"
+  },
+  {
+   "name": "arinox_line_input_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line Input",
+   "doctype_event": "After Submit",
+   "file": "line_input_after_submit.py"
+  },
+  {
+   "name": "arinox_line_input_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line Input",
+   "doctype_event": "Before Cancel",
+   "file": "line_input_before_cancel.py"
+  },
+  {
+   "name": "arinox_line_input_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line Input",
+   "doctype_event": "After Cancel",
+   "file": "line_input_after_cancel.py"
+  },
+  {
+   "name": "arinox_daily_line_report_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Daily Line Report",
+   "doctype_event": "Before Save",
+   "file": "daily_line_report_validate.py"
+  },
+  {
+   "name": "arinox_daily_line_report_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Daily Line Report",
+   "doctype_event": "After Submit",
+   "file": "daily_line_report_after_submit.py"
+  },
+  {
+   "name": "arinox_daily_line_report_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Daily Line Report",
+   "doctype_event": "After Cancel",
+   "file": "daily_line_report_after_cancel.py"
+  },
+  {
+   "name": "arinox_line_qc_report_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line QC Report",
+   "doctype_event": "Before Save",
+   "file": "line_qc_report_validate.py"
+  },
+  {
+   "name": "arinox_line_qc_report_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line QC Report",
+   "doctype_event": "After Submit",
+   "file": "line_qc_report_after_submit.py"
+  },
+  {
+   "name": "arinox_line_qc_report_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Line QC Report",
+   "doctype_event": "After Cancel",
+   "file": "line_qc_report_after_cancel.py"
+  },
+  {
+   "name": "arinox_pilot_run_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Pilot Run",
+   "doctype_event": "Before Save",
+   "file": "pilot_run_validate.py"
+  },
+  {
+   "name": "arinox_pilot_run_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Pilot Run",
+   "doctype_event": "Before Submit",
+   "file": "pilot_run_before_submit.py"
+  },
+  {
+   "name": "arinox_pilot_run_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Pilot Run",
+   "doctype_event": "After Submit",
+   "file": "pilot_run_after_submit.py"
+  },
+  {
+   "name": "arinox_pilot_run_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Pilot Run",
+   "doctype_event": "After Cancel",
+   "file": "pilot_run_after_cancel.py"
+  },
+  {
+   "name": "arinox_finishing_receipt_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Finishing Receipt",
+   "doctype_event": "Before Save",
+   "file": "finishing_receipt_validate.py"
+  },
+  {
+   "name": "arinox_finishing_receipt_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Finishing Receipt",
+   "doctype_event": "After Submit",
+   "file": "finishing_receipt_after_submit.py"
+  },
+  {
+   "name": "arinox_finishing_receipt_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Finishing Receipt",
+   "doctype_event": "After Cancel",
+   "file": "finishing_receipt_after_cancel.py"
+  },
+  {
+   "name": "arinox_needle_detector_log_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Needle Detector Log",
+   "doctype_event": "Before Save",
+   "file": "needle_detector_log_validate.py"
+  },
+  {
+   "name": "arinox_subcontract_challan_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Challan",
+   "doctype_event": "Before Save",
+   "file": "subcontract_challan_validate.py"
+  },
+  {
+   "name": "arinox_subcontract_challan_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Challan",
+   "doctype_event": "After Submit",
+   "file": "subcontract_challan_after_submit.py"
+  },
+  {
+   "name": "arinox_subcontract_challan_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Challan",
+   "doctype_event": "Before Cancel",
+   "file": "subcontract_challan_before_cancel.py"
+  },
+  {
+   "name": "arinox_subcontract_challan_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Challan",
+   "doctype_event": "After Cancel",
+   "file": "subcontract_challan_after_cancel.py"
+  },
+  {
+   "name": "arinox_subcontract_challan_api_short_close",
+   "script_type": "API",
+   "api_method": "arinox_subcontract_challan_short_close",
+   "allow_guest": 0,
+   "file": "subcontract_challan_api_short_close.py"
+  },
+  {
+   "name": "arinox_subcontract_return_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Return",
+   "doctype_event": "Before Save",
+   "file": "subcontract_return_validate.py"
+  },
+  {
+   "name": "arinox_subcontract_return_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Return",
+   "doctype_event": "After Submit",
+   "file": "subcontract_return_after_submit.py"
+  },
+  {
+   "name": "arinox_subcontract_return_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Return",
+   "doctype_event": "Before Cancel",
+   "file": "subcontract_return_before_cancel.py"
+  },
+  {
+   "name": "arinox_subcontract_return_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Return",
+   "doctype_event": "After Cancel",
+   "file": "subcontract_return_after_cancel.py"
+  },
+  {
+   "name": "arinox_subcontract_settlement_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Settlement",
+   "doctype_event": "Before Save",
+   "file": "subcontract_settlement_validate.py"
+  },
+  {
+   "name": "arinox_subcontract_settlement_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Subcontract Settlement",
+   "doctype_event": "Before Submit",
+   "file": "subcontract_settlement_before_submit.py"
+  },
+  {
+   "name": "arinox_subcontract_settlement_api_make_invoices",
+   "script_type": "API",
+   "api_method": "arinox_subcontract_settlement_make_invoices",
+   "allow_guest": 0,
+   "file": "subcontract_settlement_api_invoices.py"
+  },
+  {
+   "name": "arinox_shipment_before_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "Before Validate",
+   "file": "shipment_before_validate.py"
+  },
+  {
+   "name": "arinox_shipment_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "Before Save",
+   "file": "shipment_validate.py"
+  },
+  {
+   "name": "arinox_shipment_on_update",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save",
+   "file": "shipment_on_update.py"
+  },
+  {
+   "name": "arinox_shipment_on_update_submitted",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Save (Submitted Document)",
+   "file": "shipment_on_update.py"
+  },
+  {
+   "name": "arinox_shipment_before_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "Before Cancel",
+   "file": "shipment_before_cancel.py"
+  },
+  {
+   "name": "arinox_shipment_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Shipment",
+   "doctype_event": "After Cancel",
+   "file": "shipment_after_cancel.py"
+  },
+  {
+   "name": "arinox_shipment_api_get_available_packing_lists",
+   "script_type": "API",
+   "api_method": "arinox_shipment_get_available_packing_lists",
+   "allow_guest": 0,
+   "file": "shipment_api_available.py"
+  },
+  {
+   "name": "arinox_shipment_api_make_delivery_notes",
+   "script_type": "API",
+   "api_method": "arinox_shipment_make_delivery_notes",
+   "allow_guest": 0,
+   "file": "shipment_api_make_delivery_notes.py"
+  },
+  {
+   "name": "arinox_freight_api_allocated_costs",
+   "script_type": "API",
+   "api_method": "arinox_freight_allocated_costs",
+   "allow_guest": 0,
+   "file": "shipment_api_freight_allocation.py"
+  },
+  {
+   "name": "arinox_delivery_tna_after_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "After Submit",
+   "file": "delivery_tna_after_submit.py"
+  },
+  {
+   "name": "arinox_delivery_tna_after_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Delivery Note",
+   "doctype_event": "After Cancel",
+   "file": "delivery_tna_after_cancel.py"
+  },
+  {
+   "name": "arinox_purchase_invoice_freight",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Invoice",
+   "doctype_event": "After Save",
+   "file": "purchase_invoice_freight.py"
+  },
+  {
+   "name": "arinox_purchase_invoice_freight_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Invoice",
+   "doctype_event": "After Submit",
+   "file": "purchase_invoice_freight.py"
+  },
+  {
+   "name": "arinox_purchase_invoice_freight_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Purchase Invoice",
+   "doctype_event": "After Cancel",
+   "file": "purchase_invoice_freight.py"
+  },
+  {
+   "name": "arinox_buyer_claim_validate",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "Before Save",
+   "file": "buyer_claim_validate.py"
+  },
+  {
+   "name": "arinox_buyer_claim_before_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "Before Submit",
+   "file": "buyer_claim_before_submit.py"
+  },
+  {
+   "name": "arinox_buyer_claim_sync",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "After Save",
+   "file": "buyer_claim_sync.py"
+  },
+  {
+   "name": "arinox_buyer_claim_sync_submit",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "After Submit",
+   "file": "buyer_claim_sync.py"
+  },
+  {
+   "name": "arinox_buyer_claim_sync_cancel",
+   "script_type": "DocType Event",
+   "reference_doctype": "Buyer Claim",
+   "doctype_event": "After Cancel",
+   "file": "buyer_claim_sync.py"
+  },
+  {
+   "name": "arinox_buyer_claim_api_make_credit_note",
+   "script_type": "API",
+   "api_method": "arinox_buyer_claim_make_credit_note",
+   "allow_guest": 0,
+   "file": "buyer_claim_api_credit_note.py"
+  },
+  {
+   "name": "arinox_close_api_get_checklist",
+   "script_type": "API",
+   "api_method": "arinox_close_get_checklist",
+   "allow_guest": 0,
+   "file": "close_api_checklist.py"
+  },
+  {
+   "name": "arinox_close_api_commercial_close",
+   "script_type": "API",
+   "api_method": "arinox_close_commercial_close",
+   "allow_guest": 0,
+   "file": "close_api_close.py"
+  },
+  {
+   "name": "arinox_production_card_api_get_production_context",
+   "script_type": "API",
+   "api_method": "arinox_production_card_get_production_context",
+   "allow_guest": 0,
+   "file": "production_card_api_context.py"
+  },
+  {
+   "name": "arinox_production_card_api_save_production_card",
+   "script_type": "API",
+   "api_method": "arinox_production_card_save_production_card",
+   "allow_guest": 0,
+   "file": "production_card_api_save.py"
+  },
+  {
+   "name": "arinox_production_card_api_get_production_status",
+   "script_type": "API",
+   "api_method": "arinox_production_card_get_production_status",
+   "allow_guest": 0,
+   "file": "production_card_api_status.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_get_costing_context",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_get_costing_context",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_context.py"
+  },
+  {
+   "name": "arinox_cost_sheet_api_get_previous_costing",
+   "script_type": "API",
+   "api_method": "arinox_cost_sheet_get_previous_costing",
+   "allow_guest": 0,
+   "file": "cost_sheet_api_previous.py"
+  },
+  {
+   "name": "arinox_ledger_api_rebuild_movements",
+   "script_type": "API",
+   "api_method": "arinox_ledger_rebuild_movements",
+   "allow_guest": 0,
+   "file": "ledger_api_rebuild.py"
   }
  ]
 }

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "format:PPM-{YY}-{#####}",
  "creation": "2026-11-04 12:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -62,38 +63,38 @@
  ],
  "fields": [
   {
+   "default": "PP Meeting",
    "fieldname": "meeting_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Meeting Type",
    "options": "PP Meeting\nPilot Run",
-   "default": "PP Meeting",
-   "reqd": 1,
-   "in_standard_filter": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "sales_order",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Sales Order",
    "options": "Sales Order",
-   "reqd": 1,
-   "in_standard_filter": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "style_item",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Style (Item template)",
    "options": "Item",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "style_no",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Style No",
-   "read_only": 1,
-   "in_list_view": 1
+   "read_only": 1
   },
   {
    "fieldname": "description",
@@ -136,22 +137,22 @@
    "fieldtype": "Column Break"
   },
   {
+   "allow_on_submit": 1,
+   "default": "Draft",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Draft\nOpen Actions\nClosed",
-   "default": "Draft",
-   "read_only": 1,
-   "in_standard_filter": 1,
-   "allow_on_submit": 1,
-   "in_list_view": 1
+   "read_only": 1
   },
   {
    "fieldname": "meeting_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Meeting Date",
-   "reqd": 1,
-   "in_list_view": 1
+   "reqd": 1
   },
   {
    "fieldname": "delivery_date",
@@ -267,10 +268,10 @@
    "label": "Line Setting Checklist Available"
   },
   {
+   "collapsible": 1,
    "fieldname": "s_tech",
    "fieldtype": "Section Break",
-   "label": "Technical Notes",
-   "collapsible": 1
+   "label": "Technical Notes"
   },
   {
    "fieldname": "critical_operations",
@@ -362,126 +363,125 @@
    "label": "Comments and Actions"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "actions",
    "fieldtype": "Table",
-   "label": "Every Buyer Comment \u2192 Owner and Date",
-   "options": "PP Meeting Action",
-   "allow_on_submit": 1
+   "label": "Every Buyer Comment → Owner and Date",
+   "options": "PP Meeting Action"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
-   "options": "PP Meeting",
-   "read_only": 1,
    "no_copy": 1,
-   "print_hide": 1
+   "options": "PP Meeting",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 0,
+ "is_submittable": 1,
  "links": [],
  "modified": "2026-11-04 12:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arinox Apparel",
  "name": "PP Meeting",
  "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandising Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Apparel Merchandiser",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Manufacturing User",
+   "share": 0,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 0,
+   "cancel": 0,
+   "create": 0,
+   "delete": 0,
+   "email": 0,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Sales User",
+   "share": 0,
+   "submit": 0,
+   "write": 0
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "track_changes": 1,
- "permissions": [
-  {
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 1,
-   "role": "System Manager",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  },
-  {
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 1,
-   "role": "Apparel Merchandising Manager",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  },
-  {
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 0,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 1,
-   "role": "Apparel Merchandiser",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  },
-  {
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "delete": 0,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 1,
-   "role": "Manufacturing Manager",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  },
-  {
-   "read": 1,
-   "write": 1,
-   "create": 0,
-   "delete": 0,
-   "email": 0,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 0,
-   "role": "Manufacturing User",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  },
-  {
-   "read": 1,
-   "write": 0,
-   "create": 0,
-   "delete": 0,
-   "email": 0,
-   "export": 1,
-   "print": 1,
-   "report": 1,
-   "share": 0,
-   "role": "Sales User",
-   "submit": 1,
-   "cancel": 1,
-   "amend": 1
-  }
- ],
- "autoname": "format:PPM-{YY}-{#####}",
  "title_field": "style_no",
- "is_submittable": 1
+ "track_changes": 1
 }

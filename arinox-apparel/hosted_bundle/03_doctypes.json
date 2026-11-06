@@ -1117,6 +1117,7 @@
      },
      {
       "default": "1",
+      "description": "Sheet-currency value of ONE unit of the rate currency: CNY to USD is about 0.14 (not 7.3). The rate is multiplied by this.",
       "fieldname": "exchange_rate",
       "fieldtype": "Float",
       "label": "Rate Currency to Sheet Currency"
@@ -1301,6 +1302,7 @@
      },
      {
       "default": "1",
+      "description": "Sheet-currency value of ONE unit of the rate currency: CNY to USD is about 0.14 (not 7.3). The rate is multiplied by this.",
       "fieldname": "exchange_rate",
       "fieldtype": "Float",
       "label": "Rate Currency to Sheet Currency"
@@ -3464,12 +3466,17 @@
     "field_order": [
      "pom_code",
      "point_of_measure",
-     "local_name",
-     "size",
-     "value",
-     "tolerance_plus",
-     "tolerance_minus",
-     "how_to_measure"
+     "section",
+     "tolerance",
+     "xxs",
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl",
+     "how_to_measure",
+     "revised_on"
     ],
     "fields": [
      {
@@ -3488,45 +3495,79 @@
       "reqd": 1
      },
      {
-      "columns": 2,
-      "fieldname": "local_name",
+      "description": "Shell, Lining ... when the same POM code is measured on more than one body",
+      "fieldname": "section",
       "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Local Name"
+      "in_list_view": 0,
+      "label": "Section"
      },
      {
       "columns": 1,
-      "fieldname": "size",
-      "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Size",
-      "reqd": 1
-     },
-     {
-      "columns": 1,
-      "fieldname": "value",
+      "description": "One figure for plus and minus, as the buyer sheets give it",
+      "fieldname": "tolerance",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Value"
+      "label": "Tol +/-"
      },
      {
       "columns": 1,
-      "fieldname": "tolerance_plus",
+      "fieldname": "xxs",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Tol +"
+      "label": "XXS"
      },
      {
       "columns": 1,
-      "fieldname": "tolerance_minus",
+      "fieldname": "xs",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Tol \u2212"
+      "label": "XS"
+     },
+     {
+      "columns": 1,
+      "fieldname": "s",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "S"
+     },
+     {
+      "columns": 1,
+      "fieldname": "m",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "M"
+     },
+     {
+      "columns": 1,
+      "fieldname": "l",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "L"
+     },
+     {
+      "columns": 1,
+      "fieldname": "xl",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "XL"
+     },
+     {
+      "columns": 1,
+      "fieldname": "xxl",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "XXL"
      },
      {
       "fieldname": "how_to_measure",
       "fieldtype": "Small Text",
       "label": "How to Measure"
+     },
+     {
+      "description": "The buyer dates a row that changed",
+      "fieldname": "revised_on",
+      "fieldtype": "Date",
+      "label": "Revised On"
      }
     ],
     "index_web_pages_for_search": 0,
@@ -3548,12 +3589,17 @@
     "field_order": [
      "pom_code",
      "point_of_measure",
-     "local_name",
-     "size",
-     "value",
-     "tolerance_plus",
-     "tolerance_minus",
-     "how_to_measure"
+     "section",
+     "tolerance",
+     "xxs",
+     "xs",
+     "s",
+     "m",
+     "l",
+     "xl",
+     "xxl",
+     "how_to_measure",
+     "revised_on"
     ],
     "fields": [
      {
@@ -3572,45 +3618,79 @@
       "reqd": 1
      },
      {
-      "columns": 2,
-      "fieldname": "local_name",
+      "description": "Shell, Lining ... when the same POM code is measured on more than one body",
+      "fieldname": "section",
       "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Local Name"
+      "in_list_view": 0,
+      "label": "Section"
      },
      {
       "columns": 1,
-      "fieldname": "size",
-      "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Size",
-      "reqd": 1
-     },
-     {
-      "columns": 1,
-      "fieldname": "value",
+      "description": "One figure for plus and minus, as the buyer sheets give it",
+      "fieldname": "tolerance",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Value"
+      "label": "Tol +/-"
      },
      {
       "columns": 1,
-      "fieldname": "tolerance_plus",
+      "fieldname": "xxs",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Tol +"
+      "label": "XXS"
      },
      {
       "columns": 1,
-      "fieldname": "tolerance_minus",
+      "fieldname": "xs",
       "fieldtype": "Float",
       "in_list_view": 1,
-      "label": "Tol \u2212"
+      "label": "XS"
+     },
+     {
+      "columns": 1,
+      "fieldname": "s",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "S"
+     },
+     {
+      "columns": 1,
+      "fieldname": "m",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "M"
+     },
+     {
+      "columns": 1,
+      "fieldname": "l",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "L"
+     },
+     {
+      "columns": 1,
+      "fieldname": "xl",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "XL"
+     },
+     {
+      "columns": 1,
+      "fieldname": "xxl",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "XXL"
      },
      {
       "fieldname": "how_to_measure",
       "fieldtype": "Small Text",
       "label": "How to Measure"
+     },
+     {
+      "description": "The buyer dates a row that changed",
+      "fieldname": "revised_on",
+      "fieldtype": "Date",
+      "label": "Revised On"
      }
     ],
     "index_web_pages_for_search": 0,
@@ -3734,6 +3814,8 @@
      "style_item",
      "revision",
      "received_on",
+     "buyer_created_on",
+     "buyer_revised_on",
      "status",
      "section_2",
      "fabric_code",
@@ -3770,7 +3852,6 @@
      "section_11",
      "sizes",
      "section_12",
-     "measurement_matrix",
      "measurements",
      "tab_13",
      "colours",
@@ -4072,11 +4153,6 @@
       "label": "Measurement Chart"
      },
      {
-      "fieldname": "measurement_matrix",
-      "fieldtype": "HTML",
-      "label": "Measurement Matrix"
-     },
-     {
       "fieldname": "measurements",
       "fieldtype": "Table",
       "label": "Measurements",
@@ -4155,6 +4231,18 @@
       "print_hide": 1,
       "read_only": 1,
       "search_index": 1
+     },
+     {
+      "description": "Creation date printed on the buyer's measurement sheet",
+      "fieldname": "buyer_created_on",
+      "fieldtype": "Date",
+      "label": "Created By Buyer On"
+     },
+     {
+      "description": "Revised date printed on the buyer's measurement sheet",
+      "fieldname": "buyer_revised_on",
+      "fieldtype": "Date",
+      "label": "Revised By Buyer On"
      }
     ],
     "image_field": "front_image",
@@ -4244,6 +4332,8 @@
      "style_item",
      "revision",
      "received_on",
+     "buyer_created_on",
+     "buyer_revised_on",
      "status",
      "section_2",
      "fabric_code",
@@ -4280,7 +4370,6 @@
      "section_11",
      "sizes",
      "section_12",
-     "measurement_matrix",
      "measurements",
      "tab_13",
      "colours",
@@ -4582,11 +4671,6 @@
       "label": "Measurement Chart"
      },
      {
-      "fieldname": "measurement_matrix",
-      "fieldtype": "HTML",
-      "label": "Measurement Matrix"
-     },
-     {
       "fieldname": "measurements",
       "fieldtype": "Table",
       "label": "Measurements",
@@ -4665,6 +4749,18 @@
       "print_hide": 1,
       "read_only": 1,
       "search_index": 1
+     },
+     {
+      "description": "Creation date printed on the buyer's measurement sheet",
+      "fieldname": "buyer_created_on",
+      "fieldtype": "Date",
+      "label": "Created By Buyer On"
+     },
+     {
+      "description": "Revised date printed on the buyer's measurement sheet",
+      "fieldname": "buyer_revised_on",
+      "fieldtype": "Date",
+      "label": "Revised By Buyer On"
      }
     ],
     "image_field": "front_image",
@@ -4906,6 +5002,7 @@
      {
       "fieldname": "order_qty",
       "fieldtype": "Int",
+      "in_list_view": 1,
       "label": "Expected Order Qty"
      },
      {
@@ -5164,6 +5261,7 @@
      {
       "fieldname": "order_value",
       "fieldtype": "Currency",
+      "in_list_view": 1,
       "label": "Order Value",
       "options": "currency",
       "read_only": 1
@@ -5509,6 +5607,7 @@
      {
       "fieldname": "order_qty",
       "fieldtype": "Int",
+      "in_list_view": 1,
       "label": "Expected Order Qty"
      },
      {
@@ -5767,6 +5866,7 @@
      {
       "fieldname": "order_value",
       "fieldtype": "Currency",
+      "in_list_view": 1,
       "label": "Order Value",
       "options": "currency",
       "read_only": 1
@@ -6469,6 +6569,8 @@
      "column_1",
      "currency",
      "status",
+     "total_qty",
+     "total_value",
      "lost_reason",
      "quotation",
      "section_2",
@@ -6566,6 +6668,22 @@
       "fieldtype": "Table",
       "label": "Rounds",
       "options": "Price Negotiation Round"
+     },
+     {
+      "description": "Pieces across the styles still being negotiated (dropped styles left out).",
+      "fieldname": "total_qty",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Total Qty",
+      "read_only": 1
+     },
+     {
+      "description": "Quantity x agreed price, for the styles already agreed.",
+      "fieldname": "total_value",
+      "fieldtype": "Currency",
+      "label": "Agreed Value",
+      "options": "currency",
+      "read_only": 1
      }
     ],
     "index_web_pages_for_search": 0,
@@ -6639,6 +6757,8 @@
      "column_1",
      "currency",
      "status",
+     "total_qty",
+     "total_value",
      "lost_reason",
      "quotation",
      "section_2",
@@ -6736,6 +6856,22 @@
       "fieldtype": "Table",
       "label": "Rounds",
       "options": "Price Negotiation Round"
+     },
+     {
+      "description": "Pieces across the styles still being negotiated (dropped styles left out).",
+      "fieldname": "total_qty",
+      "fieldtype": "Int",
+      "in_list_view": 1,
+      "label": "Total Qty",
+      "read_only": 1
+     },
+     {
+      "description": "Quantity x agreed price, for the styles already agreed.",
+      "fieldname": "total_value",
+      "fieldtype": "Currency",
+      "label": "Agreed Value",
+      "options": "currency",
+      "read_only": 1
      }
     ],
     "index_web_pages_for_search": 0,
@@ -8150,6 +8286,7 @@
      "transit_days",
      "column_11",
      "delay_days_allowed",
+     "production_lead_days",
      "late_shipment_terms",
      "section_12",
      "tolerance_bands",
@@ -8642,6 +8779,12 @@
       "print_hide": 1,
       "read_only": 1,
       "search_index": 1
+     },
+     {
+      "description": "Printed on the buyer's PO (for example 45 days)",
+      "fieldname": "production_lead_days",
+      "fieldtype": "Int",
+      "label": "Production Lead Time (days)"
      },
      {
       "fieldname": "arinox_name",
@@ -8784,6 +8927,7 @@
      "transit_days",
      "column_11",
      "delay_days_allowed",
+     "production_lead_days",
      "late_shipment_terms",
      "section_12",
      "tolerance_bands",
@@ -9276,6 +9420,12 @@
       "print_hide": 1,
       "read_only": 1,
       "search_index": 1
+     },
+     {
+      "description": "Printed on the buyer's PO (for example 45 days)",
+      "fieldname": "production_lead_days",
+      "fieldtype": "Int",
+      "label": "Production Lead Time (days)"
      },
      {
       "fieldname": "arinox_name",
@@ -24390,7 +24540,8 @@
       "fieldname": "invoice_value",
       "fieldtype": "Currency",
       "in_list_view": 1,
-      "label": "Invoice Value"
+      "label": "Invoice Value",
+      "options": "currency"
      },
      {
       "fieldname": "currency",
@@ -24488,7 +24639,8 @@
       "fieldname": "invoice_value",
       "fieldtype": "Currency",
       "in_list_view": 1,
-      "label": "Invoice Value"
+      "label": "Invoice Value",
+      "options": "currency"
      },
      {
       "fieldname": "currency",
@@ -26613,6 +26765,7 @@
      "gross_qty",
      "stock_warehouse",
      "stock_used",
+     "stock_decision",
      "net_qty",
      "order_uom",
      "order_qty",
@@ -26905,6 +27058,13 @@
       "fieldname": "remarks",
       "fieldtype": "Small Text",
       "label": "Remarks"
+     },
+     {
+      "description": "The request sheet says HAVE STOCK or NEED TO ORDER in words",
+      "fieldname": "stock_decision",
+      "fieldtype": "Select",
+      "label": "Stock Decision",
+      "options": "\nOrder\nUse Stock"
      }
     ],
     "istable": 1,
@@ -26954,6 +27114,7 @@
      "gross_qty",
      "stock_warehouse",
      "stock_used",
+     "stock_decision",
      "net_qty",
      "order_uom",
      "order_qty",
@@ -27246,6 +27407,13 @@
       "fieldname": "remarks",
       "fieldtype": "Small Text",
       "label": "Remarks"
+     },
+     {
+      "description": "The request sheet says HAVE STOCK or NEED TO ORDER in words",
+      "fieldname": "stock_decision",
+      "fieldtype": "Select",
+      "label": "Stock Decision",
+      "options": "\nOrder\nUse Stock"
      }
     ],
     "istable": 1,
@@ -30338,6 +30506,7 @@
       "fieldname": "claimed_amount",
       "fieldtype": "Currency",
       "label": "Claimed Amount",
+      "options": "currency",
       "reqd": 1
      },
      {
@@ -30391,6 +30560,7 @@
       "fieldname": "cap_amount",
       "fieldtype": "Currency",
       "label": "Cap (CIF value of the pieces)",
+      "options": "currency",
       "read_only": 1
      },
      {
@@ -30407,7 +30577,8 @@
      {
       "fieldname": "accepted_amount",
       "fieldtype": "Currency",
-      "label": "Accepted Amount"
+      "label": "Accepted Amount",
+      "options": "currency"
      },
      {
       "fieldname": "settlement",
@@ -30430,7 +30601,8 @@
      {
       "fieldname": "recovery_amount",
       "fieldtype": "Currency",
-      "label": "Recovery Amount"
+      "label": "Recovery Amount",
+      "options": "currency"
      },
      {
       "fieldname": "credit_note",
@@ -30696,6 +30868,7 @@
       "fieldname": "claimed_amount",
       "fieldtype": "Currency",
       "label": "Claimed Amount",
+      "options": "currency",
       "reqd": 1
      },
      {
@@ -30749,6 +30922,7 @@
       "fieldname": "cap_amount",
       "fieldtype": "Currency",
       "label": "Cap (CIF value of the pieces)",
+      "options": "currency",
       "read_only": 1
      },
      {
@@ -30765,7 +30939,8 @@
      {
       "fieldname": "accepted_amount",
       "fieldtype": "Currency",
-      "label": "Accepted Amount"
+      "label": "Accepted Amount",
+      "options": "currency"
      },
      {
       "fieldname": "settlement",
@@ -30788,7 +30963,8 @@
      {
       "fieldname": "recovery_amount",
       "fieldtype": "Currency",
-      "label": "Recovery Amount"
+      "label": "Recovery Amount",
+      "options": "currency"
      },
      {
       "fieldname": "credit_note",

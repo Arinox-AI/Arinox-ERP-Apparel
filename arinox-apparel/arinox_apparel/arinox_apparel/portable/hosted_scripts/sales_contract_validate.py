@@ -35,7 +35,9 @@ def run(doc):
         if doc.terms_and_conditions and not doc.terms:
             doc.terms = frappe.db.get_value("Terms and Conditions", doc.terms_and_conditions, "terms")
     if not doc.bank_account and doc.company:
-        doc.bank_account = frappe.db.get_value("Company", doc.company, "default_bank_account")
+        default_bank = frappe.db.get_value("Company", doc.company, "default_bank_account")
+        if default_bank and frappe.db.exists("Bank Account", default_bank):      # a default that names a missing account would block the submit
+            doc.bank_account = default_bank
     if doc.amended_from:
         prev = frappe.db.get_value("Sales Contract", doc.amended_from, "revision_no") or 0
         doc.revision_no = cint(prev) + 1
@@ -101,16 +103,30 @@ def run(doc):
                 frappe.throw("Row %s: rate %s differs from the quoted %s. A contract carries the locked price; amend the Quotation to change it." % (it.idx, flt(it.rate), quoted[it.cost_sheet]),
                              title="Price Lock")
 
-    # ---- sizes: each on a contract line, once per ship-to and PO
-    lines = []
-    for it in doc.items:
-        lines.append((it.style_item, (it.colour or "").strip().upper(), (it.buyer_po_code or "").strip().upper()))
+    # ---- sizes: each belongs to one contract line (style x colour x PO), once per ship-to
+    def line_index(style_item, colour, po):
+        """Index of the line a size row belongs to; None = no such line, -1 = several lines and no PO to tell them apart."""
+        cands = []
+        n = 0
+        for it in doc.items:
+            if it.style_item == style_item and (it.colour or "").strip().upper() == (colour or "").strip().upper():
+                if not po or (it.buyer_po_code or "").strip().upper() == po.strip().upper():
+                    cands.append(n)
+            n = n + 1
+        if not cands:
+            return None
+        if len(cands) == 1:
+            return cands[0]
+        return -1
+
     seen = []
     for s in doc.sizes:
-        key = (s.style_item, (s.colour or "").strip().upper(), (s.buyer_po_no or "").strip().upper())
-        if key not in lines:
+        i = line_index(s.style_item, s.colour, s.buyer_po_no)
+        if i is None:
             frappe.throw("Size row %s: %s / %s (PO %s) is not a line on this contract." % (s.idx, s.style_item, s.colour, s.buyer_po_no or "-"))
-        k2 = (key[0], key[1], key[2], s.size.strip().upper(), (s.ship_to or "").strip().upper())
+        if i == -1:
+            frappe.throw("Size row %s: %s / %s is on several lines (one per PO). Enter the buyer PO on the size row." % (s.idx, s.style_item, s.colour))
+        k2 = (i, s.size.strip().upper(), (s.ship_to or "").strip().upper())
         if k2 in seen:
             frappe.throw("Size row %s: size %s is entered twice for %s / %s to the same ship-to and PO." % (s.idx, s.size, s.style_item, s.colour))
         seen.append(k2)

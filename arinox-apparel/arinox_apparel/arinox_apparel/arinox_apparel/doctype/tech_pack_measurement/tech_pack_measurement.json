@@ -7,69 +7,108 @@
  "field_order": [
   "pom_code",
   "point_of_measure",
-  "local_name",
-  "size",
-  "value",
-  "tolerance_plus",
-  "tolerance_minus",
-  "how_to_measure"
+  "section",
+  "tolerance",
+  "xxs",
+  "xs",
+  "s",
+  "m",
+  "l",
+  "xl",
+  "xxl",
+  "how_to_measure",
+  "revised_on"
  ],
  "fields": [
   {
-   "columns": 1,
    "fieldname": "pom_code",
    "fieldtype": "Data",
+   "label": "POM Code",
    "in_list_view": 1,
-   "label": "POM Code"
+   "columns": 1
   },
   {
-   "columns": 3,
    "fieldname": "point_of_measure",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Point of Measure",
+   "in_list_view": 1,
+   "columns": 3,
    "reqd": 1
   },
   {
-   "columns": 2,
-   "fieldname": "local_name",
+   "fieldname": "section",
    "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Local Name"
+   "label": "Section",
+   "in_list_view": 0,
+   "description": "Shell, Lining ... when the same POM code is measured on more than one body"
   },
   {
-   "columns": 1,
-   "fieldname": "size",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Size",
-   "reqd": 1
-  },
-  {
-   "columns": 1,
-   "fieldname": "value",
+   "fieldname": "tolerance",
    "fieldtype": "Float",
+   "label": "Tol +/-",
    "in_list_view": 1,
-   "label": "Value"
+   "columns": 1,
+   "description": "One figure for plus and minus, as the buyer sheets give it"
   },
   {
-   "columns": 1,
-   "fieldname": "tolerance_plus",
+   "fieldname": "xxs",
    "fieldtype": "Float",
+   "label": "XXS",
    "in_list_view": 1,
-   "label": "Tol +"
+   "columns": 1
   },
   {
-   "columns": 1,
-   "fieldname": "tolerance_minus",
+   "fieldname": "xs",
    "fieldtype": "Float",
+   "label": "XS",
    "in_list_view": 1,
-   "label": "Tol −"
+   "columns": 1
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Float",
+   "label": "S",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "m",
+   "fieldtype": "Float",
+   "label": "M",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "l",
+   "fieldtype": "Float",
+   "label": "L",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "xl",
+   "fieldtype": "Float",
+   "label": "XL",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "xxl",
+   "fieldtype": "Float",
+   "label": "XXL",
+   "in_list_view": 1,
+   "columns": 1
   },
   {
    "fieldname": "how_to_measure",
    "fieldtype": "Small Text",
    "label": "How to Measure"
+  },
+  {
+   "fieldname": "revised_on",
+   "fieldtype": "Date",
+   "label": "Revised On",
+   "description": "The buyer dates a row that changed"
   }
  ],
  "index_web_pages_for_search": 0,

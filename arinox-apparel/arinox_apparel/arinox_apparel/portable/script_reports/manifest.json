@@ -21,8 +21,16 @@
    "file": "daily_production_report.py"
   },
   {
+   "slug": "fabric_consumption",
+   "file": "fabric_consumption.py"
+  },
+  {
    "slug": "factory_load",
    "file": "factory_load.py"
+  },
+  {
+   "slug": "freight_allocation",
+   "file": "freight_allocation.py"
   },
   {
    "slug": "inquiry_to_contract_tracker",
@@ -37,12 +45,24 @@
    "file": "line_loading.py"
   },
   {
+   "slug": "material_status",
+   "file": "material_status.py"
+  },
+  {
    "slug": "negotiation_history",
    "file": "negotiation_history.py"
   },
   {
    "slug": "receivables_follow_up",
    "file": "receivables_follow_up.py"
+  },
+  {
+   "slug": "running_fabric_stock",
+   "file": "running_fabric_stock.py"
+  },
+  {
+   "slug": "sample_approval_tracker",
+   "file": "sample_approval_tracker.py"
   },
   {
    "slug": "sewing_wip",

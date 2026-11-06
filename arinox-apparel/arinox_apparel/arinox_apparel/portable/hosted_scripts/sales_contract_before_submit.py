@@ -8,12 +8,26 @@ def run(doc):
         s.idx = n
         n = n + 1
 
+    def line_index(style_item, colour, po):
+        cands = []
+        n = 0
+        for it in doc.items:
+            if it.style_item == style_item and (it.colour or "").strip().upper() == (colour or "").strip().upper():
+                if not po or (it.buyer_po_code or "").strip().upper() == po.strip().upper():
+                    cands.append(n)
+            n = n + 1
+        if len(cands) == 1:
+            return cands[0]
+        return None
+
     problems = []
     by_line = {}
     for s in doc.sizes:
-        k = (s.style_item, (s.colour or "").strip().upper(), (s.buyer_po_no or "").strip().upper())
+        k = line_index(s.style_item, s.colour, s.buyer_po_no)
         by_line[k] = by_line.get(k, 0) + cint(s.qty)
+    position = 0
     for it in doc.items:
+        position = position + 1
         label = "%s / %s" % (it.style_no or it.style_item, it.colour or "-")
         if not it.colour:
             problems.append("%s: colour is missing" % label)
@@ -24,7 +38,7 @@ def run(doc):
         for f in (("ex_factory_date", "ex-factory date"), ("etd", "ETD"), ("in_warehouse_date", "in-warehouse date")):
             if not it.get(f[0]):
                 problems.append("%s: %s is missing" % (label, f[1]))
-        sized = by_line.get((it.style_item, (it.colour or "").strip().upper(), (it.buyer_po_code or "").strip().upper()), 0)
+        sized = by_line.get(position - 1, 0)
         if sized != cint(it.qty):
             problems.append("%s: size breakdown totals %s, line quantity is %s" % (label, sized, cint(it.qty)))
     for f in (("incoterm", "Incoterm"), ("port_of_loading", "Port of loading")):
@@ -45,10 +59,11 @@ def run(doc):
         return
     hits = []
     text_types = ("Data", "Small Text", "Text", "Long Text")
+    allowed_tba = ("shipping_marks",)      # advised at booking; the real contracts print TBA here
 
     def scan(d, label):
         for df in d.meta.fields:
-            if df.fieldtype not in text_types:
+            if df.fieldtype not in text_types or df.fieldname in allowed_tba:
                 continue
             val = (d.get(df.fieldname) or "").strip()
             if not val:

@@ -53,6 +53,7 @@
   "transit_days",
   "column_11",
   "delay_days_allowed",
+  "production_lead_days",
   "late_shipment_terms",
   "section_12",
   "tolerance_bands",
@@ -273,7 +274,7 @@
   {
    "fieldname": "items",
    "fieldtype": "Table",
-   "label": "SKU Lines (style \u00d7 colour)",
+   "label": "SKU Lines (style × colour)",
    "options": "Sales Contract Item",
    "reqd": 1
   },
@@ -361,13 +362,13 @@
    "default": "7",
    "fieldname": "days_ex_factory_to_etd",
    "fieldtype": "Int",
-   "label": "Days Ex-Factory \u2192 ETD"
+   "label": "Days Ex-Factory → ETD"
   },
   {
    "default": "30",
    "fieldname": "transit_days",
    "fieldtype": "Int",
-   "label": "Transit Days ETD \u2192 In-Warehouse"
+   "label": "Transit Days ETD → In-Warehouse"
   },
   {
    "fieldname": "column_11",
@@ -544,6 +545,12 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "description": "Printed on the buyer's PO (for example 45 days)",
+   "fieldname": "production_lead_days",
+   "fieldtype": "Int",
+   "label": "Production Lead Time (days)"
   }
  ],
  "index_web_pages_for_search": 0,

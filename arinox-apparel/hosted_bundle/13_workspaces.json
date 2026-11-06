@@ -10,7 +10,7 @@
      "label": "Signed Contract Value"
     }
    ],
-   "content": "[{\"id\": \"apparel001\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Order Win: inquiry to contract</b></span>\", \"col\": 12}}, {\"id\": \"apparel002\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Inquiries\", \"col\": 4}}, {\"id\": \"apparel003\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Costings Pending Approval\", \"col\": 4}}, {\"id\": \"apparel004\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Negotiations\", \"col\": 4}}, {\"id\": \"apparel005\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contracts Awaiting Order\", \"col\": 6}}, {\"id\": \"apparel006\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contract Value This Month\", \"col\": 6}}, {\"id\": \"apparel007\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelB01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Plan and Approve: factory, samples, bulk gate</b></span>\", \"col\": 12}}, {\"id\": \"apparelB02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Orders Awaiting Plan\", \"col\": 4}}, {\"id\": \"apparelB03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Samples With Buyer\", \"col\": 4}}, {\"id\": \"apparelB04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue Samples\", \"col\": 4}}, {\"id\": \"apparelB05\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelC01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Materials: fabric and trims</b></span>\", \"col\": 12}}, {\"id\": \"apparelC03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rolls Awaiting Inspection\", \"col\": 3}}, {\"id\": \"apparelC04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rejected Lots 30 Days\", \"col\": 3}}, {\"id\": \"apparelC06\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel008\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"apparel010\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tech Pack\", \"col\": 4}}, {\"id\": \"apparel011\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cost Sheet\", \"col\": 4}}, {\"id\": \"apparel012\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Price Negotiation\", \"col\": 4}}, {\"id\": \"apparel013\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Contract\", \"col\": 4}}, {\"id\": \"apparel014\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inquiry to Contract Tracker\", \"col\": 4}}, {\"id\": \"apparelC11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Fabric Requisition\", \"col\": 4}}, {\"id\": \"apparelC12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Trim Requisition\", \"col\": 4}}, {\"id\": \"apparel015\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel016\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Signed Contract Value\", \"col\": 12}}, {\"id\": \"apparel017\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel018\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents, Reports &amp; Setup</b></span>\", \"col\": 12}}, {\"id\": \"apparel019\", \"type\": \"card\", \"data\": {\"card_name\": \"Pre-Sales\", \"col\": 4}}, {\"id\": \"apparel020\", \"type\": \"card\", \"data\": {\"card_name\": \"Contract & Order\", \"col\": 4}}, {\"id\": \"apparel021\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"apparel022\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"apparelB06\", \"type\": \"card\", \"data\": {\"card_name\": \"Plan and Approve\", \"col\": 4}}]",
+   "content": "[{\"id\": \"apparel001\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Order Win: inquiry to contract</b></span>\", \"col\": 12}}, {\"id\": \"apparel002\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Inquiries\", \"col\": 4}}, {\"id\": \"apparel003\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Costings Pending Approval\", \"col\": 4}}, {\"id\": \"apparel004\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Negotiations\", \"col\": 4}}, {\"id\": \"apparel005\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contracts Awaiting Order\", \"col\": 6}}, {\"id\": \"apparel006\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Contract Value This Month\", \"col\": 6}}, {\"id\": \"apparel007\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelB01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Plan and Approve: factory, samples, bulk gate</b></span>\", \"col\": 12}}, {\"id\": \"apparelB02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Orders Awaiting Plan\", \"col\": 4}}, {\"id\": \"apparelB03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Samples With Buyer\", \"col\": 4}}, {\"id\": \"apparelB04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Overdue Samples\", \"col\": 4}}, {\"id\": \"apparelB05\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparelC01\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Materials: fabric and trims</b></span>\", \"col\": 12}}, {\"id\": \"apparelC02\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Fabric Overdue\", \"col\": 3}}, {\"id\": \"apparelC03\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rolls Awaiting Inspection\", \"col\": 3}}, {\"id\": \"apparelC04\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Rejected Lots 30 Days\", \"col\": 3}}, {\"id\": \"apparelC05\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"TR Lines On Hold\", \"col\": 3}}, {\"id\": \"apparelC06\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel008\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\", \"col\": 12}}, {\"id\": \"apparel010\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tech Pack\", \"col\": 4}}, {\"id\": \"apparel011\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cost Sheet\", \"col\": 4}}, {\"id\": \"apparel012\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Price Negotiation\", \"col\": 4}}, {\"id\": \"apparel013\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sales Contract\", \"col\": 4}}, {\"id\": \"apparel014\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Inquiry to Contract Tracker\", \"col\": 4}}, {\"id\": \"apparelC11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Fabric Requisition\", \"col\": 4}}, {\"id\": \"apparelC12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Trim Requisition\", \"col\": 4}}, {\"id\": \"apparelC13\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Material Status\", \"col\": 4}}, {\"id\": \"apparel015\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel016\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Signed Contract Value\", \"col\": 12}}, {\"id\": \"apparel017\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"apparel018\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\"><b>Documents, Reports &amp; Setup</b></span>\", \"col\": 12}}, {\"id\": \"apparel019\", \"type\": \"card\", \"data\": {\"card_name\": \"Pre-Sales\", \"col\": 4}}, {\"id\": \"apparel020\", \"type\": \"card\", \"data\": {\"card_name\": \"Contract & Order\", \"col\": 4}}, {\"id\": \"apparel021\", \"type\": \"card\", \"data\": {\"card_name\": \"Reports\", \"col\": 4}}, {\"id\": \"apparel022\", \"type\": \"card\", \"data\": {\"card_name\": \"Setup\", \"col\": 4}}, {\"id\": \"apparelB06\", \"type\": \"card\", \"data\": {\"card_name\": \"Plan and Approve\", \"col\": 4}}]",
    "custom_blocks": [],
    "doctype": "Workspace",
    "for_user": "",
@@ -305,6 +305,17 @@
      "dependencies": "",
      "hidden": 0,
      "is_query_report": 1,
+     "label": "Sample Approval Tracker",
+     "link_count": 0,
+     "link_to": "Sample Approval Tracker",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
      "label": "Factory Load",
      "link_count": 0,
      "link_to": "Factory Load",
@@ -361,6 +372,28 @@
      "link_count": 0,
      "link_to": "Trim Inspection",
      "link_type": "DocType",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Material Status",
+     "link_count": 0,
+     "link_to": "Material Status",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Running Fabric Stock",
+     "link_count": 0,
+     "link_to": "Running Fabric Stock",
+     "link_type": "Report",
      "onboard": 0,
      "type": "Link"
     },
@@ -527,12 +560,20 @@
      "number_card_name": "Overdue Samples"
     },
     {
+     "label": "Fabric Overdue",
+     "number_card_name": "Fabric Overdue"
+    },
+    {
      "label": "Rolls Awaiting Inspection",
      "number_card_name": "Rolls Awaiting Inspection"
     },
     {
      "label": "Rejected Lots 30 Days",
      "number_card_name": "Rejected Lots 30 Days"
+    },
+    {
+     "label": "TR Lines On Hold",
+     "number_card_name": "TR Lines On Hold"
     }
    ],
    "parent_page": "",
@@ -607,6 +648,12 @@
      "label": "Trim Requisition",
      "link_to": "Trim Requisition",
      "type": "DocType"
+    },
+    {
+     "label": "Material Status",
+     "link_to": "Material Status",
+     "report_ref_doctype": "Fabric Requisition",
+     "type": "Report"
     }
    ],
    "title": "Apparel",
@@ -812,6 +859,16 @@
      "dependencies": "",
      "hidden": 0,
      "is_query_report": 1,
+     "label": "Fabric Consumption",
+     "link_to": "Fabric Consumption",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
      "label": "Line Loading",
      "link_to": "Line Loading",
      "link_type": "Report",
@@ -834,6 +891,16 @@
      "is_query_report": 1,
      "label": "Sewing WIP",
      "link_to": "Sewing WIP",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Running Fabric Stock",
+     "link_to": "Running Fabric Stock",
      "link_type": "Report",
      "onboard": 0,
      "type": "Link"
@@ -1242,6 +1309,16 @@
      "is_query_report": 1,
      "label": "Contract Trail",
      "link_to": "Contract Trail",
+     "link_type": "Report",
+     "onboard": 0,
+     "type": "Link"
+    },
+    {
+     "dependencies": "",
+     "hidden": 0,
+     "is_query_report": 1,
+     "label": "Freight Allocation",
+     "link_to": "Freight Allocation",
      "link_type": "Report",
      "onboard": 0,
      "type": "Link"

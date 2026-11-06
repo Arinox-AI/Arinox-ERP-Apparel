@@ -58,7 +58,7 @@ def apply_terms(si, contract, dn):
 
 
 def tag(si, dn, contract, number, leg):
-	si.apparel_sales_contract = contract
+	si.apparel_sales_contract = contract if frappe.db.exists("Sales Contract", contract) else None   # an order with no contract is numbered from its own name
 	si.apparel_commercial_invoice_no = number
 	si.apparel_shipment = dn.get("apparel_shipment")
 	si.apparel_route_leg = leg

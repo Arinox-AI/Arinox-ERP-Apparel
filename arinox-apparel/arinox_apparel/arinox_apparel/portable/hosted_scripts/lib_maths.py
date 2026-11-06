@@ -30,7 +30,7 @@ def to_metres(qty, uom, gsm, width_cm):
 
 
 def my_roles():
-    return frappe.get_all("Has Role", {"parent": frappe.session.user, "parenttype": "User"}, pluck="role")
+    return (frappe.get_all("Role", pluck="name") if frappe.session.user == "Administrator" else frappe.get_all("Has Role", {"parent": frappe.session.user, "parenttype": "User"}, pluck="role"))
 
 
 def has_any_role(names):

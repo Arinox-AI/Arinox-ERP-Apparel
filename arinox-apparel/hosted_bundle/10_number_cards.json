@@ -194,6 +194,19 @@
    "type": "Document Type"
   },
   {
+   "doctype": "Number Card",
+   "is_public": 1,
+   "is_standard": 0,
+   "label": "Fabric Overdue",
+   "name": "Fabric Overdue",
+   "report_field": "lines",
+   "report_function": "Sum",
+   "report_name": "Fabric Overdue Lines",
+   "show_percentage_stats": 0,
+   "stats_time_interval": "Daily",
+   "type": "Report"
+  },
+  {
    "aggregate_function_based_on": "",
    "currency": "",
    "doctype": "Number Card",
@@ -503,6 +516,19 @@
    "show_percentage_stats": 1,
    "stats_time_interval": "Monthly",
    "type": "Document Type"
+  },
+  {
+   "doctype": "Number Card",
+   "is_public": 1,
+   "is_standard": 0,
+   "label": "TR Lines On Hold",
+   "name": "TR Lines On Hold",
+   "report_field": "lines",
+   "report_function": "Sum",
+   "report_name": "Trim Lines On Hold Count",
+   "show_percentage_stats": 0,
+   "stats_time_interval": "Daily",
+   "type": "Report"
   }
  ]
 }

@@ -2,12 +2,16 @@
 def run(doc):
     flt = frappe.utils.flt
     lists = []
+    unlisted = []      # rows of an apparel order (one with a Production Card) that name no packing list: nothing shows they were packed and inspected
     for it in doc.items:
-        if it.get("apparel_packing_list") and it.apparel_packing_list not in lists:
-            lists.append(it.apparel_packing_list)
-    if not lists:
+        if it.get("apparel_packing_list"):
+            if it.apparel_packing_list not in lists:
+                lists.append(it.apparel_packing_list)
+        elif it.get("against_sales_order") and frappe.db.exists("Production Card", {"sales_order": it.against_sales_order, "docstatus": 1}):
+            unlisted.append(it.idx)
+    if not lists and not unlisted:
         return
-    managers = frappe.get_all("Has Role", {"parent": frappe.session.user, "parenttype": "User"}, pluck="role")
+    managers = (frappe.get_all("Role", pluck="name") if frappe.session.user == "Administrator" else frappe.get_all("Has Role", {"parent": frappe.session.user, "parenttype": "User"}, pluck="role"))
     is_manager = "Apparel Production Manager" in managers or "Apparel Merchandising Manager" in managers or "System Manager" in managers
 
     def setting(field, default):
@@ -28,6 +32,8 @@ def run(doc):
     mode = setting("ship_gate_final_inspection", "Block")
     if mode != "Off":
         problems = []
+        if unlisted:
+            problems.append("Row(s) %s are for an apparel order but name no packing list, so the final inspection cannot be checked. Make the delivery note from the Shipment, or pick the packing list on each row." % ", ".join([str(n) for n in unlisted]))
         for pl in lists:
             rows = frappe.db.sql(
                 "select i.name, i.result from `tabFinal Inspection` i join `tabFinal Inspection Lot` l on l.parent = i.name "

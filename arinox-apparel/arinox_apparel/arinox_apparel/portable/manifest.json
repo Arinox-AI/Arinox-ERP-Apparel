@@ -50,6 +50,13 @@
    "file": "tna_shipping_stamps.py"
   },
   {
+   "name": "arinox_opportunity_checks",
+   "script_type": "DocType Event",
+   "reference_doctype": "Opportunity",
+   "doctype_event": "Before Validate",
+   "file": "opportunity_checks.py"
+  },
+  {
    "name": "arinox_close_production",
    "script_type": "API",
    "api_method": "arinox_close_production",

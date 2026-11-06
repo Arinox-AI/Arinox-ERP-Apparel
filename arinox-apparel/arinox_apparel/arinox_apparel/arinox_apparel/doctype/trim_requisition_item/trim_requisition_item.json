@@ -2,6 +2,7 @@
  "actions": [],
  "creation": "2026-11-05 09:00:00.000000",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "sales_order",
@@ -37,6 +38,7 @@
   "gross_qty",
   "stock_warehouse",
   "stock_used",
+  "stock_decision",
   "net_qty",
   "order_uom",
   "order_qty",
@@ -52,13 +54,13 @@
  ],
  "fields": [
   {
+   "columns": 2,
    "fieldname": "sales_order",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Sales Order",
    "options": "Sales Order",
-   "reqd": 1,
-   "in_list_view": 1,
-   "columns": 2
+   "reqd": 1
   },
   {
    "fieldname": "buyer_po",
@@ -66,13 +68,13 @@
    "label": "Buyer PO"
   },
   {
+   "columns": 1,
    "fieldname": "style_item",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Style",
    "options": "Item",
-   "reqd": 1,
-   "in_list_view": 1,
-   "columns": 1
+   "reqd": 1
   },
   {
    "fieldname": "style_no",
@@ -80,16 +82,16 @@
    "label": "Style No"
   },
   {
+   "description": "Blank = all colours",
    "fieldname": "colour",
    "fieldtype": "Data",
-   "label": "Colour",
-   "description": "Blank = all colours"
+   "label": "Colour"
   },
   {
+   "description": "Blank = all sizes",
    "fieldname": "size",
    "fieldtype": "Data",
-   "label": "Size",
-   "description": "Blank = all sizes"
+   "label": "Size"
   },
   {
    "fieldname": "s_trim",
@@ -97,21 +99,21 @@
    "label": "Trim"
   },
   {
+   "columns": 2,
    "fieldname": "trim_category",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Category",
    "options": "Trim Category",
-   "reqd": 1,
-   "in_list_view": 1,
-   "columns": 2
+   "reqd": 1
   },
   {
+   "columns": 2,
    "fieldname": "trim_item",
    "fieldtype": "Link",
-   "label": "Trim Item",
-   "options": "Item",
    "in_list_view": 1,
-   "columns": 2
+   "label": "Trim Item",
+   "options": "Item"
   },
   {
    "fieldname": "buyer_item_code",
@@ -124,10 +126,10 @@
    "label": "Description"
   },
   {
+   "description": "DTM = same as the garment colour",
    "fieldname": "trim_colour",
    "fieldtype": "Data",
-   "label": "Trim Colour",
-   "description": "DTM = same as the garment colour"
+   "label": "Trim Colour"
   },
   {
    "fieldname": "c_t1",
@@ -168,19 +170,19 @@
    "label": "Quantity"
   },
   {
+   "default": "Per Garment",
    "fieldname": "calc_basis",
    "fieldtype": "Select",
    "label": "Basis",
    "options": "Per Garment\nPer Size\nPer Colour\nPer Carton\nBy Length\nFixed Qty",
-   "reqd": 1,
-   "default": "Per Garment"
+   "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "garment_qty",
    "fieldtype": "Int",
-   "label": "Garment Qty",
    "in_list_view": 1,
-   "columns": 1
+   "label": "Garment Qty"
   },
   {
    "fieldname": "qty_per_garment",
@@ -217,11 +219,11 @@
    "label": ""
   },
   {
+   "columns": 1,
    "fieldname": "allowance_pct",
    "fieldtype": "Percent",
-   "label": "Allowance %",
    "in_list_view": 1,
-   "columns": 1
+   "label": "Allowance %"
   },
   {
    "fieldname": "allowance_reason",
@@ -266,12 +268,12 @@
    "options": "UOM"
   },
   {
+   "columns": 1,
    "fieldname": "order_qty",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Order Qty",
    "precision": "2",
-   "in_list_view": 1,
-   "columns": 1,
    "read_only": 1
   },
   {
@@ -329,16 +331,22 @@
    "fieldname": "remarks",
    "fieldtype": "Small Text",
    "label": "Remarks"
+  },
+  {
+   "description": "The request sheet says HAVE STOCK or NEED TO ORDER in words",
+   "fieldname": "stock_decision",
+   "fieldtype": "Select",
+   "label": "Stock Decision",
+   "options": "\nOrder\nUse Stock"
   }
  ],
+ "istable": 1,
  "modified": "2026-11-05 09:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arinox Apparel",
  "name": "Trim Requisition Item",
  "owner": "Administrator",
+ "permissions": [],
  "sort_field": "modified",
- "sort_order": "DESC",
- "istable": 1,
- "editable_grid": 1,
- "permissions": []
+ "sort_order": "DESC"
 }

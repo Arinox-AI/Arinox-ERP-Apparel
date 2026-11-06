@@ -1,7 +1,1 @@
-Fabric Inspection permission row 8 (Stock User): duplicate of an earlier row, merged
-Fabric Inspection permission row 9 (Stock Manager): duplicate of an earlier row, merged
-Fabric Inspection permission row 10 (Quality Manager): duplicate of an earlier row, merged
-PP Meeting permission row 6 (Sales User): submit, cancel, amend removed because the row had no write
-Trim Inspection permission row 8 (Stock User): duplicate of an earlier row, merged
-Trim Inspection permission row 9 (Stock Manager): duplicate of an earlier row, merged
-Trim Inspection permission row 10 (Quality Manager): duplicate of an earlier row, merged
+

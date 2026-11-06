@@ -98,3 +98,20 @@ def a_contract_with_an_order_cannot_be_cancelled_first():
 	frappe.db.set_value("Sales Contract", sc.name, "sales_order", so.name)
 	sc.reload()
 	true(throws(lambda: sc.cancel(), "Cancel Sales Order"))
+
+
+@test("contract")
+def shipping_marks_may_stay_tba_but_other_placeholders_still_block():
+	sc = contract(700, shipping_marks="TBA").insert()
+	sc.submit()                                                # the marks are advised at booking
+	other = contract(700, port_of_discharge="TBA").insert()
+	true(throws(lambda: other.submit(), "placeholder"))
+
+
+@test("contract")
+def a_size_row_without_a_po_is_refused_when_several_lines_share_the_style_and_colour():
+	sc = contract(300)
+	sc.items[0].buyer_po_code = "PO-A/1"
+	sc.append("items", {"style_item": fx.item(), "colour": "Navy", "qty": 200, "rate": 10, "buyer_po_code": "PO-B/2", "ex_factory_date": add_days(nowdate(), 60)})
+	sc.sizes[0].buyer_po_no = ""                               # which line is this size for?
+	true(throws(lambda: sc.insert(), "several lines"))

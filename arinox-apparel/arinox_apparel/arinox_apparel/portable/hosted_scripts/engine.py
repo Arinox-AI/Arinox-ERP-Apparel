@@ -6,6 +6,8 @@
 #           unpost source_doctype, source_name
 #           total  card, stage, colour, size, purpose        -> frappe.flags.arinox_total
 #           check  card, rows (JSON), override                -> raises if a row exceeds its limit
+#           bulk_gate sales_order, style, colour, stage ("pilot" or "bulk")  -> arinox_result {applies, style, colour, blockers, warnings}
+#                  (production/gate.py: buyer approvals, PP meeting, materials, and for "bulk" the pilot run)
 # Everything sits inside main(): in the sandbox module-level functions cannot see each other.
 
 def main():
@@ -187,7 +189,7 @@ def main():
         rows = clean_rows(json.loads(form.get("rows") or "[]"))
         if not rows:
             return
-        if int(form.get("check") or 1):
+        if form.get("check") is None or int(form.get("check")):
             make_flow(card)["check"](rows, int(form.get("override") or 0))
         head = frappe.db.get_value("Production Card", card, ["sales_order", "style_item"], as_dict=True)
         when = frappe.utils.getdate(form.get("posting_date") or frappe.utils.nowdate())
@@ -227,7 +229,70 @@ def main():
             for n in frappe.get_all(dt, {"production_card": old}, pluck="name"):
                 frappe.db.set_value(dt, n, "production_card", new, update_modified=False)
 
-    if action == "transfer":
+    def totals():
+        out = {}
+        for r in frappe.db.sql("select colour, size, stage, sum(qty) from `tabProduction Movement` where production_card = %s group by colour, size, stage", form.get("card")):
+            out[r[0] + "|" + r[1] + "|" + r[2]] = r[3] or 0
+        frappe.flags.arinox_result = out
+
+    def bulk_gate():
+        # include: lib_samples.py
+        # include: lib_pp.py
+        # include: lib_materials.py
+        cint = frappe.utils.cint
+        sales_order = form.get("sales_order")
+        style = form.get("style")
+        colour = form.get("colour")
+        stage = form.get("stage") or "bulk"
+        if not style or not sales_order:
+            frappe.flags.arinox_result = {"applies": False, "blockers": [], "warnings": []}
+            return
+        rules = get_rules(None, sales_order, style)
+        samples = frappe.get_all("Sample Approval", filters=scope_filters(sales_order, style), fields=["name", "sample_type", "status", "colour"])
+        blockers = []
+        for stype in rules:
+            rule = rules[stype]
+            gate = effective_gate(rule, sales_order)
+            if gate == "No":
+                continue
+            mine = [x for x in samples if x.sample_type == stype and (not rule["per_colour"] or not (x.colour or "").strip() or norm(x.colour) == norm(colour))]
+            where = stype + (" (%s)" % colour if rule["per_colour"] and colour else "")
+            if gate == "Required" and not mine:
+                blockers.append("%s: no approval record yet." % where)
+            for x in mine:
+                if x.status not in GATE_OK:
+                    blockers.append("%s: %s is %s." % (where, x.name, x.status))
+        if cint(frappe.db.get_single_value("Apparel Settings", "require_pp_meeting")):
+            held = cutting_actions_open(sales_order, style)
+            if not held[0]:
+                blockers.append("PP Meeting: not held (no submitted PP Meeting for this style on this order).")
+            for r in held[1]:
+                blockers.append("PP Meeting: cutting comment still open: %s" % (r.comment or "")[:80])
+        mat = material_gate(sales_order, style, colour)
+        blockers = blockers + mat[0]
+        if stage == "bulk":
+            # the pilot run, only when a live production card requires one
+            cards = frappe.get_all("Production Card", filters={"sales_order": sales_order, "style_item": style, "docstatus": 1, "status": ["not in", ("Superseded", "Cancelled")]},
+                                   fields=["name", "pilot_required", "pilot_waiver"], order_by="creation desc", limit=1)
+            if cards and cint(cards[0].pilot_required) and not cint(cards[0].pilot_waiver):
+                runs = frappe.get_all("Pilot Run", filters={"production_card": cards[0].name, "docstatus": 1}, fields=["name", "status"])
+                if not runs:
+                    blockers.append("Pilot Run: no pilot run recorded for production card %s." % cards[0].name)
+                else:
+                    good = []
+                    for r in runs:
+                        if r.status not in ("Approved", "Approved with Comments"):
+                            continue
+                        cols = [norm(c) for c in frappe.get_all("Pilot Run Colour", filters={"parent": r.name}, pluck="colour")]
+                        if not cols or not colour or norm(colour) in cols:
+                            good.append(r.name)
+                    if not good:
+                        blockers.append("Pilot Run: no approved pilot run for %s (production card %s)." % (colour or "this colour", cards[0].name))
+        frappe.flags.arinox_result = {"applies": True, "style": style, "colour": colour, "blockers": blockers, "warnings": mat[1]}
+
+    if action == "totals":
+        totals()
+    elif action == "transfer":
         transfer()
     elif action == "post":
         post()
@@ -238,6 +303,8 @@ def main():
     elif action == "total":
         f = make_flow(form.get("card"))
         frappe.flags.arinox_total = f["t"](form.get("colour"), form.get("size"), form.get("stage"), form.get("purpose") or None)
+    elif action == "bulk_gate":
+        bulk_gate()
     else:
         frappe.throw("arinox_engine: unknown action %s" % action)
 

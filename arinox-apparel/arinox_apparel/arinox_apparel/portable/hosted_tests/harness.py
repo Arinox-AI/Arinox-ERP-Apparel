@@ -56,3 +56,13 @@ def eq(a, b, msg=""):
 
 def true(v, msg=""):
 	assert v, f"expected true: {msg}"
+
+
+def raises(fn, text):
+    """Like true(throws(...)) but a failure says what actually happened."""
+    try:
+        fn()
+    except Exception as e:
+        assert text.lower() in str(e).lower(), f"expected an error with {text!r}, got {type(e).__name__}: {str(e)[:300]}"
+        return
+    raise AssertionError(f"expected an error with {text!r}, but nothing was raised")

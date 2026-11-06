@@ -69,3 +69,20 @@ def cancel_takes_the_shipped_quantity_back_and_reopens_the_list():
 	dn.cancel()
 	eq(shipped(card.name), 0)
 	eq(frappe.db.get_value("Packing List", pl.name, "status"), "Open")
+
+
+@test("delivery")
+def a_delivery_note_with_no_packing_list_cannot_skip_the_inspection_gate():
+	"""A Delivery Note made straight from the Sales Order (or with the packing list blanked) used to skip the final-inspection gate and the over-ship
+	check completely. For an order with a Production Card the rows must name a packing list; a manager can override with a reason."""
+	card, pl, dn = fx.delivery_chain()
+	for it in dn.items:
+		it.apparel_packing_list = None
+	dn.save()
+	true(throws(lambda: dn.submit(), "name no packing list"))
+	dn = frappe.get_doc("Delivery Note", dn.name)
+	dn.apparel_gate_override = 1
+	dn.apparel_gate_override_reason = "Buyer collected the goods; inspection waived in writing"
+	dn.save()
+	dn.submit()                                                                  # Administrator holds the manager role
+	eq(dn.docstatus, 1)

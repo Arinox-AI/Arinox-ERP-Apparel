@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "format:FI-{YY}-{#####}",
  "creation": "2026-11-05 09:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -66,18 +67,18 @@
   {
    "fieldname": "purchase_receipt",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Purchase Receipt",
    "options": "Purchase Receipt",
-   "reqd": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1
+   "reqd": 1
   },
   {
    "fieldname": "purchase_receipt_item",
    "fieldtype": "Data",
    "label": "Receipt Row",
-   "reqd": 1,
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "company",
@@ -89,9 +90,9 @@
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Supplier",
    "options": "Supplier",
-   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -116,9 +117,9 @@
   {
    "fieldname": "fabric_item",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Fabric Item",
    "options": "Item",
-   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -152,10 +153,10 @@
    "label": "Inspection"
   },
   {
+   "default": "Today",
    "fieldname": "inspection_date",
    "fieldtype": "Date",
    "label": "Inspection Date",
-   "default": "Today",
    "reqd": 1
   },
   {
@@ -188,10 +189,10 @@
    "read_only": 1
   },
   {
+   "description": "Blank = supplier terms, then Apparel Settings",
    "fieldname": "points_threshold",
    "fieldtype": "Float",
-   "label": "Points Threshold",
-   "description": "Blank = supplier terms, then Apparel Settings"
+   "label": "Points Threshold"
   },
   {
    "fieldname": "required_width_cm",
@@ -294,9 +295,9 @@
   {
    "fieldname": "avg_points",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "Average Points",
    "precision": "2",
-   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -366,23 +367,23 @@
   {
    "fieldname": "lot_result",
    "fieldtype": "Select",
-   "label": "Lot Result",
-   "options": "\nPass\nFail\nRe-inspect 100%\nHold",
    "in_list_view": 1,
    "in_standard_filter": 1,
+   "label": "Lot Result",
+   "options": "\nPass\nFail\nRe-inspect 100%\nHold",
    "read_only": 1
   },
   {
+   "description": "Apparel Merchandising Manager only",
    "fieldname": "result_override",
    "fieldtype": "Check",
-   "label": "Override Inspection Rules",
-   "description": "Apparel Merchandising Manager only"
+   "label": "Override Inspection Rules"
   },
   {
+   "depends_on": "result_override",
    "fieldname": "override_reason",
    "fieldtype": "Small Text",
-   "label": "Override Reason",
-   "depends_on": "result_override"
+   "label": "Override Reason"
   },
   {
    "fieldname": "claim_deadline",
@@ -419,109 +420,93 @@
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
-   "options": "Fabric Inspection",
-   "read_only": 1,
    "no_copy": 1,
-   "print_hide": 1
+   "options": "Fabric Inspection",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "modified": "2026-11-05 09:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arinox Apparel",
  "name": "Fabric Inspection",
  "owner": "Administrator",
- "sort_field": "modified",
- "sort_order": "DESC",
  "permissions": [
   {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
    "share": 1,
-   "delete": 1,
    "submit": 1,
-   "cancel": 1
+   "write": 1
   },
   {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Apparel Merchandising Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
    "share": 1,
-   "delete": 1,
    "submit": 1,
-   "cancel": 1
+   "write": 1
   },
   {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Quality Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
-   "share": 1
+   "share": 1,
+   "write": 1
   },
   {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Stock User",
-   "read": 1,
-   "write": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
    "create": 1,
-   "report": 1,
+   "email": 1,
    "export": 1,
    "print": 1,
-   "email": 1,
-   "share": 1
-  },
-  {
-   "role": "Stock Manager",
    "read": 1,
-   "write": 1,
-   "create": 1,
    "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
-   "share": 1
-  },
-  {
-   "role": "Purchase User",
-   "read": 1,
-   "report": 1
-  },
-  {
-   "role": "Purchase Manager",
-   "read": 1,
-   "report": 1
-  },
-  {
-   "role": "Stock User",
-   "read": 1,
-   "report": 1
-  },
-  {
    "role": "Stock Manager",
-   "read": 1,
-   "report": 1
+   "share": 1,
+   "write": 1
   },
   {
-   "role": "Quality Manager",
    "read": 1,
-   "report": 1
+   "report": 1,
+   "role": "Purchase User"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Purchase Manager"
   }
  ],
- "track_changes": 1,
- "autoname": "format:FI-{YY}-{#####}",
- "is_submittable": 1,
- "search_fields": "supplier,fabric_item,colour,lot_result"
+ "search_fields": "supplier,fabric_item,colour,lot_result",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
 }

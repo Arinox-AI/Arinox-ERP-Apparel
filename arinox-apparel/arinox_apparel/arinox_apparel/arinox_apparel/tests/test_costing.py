@@ -176,12 +176,10 @@ class TestTechPack(IntegrationTestCase):
 		"""T210 is both 'shoulder seam forward at neck' and 'at armhole' on a real tech pack."""
 		tp = u.make_tech_pack(style_no="_AT-POM", submit=False)
 		for name in ("SHOULDER SEAM FORWARD AT NECK", "SHOULDER SEAM FORWARD AT ARMHOLE"):
-			tp.append("measurements", {"pom_code": "T210", "point_of_measure": name, "size": "M", "value": 1,
-									   "tolerance_plus": 0.125})
+			tp.append("measurements", {"pom_code": "T210", "point_of_measure": name, "m": 1, "tolerance": 0.125})
 		tp.save()
-		self.assertEqual(tp.measurements[-1].tolerance_minus, 0.125)  # one +/- figure fills both
-		tp.append("measurements", {"pom_code": "T210", "point_of_measure": "SHOULDER SEAM FORWARD AT NECK",
-								   "size": "M", "value": 2})
+		self.assertEqual(tp.measurements[-1].tolerance, 0.125)  # one +/- figure per point
+		tp.append("measurements", {"pom_code": "T210", "point_of_measure": "SHOULDER SEAM FORWARD AT NECK", "m": 2})
 		self.assertRaises(frappe.ValidationError, tp.save)
 
 	def test_latest_fit_round_sets_the_header_result(self):

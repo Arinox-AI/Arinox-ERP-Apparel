@@ -4,7 +4,7 @@ can run it.
 
     python3 api_load.py BUNDLE_DIR https://site.example KEY:SECRET [--only group,group] [--dry-run]
 
-Idempotent: a record that exists is updated, a record that does not is created. DocTypes are inserted in dependency order; a
+Idempotent: a record that exists is updated, a record that does not is created. Seed records and the Apparel Settings single are create-only (an existing one is left as people have set it; pass --overwrite-seeds to replace it). DocTypes are inserted in dependency order; a
 doctype whose first insert had to leave out a field that closes a loop is updated with its full definition afterwards. Prints one
 line per group and every failure with the server's own message; exit code 1 if anything failed. Credentials are taken from the
 command line or the ARINOX_API_TOKEN environment variable and are never printed."""
@@ -75,13 +75,16 @@ def find_by(site, dt, match):
 	return rows[0]["name"] if rows else None
 
 
-def upsert(site, rec, name=None):
+def upsert(site, rec, name=None, overwrite=False):
 	dt = rec["doctype"]
+	create_only = rec.pop("__create_only", False) and not overwrite
 	match = rec.pop("__match", None)
 	if match is not None:
 		name = find_by(site, dt, match) or "\0none"
 	name = name or key_of(rec)
 	if name and name != "\0none" and exists(site, dt, name):
+		if create_only:        # a seed that is already there may have been edited by the people who use it
+			return "skipped", 200, {}
 		body = {k: v for k, v in rec.items() if k not in ("doctype", "name")}
 		st, resp = site.call("PUT", f"/api/resource/{urllib.parse.quote(dt)}/{urllib.parse.quote(name, safe='')}", body)
 		return "updated", st, resp
@@ -89,9 +92,9 @@ def upsert(site, rec, name=None):
 	return "created", st, resp
 
 
-def load_group(site, path, dry=False):
+def load_group(site, path, dry=False, overwrite=False):
 	g = json.load(open(path))
-	done, failed = {"created": 0, "updated": 0}, []
+	done, failed = {"created": 0, "updated": 0, "skipped": 0}, []
 	if g["mode"] == "doctypes":
 		pass2 = []
 		for item in g["records"]:
@@ -116,8 +119,13 @@ def load_group(site, path, dry=False):
 		for rec in g["records"]:
 			if dry:
 				continue
+			dt = urllib.parse.quote(rec["doctype"])
 			body = {k: v for k, v in rec.items() if k != "doctype"}
-			st, resp = site.call("PUT", f"/api/resource/{urllib.parse.quote(rec['doctype'])}/{urllib.parse.quote(rec['doctype'])}", body)
+			if not overwrite:      # settings people have already set stay as they are; only blanks are filled
+				st, cur = site.call("GET", f"/api/resource/{dt}/{dt}")
+				cur = cur.get("data", {}) if st == 200 else {}
+				body = {k: v for k, v in body.items() if cur.get(k) in (None, "", 0, [], ())}
+			st, resp = site.call("PUT", f"/api/resource/{dt}/{dt}", body)
 			if st >= 400:
 				failed.append((rec["doctype"], message(resp)))
 			else:
@@ -126,7 +134,7 @@ def load_group(site, path, dry=False):
 		for rec in g["records"]:
 			if dry:
 				continue
-			what, st, resp = upsert(site, rec)
+			what, st, resp = upsert(site, rec, overwrite=overwrite)
 			if st >= 400:
 				failed.append((str(key_of(rec) or rec.get("dt") or rec["doctype"]), message(resp)))
 			else:
@@ -148,8 +156,8 @@ def main(argv):
 	for entry in json.load(open(os.path.join(bundle, "index.json"))):
 		if only and entry["group"] not in only:
 			continue
-		g, done, failed = load_group(site, os.path.join(bundle, entry["file"]), dry="--dry-run" in flags)
-		print(f"{entry['group']:20} created {done['created']:4} updated {done['updated']:4} failed {len(failed):3} of {entry['count']}")
+		g, done, failed = load_group(site, os.path.join(bundle, entry["file"]), dry="--dry-run" in flags, overwrite="--overwrite-seeds" in flags)
+		print(f"{entry['group']:20} created {done['created']:4} updated {done['updated']:4} skipped {done['skipped']:4} failed {len(failed):3} of {entry['count']}")
 		for name, why in failed:
 			print(f"    FAILED {name}: {why}")
 		bad += len(failed)

@@ -17,6 +17,8 @@
   "style_item",
   "revision",
   "received_on",
+  "buyer_created_on",
+  "buyer_revised_on",
   "status",
   "section_2",
   "fabric_code",
@@ -53,7 +55,6 @@
   "section_11",
   "sizes",
   "section_12",
-  "measurement_matrix",
   "measurements",
   "tab_13",
   "colours",
@@ -355,11 +356,6 @@
    "label": "Measurement Chart"
   },
   {
-   "fieldname": "measurement_matrix",
-   "fieldtype": "HTML",
-   "label": "Measurement Matrix"
-  },
-  {
    "fieldname": "measurements",
    "fieldtype": "Table",
    "label": "Measurements",
@@ -438,6 +434,18 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "description": "Creation date printed on the buyer's measurement sheet",
+   "fieldname": "buyer_created_on",
+   "fieldtype": "Date",
+   "label": "Created By Buyer On"
+  },
+  {
+   "description": "Revised date printed on the buyer's measurement sheet",
+   "fieldname": "buyer_revised_on",
+   "fieldtype": "Date",
+   "label": "Revised By Buyer On"
   }
  ],
  "image_field": "front_image",

@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "autoname": "format:TI-{YY}-{#####}",
  "creation": "2026-11-05 09:00:00.000000",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -50,18 +51,18 @@
   {
    "fieldname": "purchase_receipt",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Purchase Receipt",
    "options": "Purchase Receipt",
-   "reqd": 1,
-   "in_list_view": 1,
-   "in_standard_filter": 1
+   "reqd": 1
   },
   {
    "fieldname": "purchase_receipt_item",
    "fieldtype": "Data",
    "label": "Receipt Row",
-   "reqd": 1,
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "company",
@@ -73,9 +74,9 @@
   {
    "fieldname": "supplier",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Supplier",
    "options": "Supplier",
-   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -100,9 +101,9 @@
   {
    "fieldname": "trim_item",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Trim Item",
    "options": "Item",
-   "in_list_view": 1,
    "read_only": 1
   },
   {
@@ -148,8 +149,8 @@
    "fieldname": "received_qty",
    "fieldtype": "Float",
    "label": "Received Qty",
-   "reqd": 1,
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "sampling_plan",
@@ -189,15 +190,15 @@
   {
    "fieldname": "accepted_qty",
    "fieldtype": "Float",
-   "label": "Accepted Qty",
    "in_list_view": 1,
+   "label": "Accepted Qty",
    "read_only": 1
   },
   {
    "fieldname": "rejected_qty",
    "fieldtype": "Float",
-   "label": "Rejected Qty",
    "in_list_view": 1,
+   "label": "Rejected Qty",
    "read_only": 1
   },
   {
@@ -246,22 +247,22 @@
   {
    "fieldname": "result",
    "fieldtype": "Select",
-   "label": "Result",
-   "options": "\nPass\nFail\nHold",
    "in_list_view": 1,
-   "in_standard_filter": 1
+   "in_standard_filter": 1,
+   "label": "Result",
+   "options": "\nPass\nFail\nHold"
   },
   {
+   "description": "Apparel Merchandising Manager only",
    "fieldname": "result_override",
    "fieldtype": "Check",
-   "label": "Override Inspection Rules",
-   "description": "Apparel Merchandising Manager only"
+   "label": "Override Inspection Rules"
   },
   {
+   "depends_on": "result_override",
    "fieldname": "override_reason",
    "fieldtype": "Small Text",
-   "label": "Override Reason",
-   "depends_on": "result_override"
+   "label": "Override Reason"
   },
   {
    "fieldname": "warehouse_incharge",
@@ -298,109 +299,93 @@
    "fieldname": "amended_from",
    "fieldtype": "Link",
    "label": "Amended From",
-   "options": "Trim Inspection",
-   "read_only": 1,
    "no_copy": 1,
-   "print_hide": 1
+   "options": "Trim Inspection",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
+ "is_submittable": 1,
  "modified": "2026-11-05 09:00:00.000000",
  "modified_by": "Administrator",
  "module": "Arinox Apparel",
  "name": "Trim Inspection",
  "owner": "Administrator",
- "sort_field": "modified",
- "sort_order": "DESC",
  "permissions": [
   {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "System Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
    "share": 1,
-   "delete": 1,
    "submit": 1,
-   "cancel": 1
+   "write": 1
   },
   {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Apparel Merchandising Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
    "share": 1,
-   "delete": 1,
    "submit": 1,
-   "cancel": 1
+   "write": 1
   },
   {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Quality Manager",
-   "read": 1,
-   "write": 1,
-   "create": 1,
-   "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
-   "share": 1
+   "share": 1,
+   "write": 1
   },
   {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
    "role": "Stock User",
-   "read": 1,
-   "write": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
    "create": 1,
-   "report": 1,
+   "email": 1,
    "export": 1,
    "print": 1,
-   "email": 1,
-   "share": 1
-  },
-  {
-   "role": "Stock Manager",
    "read": 1,
-   "write": 1,
-   "create": 1,
    "report": 1,
-   "export": 1,
-   "print": 1,
-   "email": 1,
-   "share": 1
-  },
-  {
-   "role": "Purchase User",
-   "read": 1,
-   "report": 1
-  },
-  {
-   "role": "Purchase Manager",
-   "read": 1,
-   "report": 1
-  },
-  {
-   "role": "Stock User",
-   "read": 1,
-   "report": 1
-  },
-  {
    "role": "Stock Manager",
-   "read": 1,
-   "report": 1
+   "share": 1,
+   "write": 1
   },
   {
-   "role": "Quality Manager",
    "read": 1,
-   "report": 1
+   "report": 1,
+   "role": "Purchase User"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Purchase Manager"
   }
  ],
- "track_changes": 1,
- "autoname": "format:TI-{YY}-{#####}",
- "is_submittable": 1,
- "search_fields": "supplier,trim_item,result"
+ "search_fields": "supplier,trim_item,result",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
 }

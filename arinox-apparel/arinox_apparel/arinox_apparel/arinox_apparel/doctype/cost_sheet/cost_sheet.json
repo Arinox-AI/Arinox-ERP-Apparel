@@ -166,7 +166,8 @@
   {
    "fieldname": "order_qty",
    "fieldtype": "Int",
-   "label": "Expected Order Qty"
+   "label": "Expected Order Qty",
+   "in_list_view": 1
   },
   {
    "fieldname": "sam",
@@ -426,7 +427,8 @@
    "fieldtype": "Currency",
    "label": "Order Value",
    "options": "currency",
-   "read_only": 1
+   "read_only": 1,
+   "in_list_view": 1
   },
   {
    "fieldname": "fabric_metres",

@@ -222,6 +222,12 @@ def number_cards():
 		d["is_standard"] = 0
 		d.pop("module", None)
 		if d.get("type") == "Custom":
+			if d["name"] in CARD_REPORTS:
+				d.update({"type": "Report", "report_name": CARD_REPORTS[d["name"]], "report_field": "lines", "report_function": "Sum"})
+				d.pop("method", None)
+				d.pop("document_type", None)
+				out.append(_clean(d))
+				continue
 			rep = CARD_REPLACEMENTS.get(d["name"])
 			if not rep:
 				continue
@@ -231,6 +237,8 @@ def number_cards():
 		out.append(_clean(d))
 	return out
 
+
+CARD_REPORTS = {"Fabric Overdue": "Fabric Overdue Lines", "TR Lines On Hold": "Trim Lines On Hold Count"}    # reports.CARD_QUERY_REPORTS
 
 CARD_REPLACEMENTS = {
 	"Rolls Awaiting Inspection": {"document_type": "Batch", "function": "Count",
@@ -350,16 +358,21 @@ def seeds():
 			if name.startswith("_"):      # left behind by the test suite on the dev site
 				continue
 			rec = _clean(frappe.get_doc(dt, name).as_dict(no_nulls=True, convert_dates_to_str=True))
+			rec["__create_only"] = True   # a seed already on the site may have been edited by the people who use it
 			if dt in MATCH_BY:            # named by a random hash: the loader finds an existing one by these fields instead
 				rec["__match"] = {f: rec.get(f, "") for f in MATCH_BY[dt]}
 				rec.pop("name", None)
 			out.append(rec)
 	for name in frappe.get_all("Quality Inspection Parameter", pluck="name"):
 		if name not in SEED_SKIP["Quality Inspection Parameter"]:
-			out.append(_clean(frappe.get_doc("Quality Inspection Parameter", name).as_dict(no_nulls=True, convert_dates_to_str=True)))
+			rec = _clean(frappe.get_doc("Quality Inspection Parameter", name).as_dict(no_nulls=True, convert_dates_to_str=True))
+			rec["__create_only"] = True
+			out.append(rec)
 	for name in ("Colour", "Size"):
 		if frappe.db.exists("Item Attribute", name):
-			out.append(_clean(frappe.get_doc("Item Attribute", name).as_dict(no_nulls=True, convert_dates_to_str=True)))
+			rec = _clean(frappe.get_doc("Item Attribute", name).as_dict(no_nulls=True, convert_dates_to_str=True))
+			rec["__create_only"] = True    # merchandisers add colours and sizes all the time; never replace the list
+			out.append(rec)
 	return out
 
 
@@ -446,7 +459,12 @@ def export(out="hosted_bundle"):
 	]
 	from arinox_apparel.portable import client_scripts
 
-	groups.append(("client_scripts", "create", client_scripts.export_client_scripts()))
+	client_records = client_scripts.export_client_scripts()
+	unknown = client_scripts.unknown_methods(client_records)
+	if unknown:
+		# a button that calls a name no API Server Script answers fails in the browser with "App ... is not installed"
+		raise ValueError("Client scripts call API methods that do not exist: %s" % ", ".join(f"{s} -> {m}" for s, m in unknown[:10]))
+	groups.append(("client_scripts", "create", client_records))
 	groups.append(("server_scripts", "create", server_scripts()))
 	index = []
 	for i, (name, mode, records) in enumerate(groups, 1):

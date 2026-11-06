@@ -30,6 +30,7 @@ COST_HEADS = [
 	("Bank Charges", "Financial", "Percent of Product Cost", None, 90, 1),
 	("Freight", "Logistics", "Percent of Product Cost", None, 100, 1),
 	("Overhead", "Overhead", "Percent of Product Cost", None, 110, 1),
+	("Depreciation", "Overhead", "Percent of Product Cost", None, 115, 0),
 	("Buying Agent Commission", "Financial", "Percent of Product Cost", None, 120, 0),
 	("Profit", "Profit", "Percent of Subtotal", None, 130, 1),
 ]

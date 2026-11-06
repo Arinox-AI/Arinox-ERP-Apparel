@@ -84,6 +84,8 @@ def get_custom_fields():
 		],
 		"Sales Invoice": [
 			contract("customer_name"),
+			D(fieldname="apparel_all_contracts", fieldtype="Small Text", label="All Contracts On This Invoice", insert_after="apparel_sales_contract", read_only=1, no_copy=1,
+			  description="One invoice may cover several contracts; the link above is the first, this lists them all"),
 			D(fieldname="apparel_commercial_invoice_no", fieldtype="Data", label="Commercial Invoice No", insert_after="apparel_sales_contract", read_only=1, no_copy=1, search_index=1, in_standard_filter=1),
 			D(fieldname="apparel_shipment", fieldtype="Link", options="Shipment", label="Shipment", insert_after="apparel_commercial_invoice_no", read_only=1, no_copy=1, search_index=1),
 			D(fieldname="apparel_route_leg", fieldtype="Int", label="Route Leg", insert_after="apparel_shipment", read_only=1, no_copy=1, description="1 = seller to group company or direct, 2 = group company to buyer"),
@@ -99,7 +101,7 @@ def get_custom_fields():
 			  options="\nNot Due\nDue Soon\nOverdue\nPromised\nPartly Paid\nDisputed\nPaid"),
 			D(fieldname="apparel_days_overdue", fieldtype="Int", label="Days Overdue", insert_after="apparel_followup_status", read_only=1, allow_on_submit=1, no_copy=1),
 			D(fieldname="apparel_promise_date", fieldtype="Date", label="Customer's Promise Date", insert_after="apparel_days_overdue", allow_on_submit=1, no_copy=1),
-			D(fieldname="apparel_promise_amount", fieldtype="Currency", label="Promised Amount", insert_after="apparel_promise_date", allow_on_submit=1, no_copy=1),
+			D(fieldname="apparel_promise_amount", fieldtype="Currency", options="currency", label="Promised Amount", insert_after="apparel_promise_date", allow_on_submit=1, no_copy=1),
 			D(fieldname="apparel_next_action_date", fieldtype="Date", label="Next Action", insert_after="apparel_promise_amount", allow_on_submit=1, no_copy=1),
 			D(fieldname="apparel_dispute_reason", fieldtype="Small Text", label="Dispute", insert_after="apparel_next_action_date", allow_on_submit=1, no_copy=1),
 		],
@@ -113,8 +115,8 @@ def get_custom_fields():
 		"Supplier Quotation Item": [
 			D(fieldname="apparel_charge_unit", fieldtype="Select", label="Charged Per", insert_after="item_code",
 			  options="\nPer CBM\nPer kg\nPer HBL\nPer Shipment\nPer Container\nPer Pallet\n% of Invoice\nAt Cost"),
-			D(fieldname="apparel_min_amount", fieldtype="Currency", label="Minimum Charge", insert_after="apparel_charge_unit"),
-			D(fieldname="apparel_max_amount", fieldtype="Currency", label="Maximum Charge", insert_after="apparel_min_amount"),
+			D(fieldname="apparel_min_amount", fieldtype="Currency", options="currency", label="Minimum Charge", insert_after="apparel_charge_unit"),
+			D(fieldname="apparel_max_amount", fieldtype="Currency", options="currency", label="Maximum Charge", insert_after="apparel_min_amount"),
 		],
 		"Payment Entry": [
 			D(fieldname="apparel_remittance_ref", fieldtype="Data", label="Remittance / Bank Reference", insert_after="reference_no"),

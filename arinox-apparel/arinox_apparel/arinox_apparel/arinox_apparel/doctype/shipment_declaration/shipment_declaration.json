@@ -59,7 +59,8 @@
    "fieldname": "invoice_value",
    "fieldtype": "Currency",
    "label": "Invoice Value",
-   "in_list_view": 1
+   "in_list_view": 1,
+   "options": "currency"
   },
   {
    "fieldname": "currency",

@@ -8,6 +8,9 @@ from frappe.model.document import Document
 from frappe.utils import flt
 
 
+MEASURE_SIZES = ["XXS", "XS", "S", "M", "L", "XL", "XXL"]
+
+
 class TechPack(Document):
 	def validate(self):
 		if self.status in ("Accepted", "Cancelled"):
@@ -41,22 +44,22 @@ class TechPack(Document):
 			)
 
 	def validate_measurements(self):
-		sizes = {s.size.strip().upper() for s in self.sizes}
+		"""One row per point of measure; a value under a size column needs that size in the Tech Pack's size list."""
+		listed = {s.size.strip().upper() for s in self.sizes}
 		seen = set()
 		for m in self.measurements:
-			if sizes and m.size.strip().upper() not in sizes:
-				frappe.throw(_("Measurement row {0}: size {1} is not in the size list.").format(m.idx, m.size))
-			# The same POM code can describe two measures (T210: neck and armhole), so the name is part of the key.
-			key = ((m.pom_code or "").strip().upper(), m.point_of_measure.strip().upper(), m.size.strip().upper())
+			key = ((m.pom_code or "").strip().upper(), m.point_of_measure.strip().upper(), (m.section or "").strip().upper())
 			if key in seen:
 				frappe.throw(
-					_("Measurement row {0}: {1} {2} / {3} is entered twice.").format(
-						m.idx, key[0], m.point_of_measure, m.size
-					)
+					_("Measurement row {0}: {1} {2} is entered twice.").format(m.idx, key[0], m.point_of_measure)
 				)
 			seen.add(key)
-			if m.tolerance_plus and not m.tolerance_minus:
-				m.tolerance_minus = m.tolerance_plus  # buyers usually give one +/- figure
+			for size in MEASURE_SIZES:
+				if flt(m.get(size.lower())) and listed and size not in listed:
+					frappe.throw(
+						_("Measurement row {0}: {1} has a value for size {2}, which is not in the size list.").format(
+							m.idx, m.point_of_measure, size)
+					)
 
 	def validate_fit_rounds(self):
 		"""The header shows the result of the latest round."""

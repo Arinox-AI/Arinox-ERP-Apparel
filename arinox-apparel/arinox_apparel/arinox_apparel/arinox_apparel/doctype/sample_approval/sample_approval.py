@@ -341,11 +341,14 @@ class SampleApproval(Document):
 			frappe.throw(_("Enter the sample size first."))
 		tp = frappe.get_doc("Tech Pack", self.tech_pack)
 		self.set("measurements", [])
+		col = self.sample_size.strip().lower()
+		if col not in ("xxs", "xs", "s", "m", "l", "xl", "xxl"):
+			frappe.throw(_("Sample size {0} is not a standard size on the Tech Pack.").format(self.sample_size))
 		for m in tp.measurements:
-			if (m.size or "").strip().upper() == self.sample_size.strip().upper():
+			if flt(m.get(col)):
 				self.append("measurements", {
-					"pom_code": m.pom_code, "point_of_measure": m.point_of_measure, "size": m.size, "spec": m.value,
-					"tol_plus": m.tolerance_plus, "tol_minus": m.tolerance_minus,
+					"pom_code": m.pom_code, "point_of_measure": m.point_of_measure, "size": self.sample_size.strip().upper(),
+					"spec": m.get(col), "tol_plus": m.tolerance, "tol_minus": m.tolerance,
 				})
 		if not self.measurements:
 			frappe.throw(_("The Tech Pack has no measurements for size {0}.").format(self.sample_size))

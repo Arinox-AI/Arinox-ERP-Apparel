@@ -20,6 +20,7 @@ TERM_FIELDS = (
 	"payment_days", "documents_list",
 )
 TEXT_TYPES = ("Data", "Small Text", "Text", "Long Text")
+PLACEHOLDER_OK = ("shipping_marks",)   # marks on the carton are advised at booking; the real contracts print TBA here
 
 
 class SalesContract(Document):
@@ -103,10 +104,11 @@ class SalesContract(Document):
 		max_skus = cint(frappe.db.get_single_value("Apparel Settings", "max_skus_per_contract")) or 8
 		keys = set()
 		for it in self.items:
-			key = (it.style_item, (it.colour or "").strip().upper())
+			# a line is style x colour x buyer PO: one contract often carries the same style and colour once per PO
+			key = (it.style_item, (it.colour or "").strip().upper(), (it.buyer_po_code or "").strip().upper())
 			if key in keys:
-				frappe.throw(_("Row {0}: {1} / {2} is already on this contract. One line per style and colour.").format(
-					it.idx, it.style_item, it.colour))
+				frappe.throw(_("Row {0}: {1} / {2} is already on this contract for PO {3}. One line per style, colour and PO.").format(
+					it.idx, it.style_item, it.colour, it.buyer_po_code or "-"))
 			keys.add(key)
 			if not it.style_no:
 				it.style_no = frappe.db.get_value("Item", it.style_item, "item_name")
@@ -175,15 +177,26 @@ class SalesContract(Document):
 					title=_("Price Lock"),
 				)
 
+	def line_index(self, style_item, colour, po):
+		"""Index of the contract line a size row belongs to. A size row names its PO; one without a PO belongs to the only line of
+		that style and colour. None = no such line, -1 = several lines and no PO to tell them apart."""
+		cands = [i for i, it in enumerate(self.items) if it.style_item == style_item and (it.colour or "").strip().upper() == (colour or "").strip().upper()]
+		if po:
+			cands = [i for i in cands if (self.items[i].buyer_po_code or "").strip().upper() == po.strip().upper()]
+		if not cands:
+			return None
+		return cands[0] if len(cands) == 1 else -1
+
 	def validate_sizes(self):
-		lines = {(it.style_item, (it.colour or "").strip().upper()) for it in self.items}
 		seen = set()
 		for s in self.sizes:
-			key = (s.style_item, (s.colour or "").strip().upper())
-			if key not in lines:
-				frappe.throw(_("Size row {0}: {1} / {2} is not a line on this contract.").format(s.idx, s.style_item, s.colour))
-			# One size can appear once per destination and PO: the same PO is often split across ship-to points.
-			k2 = (*key, s.size.strip().upper(), (s.ship_to or "").strip().upper(), (s.buyer_po_no or "").strip().upper())
+			i = self.line_index(s.style_item, s.colour, s.buyer_po_no)
+			if i is None:
+				frappe.throw(_("Size row {0}: {1} / {2} (PO {3}) is not a line on this contract.").format(s.idx, s.style_item, s.colour, s.buyer_po_no or "-"))
+			if i == -1:
+				frappe.throw(_("Size row {0}: {1} / {2} is on several lines (one per PO). Enter the buyer PO on the size row.").format(s.idx, s.style_item, s.colour))
+			# One size can appear once per destination on a line: the same PO is often split across ship-to points.
+			k2 = (i, s.size.strip().upper(), (s.ship_to or "").strip().upper())
 			if k2 in seen:
 				frappe.throw(
 					_("Size row {0}: size {1} is entered twice for {2} / {3} to the same ship-to and PO.").format(
@@ -207,8 +220,8 @@ class SalesContract(Document):
 		problems = []
 		by_line = defaultdict(int)
 		for s in self.sizes:
-			by_line[(s.style_item, (s.colour or "").strip().upper())] += cint(s.qty)
-		for it in self.items:
+			by_line[self.line_index(s.style_item, s.colour, s.buyer_po_no)] += cint(s.qty)
+		for pos, it in enumerate(self.items):
 			label = f"{it.style_no or it.style_item} / {it.colour or '-'}"
 			if not it.colour:
 				problems.append(_("{0}: colour is missing").format(label))
@@ -219,7 +232,7 @@ class SalesContract(Document):
 			for f, lbl in (("ex_factory_date", _("ex-factory date")), ("etd", _("ETD")), ("in_warehouse_date", _("in-warehouse date"))):
 				if not it.get(f):
 					problems.append(_("{0}: {1} is missing").format(label, lbl))
-			sized = by_line.get((it.style_item, (it.colour or "").strip().upper()), 0)
+			sized = by_line.get(pos, 0)
 			if sized != cint(it.qty):
 				problems.append(_("{0}: size breakdown totals {1}, line quantity is {2}").format(label, sized, cint(it.qty)))
 		for f, lbl in (("incoterm", _("Incoterm")), ("port_of_loading", _("Port of loading"))):
@@ -240,7 +253,7 @@ class SalesContract(Document):
 
 		def scan(doc, label):
 			for df in doc.meta.fields:
-				if df.fieldtype not in TEXT_TYPES:
+				if df.fieldtype not in TEXT_TYPES or df.fieldname in PLACEHOLDER_OK:
 					continue
 				val = (doc.get(df.fieldname) or "").strip()
 				if val and (val.upper() in words or any(tok in words for tok in val.upper().replace(",", " ").split() if len(tok) > 2)):
@@ -341,7 +354,12 @@ def make_sales_order(source_name):
 
 	settings = frappe.get_single("Apparel Settings")
 	colour_attr, size_attr = settings.colour_attribute or "Colour", settings.size_attribute or "Size"
-	lines = {(it.style_item, (it.colour or "").strip().upper()): it for it in sc.items}
+	def line_of(size_row):
+		i = sc.line_index(size_row.style_item, size_row.colour, size_row.buyer_po_no)
+		if i is None or i == -1:
+			frappe.throw(_("Size row {0}: cannot tell which contract line it belongs to. Enter the buyer PO on it.").format(size_row.idx))
+		return sc.items[i]
+
 	warehouse = None
 	for wh in (settings.fg_warehouse, frappe.db.get_single_value("Stock Settings", "default_warehouse")):
 		if wh and frappe.db.get_value("Warehouse", wh, "company") == sc.company:
@@ -367,7 +385,7 @@ def make_sales_order(source_name):
 		}
 	)
 	for s in sc.sizes:
-		line = lines[(s.style_item, (s.colour or "").strip().upper())]
+		line = line_of(s)
 		item_code = s.style_item
 		if frappe.db.get_value("Item", s.style_item, "has_variants"):
 			args = {colour_attr: s.colour, size_attr: s.size}
@@ -398,7 +416,7 @@ def make_sales_order(source_name):
 		)
 	so.run_method("set_missing_values")
 	for row, s in zip(so.items, sc.sizes):
-		row.rate = lines[(s.style_item, (s.colour or "").strip().upper())].rate
+		row.rate = line_of(s).rate
 		row.price_list_rate = 0
 	so.run_method("calculate_taxes_and_totals")
 	return so

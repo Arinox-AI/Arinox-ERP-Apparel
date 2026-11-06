@@ -1,11 +1,29 @@
 // Copyright (c) 2026, Arinox AI and contributors
+// Picking an Inquiry (Opportunity) fills the customer, product type, season and source reference from it.
+frappe.ui.form.on("Tech Pack", {
+	opportunity(frm) {
+		if (!frm.doc.opportunity) return;
+		frappe.db
+			.get_value("Opportunity", frm.doc.opportunity, [
+				"opportunity_from", "party_name", "apparel_product_type", "apparel_season", "apparel_source_email",
+			])
+			.then((r) => {
+				const o = r && r.message;
+				if (!o) return;
+				if (o.opportunity_from === "Customer" && o.party_name) frm.set_value("customer", o.party_name);
+				if (o.apparel_product_type) frm.set_value("product_type", o.apparel_product_type);
+				if (o.apparel_season) frm.set_value("season", o.apparel_season);
+				if (o.apparel_source_email) frm.set_value("source_reference", o.apparel_source_email);
+			});
+	},
+});
+
 frappe.ui.form.on("Tech Pack", {
 	setup(frm) {
 		frm.set_query("opportunity", () => ({ filters: { opportunity_from: "Customer", party_name: frm.doc.customer } }));
 		frm.set_query("style_item", () => ({ filters: { has_variants: 1 } }));
 	},
 	refresh(frm) {
-		render_measurement_matrix(frm);
 		if (frm.is_new()) return;
 		if (!frm.doc.style_item && frm.doc.docstatus < 2) {
 			frm.add_custom_button(__("Create Style Item"), () =>
@@ -23,35 +41,4 @@ frappe.ui.form.on("Tech Pack", {
 			, __("Create"));
 		}
 	},
-	measurements_on_form_rendered: render_measurement_matrix,
 });
-
-frappe.ui.form.on("Tech Pack Measurement", {
-	value: render_measurement_matrix,
-	measurements_remove: render_measurement_matrix,
-});
-
-function render_measurement_matrix(frm) {
-	frm = frm.doc ? frm : cur_frm;
-	const rows = frm.doc.measurements || [];
-	const wrapper = frm.get_field("measurement_matrix").$wrapper;
-	if (!rows.length) { wrapper.html(""); return; }
-	const sizes = (frm.doc.sizes || []).map((s) => s.size);
-	rows.forEach((r) => { if (!sizes.includes(r.size)) sizes.push(r.size); });
-	const poms = [];
-	const grid = {};
-	rows.forEach((r) => {
-		const key = (r.pom_code ? r.pom_code + " · " : "") + r.point_of_measure;
-		if (!poms.find((p) => p.key === key)) poms.push({ key, tol: [r.tolerance_plus, r.tolerance_minus] });
-		grid[key + "|" + r.size] = r.value;
-	});
-	const esc = frappe.utils.escape_html;
-	let html = '<div class="table-responsive"><table class="table table-bordered table-sm" style="font-size:12px"><thead><tr><th>' +
-		__("Point of Measure") + "</th><th>" + __("Tol +/−") + "</th>" + sizes.map((s) => "<th class='text-right'>" + esc(s) + "</th>").join("") + "</tr></thead><tbody>";
-	poms.forEach((p) => {
-		html += "<tr><td>" + esc(p.key) + "</td><td>" + (p.tol[0] || 0) + " / " + (p.tol[1] || 0) + "</td>" +
-			sizes.map((s) => "<td class='text-right'>" + (grid[p.key + "|" + s] ?? "") + "</td>").join("") + "</tr>";
-	});
-	html += "</tbody></table></div><p class='text-muted small'>" + __("Read-only view of the rows below ({0}).", [frm.doc.measurement_uom || "cm"]) + "</p>";
-	wrapper.html(html);
-}

@@ -177,7 +177,6 @@ Where: workspace card exists.
 |---|---|---|---|---|---|---|
 | 1 | - | POM Code | `pom_code` | Data |  |  |
 | 2 | - | Point of Measure | `point_of_measure` | Data |  | Yes |
-| 3 | - | Local Name | `local_name` | Data |  |  |
 | 4 | - | Size | `size` | Data |  | Yes |
 | 5 | - | Value | `value` | Float |  |  |
 | 6 | - | Tol + | `tolerance_plus` | Float |  |  |

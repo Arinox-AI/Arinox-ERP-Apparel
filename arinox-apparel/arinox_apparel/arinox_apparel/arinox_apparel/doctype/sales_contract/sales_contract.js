@@ -26,13 +26,24 @@ frappe.ui.form.on("Sales Contract", {
 });
 
 frappe.ui.form.on("Sales Contract Item", {
-	qty: (frm, cdt, cdn) => line_amount(cdt, cdn),
-	rate: (frm, cdt, cdn) => line_amount(cdt, cdn),
+	qty: (frm, cdt, cdn) => line_amount(frm, cdt, cdn),
+	rate: (frm, cdt, cdn) => line_amount(frm, cdt, cdn),
+	items_remove: (frm) => update_totals(frm),
 });
 
-function line_amount(cdt, cdn) {
+function line_amount(frm, cdt, cdn) {
 	const r = locals[cdt][cdn];
-	frappe.model.set_value(cdt, cdn, "amount", cint(r.qty) * flt(r.rate));
+	Promise.resolve(frappe.model.set_value(cdt, cdn, "amount", flt(cint(r.qty) * flt(r.rate), 2))).then(() => update_totals(frm));
+}
+
+// the same sums the save script makes, so Total Qty, Total Amount and SKUs are right while the lines are being edited
+function update_totals(frm) {
+	const lines = frm.doc.items || [];
+	frm.set_value({
+		total_qty: lines.reduce((t, r) => t + cint(r.qty), 0),
+		total_amount: flt(lines.reduce((t, r) => t + flt(r.amount), 0), 2),
+		sku_count: lines.length,
+	});
 }
 
 function fill_sizes(frm) {

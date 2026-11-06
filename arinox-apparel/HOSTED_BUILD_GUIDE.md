@@ -10,7 +10,7 @@ Companion files: `arinox_apparel/portable/HOSTED_STATUS.md` (what is done and te
 
 The hosted ERPNext accepts only **DocTypes, data records and Server Scripts** (plus Client Scripts, Print Formats, Reports and the other ordinary records). No `bench`, no app install, no Python files. The agent that works on it is API-only. The Frappe app in this repo (`arinox_apparel`, 198 Python files, 407 passing tests) is the **reference implementation**: it already does everything. This job is to re-express the logic that lives in Python controllers and hooks as **Server Scripts** (restricted Python stored in a record), and to prove each one on a clean ERPNext-only site against the same scenarios the app's tests use.
 
-What is already done and proven on a clean ERPNext-only site: the whole data layer (131 doctypes, 188 custom fields, 194 seeds, print formats, number cards, charts, workspaces, 30 client scripts, 13 reports), plus the logic of contract naming, the production ledger and flow engine, Production Adjustment, Production Card, Delivery Note gates, and Sales Contract rules. 39 hosted tests pass (`./hosted_tests.sh`, 2026-11-05). Everything else in the appendix is still to build.
+What is already done and proven on a clean ERPNext-only site: the whole data layer (131 doctypes, 189 custom fields, 195 seeds, print formats, number cards, charts, workspaces, 30 client scripts, 13 reports), and the logic of contract naming, the production ledger and flow engine, Production Adjustment, Production Card, Sales Contract (+ make-order button), Sales Order hooks, Cost Sheet, Packing List, Final Inspection, Delivery Note gates, invoicing (direct and group route), payment follow-up with the daily reminders, a kill switch, and (Tier 1) Tech Pack, Price Negotiation with the Quotation hook, Factory Allocation, Sample Approval, PP Meeting, the bulk gate with the Work Order hooks, Cost Head and Costing Parameter. **the hosted tests pass** (`./hosted_tests.sh`, count in `HOSTED_STATUS.md`); the dev app still passes its own suite. Everything in section 8 is still to build.
 
 ## 2. Set up the working environment (about 10 minutes, one time)
 
@@ -64,10 +64,18 @@ A Server Script is compiled by RestrictedPython. These are the rules that cost t
 | names starting with `_`, attributes starting with `_` | refused | rename |
 | `d["a"] += 1`, `doc.x += 1` | refused | `d["a"] = d["a"] + 1` (`i += 1` on a plain name is fine) |
 | `frappe._dict(...)`, `getattr`, `hasattr`, `type`, `map`, `filter`, `open`, `print` | refused | use a plain `dict`, `.get()`, list comprehensions |
+| `frappe.has_permission(...)` | refused | `frappe.get_doc(dt, name).check_permission("read")` on a document that exists |
+| Role checks for the Administrator | `Has Role` lists only roles assigned to the user, but Frappe treats the Administrator as holding **every** role | `frappe.get_all("Role", pluck="name") if frappe.session.user == "Administrator" else frappe.get_all("Has Role", {...}, pluck="role")` (already in `lib_maths.my_roles` and the scripts) |
 | `frappe.get_roles()` | refused | `frappe.get_all("Has Role", {"parent": frappe.session.user, "parenttype": "User"}, pluck="role")` |
 | `frappe.db.sql("update ...")`, `frappe.db.delete`, `frappe.db.set_single_value` | refused (SQL is read-only) | `frappe.db.set_value`, `doc.db_set`, `frappe.delete_doc(..., force=1)` in a loop |
 | `frappe.model.naming.getseries` | refused | a number-series doctype (see `Arinox Number`) |
 | `random` | not available | a small seeded generator written by hand |
+| `re`, `math`, `collections`, `datetime`, `timedelta` | not available | `str` methods and small loops by hand; `frappe.utils.ceil / floor / add_days / date_diff` |
+| a dict key that starts with `_` (for example an item code `_ATQ-1`) | `SyntaxError: Key starts with _` | prefix the key (`"k|" + code`) |
+| a Server Script argument of `0` read as `form.get("x") or 1` | the integer 0 becomes 1 | test `is None`; the engine's `check` flag had this bug and is fixed |
+| `frappe.defaults.get_user_default("Company")` | `TypeError: 'NoneType' object is not callable` | `frappe.db.get_value("DefaultValue", {"parent": frappe.session.user, "defkey": "Company"}, "defvalue")`, then `Global Defaults`, then the first Company |
+| `run_script("x")` where x is an API method name | `DoesNotExist` | `run_script` takes the Server Script **record name** (for example `arinox_work_order_api_get_bulk_gate`), not the `api_method` (`arinox_work_order_get_bulk_gate`); `fx.engine_call` accepts either |
+| `frappe.get_single(...)` for a child table of Apparel Settings | refused | `frappe.get_all("<child doctype>", filters={"parent": "Apparel Settings", "parenttype": "Apparel Settings"})` (see `lib_samples.py`) |
 
 Allowed and useful: `frappe.get_doc / get_all / get_value / new_doc / delete_doc`, `doc.insert / save / submit / cancel / append / db_set / set`, `frappe.db.get_value / exists / count / sql` (select only), `frappe.call("dotted.path", **kw)` for any **whitelisted** function (ERPNext's `make_delivery_note`, `make_sales_invoice`, `create_variant` ...), `run_script("name", **kw)` to run another **API** script (arguments arrive in `frappe.form_dict`, results are read from `frappe.flags`), `json.loads/dumps`, `any/all/bool/sorted/min/max/sum/enumerate/zip/set`.
 
@@ -96,6 +104,8 @@ Things that always trip a port:
 - `doc.has_value_changed("x")` and `doc.is_new()` work; `doc.flags.x = ...` works; `self.` becomes `doc.`.
 - Child-table loops: `for r in doc.items:`; set values with `r.field = ...`; `doc.set("rows", [...])` replaces a table.
 - A throw inside a Before/After event aborts the whole save or submit (the transaction is rolled back). Test failure paths by calling the operation inside `throws(lambda: ...)` and **reloading the document** afterwards (`doc = frappe.get_doc(doc.doctype, doc.name)`), or you get a `TimestampMismatchError`.
+- A Scheduler Event script is run by the scheduler, not called; in tests use `fx.run_scheduled(name)`. An API script is called with `fx.engine_call(api_method_or_record_name, **form_values)`, and its answer is `result["arinox_result"]`.
+- Do not call `frappe.flags.x` after `run_script` to read an answer; use `run_script`'s return value (`res.get("arinox_result")`).
 - ERPNext has its own guards that sit in front of ours (for example over-delivery allowance, fiscal year, currency accounts). In tests raise ERPNext's limits so that your script is what is being tested (see `fixtures.delivery_chain`).
 
 ## 5. Loading onto the real hosted site
@@ -107,7 +117,7 @@ python3 arinox_apparel/arinox_apparel/portable/api_load.py hosted_bundle https:/
 ```
 (the key:secret goes in the `ARINOX_API_TOKEN` environment variable). It is idempotent: records that exist are updated. Group order is fixed in `hosted_bundle/index.json`: module, roles, doctypes (dependency order, loop-closing fields added in a second pass), custom fields, property setters, seeds, settings, print formats, reports, number cards, charts, dashboards, workspaces, sidebars, icons, client scripts, server scripts. It prints every failure with the server's message and exits 1 if anything failed.
 
-The bundle is regenerated from the app by `bench --site apparel.localhost execute arinox_apparel.portable.export_bundle.export --kwargs "{'out': '<dir>'}"`. What the exporter changes for a site without developer mode is listed in `HOSTED_CONSTRAINTS.md` section 6 (custom=1 on every DocType, "not standard" flags, permission tables fixed, sidebar names, Page links removed). **Add a kill switch before the first real load**: a single setting (for example `Apparel Settings.scripts_enabled`) that every script reads first and returns on, so a faulty Before Save script on Sales Invoice can be switched off without server access. Not built yet.
+The bundle is regenerated from the app by `bench --site apparel.localhost execute arinox_apparel.portable.export_bundle.export --kwargs "{'out': '<dir>'}"`. What the exporter changes for a site without developer mode is listed in `HOSTED_CONSTRAINTS.md` section 6 (custom=1 on every DocType, "not standard" flags, permission tables fixed, sidebar names, Page links removed). **The kill switch is built:** the API script `arinox_scripts_switch` (`state` = `off`, `on` or `status`; needs System Manager or Script Manager) turns every Arinox *rule* script off or on in one call. It leaves the naming scripts, the ledger engine and itself on, because without them the numbered documents could not even be created. Test it on the real site before relying on it, and know the by-hand route too: Server Script list, select, Disable.
 
 Not yet tried on the real hosted site: the Script Manager / System Manager rights of the API user, the Server Script time limit (the ledger and the carton plan loop over many rows), and creating each record type there. All were proven only on the ERPNext-only local site.
 
@@ -154,64 +164,41 @@ The 30 generated Client Scripts (`hosted_bundle/16_client_scripts.json`) call th
 | `arinox_planner_make_order_tnas` | Sales Order | build the T&A plans of an order |
 | `arinox_order_tna_lock_baseline`, `..._unlock_baseline`, `..._replan` | Order TNA | freeze / unfreeze / recompute a plan |
 
-None of these API scripts exists yet. The engine (`arinox_engine`) is an API script too, but it is called only by other scripts, not by a button.
+**Built and tested:** `arinox_sales_contract_make_sales_order`, `arinox_sales_contract_apply_template`, `arinox_production_card_get_card_lines` / `get_order_styles` / `get_summary` / `revise_production_card`, the five Cost Sheet scripts (`set_charges_from_parameter`, `get_margin_at_price`, `sign_off`, `approve`, `reject`), `arinox_packing_list_generate_cartons`, `arinox_final_inspection_pick_cartons`, `arinox_invoicing_prepare_invoices` / `submit_invoices`, `arinox_followup_log_follow_up`, the kill switch, and all the Tier 1 buttons (`make_tech_pack`, `make_cost_sheet`, `create_style_item`, Cost Sheet `make_price_negotiation` / `make_quotation`, `price_negotiation_make_quotation`, `sales_contract_make_sales_contract`, the three Factory Allocation scripts, the four Sample Approval scripts, the three PP Meeting scripts, `work_order_get_bulk_gate`). **Not built:** every other row of the table above.
 
-## 7. What the real papers showed (these must be built into the ports)
+## 7. What the real papers showed (decisions taken and fixes made)
 
-Two real orders (held back with the coverage report) were entered end to end and reconciled against the papers. Facts the ports must honour (the gaps in the *model*, such as missing fields, are listed in that file, not here):
+Two real orders were entered end to end and reconciled against the papers (the report is held back from the public repo; the lessons are here without the figures). Each item says what the papers showed, what was decided, and where it stands.
 
-1. **A contract line is style x colour x buyer PO, not style x colour.** A real contract in the sample set has three lines, one per buyer PO, with the same style and colour. The app's `sales_contract.py` rejects that (`validate_lines`, `validate_sizes`, `check_ready_to_sign` key on style+colour). The hosted scripts already use style+colour+PO. **The app controller needs the same change** (and its test `test_contract.py`).
-2. **The over-ship gate caught a real over-shipment.** In a real order, one size shipped 1 piece above the allowed figure (the 7.5% band, rounded down per size). The ported Delivery Note stops it and asks a manager for a reason. Keep this exact behaviour.
-3. **Sales Order Item colour, size, buyer PO and tolerance** (`apparel_colour`, `apparel_size`, `apparel_buyer_po`, `apparel_qty_tolerance_pct`, `apparel_etd`, `apparel_in_warehouse_date`) are filled by the *make_sales_order* button. A Sales Order entered by hand has them blank and the Production Card, the packing list and the delivery gate then see nothing. Add a Before Save script on Sales Order Item rows that fills them from the variant's Colour/Size attributes and from the contract line when blank.
-4. **Packing List header totals** (`total_cartons`, `total_pieces`, `total_net_kg`, `total_gross_kg`, `total_cbm`, `size_summary`, `total_vs_order_pct`) are computed by the controller; on the hosted site they stay 0. The paper prints them (cartons, pieces, kg, and the over/short percentage against the order). Port `packing.py` + `packing_list.py`.
-5. **Two invoices, one number.** The factory invoices the group trading company at a transfer price and the trading company invoices the buyer at the selling price, both numbered alike (`apparel_commercial_invoice_no`, with `apparel_route_leg` 1 and 2). In the sample the selling price is above the contract/PO price: the app refuses that in `shipping/invoicing.py`; the hosted site currently allows it. Port the rule and keep the manager override.
-6. **One paper invoice can span contracts.** S14's invoice also carries another style. `Sales Invoice` has one `apparel_sales_contract` link. Decide: split by contract, or allow a table of contracts.
-7. **Setup the real site needs** (not code): a fiscal year per year of the papers; ERPNext's *Over Delivery/Receipt Allowance* at least as large as the largest contract tolerance (15%); a USD receivable account per company that invoices in USD while booking in VND/HKD, named on the customer; an exchange rate on each invoice; the freight forwarder as a Supplier; currency code CNY for the papers' "RMB".
-8. **A seed was missing:** the costing sheets charge *Depreciation 2.5%*; there was no such Cost Head. The ingest adds it; add it to `setup/install.py` COST_HEADS and re-export.
-9. **Legacy numbers.** To keep a number from the paper (a contract number printed on the paper), set `arinox_name` before insert; `naming.py` leaves a pre-set name alone. Counter numbers are drawn on every insert attempt, so a failed save leaves a gap in the series (this matches `getseries`).
-10. **A signed contract may not contain a placeholder.** The real S14 contract prints *Shipping Marks: TBA* and an address of `#REF!`, so the rule "nothing may be left as a placeholder on a signed contract" refuses to sign it. This needs a decision from the business (keep the rule and fill the marks first, or allow TBA for the marks until booking) before the port is called finished.
-11. **Measurements:** the S14 grade sheet has rows without a POM code, a LINING section that repeats the same POM codes as the shell, and dated rows (revised). The Tech Pack Measurement table has no section and no per-row revision date (see the coverage file for the proposed fields).
+1. **A contract line is style x colour x buyer PO.** A real contract has several lines for the same style and colour, one per PO. **Fixed in both the app (`sales_contract.py`) and the hosted scripts**; a size row finds its line by style, colour and PO (a size row with no PO belongs to the only line of that style and colour, and is refused when there are several).
+2. **The over-ship gate caught a real over-shipment** (one piece above the per-size allowance of the 7.5% band, rounded down). Ported and tested; keep this behaviour.
+3. **Sales Order rows filled by hand have blank colour, size, PO, dates and tolerance.** Fixed on the hosted side: `sales_order_validate.py` fills them from the item's Colour/Size variant attributes and from the contract line when it is unambiguous. (Not done in the app: the app fills them only in the make-order button.)
+4. **Packing List header totals** (cartons, pieces, net/gross kg, CBM, size summary, over/short %) were not computed on the hosted site. **Ported** (`packing_list_validate.py`).
+5. **Two invoices, one number** (factory bills the group trader at a transfer price, the trader bills the buyer at the selling price). **Ported and tested** (`invoicing_api_prepare.py`, group route with a second company). Correction to an earlier version of this guide: the app does **not** itself refuse an invoice priced above the order. ERPNext does, but only when the invoice is *linked* to its order (Selling Settings "same rate"); the group route's second leg is not linked, so a price above the order passes on both sides. Decide whether to add a rule.
+6. **One invoice may cover several contracts** (decision: allowed, default applied). The invoice keeps the first contract in the existing link and lists all of them in the new field `apparel_all_contracts` ("All Contracts On This Invoice"). Change it if the business wants one invoice per contract.
+7. **Setup the real site needs** (not code): a fiscal year per year of the papers; ERPNext's *Over Delivery/Receipt Allowance* at least as large as the largest contract tolerance (15%); the Finished Goods warehouse in Apparel Settings (the make-order button now says so when it is missing); a receivable account in the invoice currency per company, named on the customer, and an exchange rate on each invoice; the freight forwarder as a Supplier; currency code CNY for the papers' "RMB"; in Stock Settings the box *Activate Serial and Batch No for Item* (fabric rolls are Batches in a bundle); the five warehouses named in Apparel Settings (inspection fabric and trim, store fabric and trim, rejected) plus Cutting WIP and Finished Goods. The hosted inspection script switches *Inspection Required before Purchase* on an item only while it makes the Quality Inspection (ERPNext checks that flag outside test mode).
+8. **Seed added:** the costing sheets charge *Depreciation 2.5%*. The cost head is now in the app's seeds (`setup/install.py`) and the bundle.
+9. **Legacy numbers.** Set `arinox_name` before insert to keep a number from the paper; `naming.py` leaves a pre-set name alone. Counters are drawn on every insert attempt, so a failed save leaves a gap (this matches `getseries`).
+10. **Shipping marks may stay TBA** (decision: yes). Fixed in both the app and the hosted script; every other field is still refused when left as TBA/TBC/N/A.
+11. **Measurements:** a grade sheet can have rows with no POM code, a LINING section repeating the same POM codes, and dated (revised) rows. New fields added in the app and bundle: Tech Pack `buyer_created_on`, `buyer_revised_on`; Tech Pack Measurement `section`, `revised_on`; Trim Requisition Item `stock_decision`; Sales Contract `production_lead_days`.
+12. **Two latent errors in the app's permission tables** (PP Meeting: Sales User could submit/cancel/amend without write; Fabric and Trim Inspection listed three roles twice) are corrected in the app JSON, so the exporter no longer has to patch them.
+13. **App bug found and fixed:** `shipping/invoicing.py` stored the Sales Order's *name* in the "Contract" link when an order had no contract, which fails link validation. It now links only a contract that exists.
+14. **Seeds and settings are create-only on load.** A live site's merchandisers add colours and sizes and edit defaults; a reload must not remove or overwrite them. `api_load.py` skips existing seeds and fills only blank fields of Apparel Settings; `--overwrite-seeds` forces a replace.
 
 ## 8. What to build, in order
 
-Dependency order for a hosted pilot. For each item the appendix gives the source file, events and buttons. "Tests to mirror" are the app's test files.
+Dependency order for a hosted pilot. "Tests to mirror" are the app's test files. **Done and tested on the hosted-like site (see HOSTED_STATUS.md for the count):** naming, the ledger engine, Production Adjustment, Production Card (+ its helper buttons), Sales Contract (+ make-order and apply-template buttons), Sales Order hooks, **Cost Sheet** (maths, approval, sign-off, margin button), **Packing List** (carton planning, totals, SSCC, needle gate, ledger, finished-goods receipt, Generate Cartons button), **Final Inspection** (AQL decision, re-inspection chain, seeded carton draw, Pick Cartons button), Delivery Note gates, **invoicing** (direct and group route, Prepare/Submit buttons), **payment follow-up** (expected due date, daily reminders, Log Follow-up button), the shipment-to-invoice due-date refresh, and the **kill switch**.
 
-**Tier 1: merchandising backbone (blocks the first order)**
-- *Sales Order hooks* (`overrides/sales_order.py`, 20 lines): link the order to its contract, allow one live order per contract; plus item 3 above.
-- *Sales Contract buttons*: `apply_template`, `make_sales_contract`, `make_sales_order` (the biggest: creates variants with `frappe.call("erpnext.controllers.item_variant.create_variant", ...)`).
-- *Tech Pack* (205): validate sizes/colours/measurements, submit/cancel rules; `make_tech_pack`, `make_cost_sheet`, `create_style_item`. Mirror `test_plan_approve.py` / `test_contract.py`.
-- *Cost Sheet* (488), *Costing Parameter*, *Cost Head*: the cost build-up (materials with wastage and unit conversion, charge rows by cost-head calc type, percentages of product cost, profit as a markup, FOB, margin against the floor, sign-off chain, approve/reject). Pure arithmetic: port `maths`-style functions inside the script and test with the company's golden number (FOB 14.3748 on 5,500 pcs, `tests/utils.py`). Mirror `test_costing.py`.
-- *Price Negotiation* (175) + *Quotation* hook (30): rounds, agreed price, margin per offer; quotation below the margin floor is blocked.
-- *Factory Allocation* (171), *Sample Approval* (348), *PP Meeting* (189), *Work Order bulk gate* (48) with `production/gate.py` (76): the gates that release bulk. Port `bulk_gate_for` as an engine action; Lay Report and Work Order both call it. Mirror `test_plan_approve.py`.
+**Tier 1: merchandising backbone: DONE and tested (72 hosted tests).** Tech Pack, Price Negotiation + Quotation hook, Cost Head / Costing Parameter, Factory Allocation, Sample Approval, PP Meeting, the bulk gate (engine action `bulk_gate`, Work Order hooks), and the buttons of all of them. Left over from this tier: the Cost Sheet agent helpers `get_costing_context` / `get_previous_costing`; the pilot-run *approved* path of the gate is not covered by a hosted test (Pilot Run is Tier 3). The gate already reads `material_gate` from `materials/status.py` (ported into `lib_materials.py`), so the Tier 2 status port should reuse that file.
 
-**Tier 2: materials (Phase C)**
-- *Fabric Requisition* (383), *Trim Requisition* (378): lines from orders, allowance rules, unit conversion (m/yd/kg), stock used, Material Requests on submit, revisions. Mirror `test_materials.py`. Libs needed: unit conversion (done in `lib_maths`), allowance lookup, `materials/common.py` roll-ups.
-- *Purchase Order* hooks (155), *Purchase Receipt* hooks (98): requisition link, supplier terms (quantity bands, late-delivery penalty), approval hold, receive into the inspection warehouse.
-- *Fabric Inspection* (279, 4-point system, sampling, lot decision), *Trim Inspection* (95), roll-list import (`materials/rolls.py`), material status and gate (`materials/status.py`). Mirror `test_inspection.py`.
-
-**Tier 3: the production floor (Phase D)**
-- *Cut Plan* (99) + `production/cutting.py` (160: roll suggestion, ply and bundle numbering), *Lay Report* (265), *Recut Request*, *Cut Bundle*. Needs the bulk gate and `production/stock.py` (84: fabric issue and remnant return as Stock Entries). Mirror `test_cutting.py`.
-- *Line Input* (86), *Daily Line Report* (100), *Line QC Report* (98), *Operation Bulletin* (46) + `production/sewing.py` (115), *Pilot Run* (93), `production/summary.py` and `measurements.py`. These post to the ledger via the engine (`post` with `check=1`). Mirror `test_sewing.py`, `test_pilot_run.py`.
-
-**Tier 4: subcontract, finishing, packing, final inspection**
-- *Subcontract Challan / Return / Settlement* (94 / 81 / 96): pieces out and back by process, vendor-fault vs factory-fault split, damage penalty, working-day due date, Purchase Invoice and debit note (`make_invoices`).
-- *Finishing Receipt* (36), *Needle Detector Log* (29).
-- *Packing List* (259) + `production/packing.py` (132): carton runs `1~11`, non-overlap check, ratio/solid/assorted packing, tail carton, CBM, **SSCC with a GS1 check digit and a counter that never goes back**, finished-goods receipt, header totals.
-- *Final Inspection* (167): AQL plan lookup (accept/reject numbers are confirmed only for codes K, L, M; others are refused until QA fills them), random carton draw with a stored seed (write a seeded generator by hand; there is no `random`), tests and conformity, concession, re-inspection chain and limit, ship gate. Mirror `test_shipping.py` (E2 tests).
-
-**Tier 5: ship and collect (Phase E)**
-- *Shipment* hooks (204: container check digit ISO 6346, chargeable weight/volume, measures kept side by side, destination filings) - partly done as the original 8 scripts; port the rest and `make_delivery_notes`.
-- *Invoicing* (152): direct route and group route (factory -> trader at a transfer price -> buyer), same number on both legs, due date from the contract's payment basis, refuse invoicing above the order price.
-- *Freight* (43), *Payment follow-up* (122, daily Scheduler Event script), *Buyer Claim* (101: claim window, cap at invoice value, manager override, credit note), *Commercial close* (74).
-- The delivery port still lacks the T&A `EX_FACTORY` stamp and the shipment status refresh.
-
-**Tier 6: time and action** (the WIP *screen* is being built separately, but the data engine under it is needed)
-- `tna/planner.py` (257: plan dates from a template, holidays, feasibility, `make_order_tnas`), `tna/events.py` (179: stamp actuals from the documents that prove them - called from many documents, so make `stamp` an engine action), `tna/status.py` (87: always computed from today's date; daily refresh), `tna/api.py` (85), *Order TNA*, *TNA Milestone*, *TNA Template*. Mirror `test_tna.py`, `test_status.py`.
-
-**Tier 7: the remainder**
-- 5 script reports that call app code: Fabric Consumption, Material Status, Freight Allocation, Running Fabric Stock, Sample Approval Tracker (port after the helpers they use). The 12 others are done (`portable/convert_reports.py` is the converter; extend it for new patterns and re-run).
-- 2 number cards that call Python (*Fabric Overdue*, *TR Lines On Hold*): rebuild each as a **Query Report** returning one number plus a Number Card of type *Report*.
-- `rebuild_movements` (ledger repair): loop with `delete_doc` and re-post; may hit the script time limit on large orders.
+**Tier 2 (materials), Tier 3 (production floor), Tier 4 (subcontract and finishing), Tier 5 (ship and collect), Tier 6 (time and action) and Tier 7 (the remainder): DONE and tested on the hosted-like site.**
+- *Tier 2:* Fabric and Trim Requisition (+ revise, save, items, lines, context buttons), Purchase Order and Purchase Receipt hooks, roll import, Fabric and Trim Inspection (+ load rolls, make inspection, purchase return), material status (`lib_material_status.py`) and gate.
+- *Tier 3:* Cut Plan, Lay Report, Recut Request, Cut Bundle, fabric issue and remnant return, Operation Bulletin, Line Input, Daily Line Report, Line QC Report, Pilot Run, Finishing Receipt, Needle Detector Log.
+- *Tier 4:* Subcontract Challan, Return and Settlement (+ short close, make invoices).
+- *Tier 5:* Shipment hooks and buttons, freight (forwarder bills against the quote, allocation), Buyer Claim (+ credit note), commercial close, the EX_FACTORY stamp and shipment status on Delivery Notes.
+- *Tier 6:* the whole T&A cluster: `arinox_tna` (stamp, unstamp, refresh, samples, refind), the planner (`lib_tna_plan.py`), Order TNA, TNA Milestone, TNA Template, the board / update / agent endpoints, and the hooks that stamp from Tech Pack, Sample Approval, PP Meeting, Work Order, Sales Order, requisitions, purchase, receipt, inspections, lay, pilot, shipment and delivery.
+- *Tier 7:* the 5 script reports (`script_reports/`, shared helpers copied in by `reports.py`), the 2 number cards (Report-type cards over two one-row Query Reports, `reports.CARD_QUERY_REPORTS`), the ledger repair (`arinox_ledger_rebuild_movements`), and the agent endpoints.
+- **Not portable:** the OB workbook importer (`import_ob_workbook`, needs `openpyxl` to read an uploaded file) and the file-based pages. Not built here: the WIP *screen* and the `wip_report` Script Report (being built separately; it reads the same `arinox_api_wip_board_data`).
 
 ## 9. What cannot be done on the hosted site, and what to build instead
 
@@ -234,6 +221,10 @@ A port is done when:
 - the bundle reloads onto the hosted-like site with **0 failures and nothing newly created** on a second run;
 - `bench --site apparel.localhost run-tests --app arinox_apparel` is still green (407 tests, 2 skipped as of 2026-11-05) - the dev app must not change behaviour because of a port;
 - the item is ticked in `HOSTED_STATUS.md` and removed from section 8 here.
+- **a DocType layout change comes with a data conversion.** Loading a changed DocType adds the new columns but never converts or drops the old ones, so records saved before the change look empty or repeated (this happened to Tech Pack Measurement: one row per size became one row per point, and old Tech Packs showed every point once per size at 0). Ship an API Server Script that converts the old rows (see `tech_pack_api_merge_measurements.py`) and a hosted test that builds old-layout rows, runs it, and runs it twice.
+- **a form button must name an API script that exists.** `client_scripts.unknown_methods()` is run by the exporter and fails the export on a name no API Server Script answers (the browser would say "App ... is not installed"). `frappe.model.open_mapped_doc` is handled by a shim in the generated prelude; do not call `frappe.model.mapper` from a hosted form script. The generated `frm.call` only redirects a method when `arinox_<doctype>_<method>` is a registered API script, so ERPNext's own `frm.call({method: "erpnext...."})` is never hijacked; `portable/check_client_routing.py` runs the generated script in Node against a stub and checks both.
+- **rows loaded from outside (ingest, import, API) must go through the same save scripts.** A record inserted before its scripts were loaded keeps its zeros (the saved Cost Sheets had every amount at 0 until re-saved). Re-save loaded records after loading scripts, and load a Tech Pack's whole BOM into the Cost Sheet, not a summary.
+- **the Cost Sheet save script now guards the common data mistakes:** a mandatory Cost Head missing from the charges is put back (rate from the Costing Parameter if it has one), a rate in another currency with the exchange rate the wrong way round is refused, and unpriced lines or BOM lines missing from the sheet produce an orange warning (never a block).
 
 Before a push: do not commit the sample-document zip, `erpnext-test/`, any token, or any bank/account number. `hosted_bundle/` is generated output (about 1.4 MB): commit it only if the hosted agent will load from the repo; otherwise regenerate it.
 
@@ -247,6 +238,7 @@ Generated from the code (`ast`), so the descriptions are the app's own docstring
 ### A. Document controllers (one script set per doctype)
 
 **Cost Sheet** (488 lines)  
+Status: PORTED and tested (`cost_sheet_validate/submit` + 5 API scripts); `get_costing_context` and `make_price_negotiation` / `make_quotation` are not  
 Garment cost build-up.  
 Events: `validate` -> Before Save, `before_submit` -> Before Submit  
 Buttons / API: `set_charges_from_parameter` (Fill one charge row per enabled, non-material cost head, with rates from the parameter.); `sign_off` (Record the current user against one costing sign-off step. Steps are signed in order.); `approve`; `reject`; `get_margin_at_price`; `get_costing_context` (One call for the AI costing agent: the parameter that applies, its rates, the cost head library, and); `get_previous_costing` (Materials and charges of an earlier Cost Sheet, for copying into a new one.); `make_price_negotiation` (Add this costing to the customer's open negotiation for the inquiry, or start one.); `make_quotation`  
@@ -294,6 +286,7 @@ Events: `validate` -> Before Save, `before_submit` -> Before Submit, `on_submit`
 Rules inside: `available`: Metres of a roll still free for a lay: what is in the Cutting WIP warehouse less what submitted lays already u  
 
 **Packing List** (259 lines)  
+Status: PORTED and tested (5 event scripts + the Generate Cartons button)  
 Packing List: cartons of a Sales Order's pieces for one buyer PO and ship-to. Replaces ERPNext's Packing Slip, which needs a draft Delivery Note and has no carton range, ratio, CBM or SSCC. Posts PACKED to the production ledger and drafts the finished-goods receipt. Cartons are numbered as a run of identical cartons (`1~11`) lik  
 Events: `autoname` -> Before Insert (name), `validate` -> Before Save, `before_submit` -> Before Submit, `on_submit` -> After Submit, `before_cancel` -> Before Cancel, `on_cancel` -> After Cancel  
 Buttons / API: `generate_cartons` (Build the carton rows from `quantities` ({'colour|size': pieces}); default is everything packable fo)  
@@ -323,6 +316,7 @@ Buttons / API: `get_planning_context` (Everything the planning agent needs in on
 Rules inside: `validate_lines`: A row is for a style x colour, optionally narrowed to a ship-to and/or buyer PO. Blank = the whole colour.  
 
 **Final Inspection** (167 lines)  
+Status: PORTED and tested (4 event scripts + the Pick Cartons button; the T&A FINAL_INSPECTION stamp is left out)  
 Final Inspection: AQL inspection of a packed lot (one or more Packing Lists of one order). Follows the company's form. Sample size and accept/reject numbers come from the AQL Plan; a row that QA has not confirmed cannot be used. Any critical defect fails. The Delivery Note will not submit unless every packing list on it is in a  
 Events: `autoname` -> Before Insert (name), `validate` -> Before Save, `before_submit` -> Before Submit, `on_submit` -> After Submit, `on_cancel` -> After Cancel  
 Buttons / API: `pick_cartons` (Draw the cartons to open, at random from the lot's own carton numbers. The seed is stored so the dra)  
@@ -412,6 +406,7 @@ Events: `validate` -> Before Save, `on_submit` -> After Submit, `on_cancel` -> A
 Events: `validate` -> Before Save  
 
 **Needle Detector Log** (29 lines)  
+Status: its gate rule is used by the packing list (`packing_list_submit.py`); the log document's own validation is not ported  
 Needle Detector Log: one row per calibration check of the metal detector. A failed check means everything passed since the last good check is scanned again; until that is logged, nothing from the line may be packed.  
 Events: `validate` -> Before Save  
 
@@ -485,6 +480,7 @@ Buttons / API: `get_available_packing_lists` (Submitted packing lists not on any
 Functions: `before_validate`: Shipment insists on pickup details a freight forwarder booking does not have; give them sensible def; `fill_parcels`: One parcel line per carton size and weight, with the number of cartons: ERPNext's own way to say 'th; `goods_value`: Order value of the pieces on the packing lists (the commercial invoice value, before the invoices ex; `check_measures`: Declared, booked, carrier and customs figures are kept apart; a big difference is shown, never overw; `on_update`: Tie the packing lists to this shipment, and release any that were taken off.  
 
 **shipping/invoicing.py** (152 lines)  
+Status: PORTED and tested (`invoicing_api_prepare`, `invoicing_api_submit`)  
 Commercial invoices from a shipment's Delivery Notes.  
 Buttons / API: `prepare_invoices` (Draft the invoices of a shipment. Re-running replaces drafts and keeps the invoice numbers; submitte); `submit_invoices` (Submit the drafts leg by leg (the factory's invoice first). Needs the bill of lading date when the c)  
 Functions: `transfer_rate`: Price of one piece between the group companies, by the customer's transfer-price basis.; `build_leg`: A draft Sales Invoice for the pieces on `dn`. `rates` maps a DN row name to the unit price to bill.  
@@ -495,6 +491,7 @@ Delivery Note hooks: the final-inspection ship gate, the over-ship check, and th
 Functions: `validate`: Copy the production card and contract down from the packing list on each row.; `check_over_ship`: Pieces shipped against each Sales Order line, with this note, must stay inside the contract's allowa  
 
 **shipping/followup.py** (122 lines)  
+Status: PORTED and tested (`lib_followup.py`, `followup_daily.py`, `followup_api_log.py`, `shipment_refresh_invoices.py`)  
 Payment follow-up on the customer's Sales Invoice. ERPNext keeps the due date fixed once an invoice is submitted, and the contract may count the days from the bill of lading, the arrival or the receipt of goods. So the *expected* due date lives in custom fields on the invoice, recomputed whenever the shipment's dates change, and  
 Buttons / API: `log_follow_up` (Record a call or a promise on a customer invoice. The note becomes a comment; the promise and the ne)  
 Functions: `expected_due`: (basis date, where it came from, expected due date). ROG counts from the recorded delivery; until th; `refresh_invoice`: Recompute the expected due date of one invoice from its contract terms and its shipment's dates.; `status_for`: Follow-up status for one invoice. Pure, so it can be tested with fixed dates.; `daily`: Scheduler: refresh every open customer invoice, and raise a ToDo when it crosses a reminder or escal  
@@ -591,6 +588,6 @@ Quotation joins the apparel flow: lines carrying a Cost Sheet are held to its ma
 Show the apparel documents in the Connections tab of ERPNext forms.  
 
 **overrides/sales_order.py** (20 lines)  
-Status: not ported (it also fills the Sales Order Item colour and size from the variant - see section 7, item 3)  
+Status: PORTED and tested (`sales_order_validate/submit/cancel`, including the row fill)  
 A Sales Order made from a Sales Contract keeps its link, and a contract has at most one live order.  
 

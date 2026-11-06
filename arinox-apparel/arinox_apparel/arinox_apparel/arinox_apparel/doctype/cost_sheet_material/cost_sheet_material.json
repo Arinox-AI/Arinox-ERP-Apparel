@@ -158,7 +158,8 @@
    "default": "1",
    "fieldname": "exchange_rate",
    "fieldtype": "Float",
-   "label": "Rate Currency to Sheet Currency"
+   "label": "Rate Currency to Sheet Currency",
+   "description": "Sheet-currency value of ONE unit of the rate currency: CNY to USD is about 0.14 (not 7.3). The rate is multiplied by this."
   },
   {
    "description": "Consumption = 1 ÷ pcs per carton (carton usage).",
