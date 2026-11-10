@@ -1,0 +1,642 @@
+{
+ "types": [
+  {
+   "name": "ORDER_RECEIVED",
+   "code": "ORDER_RECEIVED",
+   "label": "Order Received",
+   "department": "Merchandising",
+   "is_critical": 0,
+   "auto_source": "Sales Order",
+   "applies_when": "Always",
+   "sequence": 10,
+   "sample_type": ""
+  },
+  {
+   "name": "TECH_PACK_RECEIVED",
+   "code": "TECH_PACK_RECEIVED",
+   "label": "Tech Pack Received",
+   "department": "Merchandising",
+   "is_critical": 0,
+   "auto_source": "Tech Pack",
+   "applies_when": "Always",
+   "sequence": 20,
+   "sample_type": ""
+  },
+  {
+   "name": "BOM_RECEIVED",
+   "code": "BOM_RECEIVED",
+   "label": "BOM Received",
+   "department": "Merchandising",
+   "is_critical": 0,
+   "auto_source": "Tech Pack",
+   "applies_when": "Always",
+   "sequence": 30,
+   "sample_type": ""
+  },
+  {
+   "name": "BULK_STANDARD_RECEIVED",
+   "code": "BULK_STANDARD_RECEIVED",
+   "label": "Bulk Standard Received",
+   "department": "Sampling",
+   "is_critical": 0,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 40,
+   "sample_type": ""
+  },
+  {
+   "name": "MINI_MARKER",
+   "code": "MINI_MARKER",
+   "label": "Mini Marker",
+   "department": "Merchandising",
+   "is_critical": 0,
+   "auto_source": "Fabric Requisition",
+   "applies_when": "Always",
+   "sequence": 50,
+   "sample_type": ""
+  },
+  {
+   "name": "FR_RAISED",
+   "code": "FR_RAISED",
+   "label": "FR Raised",
+   "department": "Merchandising",
+   "is_critical": 1,
+   "auto_source": "Fabric Requisition",
+   "applies_when": "Always",
+   "sequence": 60,
+   "sample_type": ""
+  },
+  {
+   "name": "TR_RAISED",
+   "code": "TR_RAISED",
+   "label": "TR Raised",
+   "department": "Merchandising",
+   "is_critical": 1,
+   "auto_source": "Trim Requisition",
+   "applies_when": "Always",
+   "sequence": 70,
+   "sample_type": ""
+  },
+  {
+   "name": "FABRIC_BOOKED",
+   "code": "FABRIC_BOOKED",
+   "label": "Fabric Booked (PO)",
+   "department": "Purchasing",
+   "is_critical": 1,
+   "auto_source": "Purchase Order",
+   "applies_when": "Always",
+   "sequence": 80,
+   "sample_type": ""
+  },
+  {
+   "name": "TRIM_PI",
+   "code": "TRIM_PI",
+   "label": "Trim PI Received",
+   "department": "Purchasing",
+   "is_critical": 0,
+   "auto_source": "Purchase Order",
+   "applies_when": "Always",
+   "sequence": 90,
+   "sample_type": ""
+  },
+  {
+   "name": "FIT",
+   "code": "FIT",
+   "label": "Fit Approved",
+   "department": "Sampling",
+   "is_critical": 1,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 100,
+   "sample_type": "Fit"
+  },
+  {
+   "name": "LAB_DIP",
+   "code": "LAB_DIP",
+   "label": "Lab Dip Approved",
+   "department": "Sampling",
+   "is_critical": 1,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 110,
+   "sample_type": "Lab Dip"
+  },
+  {
+   "name": "TRIMS_APPROVED",
+   "code": "TRIMS_APPROVED",
+   "label": "Trims Approved",
+   "department": "Sampling",
+   "is_critical": 0,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 120,
+   "sample_type": "Bulk Trim"
+  },
+  {
+   "name": "BULK_FABRIC_READY_MILL",
+   "code": "BULK_FABRIC_READY_MILL",
+   "label": "Bulk Fabric Ready at Mill",
+   "department": "Purchasing",
+   "is_critical": 1,
+   "auto_source": "Purchase Order",
+   "applies_when": "Always",
+   "sequence": 130,
+   "sample_type": ""
+  },
+  {
+   "name": "FABRIC_ETD",
+   "code": "FABRIC_ETD",
+   "label": "Fabric ETD",
+   "department": "Purchasing",
+   "is_critical": 1,
+   "auto_source": "Purchase Order",
+   "applies_when": "Always",
+   "sequence": 140,
+   "sample_type": ""
+  },
+  {
+   "name": "FABRIC_IN_HOUSE",
+   "code": "FABRIC_IN_HOUSE",
+   "label": "Fabric In-house",
+   "department": "Purchasing",
+   "is_critical": 1,
+   "auto_source": "Purchase Receipt",
+   "applies_when": "Always",
+   "sequence": 150,
+   "sample_type": ""
+  },
+  {
+   "name": "FABRIC_QC_PASSED",
+   "code": "FABRIC_QC_PASSED",
+   "label": "Fabric QC Passed",
+   "department": "Quality",
+   "is_critical": 1,
+   "auto_source": "Fabric Inspection",
+   "applies_when": "Always",
+   "sequence": 160,
+   "sample_type": ""
+  },
+  {
+   "name": "FPT_PASSED",
+   "code": "FPT_PASSED",
+   "label": "FPT (Fabric Test) Passed",
+   "department": "Quality",
+   "is_critical": 0,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 170,
+   "sample_type": "Fabric Test (FPT)"
+  },
+  {
+   "name": "TRIMS_IN_HOUSE",
+   "code": "TRIMS_IN_HOUSE",
+   "label": "Trims In-house",
+   "department": "Purchasing",
+   "is_critical": 0,
+   "auto_source": "Purchase Receipt",
+   "applies_when": "Always",
+   "sequence": 180,
+   "sample_type": ""
+  },
+  {
+   "name": "TRIMS_QC_PASSED",
+   "code": "TRIMS_QC_PASSED",
+   "label": "Trims QC Passed",
+   "department": "Quality",
+   "is_critical": 0,
+   "auto_source": "Trim Inspection",
+   "applies_when": "Always",
+   "sequence": 190,
+   "sample_type": ""
+  },
+  {
+   "name": "BULK_FABRIC_APPROVED",
+   "code": "BULK_FABRIC_APPROVED",
+   "label": "Bulk Fabric Approved by Buyer",
+   "department": "Sampling",
+   "is_critical": 1,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 200,
+   "sample_type": "Bulk Fabric"
+  },
+  {
+   "name": "PP_GPT",
+   "code": "PP_GPT",
+   "label": "PP Sample + GPT Approved",
+   "department": "Sampling",
+   "is_critical": 1,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 210,
+   "sample_type": "PP"
+  },
+  {
+   "name": "PP_MEETING",
+   "code": "PP_MEETING",
+   "label": "PP Meeting",
+   "department": "Production",
+   "is_critical": 1,
+   "auto_source": "PP Meeting",
+   "applies_when": "Always",
+   "sequence": 220,
+   "sample_type": ""
+  },
+  {
+   "name": "PCD",
+   "code": "PCD",
+   "label": "PCD (Planned Cut Date)",
+   "department": "Production",
+   "is_critical": 1,
+   "auto_source": "Work Order",
+   "applies_when": "Always",
+   "sequence": 230,
+   "sample_type": ""
+  },
+  {
+   "name": "PILOT_RUN",
+   "code": "PILOT_RUN",
+   "label": "Pilot Run",
+   "department": "Production",
+   "is_critical": 0,
+   "auto_source": "PP Meeting",
+   "applies_when": "Always",
+   "sequence": 240,
+   "sample_type": ""
+  },
+  {
+   "name": "TOP",
+   "code": "TOP",
+   "label": "TOP / Size Set",
+   "department": "Sampling",
+   "is_critical": 0,
+   "auto_source": "Sample Approval",
+   "applies_when": "Sample Type Required",
+   "sequence": 250,
+   "sample_type": "TOP"
+  },
+  {
+   "name": "BULK_FINISH",
+   "code": "BULK_FINISH",
+   "label": "Bulk Finish (Sewing)",
+   "department": "Production",
+   "is_critical": 1,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 260,
+   "sample_type": ""
+  },
+  {
+   "name": "WASH_FINISHED",
+   "code": "WASH_FINISHED",
+   "label": "Washing Finished",
+   "department": "Washing",
+   "is_critical": 0,
+   "auto_source": "Manual",
+   "applies_when": "Washed Only",
+   "sequence": 270,
+   "sample_type": ""
+  },
+  {
+   "name": "PACK_FINISHED",
+   "code": "PACK_FINISHED",
+   "label": "Packing Finished",
+   "department": "Production",
+   "is_critical": 1,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 280,
+   "sample_type": ""
+  },
+  {
+   "name": "FINAL_INSPECTION",
+   "code": "FINAL_INSPECTION",
+   "label": "Final Inspection",
+   "department": "Quality",
+   "is_critical": 1,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 290,
+   "sample_type": ""
+  },
+  {
+   "name": "FREIGHT_BOOKING",
+   "code": "FREIGHT_BOOKING",
+   "label": "Freight Booking",
+   "department": "Shipping",
+   "is_critical": 0,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 300,
+   "sample_type": ""
+  },
+  {
+   "name": "EX_FACTORY",
+   "code": "EX_FACTORY",
+   "label": "Ex-Factory",
+   "department": "Shipping",
+   "is_critical": 1,
+   "auto_source": "Manual",
+   "applies_when": "Always",
+   "sequence": 310,
+   "sample_type": ""
+  },
+  {
+   "name": "ON_BOARD",
+   "code": "ON_BOARD",
+   "label": "On Board",
+   "department": "Shipping",
+   "is_critical": 0,
+   "auto_source": "Shipment",
+   "applies_when": "Always",
+   "sequence": 320,
+   "sample_type": ""
+  },
+  {
+   "name": "IN_WAREHOUSE",
+   "code": "IN_WAREHOUSE",
+   "label": "In Buyer's Warehouse",
+   "department": "Shipping",
+   "is_critical": 0,
+   "auto_source": "Shipment",
+   "applies_when": "Always",
+   "sequence": 330,
+   "sample_type": ""
+  }
+ ],
+ "template": {
+  "name": "Standard 60-Day (forward)",
+  "milestones": [
+   {
+    "milestone_type": "ORDER_RECEIVED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 0,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TECH_PACK_RECEIVED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 0,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "BOM_RECEIVED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 0,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "MINI_MARKER",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FR_RAISED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 6,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TR_RAISED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 9,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FABRIC_BOOKED",
+    "basis": "After Milestone",
+    "after_milestone": "FR_RAISED",
+    "offset_days": 2,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TRIM_PI",
+    "basis": "After Milestone",
+    "after_milestone": "TR_RAISED",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FIT",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 12,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "LAB_DIP",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 13,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TRIMS_APPROVED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 19,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "BULK_FABRIC_READY_MILL",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 28,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FABRIC_ETD",
+    "basis": "After Milestone",
+    "after_milestone": "BULK_FABRIC_READY_MILL",
+    "offset_days": 2,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FPT_PASSED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 29,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TRIMS_IN_HOUSE",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 29,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TRIMS_QC_PASSED",
+    "basis": "After Milestone",
+    "after_milestone": "TRIMS_IN_HOUSE",
+    "offset_days": 2,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FABRIC_IN_HOUSE",
+    "basis": "After Milestone",
+    "after_milestone": "FABRIC_ETD",
+    "offset_days": 7,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FABRIC_QC_PASSED",
+    "basis": "After Milestone",
+    "after_milestone": "FABRIC_IN_HOUSE",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "BULK_FABRIC_APPROVED",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 31,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "PP_GPT",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 36,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "PP_MEETING",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 39,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "PCD",
+    "basis": "Order Received",
+    "after_milestone": null,
+    "offset_days": 41,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "PILOT_RUN",
+    "basis": "After Milestone",
+    "after_milestone": "PCD",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "TOP",
+    "basis": "After Milestone",
+    "after_milestone": "PCD",
+    "offset_days": 4,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "BULK_FINISH",
+    "basis": "After Milestone",
+    "after_milestone": "TOP",
+    "offset_days": 0,
+    "duration_rule": "Qty / Daily Output",
+    "daily_output": 300,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "WASH_FINISHED",
+    "basis": "After Milestone",
+    "after_milestone": "BULK_FINISH",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "PACK_FINISHED",
+    "basis": "After Milestone",
+    "after_milestone": "WASH_FINISHED",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FINAL_INSPECTION",
+    "basis": "After Milestone",
+    "after_milestone": "PACK_FINISHED",
+    "offset_days": 2,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "FREIGHT_BOOKING",
+    "basis": "After Milestone",
+    "after_milestone": "FINAL_INSPECTION",
+    "offset_days": 3,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   },
+   {
+    "milestone_type": "EX_FACTORY",
+    "basis": "Ex-Factory",
+    "after_milestone": null,
+    "offset_days": 0,
+    "duration_rule": "Fixed",
+    "daily_output": 0,
+    "owner_role": null
+   }
+  ]
+ }
+}

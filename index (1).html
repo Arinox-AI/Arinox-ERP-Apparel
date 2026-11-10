@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cortex Textile — the garment order flow, as the business runs it and as the ERP carries it</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ink:#16120f; --paper:#faf8f5; --card:#ffffff; --band:#f3efe9; --line:#e0dad2; --muted:#6a625b;
+  --accent:#e8590c;
+  --ready:#1f7a4d; --ready-bg:#e3f3ea;
+  --conf:#2a5ba6; --conf-bg:#e4edf9;
+  --build:#b3261e; --build-bg:#fbe7e5;
+  --amber:#8a5200; --amber-bg:#fdf0d9;
+  --no-bg:#fdece0;
+  --head-bg:#16120f; --head-fg:#faf8f5;
+  --f-display:'Barlow Semi Condensed','Arial Narrow',Arial,sans-serif;
+  --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --ink:#f3efe9; --paper:#14110f; --card:#1d1916; --band:#191613; --line:#34302b; --muted:#a39a90;
+  --ready:#58c48b; --ready-bg:#17301f; --conf:#7fb0f2; --conf-bg:#16253b; --build:#f2877f; --build-bg:#3a1b19;
+  --amber:#f0b45a; --amber-bg:#33260f; --no-bg:#3a2416;
+  --head-bg:#0b0907; color-scheme:dark;}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:12px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:var(--conf)}
+header.mast{background:var(--head-bg);color:var(--head-fg);padding:28px 20px 22px;border-bottom:4px solid var(--accent)}
+.in{max-width:1240px;margin:0 auto}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,4.6vw,44px);line-height:1.05;margin:6px 0 8px;text-wrap:balance}
+.sub{color:#d3cbc1;max-width:80ch;margin:0}
+.layout{max-width:1240px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px}
+aside.toc{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:22px 0 24px;font-size:13.5px}
+aside.toc h6{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px;font-weight:500}
+aside.toc a{display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);padding:4px 6px;border-radius:3px;line-height:1.3}
+aside.toc a:hover{background:var(--band)}
+aside.toc a b{font-family:var(--f-mono);font-weight:500;font-size:11px;min-width:20px;color:var(--muted)}
+aside.toc a i{width:8px;height:8px;border-radius:2px;flex:none;align-self:center}
+aside.toc .top{margin-bottom:12px;display:flex;flex-direction:column;gap:2px}
+main{min-width:0;padding-bottom:60px}
+section{padding-top:36px}
+h2{font-family:var(--f-display);font-weight:700;font-size:28px;margin:0 0 6px;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:600;font-size:20px;margin:22px 0 8px}
+h4{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+p{margin:0 0 10px}
+code{font-family:var(--f-mono);font-size:.88em;background:var(--band);padding:1px 5px;border-radius:3px;border:1px solid var(--line)}
+.lede{color:var(--muted);max-width:78ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;margin:6px 0 4px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:14px;height:14px;border-radius:3px;border:1px solid;display:inline-block}
+.sw.live{background:var(--ready-bg);border-color:var(--ready)}
+.sw.built{background:var(--conf-bg);border-color:var(--conf)}
+.sw.part{background:var(--amber-bg);border-color:var(--amber)}
+.sw.miss{background:var(--build-bg);border-color:var(--build)}
+.chip{display:inline-block;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.05em;padding:2px 8px;border-radius:3px;white-space:nowrap}
+.chip.live{background:var(--ready-bg);color:var(--ready)}
+.chip.built{background:var(--conf-bg);color:var(--conf)}
+.chip.part{background:var(--amber-bg);color:var(--amber)}
+.chip.miss{background:var(--build-bg);color:var(--build)}
+.chip.no{background:var(--no-bg);color:var(--accent)}
+.chip.plain{background:var(--band);color:var(--muted)}
+/* kpi */
+.kpi{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin:16px 0 4px}
+.k{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--ink);padding:10px 12px}
+.k b{display:block;font-family:var(--f-display);font-weight:700;font-size:26px;line-height:1.1}
+.k span{display:block;font-size:12.5px;color:var(--muted);line-height:1.3;margin-top:2px}
+.k.live{border-top-color:var(--ready)}.k.built{border-top-color:var(--conf)}
+.k.part{border-top-color:var(--amber)}.k.miss{border-top-color:var(--build)}
+/* map */
+.ph{font-size:13.5px;color:var(--muted);margin:18px 0 8px}
+.ph b{font-weight:600;color:var(--ink)}
+.row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px}
+.row.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.mc{position:relative;display:block;text-decoration:none;border:1px solid;border-radius:8px;padding:11px 13px;min-height:92px;color:inherit}
+.mc .t{font-weight:600;font-size:15px;line-height:1.25}
+.mc .t i{font-style:normal;font-family:var(--f-mono);font-size:11px;margin-right:6px;opacity:.8}
+.mc .d{font-size:13px;line-height:1.35;margin-top:3px;color:var(--muted)}
+.mc .s{margin-top:6px}
+.mc.live{background:var(--ready-bg);border-color:var(--ready)}
+.mc.built{background:var(--conf-bg);border-color:var(--conf)}
+.mc.part{background:var(--amber-bg);border-color:var(--amber)}
+.mc.miss{background:var(--build-bg);border-color:var(--build)}
+.mc:not(:last-child)::after{content:"\2192";position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:17px;color:var(--muted)}
+.mc:hover{box-shadow:0 0 0 2px var(--accent)}
+.mc.live .t,.mc.built .t,.mc.part .t,.mc.miss .t{color:var(--ink)}
+.dn{text-align:center;color:var(--muted);font-size:19px;line-height:1;margin:10px 0 0}
+/* wiremap */
+.wiremap{border:1px solid var(--line);background:var(--card);padding:14px 16px;margin-top:14px}
+.wrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}
+.wrow:last-child{margin-bottom:0}
+.wlbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);min-width:100%}
+.dc{font-size:12.5px;font-weight:500;padding:3px 8px;border-radius:3px;border:1px solid;white-space:nowrap}
+.dc.live{background:var(--ready-bg);border-color:var(--ready);color:var(--ready)}
+.dc.built{background:var(--conf-bg);border-color:var(--conf);color:var(--conf)}
+.dc.part{background:var(--amber-bg);border-color:var(--amber);color:var(--amber)}
+.dc.miss{background:var(--build-bg);border:1px dashed var(--build);color:var(--build)}
+.ar{color:var(--muted);font-family:var(--f-mono);font-size:13px}
+.brk{color:var(--build);font-family:var(--f-mono);font-size:12px;font-weight:500;background:var(--build-bg);border:1px dashed var(--build);padding:2px 7px;border-radius:3px}
+.banner{background:var(--ink);color:var(--paper);padding:12px 16px;font-family:var(--f-display);font-size:18px;font-weight:600;margin-top:12px}
+.banner span{font-family:var(--f-body);font-weight:400;font-size:14px;opacity:.85;display:block}
+/* stage */
+article.stage{background:var(--card);border:1px solid var(--line);margin-top:26px}
+.sh{display:grid;grid-template-columns:62px minmax(0,1fr);gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);background:var(--band)}
+.sh .n{font-family:var(--f-display);font-weight:700;font-size:52px;line-height:.95;color:var(--accent)}
+.sh h2{font-size:26px;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:6px;align-items:center}
+.sb{padding:6px 20px 20px}
+.blk{margin-top:20px}
+.two{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px}
+ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;position:relative;padding:0 0 10px 32px;font-size:15px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:21px;height:21px;border-radius:50%;background:var(--ink);color:var(--paper);font-family:var(--f-mono);font-size:11px;display:flex;align-items:center;justify-content:center}
+ol.steps li em{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+ul.acts{list-style:none;margin:0;padding:0}
+ul.acts li{display:grid;grid-template-columns:74px minmax(0,1fr);gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+ul.acts li:last-child{border-bottom:0}
+ul.acts li .why{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.io{background:var(--band);border:1px solid var(--line);padding:10px 12px;font-size:14px}
+.io div{margin-bottom:7px}.io div:last-child{margin:0}
+.io .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;font-weight:500}
+.watch{border-left:4px solid var(--accent);background:var(--amber-bg);color:var(--ink);padding:10px 14px;font-size:14.5px;margin-top:12px}
+.watch>b:first-child{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;display:block;color:var(--amber);font-weight:500;margin-bottom:2px}
+.frappe{border:1px solid var(--line);border-top:3px solid var(--accent);padding:14px 16px;margin-top:18px;background:var(--paper)}
+.frappe>h3{margin:0 0 10px;font-size:20px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}
+.col{background:var(--card);border:1px solid var(--line);padding:10px 12px;min-width:0}
+.col ul{margin:0;padding-left:16px;font-size:13.5px}
+.col li{margin-bottom:4px}
+.col.cf{border-top:3px solid var(--conf)}.col.bl{border-top:3px solid var(--build)}.col.gt{border-top:3px solid var(--ready)}
+.col h5{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 6px;font-weight:500}
+/* table */
+.tw{overflow-x:auto;border:1px solid var(--line);background:var(--card);margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:660px}
+th,td{text-align:left;vertical-align:top;padding:8px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--band)}
+tr:last-child td{border-bottom:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:var(--f-mono);font-size:13px}
+td.f{font-family:var(--f-mono);font-size:12.5px;color:var(--ink)}
+.note{font-size:13px;color:var(--muted)}
+/* limits */
+.lims{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+.lim{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);padding:12px 14px}
+.lim h3{margin:0 0 6px;font-size:19px}
+.lim p{font-size:14px;margin:0 0 8px}
+.lim .ev{font-family:var(--f-mono);font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px}
+footer{padding:20px 0 60px;font-size:13px;color:var(--muted)}
+@media (max-width:1080px){.kpi{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside.toc{display:none}
+  .two,.cols,.lims{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:640px){
+  .row,.row.three{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .mc::after{display:none!important}
+  .sh{grid-template-columns:44px minmax(0,1fr);padding:14px}
+  .sh .n{font-size:38px}
+  .sb{padding:4px 14px 16px}
+  .kpi{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media print{aside.toc{display:none}.layout{display:block}article.stage{break-inside:avoid-page}}
+</style>
+</head>
+<body>
+<header class="mast"><div class="in">
+  <div class="eyebrow">Arinox AI · Cortex Textile Limited · order-to-payment</div>
+  <h1>The garment order, from inquiry to money in the bank</h1>
+  <p class="sub">One order, 18 stages, read three ways: how the factory actually runs it (Dheeraj's walkthrough),
+  what stock Frappe covers (the garment guide), and what is live in your ERP today. Every count on this page was
+  read from the ERP on <b>27 October 2026</b>. Nothing here is from memory.</p>
+</div></header>
+
+<div class="layout">
+<aside class="toc">
+  <h6>On this page</h6>
+  <div class="top">
+    <a href="#map"><b>1</b>The flow on one page</a>
+    <a href="#spine"><b>2</b>How one order is wired</a>
+    <a href="#how"><b>3</b>How a connection is made here</a>
+    <a href="#stages"><b>4</b>Stage deep-dives</a>
+    <a href="#gaps"><b>5</b>What is missing</a>
+    <a href="#limits"><b>6</b>What this ERP cannot do</a>
+    <a href="#gates"><b>7</b>The buyer's five rules</a>
+    <a href="#next"><b>8</b>To the 31 Oct dry run</a>
+  </div>
+  <h6>Stages</h6>
+  <div id="tocstages"></div>
+</aside>
+
+<main>
+
+<section id="map">
+  <h2>The whole process on one page</h2>
+  <p class="lede">Five phases, 18 stages, top to bottom. The colour of each box is <b>our</b> state in <b>this</b>
+  ERP today — not the guide's generic rating.</p>
+  <div class="legend">
+    <span><i class="sw live"></i>LIVE — real transactions in the ERP</span>
+    <span><i class="sw built"></i>BUILT — the object exists, only demo rows</span>
+    <span><i class="sw part"></i>PARTIAL — an object, but the stage's key act is missing</span>
+    <span><i class="sw miss"></i>MISSING — no object anywhere</span>
+  </div>
+  <div id="mapbody"></div>
+  <p class="note" style="margin-top:14px">Fabric and trim buying run in parallel in real life; they are drawn in
+  sequence only so the page reads downwards. Stage 4 is where the thread currently breaks: the contract is a
+  document nobody is connected to.</p>
+
+  <div class="kpi">
+    <div class="k live"><b>1</b><span>stage running on real order data (7)</span></div>
+    <div class="k built"><b>4</b><span>stages with a built object, demo rows only (1,2,3,6)</span></div>
+    <div class="k part"><b>9</b><span>stages with an object but a missing act</span></div>
+    <div class="k miss"><b>4</b><span>stages with no object at all (5,11,12,18)</span></div>
+    <div class="k"><b>0</b><span>of the five buyer "no-entry" rules enforced by software</span></div>
+    <div class="k"><b>1</b><span>contract in the ERP, valued USD 94,225.20 — draft, linked to nothing</span></div>
+  </div>
+</section>
+
+<section id="spine">
+  <h2>How one order is wired — and where the thread breaks</h2>
+  <p class="lede">This is the question that decides whether the ERP is a system or a filing cabinet: when an
+  order moves from pre-sales to production, <b>what travels with it and on which field?</b> Below is every
+  hand-off in the chain, the exact field that carries it, and whether that field is populated in your data.</p>
+
+  <div class="banner">In the guide, the order lives in two things: a Sales Order (the contract) and a Project (the folder).
+    <span>In this ERP there are 39 sales orders and <b>0 projects</b>. The folder the whole method depends on has never been created, so "cost, WIP and profit for one order" cannot be filtered — there is nothing to filter on.</span></div>
+
+  <h3>The threads, in the order value travels</h3>
+  <p class="lede">Commercial thread: what the buyer agreed and what we will be paid. Execution thread: what the
+  factory must make, by when, from which material. They meet on <b>one value</b> — the style × colour × size SKU
+  (a variant Item in this ERP) — and they are held together by three link fields.</p>
+
+  <div class="wiremap">
+    <div class="wrow"><span class="wlbl">Commercial thread — what was agreed and what we get paid</span>
+      <span class="dc built">Buyer inquiry</span><span class="ar">→</span>
+      <span class="dc built">Cost sheet</span><span class="ar">→</span>
+      <span class="dc built">Quotation</span><span class="ar">→</span>
+      <span class="dc part">Sales contract</span><span class="brk">break</span>
+      <span class="dc live">Sales order</span><span class="ar">→</span>
+      <span class="dc live">Invoice</span><span class="ar">→</span>
+      <span class="dc miss">Payment</span>
+    </div>
+    <div class="wrow"><span class="wlbl">Execution thread — material</span>
+      <span class="dc live">Sales order line (SKU)</span><span class="ar">→</span>
+      <span class="dc live">BOM</span><span class="ar">→</span>
+      <span class="dc miss">FR / TR</span><span class="brk">break</span>
+      <span class="dc live">PO</span><span class="ar">→</span>
+      <span class="dc live">Receipt + rolls</span><span class="ar">→</span>
+      <span class="dc part">Inspection</span>
+    </div>
+    <div class="wrow"><span class="wlbl">Execution thread — make and ship</span>
+      <span class="dc part">Work order</span><span class="ar">→</span>
+      <span class="dc miss">WIP · cutting · bundles</span><span class="ar">→</span>
+      <span class="dc part">Sewing + job cards</span><span class="ar">→</span>
+      <span class="dc miss">Wash · finishing · packing</span><span class="ar">→</span>
+      <span class="dc live">Delivery note</span>
+    </div>
+  </div>
+
+  <h3>Every hand-off, and what it turns on</h3>
+  <p class="lede">"Carried on" is the literal field. <span class="chip live">LIVE</span> means the field holds real
+  data; <span class="chip part">HALF</span> means the field exists but is empty or only partly populated;
+  <span class="chip miss">BROKEN</span> means the field does not exist at all.</p>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Hand-off</th><th>Carried on</th><th>State</th><th>What that means</th></tr></thead>
+    <tbody id="wire"></tbody>
+  </table></div>
+
+  <div class="watch"><b>The one break that matters most</b>
+    The contract number the business runs on — <code>CTXG-YYYY-MM-###</code> — is supposed to appear on the
+    fabric requisition, the trim requisition, the WIP line and the production card. In this ERP that string exists
+    on <b>three unrelated places</b>: as free text <code>custom_source_contract_no</code> on 10 purchase orders,
+    as free text <code>source_contract_no</code> on 423 fabric rolls, and as the document name of the one Sales
+    Contract. None of them is a link, and none of them is the format the merchandiser was told to use.
+  </div>
+</section>
+
+<section id="how">
+  <h2>How a connection is actually made in this ERP</h2>
+  <p class="lede">There are only four ways one record can point at another, and one of them is unavailable here.
+  Every "connect X to Y" in the plan is one of these four — nothing else is possible.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Mechanism</th><th>What it does</th><th>Survives an API write?</th><th>Used today</th></tr></thead>
+    <tbody>
+      <tr><td class="f">Link field</td><td>Stores the other document's name. Gives the click-through, the Connections tab, and the filter.</td><td><span class="chip live">YES</span> it is data</td><td class="f">project, quotation, bom_no, sales_order, purchase_receipt</td></tr>
+      <tr><td class="f">fetch_from</td><td>Copies a value from the linked document on every save.</td><td><span class="chip live">YES</span></td><td class="f">custom_cost_locked_price on Quotation</td></tr>
+      <tr><td class="f">Client Script</td><td>Browser JavaScript: compute, prompt, fill, refuse a save.</td><td><span class="chip miss">NO</span> headless writes skip it</td><td class="f">16 scripts, all desk-side</td></tr>
+      <tr><td class="f">Server hook / cascade</td><td>Python on save: create the child records automatically.</td><td><span class="chip no">NOT AVAILABLE</span></td><td class="f">Server scripts are disabled on this bench</td></tr>
+    </tbody>
+  </table></div>
+  <div class="watch"><b>Why that matters for the dry run</b>
+    "Auto-generate FR and TR from the sales contract" and "auto-populate the WIP from the contract" are the two
+    efficiency targets named in the meeting. In this ERP neither can be a database trigger. They are either a
+    button a merchandiser presses in the browser, or an external job that writes through the API. Both are
+    buildable; neither is automatic in the way a standard ERP add-on would be.
+  </div>
+</section>
+
+<section id="stages">
+  <h2>Stage deep-dives</h2>
+  <p class="lede">Each stage: what really happens on the floor, action by action with our state against it, what
+  comes in and goes out (on which field), then the gap that costs money.</p>
+</section>
+<div id="stagelist"></div>
+
+<section id="gaps">
+  <h2>What is missing — in the order it costs money</h2>
+  <p class="lede">Sixteen gaps, ranked by what the business said it feels. Each is an object to build or a field to
+  populate, not a wish. The live count is what exists today.</p>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>What is missing</th><th>Stage</th><th>Why it costs money</th><th>Today</th></tr></thead>
+    <tbody id="gapsbody"></tbody>
+  </table></div>
+  <p class="note" style="margin-top:10px">Deliberately excluded from this list: anything the ERP already does that
+  only needs configuration (Incoterms, letterheads, print formats, warehouses, item groups). The guide's own
+  READY/CONFIGURE/BUILD split was checked against this instance — where the guide says "configure" and we already
+  built it, it is not repeated here as a gap.</p>
+</section>
+
+<section id="limits">
+  <h2>What this ERP cannot do in this process</h2>
+  <p class="lede">Not "not yet built" — <b>cannot</b>, on this instance, with any amount of configuration. Each card
+  names the evidence and the workaround that was used instead.</p>
+  <div class="lims" id="lims"></div>
+</section>
+
+<section id="gates">
+  <h2>The buyer's rules, and what actually enforces them</h2>
+  <p class="lede">The client wrote five "no-entry" rules into his own process sheet, and the meeting added three
+  more (8 SKUs, the contract number, marker before order). Here is the honest enforcement status of each.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Rule</th><th>Where it sits</th><th>Enforced by</th><th>Bypassable?</th></tr></thead>
+    <tbody id="gatesbody"></tbody>
+  </table></div>
+</section>
+
+<section id="next">
+  <h2>To a full dry run by 31 October</h2>
+  <p class="lede">The meeting set one target: a complete dry run of the order flow — FR, TR and WIP created from a
+  real contract. On the evidence above, that needs six objects and two connections, in this order. Everything else
+  can wait.</p>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>Do this</th><th>Why first</th><th>Blocked by</th></tr></thead>
+    <tbody>
+      <tr><td class="f">1</td><td>Link the contract to the order, both ways: a field on each, plus the contract number carried as a link, not text.</td><td>Every other object in the dry run needs the contract number on it. It is the thread.</td><td>Nothing — one field pair.</td></tr>
+      <tr><td class="f">2</td><td>Build <b>Fabric Requisition</b> and <b>Trim Requisition</b> as their own objects, with the contract, style, colour and size rows on them.</td><td>They are the two documents the merchandiser raises on confirmation, and the only two the meeting asked to automate.</td><td>The 2% trim buffer and the wastage % must be records, not code — the same rule as the costing (client correction, 23 Oct).</td></tr>
+      <tr><td class="f">3</td><td>Build <b>WIP</b> at SKU level, generated from the contract lines, with an order-level roll-up for the department manager.</td><td>A merchandiser carrying 100+ SKUs cannot work from one row per order.</td><td>Milestone set: the 61-milestone TnA already exists outside the ERP — decide whether it moves in or WIP references it.</td></tr>
+      <tr><td class="f">4</td><td>Price the master data: 14 fabrics without a price, 26 trims without a price, 0 of 21 fabrics with a lead time.</td><td>An FR or TR with no price cannot be approved, and a 15–60 day lead time cannot be planned without a number.</td><td>The fabric and trim desks.</td></tr>
+      <tr><td class="f">5</td><td>Put the marker in front of the order: a marker record and a block on confirming an order without one.</td><td>The client's rule is explicit: no marker, no order. Consumption per size already has a home (Consumption Card); the marker itself does not.</td><td>Who owns the marker — CAD room or merchandiser.</td></tr>
+      <tr><td class="f">6</td><td>Turn on the two inspection gates that already exist natively: incoming fabric (7 items flagged of 21) and outgoing on the delivery note (0 flagged of 123).</td><td>Ten receipts were submitted while six of seven inspections say Rejected. The gate is a checkbox and a template, not a build.</td><td>Nobody owns the rejection decision.</td></tr>
+      <tr><td class="f">7</td><td>Backfill the 15 live sales orders' four mandatory fields so they can be saved again.</td><td>They are frozen: no project, no named place, no payment terms, no quotation. Any change to a live order fails today.</td><td>Who supplies the missing project and terms.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="watch"><b>What will not be ready by 31 October, and should not be pretended</b>
+    Cutting plans and bundles, the production card, the packing and freight documents, and the payment gate. Those
+    need the floor data (operators, lines, shifts) that does not exist yet — there is one user and no employees.
+  </div>
+</section>
+
+<footer>
+  <p><b>Sources.</b> (1) Dheeraj's walkthrough of the order flow, 27 Oct 2026 — the rules, thresholds and
+  document set used in every stage. (2) <i>Garment Order-to-Payment Guide for Frappe ERPNext</i> (Arinox AI) —
+  the stock-coverage rating and the 18-stage split. (3) This ERP, read live 27 Oct 2026 — every count, field name
+  and value. The five "no-entry" rules and the 19 essential formats come from the client's own
+  <code>GARMENT_PROCESS_FLOW_COMPLETED</code> sheet, already mapped in <code>GARMENT_PROCESS_FLOW_GAP_ANALYSIS.md</code>.</p>
+  <p><b>What was not done.</b> No record was created, changed or deleted for this page. Where a number was not
+  readable it is not shown. Where a rule is a browser-side script it is called browser-side, not "enforced".</p>
+</footer>
+</main>
+</div>
+
+<script>
+var PHASES=[
+ {id:"A",n:"Win the order",stages:[1,2,3]},
+ {id:"B",n:"Freeze the order",stages:[4,5,6]},
+ {id:"C",n:"Buy the material",stages:[7,8,9,10]},
+ {id:"D",n:"Make it",stages:[11,12,13,14]},
+ {id:"E",n:"Ship, get paid, close",stages:[15,16,17,18]}
+];
+var LBL={live:"LIVE",built:"BUILT",part:"PARTIAL",miss:"MISSING"};
+
+var WIRE=[
+ ["Buyer inquiry → cost sheet","Opportunity.name → Cost Sheet.opportunity, .customer, .product_type","built","6 demo chains. The field exists; no real inquiry has ever been keyed."],
+ ["CAD room → cost sheet","Consumption Card.cost_sheet ↔ Cost Sheet Line.consumption_card","built","Two-way. Consumption per size and the per-order wastage travel this way."],
+ ["Fabric/trim choice → cost line","Fabric Option / Trim Option .item + .price (one selected per group)","built","Only the selected option prices the garment; the rest stay as audit."],
+ ["Cost sheet → quotation","Quotation.custom_cost_sheet (required) → custom_cost_locked_price (fetched)","built","A quotation cannot be saved without a submitted cost sheet."],
+ ["Quotation → sales order","Sales Order.custom_quotation (required)","half","The field is mandatory and <b>empty on all 39 orders</b>. No order in this ERP came from a quotation."],
+ ["Sales contract → sales order","<i>no field exists</i>","miss","The one contract in the ERP cannot be found from any order, and no order points back at it."],
+ ["Sales order → project","Sales Order.project (required) → Project.custom_sales_order","half","The link field exists both ways. <b>0 projects</b>, so 0 orders carry it."],
+ ["Sales order line → BOM","BOM.item = Sales Order Item.item_code (the variant SKU)","live","18 BOMs at variant level; 8 carry a cost, 0 carry a process loss."],
+ ["Sales order → work order","Work Order.sales_order + .sales_order_item (native)","live","16 of 20 work orders point at an order. None points at a project."],
+ ["Contract → fabric requisition","<i>no field exists</i> — Material Request has no sales order, contract or project field","miss","An FR today cannot say which order it belongs to. This is gap 2."],
+ ["Contract → trim requisition","Material Request.custom_trim_requisition → Trim Requisition Evidence","miss","The only link is to a scanned paper snapshot (17 rows), not to an order."],
+ ["Requisition → purchase order","Material Request Item → Purchase Order Item (prevdoc)","live","12 purchase orders; 10 carry a contract number as <b>free text</b>."],
+ ["Purchase order → receipt → inspection","Quality Inspection.reference_type = Purchase Receipt + reference_name","half","7 inspections, all draft, 6 rejected — and 10 receipts submitted anyway."],
+ ["Receipt → fabric roll","Fabric Roll.purchase_receipt + .batch_no + .roll_unique_key","live","423 rolls, 16 batches, every roll carries a contract number as text."],
+ ["Work order → job card","Job Card.work_order + .operation + .workstation + .employee","half","349 job cards, 14 workstations, <b>0 employees and 0 minutes logged</b>."],
+ ["Job card → inline inspection","Quality Inspection.reference_type = Job Card","miss","Supported by the doctype; not one record uses it."],
+ ["Work order → subcontracting","Subcontracting Order (native, needs a service item)","miss","0 records. Washing exists only as an item and 11 migration rows."],
+ ["Production → packing slip → delivery note","Packing Slip against Delivery Note","miss","0 packing slips against 9 delivery notes."],
+ ["Delivery note → invoice","Delivery Note → Sales Invoice (prevdoc)","live","26 invoices, 13 live, USD 281,041.66 outstanding."],
+ ["Invoice → payment","Payment Entry against Sales Invoice","miss","0 payment entries. Nothing has ever been settled in this ERP."],
+ ["Invoice → claim / credit note","Sales Invoice (return) + Issue + Quality Action","miss","0 of each. The claim window is a field on the contract and nothing watches it."]
+];
+
+var STAGES=[
+{n:1,t:"Buyer inquiry to quotation",dept:"Merchandising",own:"Devesh",st:"built",
+ p:"A buyer sends an inquiry for a style with his BOM and sample requirements. Merchandising arranges two to four fabric qualities and the trims, puts a proto sample together, costs the style, and sends a priced quotation with shipment terms, payment terms and a delivery date.",
+ rules:[["Two to four fabric options per style","a choice between qualities, which one fabric field can never record."],
+        ["The quote must state fabric details and any special claim","organic content, a specific wash — a blank blocks submission."],
+        ["Delivery date is quoted, not promised","it is a field on the quotation, required."]],
+ acts:[["Receive the inquiry + BOM + tech pack","part","The inquiry form was rebuilt for this business (16 fields, tech pack and reference garment attachments, target FOB, delivery window). 6 records, all tagged simulation."],
+       ["Arrange fabrics","built","Fabric Option: 2–4 per cost line, lab-dip status each, exactly one selected. 21 fabrics in the master, 7 of them priced."],
+       ["Arrange trims","built","Trim Option grouped line × trim type, with pieces per garment. 28 trim items, 2 priced."],
+       ["Proto / photo sample","built","Sample Request + Sample Photo, 8 sample types. 6 records, all demo."],
+       ["Cost the style","built","Cost Sheet — see stage 2."],
+       ["Send the quotation","built","Quotation with a required cost-sheet link, fabric block on every line, delivery date, revision number. 6 records, all demo, all Sent."]],
+ io:{in:["buyer inquiry","Opportunity, with the buyer BOM attached as a file (there is no buyer-BOM object)"],
+      out:["Cost Sheet.custom_cost_sheet → locked price per line","Quotation.custom_delivery_date, .custom_quote_revision, per-line fabric + claims"]},
+ live:"Opportunity 6 · Quotation 6 · Sample Request 6 — every one carries the simulation tag. Real production records: 0.",
+ gap:"The quotation is complete but stands on a cost that is mostly typed: with the rate cards blank and 14 of 21 fabrics unpriced, a real quote today can only be built from numbers somebody enters. The form warns (price basis: indicative); it does not stop the quotation."},
+
+{n:2,t:"Costing",dept:"Merchandising",own:"Devesh",st:"built",
+ p:"The price per garment is built up: fabric (consumption plus wastage), trims, then stitching, washing, embellishment, a 2–3% rejection allowance, finance, bank charges, freight, overhead and profit. Two templates are used — one for single-style high volume, one for multi-style low stakes.",
+ rules:[["Wastage is fresh for every order or style","it is a field with a reason on the consumption card, never a default."],
+        ["Nothing may be hardcoded","every percentage is an effective-dated record keyed customer × product type."],
+        ["A cost left out comes straight out of margin","the twelve heads must all exist as slots, even if a customer uses four."]],
+ acts:[["YY from the CAD room, plus wastage","built","Consumption Card: size grid, per-size consumption, marker length/width/efficiency, wastage % with a reason. Weighted roll-up, never a stored guess. 6 demo cards."],
+       ["Fabric price from the fabric desk","part","7 of 21 fabrics have a buying price. The exception report lists the other 14 by name."],
+       ["Trim price from the trim desk","part","2 of 28 trim items have a price. A trim cost today is a typed number."],
+       ["Add the twelve loadings","built","Cost Head 16 rows (the charge library), Costing Parameter 17 cards (11 real, <b>all values blank</b>, 6 demo). Six calculation types, including gross-up for price-side percentages."],
+       ["Two costing templates","part","One object, many lines per sheet — a multi-style sheet works. There is no template selector; the rate card is the template."]],
+ io:{in:["Consumption Card (per size) + Fabric/Trim Option (selected price) + Costing Parameter (customer × product type, effective-dated) + UOM conversion record"],
+      out:["locked FOB per style → Quotation","Cost Sheet Line keeps the provenance: consumption_source_ref, rate_uom, conversion factor, wastage_source"]},
+ live:"Cost Sheet 6 (all demo, all submitted) · Costing Parameter 17 · Cost Head 16 · engine and browser script proved identical on the same fixture.",
+ gap:"Every real rate card is empty, on purpose. Until the fabric and trim desks price the master and the twelve heads are filled for a first customer, a real cost sheet is arithmetic over typed numbers — and the margin gate is checking a typed margin."},
+
+{n:3,t:"Negotiation and price lock",dept:"Merchandising",own:"—",st:"built",
+ p:"Fabric, trim and consumption are fine-tuned until the buyer and the merchandiser agree. Then the price is locked, and that locked price is the base of the sales contract.",
+ rules:[["The locked price must be the price that reaches the contract","otherwise the negotiation is decoration."],
+        ["A manager approves before an order can be made","margin floor per customer, as a record."],
+        ["A rate edited after approval is a new price","approval resets, it does not survive an edit."]],
+ acts:[["Revise the costing","built","Revision chain: revision_no and supersedes on the sheet; the change log is on and the Revision Trail report reads it."],
+       ["Negotiate the quotation","built","Amended quotations carry a read-only revision stamp (v1, v2, v3 across the amend chain)."],
+       ["Manager approval at the margin floor","built","Workflow <i>Quotation Negotiation</i>: Draft → Pending Approval → Approved → Sent, 6 transitions. Floor per customer; an unset floor routes to approval rather than auto-passing."],
+       ["Approval invalidation on edit","built","A rate move over 0.5% clears the stamp and drops the state back to Pending Approval. Proved by running the shipped script, 18 assertions."],
+       ["Lock","part","The lock is a submitted cost sheet plus the locked price copied onto the quotation — but a raw API submit walks straight past the workflow. Proved: a draft quotation was issued as Sent with no buyer confirmation."]],
+ io:{in:["cost sheet (locked) + the buyer's counter-offer"],
+      out:["Approved + buyer-confirmed quotation","custom_quoted_margin_pct recomputed from the lines — the cost-sheet margin is only a fallback"]},
+ live:"1 workflow in the entire ERP. 6 demo quotations issued at margins of 27.35–31.86%.",
+ gap:"The rule that matters commercially — a cut rate under the floor — can only be stopped in the browser. The backstop is a report (Quotations Issued Below Floor) and it already finds one record that was approved through the API."},
+
+{n:4,t:"Sales contract and order confirmation",dept:"Merchandising",own:"Devesh",st:"part",
+ p:"The sales contract is a legal document made by the merchandiser. It freezes the final price, the colours, the product description and the delivery dates per SKU. It carries at most 8 SKUs; a ninth needs a new contract. Its number is CTXG-YYYY-MM-###, and that number follows the order into the FR, the TR, the WIP and the production card. Nothing is left as TBA. Then the merchandiser raises the marker, the tech pack, the BOM, the requisitions and the T&amp;A calendar.",
+ rules:[["Maximum 8 SKUs per contract","a ninth SKU starts a new contract."],
+        ["Contract number CTXG-YYYY-MM-###","and it propagates to every downstream document."],
+        ["Nothing TBA on a signed contract","every field addressed."],
+        ["A marker is mandatory before an order","no marker, no order."],
+        ["Three dates per SKU","ex-factory, ETD, in-warehouse — not one delivery date."]],
+ acts:[["The paper contract as an object","built","Sales Contract: submittable, 52 fields (32 required), per-line colour, description, finish, ex-factory, ETD, in-warehouse, and the ±15/10/7.5/5 quantity allowance bands. Print format reproduces the paper — buyer block, product table, 15 clauses, signatures."],
+       ["Nothing TBA","part","Refused at submit by a browser script — TBA, TBD, N/A, a dash. An API write bypasses it."],
+       ["The 8-SKU cap","miss","No rule anywhere: not in the object, not in a script, not in a report."],
+       ["The contract number","part","Suggested by a script in the paper's own format <code>CTXGVN25.09.001</code> — not <code>CTXG-2026-10-001</code>. Free text, no naming series, so nothing keeps it unique or in sequence."],
+       ["The order in the ERP","part","Sales Order 39 (15 live, USD 288,350.40 over 18,098 pcs). 0 carry a quotation, 0 a project, 0 payment terms. 15 of them cannot be saved at all today — four fields are now mandatory and empty."],
+       ["The marker","part","Marker length, width and efficiency are fields on the Consumption Card. There is no marker document, no mini-marker for a new style, and no gate."],
+       ["Tech pack","part","Only <i>Buyer Tech Sheet Evidence</i> — 10 migration snapshots, docstatus 0, points of measure as free text. Not an operating object."],
+       ["Internal BOM","live","18 BOMs, variant level, with a full custom costing block (SAM, operators, helpers, pieces/hour, expected efficiency). 8 carry a cost."],
+       ["T&amp;A calendar","part","61 milestones with a critical path in the Control Tower — outside the ERP. 20 of 61 have an ERP evidence source; 41 are empty. In the ERP: 0 projects, 0 tasks."]],
+ io:{in:["approved quotation (custom_quotation) → contract terms (incoterm, named place, payment terms, ports, packing, marks, AQL, claim windows, arbitration)"],
+      out:["Sales Contract (one document, per-SKU lines) → <b>nothing</b>","Sales Order (39) → BOM (18) → and the thread stops"]},
+ live:"Sales Contract 1 — CTXGVN25.09.001, Bella Dahl, SPRING26, 4 lines, 6,190 pcs / USD 94,225.20, docstatus 0 (draft), no link to any order.",
+ gap:"The contract is an island, and its own numbers disagree with the order it should govern: the contract prices C2027-S84-304 at 16.30 while the live order for the same style and the same 1,462 pieces prices it at 16.85 — USD 804.10 apart on one line, with no field anywhere that could notice. That is G2 failing on the only record we have."},
+
+{n:5,t:"Plan what is produced where",dept:"Production planning",own:"Luna / Devesh",st:"miss",
+ p:"Two charts run in parallel after confirmation. A production planning chart allocates the order to a factory against available capacity. A WIP chart carries the drop-dead date of every milestone, per SKU — not per contract. A merchandiser may have 100+ SKUs running at once. WIP must populate itself from the contract and cascade into a master WIP for the department manager. Today it is manual, and a 200 gets typed where 2,000 was meant.",
+ rules:[["WIP is SKU-level","one line per SKU, 100+ live per merchandiser."],
+        ["Deadlines are planned backwards from the ship date","critical and drop-dead dates flagged."],
+        ["The order is allocated to a factory and a line","with a planned cut date, against real capacity."],
+        ["WIP auto-populates from the contract","and rolls up into the department manager's master WIP."]],
+ acts:[["Enter the order in WIP","miss","No WIP object exists in the ERP. The only milestone engine is the Tower's T&amp;A, which is order-level and outside the ERP."],
+       ["Reverse-plan the deadlines","miss","Work Orders schedule forward from a start date; nothing plans backwards from the ship date inside the ERP."],
+       ["Critical and drop-dead flags","miss","No field, no view. The Tower computes a critical path; the ERP cannot show it."],
+       ["Allocate factory, line, planned cut date","miss","Workstation 14 and Operation 176 exist, but there is no allocation object: Production Plan 0, Plant Floor 0, no planned-cut-date field."]],
+ io:{in:["Sales Order lines (SKU), delivery dates, factory capacity"],
+      out:["<b>nothing</b> — this stage produces no record in the ERP today"]},
+ live:"Production Plan 0 · Plant Floor 0 · Project 0 · Task 0. Workstations 14 · Operations 176.",
+ gap:"This is the largest single hole. The order has no plan inside the system, so the two charts the factory actually runs on live in spreadsheets and whiteboards, and the 200-versus-2,000 class of error has no system check."},
+
+{n:6,t:"Sampling and approvals",dept:"Merchandising",own:"Karthik",st:"built",
+ p:"Nothing goes to bulk until the buyer has approved colour, fit, bulk fabric and trims, and the pre-production sample. The PP meeting is held after the production card is issued, with planning, purchasing, cutting, sewing, washing and QC in the room, and every buyer comment is reviewed.",
+ rules:[["Lab dip, strike off and desk loom approved before bulk","per fabric, per colour."],
+        ["Bulk fabric and trims approved, after washing if washed","the approval follows the process, not the calendar."],
+        ["PP sample in bulk fabric, buyer approved","before any bulk cutting (G3)."],
+        ["The PP meeting closes every buyer comment","with owners and dates."]],
+ acts:[["Lab dip / strike off","built","lab_dip_status per fabric option: not required / submitted / approved / rejected."],
+       ["Fit sample with a QC spec report","built","Sample Request carries the type, dates, courier, buyer decision and a photo grid per view."],
+       ["Bulk fabric + trim approval","built","Same object; the due date comes from the order's calendar."],
+       ["PP sample","built","One of 8 sample types, so PP, TOP, salesman and size set all land in the same log."],
+       ["Garment physical testing","part","Quality Inspection can hold numeric readings against a template. One template exists in the whole ERP and it is not a garment test."],
+       ["Bulk cutting blocked until PP approval (G3)","miss","No server-side rule is possible here, and no work-order state is tied to a sample decision."]],
+ io:{in:["the order's dates + the buyer's comments"],
+      out:["Sample Request (approved / rejected) → the WO cannot be released on it, because nothing links them"]},
+ live:"Sample Request 6, all demo, all approved. No sample object is referenced by any work order.",
+ gap:"The approvals are recorded but they gate nothing: there is no field on the work order or the cutting side that says <i>PP approved</i>, so G3 is memory."},
+
+{n:7,t:"Negotiate and purchase fabrics",dept:"Fabric purchase",own:"Abner",st:"live",
+ p:"The fabric requisition goes to the fabric desk. Quantity comes from the marker — consumption per piece times the size ratio — and the desk turns it into supplier offers and purchase contracts against the sales contract. Raw material lead time is 15 to 60 days, typically around 45.",
+ rules:[["FR quantity comes from the marker, not from a guess","consumption per size × ratio, with the wastage on top."],
+        ["Bought against the sales contract","the contract number is on the purchase document."],
+        ["Lead time 15–60 days, typically ~45","so the FR must exist the day the order is confirmed."],
+        ["A 5 m test sample before the full inspection","at the supplier's cost, before bulk."]],
+ acts:[["Raise the FR from the contract","miss","Material Request 20 exists but has <b>no sales order, contract or project field</b>. 17 are still draft, 2 submitted, 0 traceable to an order."],
+       ["Supplier offers","part","Request for Quotation 0 · Supplier Quotation 4 (all demo). The object works; the desk does not use it here."],
+       ["Purchase order against the contract","live","12 purchase orders, 10 of them carrying a contract number — as free text in <code>custom_source_contract_no</code>."],
+       ["Fabric WIP view","miss","No WIP object; ordered/received/inspected/issued cannot be seen per order."]],
+ io:{in:["FR (which does not exist) + BOM fabric lines + fabric master"],
+      out:["Purchase Order → Purchase Receipt → fabric rolls","custom_source_contract_no (text) is the only contract reference that survives"]},
+ live:"Purchase Order 12 · Purchase Receipt 10 · Supplier 11 · Item Price 69 rows (7 fabric buying rates).",
+ gap:"The requisition is the missing link between the contract and the purchase. Without it the desk buys from a spreadsheet, and the quantity bought is only as good as the typist — which is exactly the failure the client described."},
+
+{n:8,t:"Negotiate and purchase trims",dept:"Trim purchase",own:"Sally",st:"part",
+ p:"The trim requisition runs in parallel from the BOM, always buying about 2% extra for rejections, and goes to a separate trim purchase desk. Trims are taken in-house without testing unless they are critical items.",
+ rules:[["TR quantity = BOM × order qty, plus ~2%","buy the buffer, don't discover it."],
+        ["A separate desk from fabric","two departments, two responsibilities, two documents."],
+        ["Trims are not lab-tested unless critical","a bleeding zip or a breaking button rejects the order, though."]],
+ acts:[["Raise the TR from the BOM","miss","Only <i>Trim Requisition Evidence</i> — 17 scanned paper requisitions, docstatus 0. No operating TR."],
+       ["The 2% rejection buffer","miss","No field, no rule. A percentage may not be hardcoded, so it belongs in a record — there is no record."],
+       ["Trim purchase","live","Part of the 12 purchase orders — and one of them, PUR-ORD-2026-00010, is seven trim lines (fusing, elastic, buttons, labels, thread) totalling 0.00 because no rate was keyed."],
+       ["Trim WIP view","miss","No WIP object."],
+       ["Trim price for the requisition","part","2 of 28 trim items have a price. 0 of 115 trim BOM lines were priced at the last audit."]],
+ io:{in:["BOM trim lines + order quantity + the 2% buffer record (missing)"],
+      out:["TR → Purchase Order → receipt into bins"]},
+ live:"Trim Requisition Evidence 17 (paper) · trim items 28 · priced 2.",
+ gap:"The TR cannot compute or be valued: no object, no buffer record, and 26 of 28 trim items have no price. The two departments the client described have one shared, unlinked document."},
+
+{n:9,t:"Inspect and test before taking material in",dept:"Quality",own:"Karthik",st:"part",
+ p:"A 5 m test sample arrives first. Then two stages, in order: lab testing (colourfastness, shrinkage, tensile and tear strength), then on-site inspection at the mill (width, colour match, visual quality). Trims come in without testing unless critical. Fabric testing cost sits in the costing as overhead, never in the BOM.",
+ rules:[["Lab test first, mill inspection second","in that order, both signed off."],
+        ["Roll by roll, four-point system","points per 100 sq yd, then a grade."],
+        ["Testing cost is overhead","in the cost sheet, not in the material cost."],
+        ["A rejected roll is not received","the gate the client's own sheet demands."]],
+ acts:[["Fabric test (F.P.T)","part","Quality Inspection 7 records — all draft, 6 of them Rejected, and only 7 of 21 fabric items are flagged to require inspection before purchase."],
+       ["Four-point roll inspection","part","Supported by the doctype (inspection against the receipt, item, batch, roll). No roll-grading table; <i>Fabric Inspection Roll Result</i> is a migration child table, not a working instrument."],
+       ["Sign off, accept or reject","miss","No gate: 10 receipts were submitted while 6 of 7 inspections said Rejected. Production continued."],
+       ["Trim testing","miss","No trim test record anywhere."],
+       ["Testing cost as overhead","built","Cost Head row exists and is part of the twelve; the value is blank like the rest."]],
+ io:{in:["Purchase Receipt (10) + Batch (16) + Fabric Roll (423)"],
+      out:["Quality Inspection status → <b>which nothing acts on</b>"]},
+ live:"Quality Inspection 7 · submitted 0 · Rejected 6 · templates 1 · items requiring incoming inspection 7 of 123.",
+ gap:"This is not a future gap, it is a live exposure: material that failed inspection is in the system as received, and the goods were used. A one-checkbox gate (inspection required before purchase) plus an accepted-or-refused rule is all the platform allows — and it is enough to stop this."},
+
+{n:10,t:"Get fabric and trims in-house",dept:"Warehouse",own:"Vietnam warehouse",st:"part",
+ p:"Fabric arrives by roll and lot, is stored by location with roll counts, and is issued to cutting and to the lines against the FR; excess comes back and is recorded. The factory has three sections — raw material warehouse, production floor, finished goods warehouse — and import/export records have to stay clean.",
+ rules:[["Roll and lot level","shade, width, length, rack."],
+        ["Issue against the FR, returns recorded","otherwise the excess disappears."],
+        ["Landing cost included","duty and freight belong in the fabric cost."],
+        ["Three physical zones","raw material, production, finished goods."]],
+ acts:[["Fabric in-house by roll","live","Fabric Roll 423 with a uniqueness key (invoice, item, lot, roll), 16 batches, 33 warehouses, 10 receipts."],
+       ["Trims in-house","live","Stock Entry 27 movements; trims have no lot or roll identity."],
+       ["Issue against the FR","miss","There is no FR to issue against, so fabric leaves stock without an order reference."],
+       ["Returns recorded","part","Stock Entry can do it; nothing links a return to a requisition."],
+       ["Landed cost (duty, freight)","miss","Landed Cost Voucher 0 — freight and duty have never been added to fabric value."]],
+ io:{in:["Purchase Receipt → rolls + batches"],
+      out:["Stock Entry (issue to production) — with no contract or order reference on it"]},
+ live:"Fabric Roll 423 · Batch 16 · Warehouse 33 · Stock Entry 27 · Landed Cost Voucher 0.",
+ gap:"Fabric is tracked better than anything else in this ERP (423 rolls), and it still cannot answer the only question that matters at month end: which order did this roll go to."},
+
+{n:11,t:"Issue the production card, hold the PP meeting",dept:"Merchandising",own:"Devesh",st:"miss",
+ p:"At least 30 days before the planned cut date the production card goes to the floor with the approved sample, specs, trim placement, wash standard and packing instructions. The pre-production meeting closes every open buyer comment before the card is released.",
+ rules:[["30 days before the planned cut date","a trigger, not a reminder in somebody's head."],
+        ["The card carries everything the floor needs","sample, specs, trim placement, wash, packing."],
+        ["Everyone is in the PP meeting","planning, purchasing, cutting, sewing, washing, QC."],
+        ["No bulk cutting without the PP meeting closed (G3)","a stop, not a suggestion."]],
+ acts:[["The production card","miss","No doctype. <i>Garment Production Progress</i> and <i>Production Daily Evidence</i> are migration snapshots, not a card."],
+       ["The 30-day trigger","miss","No scheduler can run inside the ERP here; the trigger has to come from outside or from the desk."],
+       ["PP meeting minutes with owners","miss","Native <i>Quality Meeting</i> (agenda + minutes) exists and is empty — 0 records."],
+       ["Buyer comments closed","miss","No object holds a comment, an owner or a date."]],
+ io:{in:["approved sample + specs + wash standard + packing instruction"],
+      out:["<b>nothing</b> — the floor gets a printed sheet that the ERP has never seen"]},
+ live:"Quality Meeting 0 · Quality Meeting Agenda 0 · no production-card doctype in 860.",
+ gap:"The document the floor actually works from is the one document the system does not have. Every downstream claim about efficiency, rework or a missed trim starts here."},
+
+{n:12,t:"Pilot run and bulk cutting",dept:"Cutting",own:"Selva",st:"miss",
+ p:"About 20 pieces per size are cut, sewn and measured first, so pattern problems are fixed before bulk. Then the bulk marker and the cutting plan are made by size ratio, fabric is cut, and each bundle gets a barcode ticket that feeds live tracking. The cutting report captures actual fabric consumption per piece — and on a repeat order, 1.5 m becoming 1.4 m is about 7% saved on every future order.",
+ rules:[["Pilot: ~20 pcs per size, measured","before bulk."],
+        ["Bulk marker + cutting plan by size ratio","lays, plies, rolls used."],
+        ["Bundle, number, barcode","the ticket that makes tracking possible."],
+        ["Actual consumption per piece is recorded","this is the number repeats are priced from."]],
+ acts:[["Pilot run","part","A work order can be run small and flagged, but there is no pilot object and no measurement report."],
+       ["Bulk marker + cutting plan","miss","No Cutting Plan doctype; the marker lives only as three fields on the consumption card."],
+       ["Cut, number, bundle, barcode","miss","No Bundle object. The only barcode table in the system is <i>Item Barcode</i>."],
+       ["Cut panel inspection (20 per bundle)","miss","No bundle to inspect."],
+       ["Daily cutting output","miss","Production Daily Evidence 153 rows are a migration snapshot of a spreadsheet."]],
+ io:{in:["marker + fabric rolls + order size ratio"],
+      out:["<b>nothing</b>, so actual consumption never returns to the cost sheet"]},
+ live:"0 cutting plans · 0 bundles · 153 migration rows · 423 rolls available to cut.",
+ gap:"This is where fabric money is won or lost, and there is no object to put the actual consumption in — so the pre-cost and the post-cost can never be compared, and a 7% saving on a repeat is invisible."},
+
+{n:13,t:"Bulk sewing",dept:"Sewing / Production",own:"Selva",st:"part",
+ p:"Bundles load onto the planned line. The first 32 garments are checked, each operation is inspected online, output is audited against the buyer's AQL, and daily output and efficiency are recorded — efficiency ramps over two or three days as workers adapt to a new style. If output is under plan, the options are more machines, a split line, or an extension request.",
+ rules:[["First 32 garments inspected","before the line is declared running."],
+        ["Online inspection per operation, then output against the buyer's AQL","three separate checks, not one."],
+        ["Daily output and efficiency per line","efficiency ramps for 2–3 days and the plan must allow for it."],
+        ["A shortfall has three named responses","add machines, split the line, ask for an extension."]],
+ acts:[["Load bundles on the planned line","miss","No bundle, so no line loading."],
+       ["First 32 / inline inspection","part","Quality Inspection supports a Job Card reference; 0 records do."],
+       ["Daily output and efficiency","part","Job Card 349, Operation 176, Workstation 14 — and <b>0 employees, 0 minutes logged, every card still Open</b>. SAM fields exist on the BOM, so the maths has a home."],
+       ["Recovery when output is under plan","miss","No capacity view, no line loading, so no place to decide."]],
+ io:{in:["work order + operations + workstation"],
+      out:["Job Card time logs → a cost that could be compared to the SAM"]},
+ live:"Job Card 349 · with an operator 0 · minutes logged 0 · Employee 0 · Timesheet 0 · Users 1.",
+ gap:"The manufacturing objects exist and are inert. Without employees and without a bundle, a Job Card is a shell: no operator, no time, no output — so no efficiency, and no way to see a line falling behind on day two."},
+
+{n:14,t:"Wash, finish, pack, and manage the subcontractor",dept:"Washing and finishing",own:"Selva / Karthik",st:"part",
+ p:"Washing, embroidery, printing and appliqué are subcontracted, tracked by a subcontractor challan that records what was sent and what came back, with a rejection threshold per subcontractor (1% for example) and a debit note when it is exceeded. In finishing, neck labels are sewn in; then polybags, hang tags, barcodes and branded tissue, then cartons sealed and labelled.",
+ rules:[["Challan out, challan in","quantities sent and received per subcontractor, per order."],
+        ["A rejection threshold per subcontractor","1% for example, debit note if exceeded."],
+        ["Finishing is a sequence","neck label at sewing, then polybag, hang tag, barcode, tissue, carton."],
+        ["Cartons sealed and labelled","before anything enters the finished-goods store."]],
+ acts:[["Wash / print / embroidery subcontract","part","Native Subcontracting Order and Receipt exist — 0 records. Washing is an Item (<i>Washing Services</i>) with 11 migration evidence rows."],
+       ["Challan sent vs received","miss","No object. Sent quantity cannot be compared to received."],
+       ["Rejection threshold + debit note","miss","No threshold record, no automatic debit note."],
+       ["Finishing and packing","miss","Packing Slip 0. No carton, no size-colour per carton, no label placement."],
+       ["Finished goods to store","part","Stock Entry can move it; nothing records which cartons moved."]],
+ io:{in:["cut and sewn garments + packing instruction (from the missing production card)"],
+      out:["Subcontracting Receipt / Stock Entry → delivery note"]},
+ live:"Subcontracting Order 0 · Subcontracting Receipt 0 · Packing Slip 0 · Washing Service Evidence 11.",
+ gap:"Subcontracting is the one point where goods physically leave the factory, and it has zero documents. A 1% rejection threshold with a debit note behind it is a two-field object and a report — it is just not there."},
+
+{n:15,t:"Final inspection",dept:"Quality",own:"Karthik",st:"part",
+ p:"Online finishing inspection runs during packing; then a pre-final inspection report; then final inspection at the buyer's AQL in the packing department, before the goods move to the warehouse. The buyer may send a third-party inspector — the process is the same. Nothing leaves without a final pass.",
+ rules:[["Three inspections, in order","online finishing, pre-final, final."],
+        ["Final is at the buyer's AQL, in packing","before the finished-goods store."],
+        ["Nothing ships without a final pass (G4)","a hard stop."],
+        ["A third party changes nothing","same process, same record."]],
+ acts:[["Online finishing inspection","miss","No record; nothing inspects during packing."],
+       ["Pre-final","miss","No record."],
+       ["Final inspection at AQL","part","Quality Inspection supports <i>Outgoing</i> against a Delivery Note. 0 outgoing inspections, and <b>0 of 123 items</b> are flagged to require inspection before delivery."],
+       ["AQL sample-size table","miss","No AQL object: Quality Inspection has a sample size field and no table behind it."],
+       ["Third-party inspector","part","Supported as a reference on the inspection; no certificate record."]],
+ io:{in:["packed cartons + the buyer's AQL"],
+      out:["Quality Inspection (Accepted) → which the delivery note does not wait for"]},
+ live:"Outgoing inspections 0 · items requiring delivery inspection 0 · delivery notes 9 (4 submitted, 0 gated).",
+ gap:"G4 — the rule the client put in capitals — has no mechanism at all today. The native checkbox exists and is off on every item, which is the cheapest fix on this entire page."},
+
+{n:16,t:"Packing list, invoice, freight",dept:"Shipping and documentation",own:"Xhan / Prabhu",st:"part",
+ p:"A detailed and a summary packing list are prepared; the commercial invoice is raised and must agree with the contract, the packing list and the L/C; space is booked with the freight agent; the B/L or FCR is obtained. Incoterms in use are EXW, FCA, FOB, CFR/C&amp;F, CIF and DDP — and DDP, where duty and freight are ours, is now over 70% of shipments.",
+ rules:[["Invoice must agree with contract and packing list","three documents, one set of numbers."],
+        ["Freight is booked per shipment","with a deadline from the calendar."],
+        ["B/L or FCR obtained and recorded","the transport document is the evidence."],
+        ["DDP is 70%+ of shipments","so freight and duty are our cost, not the buyer's."]],
+ acts:[["Detailed + summary packing list","miss","Packing Slip 0; <i>Shipment Document Evidence</i> holds 8 filenames, not quantities."],
+       ["Commercial invoice","live","Sales Invoice 26 (13 live), USD 281,041.66 outstanding; four letterheads, 80 of 80 live-or-draft documents printing on their own."],
+       ["Freight booking","miss","No object. <i>Shipment</i> is the parcel-carrier doctype, 0 records; Landed Cost Voucher 0, so DDP freight never lands in the margin."],
+       ["B/L or FCR","miss","No field for the number or the date."],
+       ["Incoterm","live","All 11 natives present (C&amp;F is spelled CFR); Incoterm and named place are mandatory on the sales order."]],
+ io:{in:["packed cartons → delivery note → invoice"],
+      out:["Sales Invoice → receivable; and no freight document at all"]},
+ live:"Sales Invoice 26 · live 13 · outstanding USD 281,041.66 · Delivery Note 9 · Packing Slip 0 · Shipment 0 · Landed Cost Voucher 0.",
+ gap:"DDP is over 70% of shipments, freight is never costed into the order, and 13 of 26 invoices carry an empty terms block that cannot be back-filled — <code>terms</code> freezes at submit."},
+
+{n:17,t:"Payment follow-up",dept:"Accounts",own:"Prabhu",st:"part",
+ p:"Documents go to the client or the bank per the payment terms. Payment is followed until full and final money is in the bank — mostly TT, occasionally L/C, on ROG terms of 7 to 60 days. Only then is the order file closed.",
+ rules:[["ROG — receipt of goods — 7 to 60 days","the clock starts when the goods arrive, not when the invoice is dated."],
+        ["TT mostly, L/C occasionally","two different document sets."],
+        ["The order closes only on full payment (G5)","not on delivery."],
+        ["Follow-up is a queue, not a memory","ageing, by customer and terms."]],
+ acts:[["Documents per the terms","part","One payment terms template in the whole ERP: <i>15 Days ROG</i>. ROG cannot be expressed natively — the template only understands days from invoice date. Travis Mathew's N60 is still unmodelled."],
+       ["Receivables follow-up","part","Sales Invoice 13 live, USD 281,041.66 outstanding, and <b>0 payment entries</b>: nothing has ever been settled in this ERP."],
+       ["Close the order on payment (G5)","miss","A sales order closes on delivery, not on payment. There is no link between the invoice balance and the order status."],
+       ["Payment reminders","part","Notification records exist (4); no rule is built on invoice ageing."]],
+ io:{in:["Sales Invoice + the contract's payment terms"],
+      out:["Payment Entry → the only object that could close the order, and it is empty"]},
+ live:"Payment Entry 0 · outstanding USD 281,041.66 · payment terms templates 1.",
+ gap:"G5 has no mechanism, and the receivable is real money: USD 281,041.66 across 13 invoices with no settlement record. The ROG basis needs a decision before the clock can be modelled at all."},
+
+{n:18,t:"Customer grievances",dept:"Merchandising",own:"Devesh",st:"miss",
+ p:"Every complaint is recorded and the root cause investigated. The buyer gets a corrective action and a settlement. Grievances are of two kinds — quantity claims (100 pieces short) and quality claims (shrinkage, defects) — and the lessons go into the next pre-production meeting.",
+ rules:[["Two claim types, two clocks","30 days for quantity, 60 for quality, per the contract."],
+        ["Root cause, then corrective action","not an apology."],
+        ["Settlement is a credit note","with the claim it belongs to."],
+        ["The lesson returns to the next PP meeting","otherwise it repeats."]],
+ acts:[["Record the complaint","part","Native <i>Issue</i> exists, 0 records, and it has no order field."],
+       ["Root cause investigation","miss","No object."],
+       ["Corrective / preventive action","part","Native <i>Quality Action</i> exists, 0 records."],
+       ["Settlement (credit note)","part","A return Sales Invoice would do it; 0 exist."],
+       ["Feed the next PP meeting","miss","No link from a claim to a meeting or a style."]],
+ io:{in:["a buyer claim, within 30 or 60 days of arrival"],
+      out:["<b>nothing</b> — no claim record exists"]},
+ live:"Issue 0 · Quality Action 0 · return invoices 0 · claim windows are fields on the one contract, with nothing watching the deadline.",
+ gap:"Every object needed here is native and empty. This stage is cheap to switch on and it is the only place where a defect becomes a policy change."}
+];
+
+var GAPS=[
+ ["The contract has no thread","4","The number the business runs on — CTXG-YYYY-MM-### — is meant to reach FR, TR, WIP and the production card. Today it exists as free text on 10 purchase orders and 423 rolls, and as the name of a draft contract linked to nothing.","1 contract, 0 links"],
+ ["Fabric Requisition","7","Material Request has no sales order, contract or project field, so an FR cannot say which order it belongs to — and the quantity cannot be derived from the marker.","MR 20 · 17 draft · 0 traceable"],
+ ["Trim Requisition","8","No TR object and no 2% buffer record, so the buffer is bought by memory, and 26 of 28 trim items have no price to value it with.","2 of 28 trims priced"],
+ ["SKU-level WIP + master WIP","5","100+ SKUs per merchandiser cannot be carried anywhere in this ERP. The client's two charts (planning and WIP) have no home.","No WIP object · Project 0 · Task 0"],
+ ["Marker","4","The client's rule is marker before order. There are three marker fields on the consumption card and no marker document, no mini-marker and no gate.","3 fields, no object"],
+ ["Production card + PP minutes","11","The sheet the floor works from does not exist in the system, so the 30-day trigger, trim placement, wash and packing instructions all live outside.","0 records · Quality Meeting 0"],
+ ["Cutting plan and bundles","12","Without a bundle there is no barcode, no line loading, no cut-panel inspection, and no actual consumption per piece to compare against the pre-cost.","0 plans · 0 bundles"],
+ ["Production data capture","13","349 job cards with no operator and no minutes. Hourly output, machine downtime and efficiency have nowhere to land.","0 employees · 1 user"],
+ ["Incoming inspection gate","9","6 of 7 inspections are Rejected and 10 receipts were submitted anyway; only 7 of 123 items even ask for incoming inspection.","QI 7 · accepted 1"],
+ ["Four-point roll grading","9","Roll-wide defect points and grade — the basis of a claim against a mill — has no working object.","evidence table only"],
+ ["Cut panel / first-32 / inline / pre-final","12–13","The four in-process inspection points between cutting and final. None has a record.","0 records"],
+ ["Final AQL gate on the delivery note (G4)","15","The native checkbox exists and is off on every item, so 4 submitted delivery notes shipped with no outgoing inspection.","0 of 123 items flagged"],
+ ["Subcontractor challan + threshold","14","Goods leave the factory with no document, so sent-versus-received and a 1% rejection threshold cannot be checked.","Subcontracting 0"],
+ ["Packing and carton capture","16","Packing list, size-colour per carton and carton labels. The invoice exists; the packing evidence does not.","Packing Slip 0"],
+ ["Payment gate + ROG clock (G5)","17","USD 281,041.66 outstanding with 0 payment entries, and the order cannot close on payment. ROG is not expressible in a payment terms template.","PE 0 · PT templates 1"],
+ ["Claims loop","18","Issue, Quality Action and credit note all native and all empty; the 30/60 day windows are fields nobody watches.","0 · 0 · 0"]
+];
+
+var LIMS=[
+ ["No server-side Python — at all",
+  "Server Scripts are disabled on this bench: a stored script runs and returns <code>ServerScriptNotEnabled</code>. So there is no before-save, no validation hook, no posting rule and no scheduler inside the ERP.",
+  "Consequence: FR/TR/WIP cannot be generated by the database on confirmation. Every cascade is either a desk button or an external job writing through the API.",
+  "0 server scripts · probe returns 403 · this is why 16 client scripts exist"],
+ ["A browser script is not a rule",
+  "Client Scripts run in the browser only. A write through the API never executes them, so any check living there is advice.",
+  "Proved: <code>frappe.client.submit</code> walked a draft quotation straight to Sent with no approval and no buyer confirmation. The report <i>Quotations Issued Below Floor</i> exists to catch what the gate misses — and it already lists a record.",
+  "1 quotation issued below its margin floor through the API"],
+ ["A workflow cannot stop a raw submit",
+  "Transition conditions do evaluate server-side (proved), but with no builtins and the document as a dict; and a transition into a submitted state does not submit the document. A direct submit ignores the workflow entirely.",
+  "So a hard gate can only be: a mandatory field, a link filter, or a write-back from outside. A true \"cannot proceed\" state is not available.",
+  "1 workflow · 6 transitions · bypass proved 23 Oct"],
+ ["No script reports, no app code",
+  "Report types that need a Python file cannot be installed. Reports here are query reports (SQL/Jinja over the database) — 202 report records, several built for this engagement.",
+  "Anything needing a loop over live data and a decision is a query report or an external service, not an in-ERP report.",
+  "Server Script 0 · Report 202 (query type)"],
+ ["A submitted document is frozen",
+  "Fields that matter cannot be corrected after submit. The invoice <code>terms</code> field is the example: 13 of 26 invoices are empty and cannot be back-filled — the only fix is an amendment.",
+  "Data capture has to be right before submit. For a business that issues documents and then learns things, that is a real constraint on packing, inspection and invoice data.",
+  "13 of 26 invoices carry empty terms, permanently"],
+ ["Nothing plans backwards",
+  "Work Orders schedule forward from a start date. There is no reverse calculation from the ship date, which is the basis of the client's T&amp;A and the whole WIP idea.",
+  "The 61-milestone reverse calendar with a critical path lives in the Control Tower, outside the ERP. Inside, the only dates are forward ones.",
+  "T&amp;A 61 milestones · 20 with an ERP source · 41 empty"],
+ ["No native size × colour matrix",
+  "Sales Order lines have no size or colour dimension. The SKU is already the variant Item (style-colour-size), so the grid added as a custom child is a second, parallel structure.",
+  "It works, but nothing forces the grid and the lines to agree except a browser script — and it is empty on all 39 orders.",
+  "custom_size_colour rows: 0"],
+ ["\"Receipt of goods\" is not a payment term",
+  "Payment Terms Template understands days from invoice date. ROG — 7 to 60 days from when the goods arrive — cannot be expressed, so ageing starts from the wrong date on every DDP shipment.",
+  "Options are a derived due date written by an external job, or a custom ageing report. Both were designed and neither is switched on.",
+  "Payment terms templates: 1 (\"15 Days ROG\" — free text, not a rule)"],
+ ["No operator, no line, no shift",
+  "There is one user and no employees. A Job Card can hold a workstation and an operation, but the person and the minutes are empty on all 349.",
+  "Per-line efficiency, hourly output, downtime and rework all depend on this. It is a data and HR decision before it is a build.",
+  "Users 1 · Employees 0 · Timesheets 0 · Job Card operators 0"],
+ ["The contract number has no series",
+  "There is no naming series that produces CTXG-YYYY-MM-###. The number is free text, and the script suggests the paper's older format instead.",
+  "Two contracts can carry the same number, and nothing detects it. A naming series is one configuration line — but it must be the format the business actually uses.",
+  "1 contract: CTXGVN25.09.001 · 0 series"],
+ ["The letterhead renders at the bottom",
+  "The PDF renderer places the letter-head block at the foot of the page — reproduced with the stock letterhead too, so it is not the design.",
+  "Workaround: the header is baked into each print format. It prints correctly, but it is not the native letterhead mechanism.",
+  "4 letter heads built (6 rows incl. 2 stock) · 45 print formats · workaround in place"],
+ ["Freight and duty never reach the cost",
+  "Landed Cost Voucher is native and unused (0 records). With DDP over 70% of shipments, the freight the seller pays is not added to the material or the order.",
+  "Every DDP order's margin is overstated by its freight until a landed cost is posted or the freight is captured as an order cost.",
+  "Landed Cost Voucher 0 · DDP 70%+ of shipments"]
+];
+
+var GATES=[
+ ["G1","A cost left out comes straight out of margin","Cost sheet","A browser script refuses submit when the completeness flag is false; a manager may override with a written reason, stamped with user and time.","Yes — an API submit goes through. Backstop: <i>Cost Sheet Gate Overrides</i> report."],
+ ["G2","The locked price is the base of the contract","Quotation → contract → order","The workflow (margin floor, 4 states) plus the locked price copied onto the quotation.","Yes — and it has already happened: the contract and the live order for the same style are USD 804.10 apart on one line."],
+ ["G3","No bulk cutting without PP sample approval","Sample → cutting","Nothing. No link from a sample decision to a work order or a cutting plan.","Fully open."],
+ ["G4","No shipment leaves without a final pass","Delivery note","Nothing switched on. The native \"inspection required before delivery\" checkbox is off on all 123 items and no outgoing inspection exists.","Fully open — and 9 delivery notes exist."],
+ ["G5","An order closes only when full payment is in the bank","Sales order","Nothing. Order status follows delivery, not settlement; there are no payment entries.","Fully open — USD 281,041.66 outstanding."],
+ ["New","Maximum 8 SKUs per contract","Sales contract","Nothing — no field, no script, no report.","Fully open."],
+ ["New","Contract number CTXG-YYYY-MM-###, propagated","Contract → FR/TR/WIP/card","A suggestion in a browser script, in the paper's older format. Downstream, the number is free text on POs and rolls only.","Fully open."],
+ ["New","No order without a marker","Marker → order","Nothing. Three marker fields exist on the consumption card; no marker document, no gate.","Fully open."]
+];
+
+function chip(s){return '<span class="chip '+s+'">'+LBL[s]+'</span>';}
+
+/* ---------- map ---------- */
+(function(){
+  var h="";
+  PHASES.forEach(function(ph){
+    h+='<div class="ph"><b>Phase '+ph.id+'</b> &middot; '+ph.n+'</div><div class="row'+(ph.stages.length===3?' three':'')+'">';
+    ph.stages.forEach(function(n){
+      var s=STAGES[n-1];
+      h+='<a class="mc '+s.st+'" href="#s'+s.n+'"><div class="t"><i>'+s.n+'</i>'+s.t+'</div>'+
+         '<div class="d">'+s.dept+'</div><div class="s">'+chip(s.st)+'</div></a>';
+    });
+    h+='</div>';
+  });
+  document.getElementById("mapbody").innerHTML=h;
+})();
+
+/* ---------- toc ---------- */
+(function(){
+  var h="";
+  STAGES.forEach(function(s){
+    var col=s.st==="live"?"var(--ready)":s.st==="built"?"var(--conf)":s.st==="part"?"var(--amber)":"var(--build)";
+    h+='<a href="#s'+s.n+'"><b>'+s.n+'</b><i style="background:'+col+'"></i>'+s.t+'</a>';
+  });
+  document.getElementById("tocstages").innerHTML=h;
+})();
+
+/* ---------- wire ---------- */
+(function(){
+  var h="";
+  WIRE.forEach(function(w,i){
+    var st=w[2]==="live"?"live":w[2]==="built"?"built":w[2]==="half"?"part":"miss";
+    var lbl=w[2]==="live"?"LIVE":w[2]==="built"?"BUILT":w[2]==="half"?"HALF":"BROKEN";
+    h+='<tr><td class="num">'+(i+1)+'</td><td>'+w[0]+'</td><td class="f">'+w[1]+'</td>'+
+       '<td><span class="chip '+st+'">'+lbl+'</span></td><td>'+w[3]+'</td></tr>';
+  });
+  document.getElementById("wire").innerHTML=h;
+})();
+
+/* ---------- gaps ---------- */
+(function(){
+  var h="";
+  GAPS.forEach(function(g,i){
+    h+='<tr><td class="num">'+(i+1)+'</td><td><b>'+g[0]+'</b></td><td class="f">'+g[1]+'</td><td>'+g[2]+'</td><td class="f">'+g[3]+'</td></tr>';
+  });
+  document.getElementById("gapsbody").innerHTML=h;
+})();
+
+/* ---------- limits ---------- */
+(function(){
+  var h="";
+  LIMS.forEach(function(l){
+    h+='<div class="lim"><h3>'+l[0]+'</h3><p>'+l[1]+'</p><p><b>What that means: </b>'+l[2]+'</p>'+
+       '<div class="ev">'+l[3]+'</div></div>';
+  });
+  document.getElementById("lims").innerHTML=h;
+})();
+
+/* ---------- gates ---------- */
+(function(){
+  var h="";
+  GATES.forEach(function(g){
+    h+='<tr><td class="f">'+g[0]+'</td><td><b>'+g[1]+'</b></td><td class="f">'+g[2]+'</td><td>'+g[3]+'</td><td>'+g[4]+'</td></tr>';
+  });
+  document.getElementById("gatesbody").innerHTML=h;
+})();
+
+/* ---------- stages ---------- */
+(function(){
+  var h="";
+  STAGES.forEach(function(s){
+    h+='<article class="stage" id="s'+s.n+'"><div class="sh"><div class="n">'+s.n+'</div><div>'+
+       '<h2>'+s.t+'</h2><div class="meta">'+chip(s.st)+
+       '<span class="chip plain">'+s.dept+'</span><span class="chip plain">Owner today: '+s.own+'</span>'+
+       '</div></div></div><div class="sb">';
+
+    h+='<div class="blk two"><div><h4>What really happens</h4><p>'+s.p+'</p>'+
+       '<h4 style="margin-top:16px">The rules the business gave us</h4><ol class="steps">';
+    s.rules.forEach(function(r){ h+='<li><b>'+r[0]+'</b> — '+r[1]+'</li>'; });
+    h+='</ol></div><div><div class="io">'+
+       '<div><span class="lbl">Comes in on</span>'+s.io.in.join("<br>")+'</div>'+
+       '<div><span class="lbl">Goes out on</span>'+s.io.out.join("<br>")+'</div>'+
+       '<div><span class="lbl">Live today</span>'+s.live+'</div></div></div></div>';
+
+    h+='<div class="blk"><h4>Action by action</h4><ul class="acts">';
+    s.acts.forEach(function(a){
+      var st=a[1]==="live"?"live":a[1]==="built"?"built":a[1]==="part"?"part":"miss";
+      h+='<li><span>'+chip(st)+'</span><span>'+a[0]+'<span class="why">'+a[2]+'</span></span></li>';
+    });
+    h+='</ul></div>';
+
+    h+='<div class="watch"><b>Where it costs money</b>'+s.gap+'</div>';
+    h+='</div></article>';
+  });
+  document.getElementById("stagelist").innerHTML=h;
+})();
+</script>
+</body>
+</html>

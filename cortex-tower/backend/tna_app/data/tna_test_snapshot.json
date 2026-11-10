@@ -1,0 +1,299 @@
+{
+ "schema": "tna_snapshot/v1",
+ "pulled_on": "2026-10-07",
+ "source": "KOGO ERP (live GET)",
+ "order": {
+  "sales_order": "SAL-ORD-2026-00001-2",
+  "sales_order_status": "To Deliver",
+  "docstatus": 1,
+  "customer": "Bella Dahl",
+  "customer_legal": "EMJ APPAREL GROUP, LLC",
+  "company": "CORTEX FASHION (HK) LIMITED",
+  "po_no": "69785",
+  "po_date": "2025-09-09",
+  "transaction_date": "2025-09-09",
+  "delivery_date": "2026-01-30",
+  "qty": 1462,
+  "grand_total": 24634.7,
+  "currency": "USD",
+  "style_no": "C2027-S84-304",
+  "style_name": "Classic Button Down Shirt",
+  "colour": "MICTP",
+  "site": "Da Nang, Vietnam",
+  "sizes": {
+   "XS": 270,
+   "S": 436,
+   "M": 421,
+   "L": 223,
+   "XL": 112
+  }
+ },
+ "actuals": {
+  "order_received_date": "2025-11-07",
+  "cutting": {
+   "start": "2025-12-02",
+   "end": "2025-12-02",
+   "flagged_bad_row": "2026-11-29 (excluded: chronologically inconsistent, see data_quality)"
+  },
+  "sewing": {
+   "start": "2025-12-02",
+   "end": "2025-12-06"
+  },
+  "sent_wash": {
+   "start": "2025-12-05",
+   "end": "2025-12-09"
+  },
+  "received_wash": {
+   "start": "2025-12-06",
+   "end": "2025-12-11"
+  },
+  "packing": {
+   "start": "2025-12-11",
+   "end": "2025-12-14"
+  },
+  "shipped": null,
+  "totals": {
+   "cutting": 1566.0,
+   "sewing": 1566.0,
+   "packed": 1566.0,
+   "order_qty": 1462.0
+  }
+ },
+ "daily_entries": [
+  {
+   "production_date": "2025-11-05",
+   "fabric_received": 2064.5,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 4"
+  },
+  {
+   "production_date": "2025-11-28",
+   "fabric_received": 0.0,
+   "fabric_issued": 2064.5,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 5"
+  },
+  {
+   "production_date": "2026-11-29",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 966.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 6 | SOURCE DATE SUSPECT: reads 2026-11-29, likely 2025"
+  },
+  {
+   "production_date": "2025-12-02",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 600.0,
+   "sewing_qty": 33.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 8"
+  },
+  {
+   "production_date": "2025-12-03",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 430.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 9"
+  },
+  {
+   "production_date": "2025-12-04",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 400.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 10"
+  },
+  {
+   "production_date": "2025-12-05",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 530.0,
+   "sent_wash_qty": 150.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 11"
+  },
+  {
+   "production_date": "2025-12-06",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 173.0,
+   "sent_wash_qty": 350.0,
+   "received_wash_qty": 50.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 12"
+  },
+  {
+   "production_date": "2025-12-08",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 566.0,
+   "received_wash_qty": 400.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 14"
+  },
+  {
+   "production_date": "2025-12-09",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 500.0,
+   "received_wash_qty": 400.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 15"
+  },
+  {
+   "production_date": "2025-12-10",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 466.0,
+   "packed_qty": 0.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 16"
+  },
+  {
+   "production_date": "2025-12-11",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 250.0,
+   "packed_qty": 500.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 17"
+  },
+  {
+   "production_date": "2025-12-12",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 500.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 18"
+  },
+  {
+   "production_date": "2025-12-13",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 500.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 19"
+  },
+  {
+   "production_date": "2025-12-14",
+   "fabric_received": 0.0,
+   "fabric_issued": 0.0,
+   "cutting_qty": 0.0,
+   "sewing_qty": 0.0,
+   "sent_wash_qty": 0.0,
+   "received_wash_qty": 0.0,
+   "packed_qty": 66.0,
+   "source_row_note": "Cutting, sewing, finishing & packing detail report.xlsx | sheet C2027-S84-304 | row 20"
+  }
+ ],
+ "pde_rows": {
+  "with_actuals": "PDE-00429",
+  "with_order_received": "PDE-00596"
+ },
+ "data_quality": [
+  {
+   "issue": "one daily row dated 2026-11-29 is chronologically inconsistent (cutting 966)",
+   "erp_note": "Source date 2026-11-29 is preserved verbatim; it is chronologically inconsistent with surrounding 2025 rows and requires source review."
+  }
+ ],
+ "evidence_actuals": {
+  "SALES_CONTRACT": {
+   "start": "2025-09-20",
+   "finish": "2025-09-20",
+   "evidence_value": "CTXGVN25.09.001 · 2025-09-20",
+   "retrieved": true,
+   "source_doctype": "Sales Contract Evidence"
+  },
+  "TECH_PACK": {
+   "start": "2025-11-05",
+   "finish": "2025-11-05",
+   "evidence_value": "2025-11-05",
+   "retrieved": true,
+   "source_doctype": "Buyer Tech Sheet Evidence"
+  },
+  "ORD_CONF": {
+   "start": "2025-09-09",
+   "finish": "2025-09-09",
+   "evidence_value": "PO 69785 · 2025-09-09",
+   "retrieved": true,
+   "source_doctype": "Client Purchase Order",
+   "evidence_alt": "factory order-received 2025-11-07"
+  },
+  "FABRIC_PO": {
+   "start": "2025-10-22",
+   "finish": "2025-10-22",
+   "evidence_value": "2025-10-22",
+   "retrieved": true,
+   "source_doctype": "Purchase Order"
+  },
+  "FABRIC_INHOUSE": {
+   "start": "2025-10-22",
+   "finish": "2025-10-22",
+   "evidence_value": "2025-10-22",
+   "retrieved": true,
+   "source_doctype": "Purchase Receipt"
+  },
+  "FABRIC_INSPECT": {
+   "start": "2025-10-18",
+   "finish": "2025-10-18",
+   "evidence_value": "2025-10-18 (Fail)",
+   "retrieved": true,
+   "source_doctype": "Fabric Quality Evidence"
+  },
+  "SHIP": {
+   "start": "2025-12-23",
+   "finish": "2025-12-23",
+   "evidence_value": "packing list 2025-12-23 (GSE-00374)",
+   "retrieved": true,
+   "source_doctype": "Garment Shipment Evidence"
+  },
+  "DELIVERY": {
+   "start": "2025-12-23",
+   "finish": "2025-12-23",
+   "evidence_value": "packing list 2025-12-23",
+   "retrieved": true,
+   "source_doctype": "Garment Shipment Evidence"
+  }
+ },
+ "evidence_pulled_on": "2026-10-07"
+}

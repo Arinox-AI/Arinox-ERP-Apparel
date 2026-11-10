@@ -1,0 +1,45 @@
+{
+  "_note": "D5 (2026-11-09): every day is a working day at every site; no holiday list, no weekend rule, for now. The mechanism stays as data: put dates in `holidays`, remove a weekday from `working_weekdays` (0 = Monday), or list `special_working_days`, and every plan recomputes.",
+  "VN_FACTORY": {
+    "label": "Vietnam factory",
+    "working_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "holidays": [],
+    "special_working_days": []
+  },
+  "HK_OFFICE": {
+    "label": "Hong Kong office",
+    "working_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "holidays": [],
+    "special_working_days": []
+  },
+  "CN_FACTORY": {
+    "label": "China factory / supplier",
+    "working_weekdays": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "holidays": [],
+    "special_working_days": []
+  }
+}

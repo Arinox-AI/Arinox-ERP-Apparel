@@ -1,0 +1,44 @@
+{
+  "_comment": "Cortex Control Tower — generic rule configuration. Thresholds live here, not in code. Tune without touching logic. All times are IST-facing; magnitudes are computed from live ERP values.",
+  "version": "2026-10-05.2",
+  "delivery": {
+    "overdue_warning_days": 0,
+    "overdue_critical_days": 7,
+    "due_soon_critical_days": 30,
+    "due_soon_warning_days": 60
+  },
+  "bom": {
+    "coverage_warning_below_pct": 100,
+    "coverage_critical_below_pct": 50
+  },
+  "fabric": {
+    "shortage_warning_pct": 5,
+    "shortage_critical_pct": 20
+  },
+  "payment": {
+    "overdue_warning_days": 1,
+    "overdue_critical_days": 30,
+    "outstanding_warning_usd": 0
+  },
+  "shipment": {
+    "variance_warning_pct": 2,
+    "variance_critical_pct": 10
+  },
+  "production": {
+    "shortfall_warning_pct": 5,
+    "shortfall_critical_pct": 20
+  },
+  "supplier": {
+    "po_late_warning_days": 0,
+    "po_late_critical_days": 7
+  },
+  "trim": {
+    "unmapped_critical_at": 10,
+    "mr_draft_critical_at": 10
+  },
+  "limits": {
+    "max_risks_per_rule": 25,
+    "max_recommendations": 60
+  },
+  "severity_order": ["critical", "warning", "info"]
+}

@@ -1,0 +1,1029 @@
+{
+ "schema": "tna_template/v1",
+ "template_id": "TPL-WOVEN-SHIRT-WASH",
+ "product_type": "Woven button-down shirt (garment-washed)",
+ "description": "Standard Time & Action template for a woven cut-and-sewn shirt that goes through a garment wash. Backward-scheduled from the ex-factory (ship) date in WORKING days. Per-milestone `calendar` selects the working calendar (VN factory / CN supplier / HK office). Offsets are industry-default lead times; each is editable per order. Extended 2026-10-07 to the full industry-standard checkpoint set (61 milestones).",
+ "calendar": "VN_FACTORY",
+ "anchor": "SHIP",
+ "schedule_direction": "backward",
+ "categories": [
+  "Order",
+  "Development",
+  "Material",
+  "Pre-production",
+  "Production",
+  "Quality",
+  "Packing",
+  "Logistics"
+ ],
+ "owner_roles": [
+  "Merchandiser",
+  "Merchandising Manager",
+  "Fabric Sourcing",
+  "Trims Sourcing",
+  "Product Development",
+  "QA",
+  "Cutting Manager",
+  "Sewing Manager",
+  "Wash Coordinator",
+  "Finishing Manager",
+  "Packing",
+  "Logistics",
+  "Finance"
+ ],
+ "milestones": [
+  {
+   "seq": 1,
+   "code": "ORD_CONF",
+   "name": "Order confirmation / PO received",
+   "category": "Order",
+   "owner_role": "Merchandiser",
+   "offset_days": -75,
+   "duration_days": 1,
+   "depends_on": [],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "Client Purchase Order.po_date / Production Daily Evidence.order_received_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 2,
+   "code": "SALES_CONTRACT",
+   "name": "Sales contract signed",
+   "category": "Order",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -70,
+   "duration_days": 2,
+   "depends_on": [
+    "ORD_CONF"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "Sales Contract Evidence.contract_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 3,
+   "code": "TECH_PACK",
+   "name": "Tech pack received & reviewed",
+   "category": "Order",
+   "owner_role": "Product Development",
+   "offset_days": -68,
+   "duration_days": 2,
+   "depends_on": [
+    "ORD_CONF"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "Buyer Tech Sheet Evidence.source_document_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 4,
+   "code": "COST_APPROVAL",
+   "name": "Costing / price approved",
+   "category": "Order",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -67,
+   "duration_days": 1,
+   "depends_on": [
+    "TECH_PACK"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 5,
+   "code": "BOM_APPROVAL",
+   "name": "BOM & consumption approved",
+   "category": "Development",
+   "owner_role": "Product Development",
+   "offset_days": -66,
+   "duration_days": 1,
+   "depends_on": [
+    "TECH_PACK"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 6,
+   "code": "CAPACITY_BOOK",
+   "name": "Capacity booked / line plan set",
+   "category": "Order",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -65,
+   "duration_days": 1,
+   "depends_on": [
+    "ORD_CONF"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 7,
+   "code": "PATTERN",
+   "name": "Pattern & size grading complete",
+   "category": "Development",
+   "owner_role": "Product Development",
+   "offset_days": -62,
+   "duration_days": 3,
+   "depends_on": [
+    "TECH_PACK",
+    "BOM_APPROVAL"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 8,
+   "code": "PROTO_SAMPLE",
+   "name": "Proto sample submitted",
+   "category": "Development",
+   "owner_role": "Product Development",
+   "offset_days": -60,
+   "duration_days": 1,
+   "depends_on": [
+    "PATTERN"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 9,
+   "code": "PROTO_APPROVE",
+   "name": "Proto sample approved",
+   "category": "Development",
+   "owner_role": "Merchandiser",
+   "offset_days": -57,
+   "duration_days": 1,
+   "depends_on": [
+    "PROTO_SAMPLE"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 10,
+   "code": "FIT_APPROVE",
+   "name": "Fit sample approved",
+   "category": "Development",
+   "owner_role": "Merchandiser",
+   "offset_days": -55,
+   "duration_days": 1,
+   "depends_on": [
+    "PROTO_APPROVE"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 11,
+   "code": "SIZE_SET",
+   "name": "Size-set sample approved",
+   "category": "Development",
+   "owner_role": "Merchandiser",
+   "offset_days": -50,
+   "duration_days": 1,
+   "depends_on": [
+    "FIT_APPROVE"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 12,
+   "code": "WASH_STD_APPROVAL",
+   "name": "Wash / finishing standard approved",
+   "category": "Development",
+   "owner_role": "Product Development",
+   "offset_days": -49,
+   "duration_days": 1,
+   "depends_on": [
+    "SIZE_SET"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 13,
+   "code": "FABRIC_BOOK",
+   "name": "Fabric booking placed",
+   "category": "Material",
+   "owner_role": "Fabric Sourcing",
+   "offset_days": -58,
+   "duration_days": 1,
+   "depends_on": [
+    "TECH_PACK"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 14,
+   "code": "LABDIP_SUB",
+   "name": "Lab dip submitted",
+   "category": "Material",
+   "owner_role": "Fabric Sourcing",
+   "offset_days": -55,
+   "duration_days": 1,
+   "depends_on": [
+    "FABRIC_BOOK"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 15,
+   "code": "LABDIP_APP",
+   "name": "Lab dip approved",
+   "category": "Material",
+   "owner_role": "Merchandiser",
+   "offset_days": -50,
+   "duration_days": 1,
+   "depends_on": [
+    "LABDIP_SUB"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 16,
+   "code": "FABRIC_PO",
+   "name": "Bulk fabric PO placed",
+   "category": "Material",
+   "owner_role": "Fabric Sourcing",
+   "offset_days": -48,
+   "duration_days": 1,
+   "depends_on": [
+    "LABDIP_APP"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "Purchase Order.transaction_date",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 17,
+   "code": "BULK_FABRIC_RELEASE",
+   "name": "Bulk fabric production released to mill",
+   "category": "Material",
+   "owner_role": "Fabric Sourcing",
+   "offset_days": -47,
+   "duration_days": 1,
+   "depends_on": [
+    "FABRIC_PO"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 18,
+   "code": "TRIMS_BOOK",
+   "name": "Trims & accessories booking placed",
+   "category": "Material",
+   "owner_role": "Trims Sourcing",
+   "offset_days": -48,
+   "duration_days": 1,
+   "depends_on": [
+    "TECH_PACK"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 19,
+   "code": "TRIM_CARD_APPROVAL",
+   "name": "Trim card / accessories approved",
+   "category": "Material",
+   "owner_role": "Trims Sourcing",
+   "offset_days": -44,
+   "duration_days": 1,
+   "depends_on": [
+    "TRIMS_BOOK"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 20,
+   "code": "BULK_TRIM_RELEASE",
+   "name": "Bulk trim production released",
+   "category": "Material",
+   "owner_role": "Trims Sourcing",
+   "offset_days": -43,
+   "duration_days": 1,
+   "depends_on": [
+    "TRIM_CARD_APPROVAL"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 21,
+   "code": "FABRIC_INHOUSE",
+   "name": "Fabric in-house",
+   "category": "Material",
+   "owner_role": "Fabric Sourcing",
+   "offset_days": -30,
+   "duration_days": 1,
+   "depends_on": [
+    "BULK_FABRIC_RELEASE"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Purchase Receipt.posting_date",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 22,
+   "code": "FABRIC_INSPECT",
+   "name": "Fabric inspection & test report",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -28,
+   "duration_days": 2,
+   "depends_on": [
+    "FABRIC_INHOUSE"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Fabric Quality Evidence.source_test_date / Quality Inspection.report_date",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 23,
+   "code": "SHADE_BAND",
+   "name": "Shade band / shade grouping approved",
+   "category": "Material",
+   "owner_role": "QA",
+   "offset_days": -27,
+   "duration_days": 1,
+   "depends_on": [
+    "FABRIC_INSPECT"
+   ],
+   "is_critical": true,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 24,
+   "code": "TRIMS_INHOUSE",
+   "name": "Trims & accessories in-house",
+   "category": "Material",
+   "owner_role": "Trims Sourcing",
+   "offset_days": -30,
+   "duration_days": 1,
+   "depends_on": [
+    "BULK_TRIM_RELEASE"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 25,
+   "code": "TRIMS_INSPECT",
+   "name": "Trims inspected & approved",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -28,
+   "duration_days": 1,
+   "depends_on": [
+    "TRIMS_INHOUSE"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "CN_FACTORY"
+  },
+  {
+   "seq": 26,
+   "code": "MAT_RELEASE",
+   "name": "Material released to production",
+   "category": "Pre-production",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -26,
+   "duration_days": 1,
+   "depends_on": [
+    "SHADE_BAND",
+    "TRIMS_INSPECT"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 27,
+   "code": "PP_SAMPLE_SUB",
+   "name": "PP sample submitted",
+   "category": "Pre-production",
+   "owner_role": "Product Development",
+   "offset_days": -35,
+   "duration_days": 1,
+   "depends_on": [
+    "FABRIC_INHOUSE",
+    "TRIMS_INHOUSE"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 28,
+   "code": "PP_SAMPLE_APP",
+   "name": "PP sample approved",
+   "category": "Pre-production",
+   "owner_role": "Merchandiser",
+   "offset_days": -32,
+   "duration_days": 1,
+   "depends_on": [
+    "PP_SAMPLE_SUB"
+   ],
+   "is_critical": true,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 29,
+   "code": "OPS_BULLETIN",
+   "name": "Operation bulletin & quality plan finalised",
+   "category": "Pre-production",
+   "owner_role": "Product Development",
+   "offset_days": -31,
+   "duration_days": 1,
+   "depends_on": [
+    "PP_SAMPLE_APP"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 30,
+   "code": "PP_MEETING",
+   "name": "Pre-production meeting held",
+   "category": "Pre-production",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -30,
+   "duration_days": 1,
+   "depends_on": [
+    "PP_SAMPLE_APP"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 31,
+   "code": "MARKER_APP",
+   "name": "Marker approved",
+   "category": "Pre-production",
+   "owner_role": "Cutting Manager",
+   "offset_days": -27,
+   "duration_days": 1,
+   "depends_on": [
+    "PP_MEETING"
+   ],
+   "is_critical": true,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 32,
+   "code": "LINE_PLAN",
+   "name": "Line plan / loading confirmed",
+   "category": "Pre-production",
+   "owner_role": "Merchandising Manager",
+   "offset_days": -26,
+   "duration_days": 1,
+   "depends_on": [
+    "PP_MEETING",
+    "CAPACITY_BOOK"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 33,
+   "code": "CUT_START",
+   "name": "Bulk cutting start",
+   "category": "Production",
+   "owner_role": "Cutting Manager",
+   "offset_days": -25,
+   "duration_days": 1,
+   "depends_on": [
+    "MAT_RELEASE",
+    "MARKER_APP",
+    "LINE_PLAN"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 34,
+   "code": "CUT_END",
+   "name": "Bulk cutting complete",
+   "category": "Production",
+   "owner_role": "Cutting Manager",
+   "offset_days": -21,
+   "duration_days": 1,
+   "depends_on": [
+    "CUT_START"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 35,
+   "code": "CUT_PANEL_QC",
+   "name": "Cut panel & bundle inspection",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -20,
+   "duration_days": 1,
+   "depends_on": [
+    "CUT_END"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 36,
+   "code": "SEW_START",
+   "name": "Sewing line loaded / start",
+   "category": "Production",
+   "owner_role": "Sewing Manager",
+   "offset_days": -20,
+   "duration_days": 1,
+   "depends_on": [
+    "CUT_START"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 37,
+   "code": "PILOT_RUN",
+   "name": "Pilot run / first-off approved",
+   "category": "Production",
+   "owner_role": "QA",
+   "offset_days": -19,
+   "duration_days": 1,
+   "depends_on": [
+    "SEW_START"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 38,
+   "code": "QC_INLINE",
+   "name": "Inline quality inspection",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -15,
+   "duration_days": 1,
+   "depends_on": [
+    "PILOT_RUN"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "Quality Inspection (In Process).report_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 39,
+   "code": "SEW_END",
+   "name": "Sewing complete",
+   "category": "Production",
+   "owner_role": "Sewing Manager",
+   "offset_days": -11,
+   "duration_days": 1,
+   "depends_on": [
+    "SEW_START",
+    "QC_INLINE"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 40,
+   "code": "QC_ENDLINE",
+   "name": "End-line quality inspection",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -10,
+   "duration_days": 1,
+   "depends_on": [
+    "SEW_END"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Quality Inspection (In Process).report_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 41,
+   "code": "WASH_SEND",
+   "name": "Sent to wash",
+   "category": "Production",
+   "owner_role": "Wash Coordinator",
+   "offset_days": -10,
+   "duration_days": 1,
+   "depends_on": [
+    "SEW_END"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 42,
+   "code": "WASH_TRIAL_APPROVAL",
+   "name": "Trial wash approved",
+   "category": "Quality",
+   "owner_role": "Wash Coordinator",
+   "offset_days": -9,
+   "duration_days": 1,
+   "depends_on": [
+    "WASH_SEND"
+   ],
+   "is_critical": false,
+   "requires_approval": true,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 43,
+   "code": "WASH_RECV",
+   "name": "Received from wash",
+   "category": "Production",
+   "owner_role": "Wash Coordinator",
+   "offset_days": -8,
+   "duration_days": 1,
+   "depends_on": [
+    "WASH_SEND"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 44,
+   "code": "POST_WASH_MEAS",
+   "name": "Post-wash measurement audit",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -8,
+   "duration_days": 1,
+   "depends_on": [
+    "WASH_RECV"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 45,
+   "code": "FINISH_END",
+   "name": "Finishing complete",
+   "category": "Production",
+   "owner_role": "Finishing Manager",
+   "offset_days": -7,
+   "duration_days": 1,
+   "depends_on": [
+    "WASH_RECV",
+    "POST_WASH_MEAS"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 46,
+   "code": "PACK_START",
+   "name": "Packing start",
+   "category": "Packing",
+   "owner_role": "Packing",
+   "offset_days": -6,
+   "duration_days": 1,
+   "depends_on": [
+    "FINISH_END",
+    "QC_ENDLINE"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 47,
+   "code": "PACK_END",
+   "name": "Packing complete",
+   "category": "Packing",
+   "owner_role": "Packing",
+   "offset_days": -3,
+   "duration_days": 1,
+   "depends_on": [
+    "PACK_START"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Production Daily Evidence",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 48,
+   "code": "CARTON_AUDIT",
+   "name": "Carton audit & packing reconciliation",
+   "category": "Packing",
+   "owner_role": "Packing",
+   "offset_days": -3,
+   "duration_days": 1,
+   "depends_on": [
+    "PACK_END"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 49,
+   "code": "PACKLIST",
+   "name": "Packing list prepared",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": -2,
+   "duration_days": 1,
+   "depends_on": [
+    "PACK_END"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 50,
+   "code": "FINAL_INSP",
+   "name": "Final random inspection (AQL)",
+   "category": "Quality",
+   "owner_role": "QA",
+   "offset_days": -4,
+   "duration_days": 2,
+   "depends_on": [
+    "PACK_END"
+   ],
+   "is_critical": true,
+   "requires_approval": true,
+   "evidence_source": "Quality Inspection (Final).report_date",
+   "calendar": "VN_FACTORY"
+  },
+  {
+   "seq": 51,
+   "code": "SHIP_READY",
+   "name": "Shipment readiness confirmed",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": -2,
+   "duration_days": 1,
+   "depends_on": [
+    "CARTON_AUDIT",
+    "FINAL_INSP",
+    "PACKLIST"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 52,
+   "code": "COMM_INVOICE",
+   "name": "Commercial invoice prepared",
+   "category": "Logistics",
+   "owner_role": "Finance",
+   "offset_days": -2,
+   "duration_days": 1,
+   "depends_on": [
+    "PACK_END"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 53,
+   "code": "FORWARDER",
+   "name": "Shipment documents to forwarder",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": -2,
+   "duration_days": 1,
+   "depends_on": [
+    "PACK_END"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "Shipment Document Evidence",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 54,
+   "code": "COO_DOCS",
+   "name": "COO / export customs documents",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": -1,
+   "duration_days": 1,
+   "depends_on": [
+    "COMM_INVOICE",
+    "SHIP_READY"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 55,
+   "code": "CARGO_HANDOVER",
+   "name": "Container loading / cargo handover",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": -1,
+   "duration_days": 1,
+   "depends_on": [
+    "SHIP_READY",
+    "COO_DOCS",
+    "FORWARDER"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 56,
+   "code": "SHIP",
+   "name": "Ex-factory / shipment",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": 0,
+   "duration_days": 1,
+   "depends_on": [
+    "CARGO_HANDOVER",
+    "FINAL_INSP",
+    "PACKLIST"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Delivery Note.posting_date / Garment Shipment Evidence.packing_list_date",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 57,
+   "code": "DELIVERY",
+   "name": "Delivered to buyer warehouse",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": 0,
+   "duration_days": 0,
+   "depends_on": [
+    "SHIP"
+   ],
+   "is_critical": true,
+   "requires_approval": false,
+   "evidence_source": "Delivery Note.posting_date",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 58,
+   "code": "BL_AWB",
+   "name": "B/L or AWB issued",
+   "category": "Logistics",
+   "owner_role": "Logistics",
+   "offset_days": 1,
+   "duration_days": 1,
+   "depends_on": [
+    "SHIP"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 59,
+   "code": "SHIPPING_ADVICE",
+   "name": "Shipping advice / ASN sent to buyer",
+   "category": "Logistics",
+   "owner_role": "Finance",
+   "offset_days": 2,
+   "duration_days": 1,
+   "depends_on": [
+    "SHIP",
+    "BL_AWB"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 60,
+   "code": "DOC_DISPATCH",
+   "name": "Documents dispatched to buyer",
+   "category": "Logistics",
+   "owner_role": "Finance",
+   "offset_days": 3,
+   "duration_days": 1,
+   "depends_on": [
+    "BL_AWB",
+    "SHIPPING_ADVICE"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  },
+  {
+   "seq": 61,
+   "code": "ORDER_CLOSURE",
+   "name": "Order closure & final settlement",
+   "category": "Logistics",
+   "owner_role": "Finance",
+   "offset_days": 5,
+   "duration_days": 1,
+   "depends_on": [
+    "DOC_DISPATCH",
+    "DELIVERY"
+   ],
+   "is_critical": false,
+   "requires_approval": false,
+   "evidence_source": "",
+   "calendar": "HK_OFFICE"
+  }
+ ]
+}

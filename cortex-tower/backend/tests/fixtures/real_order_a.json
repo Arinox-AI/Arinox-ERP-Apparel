@@ -1,0 +1,10 @@
+{
+  "_note": "ANONYMISED from the company's own documents (sales contract, operation bulletin, daily cutting/sewing/packing report). Style, colour, buyer and PO numbers are replaced; quantities and dates are real. No prices, no PO or customs numbers.",
+  "style": "STYLE-A", "colour": "COLOUR-1",
+  "contract_date": "2026-01-25", "order_lines": [{"qty": 1271}, {"qty": 3800}, {"qty": 16}],
+  "ex_factory": "2026-05-04", "etd": "2026-05-09",
+  "operation_bulletin": {"operators": 28, "working_minutes": 570, "expected_efficiency_pct": 65, "total_sam": 10.6, "sewing_sam": 10.2},
+  "line": {"operators": 21, "helpers": 7},
+  "real": {"fabric_received": "2026-04-13", "fabric_issued": "2026-05-05", "first_cut": "2026-05-06", "sewing_first": "2026-05-11", "sewing_last": "2026-05-21",
+           "sewing_days_with_output": 10, "sewn_per_day_median": 710, "sewn_per_day_max": 1001, "last_packed": "2026-06-01"}
+}

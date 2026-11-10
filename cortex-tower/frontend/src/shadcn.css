@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   shadcn/ui entry — LIGHT theme only.
+
+   Tailwind + the shadcn token contract (HSL channel triplets in :root) used by every
+   component in src/components/ui. It is imported FIRST in main.tsx so that the two older
+   style sheets (index.css, cx/cx.css) still win where they speak.
+
+   Preflight is disabled in tailwind.config.js. The handful of Preflight rules the shadcn
+   components rely on are restored by hand below, so the legacy screens keep their reset.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* surfaces */
+    --sh-background: 0 0% 100%;
+    --sh-foreground: 221 39% 11%;
+    --sh-card: 0 0% 100%;
+    --sh-card-foreground: 221 39% 11%;
+    --sh-popover: 0 0% 100%;
+    --sh-popover-foreground: 221 39% 11%;
+
+    /* brand — slate-blue from the Clean Minimal palette */
+    --sh-primary: 229 91% 64%;
+    --sh-primary-foreground: 0 0% 100%;
+    --sh-secondary: 210 20% 98%;
+    --sh-secondary-foreground: 221 39% 11%;
+    --sh-muted: 210 20% 96%;
+    --sh-muted-foreground: 220 9% 46%;
+    --sh-accent: 229 100% 97%;
+    --sh-accent-foreground: 229 60% 45%;
+
+    /* semantic */
+    --sh-destructive: 0 72% 51%;
+    --sh-destructive-foreground: 0 0% 100%;
+    --sh-success: 161 94% 30%;
+    --sh-success-foreground: 0 0% 100%;
+    --sh-warning: 32 95% 44%;
+    --sh-warning-foreground: 0 0% 100%;
+
+    /* lines */
+    --sh-border: 220 13% 91%;
+    --sh-input: 220 13% 89%;
+    --sh-ring: 229 91% 64%;
+
+    --sh-radius: 0.5rem;
+  }
+
+  /* Preflight was disabled, so restore what shadcn actually depends on. */
+  *,
+  ::before,
+  ::after {
+    border-color: hsl(var(--sh-border));
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: hsl(var(--sh-background));
+    color: hsl(var(--sh-foreground));
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Preflight is off, so the browser's own button chrome (a 2px outset border and a grey
+     background) is still in place. shadcn buttons expect it gone. Both legacy button classes
+     (.cx-btn, .btn) declare their own border and background, so they are unaffected. */
+  button {
+    border: 0;
+    background-color: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+    color: inherit;
+  }
+
+  button,
+  [role="button"],
+  select,
+  summary {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  /* Tailwind's reset normally removes the focus ring; keep a visible one for keyboards. */
+  :focus-visible {
+    outline: 2px solid hsl(var(--sh-ring) / 0.55);
+    outline-offset: 2px;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid hsl(var(--sh-border));
+  }
+}
+
+/* Light scrollbars everywhere — the dark ones made the light theme look muddy. */
+@layer utilities {
+  .scrollbar-light {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(220 13% 82%) transparent;
+  }
+  .scrollbar-light::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scrollbar-light::-webkit-scrollbar-thumb {
+    background: hsl(220 13% 82%);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  .scrollbar-light::-webkit-scrollbar-thumb:hover {
+    background: hsl(220 9% 70%);
+    background-clip: content-box;
+  }
+}

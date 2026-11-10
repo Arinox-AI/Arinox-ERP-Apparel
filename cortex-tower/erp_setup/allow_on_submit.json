@@ -1,0 +1,816 @@
+{
+ "note": "Property Setters that let the tower (REST) write what the Arinox scripts db_set on submitted documents. Load with arinox-apparel/.../portable/api_load.py or create by hand.",
+ "records": [
+  {
+   "doctype": "Property Setter",
+   "name": "Buyer Claim-credit_note-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Buyer Claim",
+   "field_name": "credit_note",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_buyer_claim_api_make_credit_note"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Cost Sheet-approval_remarks-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Cost Sheet",
+   "field_name": "approval_remarks",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_cost_sheet_api_reject"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Cost Sheet-approval_status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Cost Sheet",
+   "field_name": "approval_status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_cost_sheet_api_reject"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Inspection-quality_inspection-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Inspection",
+   "field_name": "quality_inspection",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_inspection_after_cancel",
+    "arinox_fabric_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Inspection-stock_entry-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Inspection",
+   "field_name": "stock_entry",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_inspection_after_cancel",
+    "arinox_fabric_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Inspection-width_shortfall_m-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Inspection",
+   "field_name": "width_shortfall_m",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition-approved_by-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition",
+   "field_name": "approved_by",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_requisition_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition-approved_on-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition",
+   "field_name": "approved_on",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_requisition_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_fabric_requisition_after_cancel",
+    "arinox_fabric_requisition_after_submit",
+    "arinox_fabric_requisition_validate"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition Item-accepted_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition Item",
+   "field_name": "accepted_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition Item-ordered_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition Item",
+   "field_name": "ordered_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition Item-received_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition Item",
+   "field_name": "received_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Fabric Requisition Item-rejected_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Fabric Requisition Item",
+   "field_name": "rejected_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Lay Report-remnant_entry-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Lay Report",
+   "field_name": "remnant_entry",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_lay_report_after_cancel",
+    "arinox_lay_report_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "PP Meeting-production_card_issued_on-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "PP Meeting",
+   "field_name": "production_card_issued_on",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_production_card_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "PP Meeting-production_card_ref-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "PP Meeting",
+   "field_name": "production_card_ref",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_production_card_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Packing List-fg_stock_entry-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Packing List",
+   "field_name": "fg_stock_entry",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_packing_list_after_cancel",
+    "arinox_packing_list_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Packing List-final_inspection-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Packing List",
+   "field_name": "final_inspection",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_final_inspection_after_cancel",
+    "arinox_final_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Packing List-shipment-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Packing List",
+   "field_name": "shipment",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_shipment_after_cancel",
+    "arinox_shipment_on_update",
+    "arinox_shipment_on_update_submitted"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Packing List-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Packing List",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_delivery_after_cancel",
+    "arinox_delivery_post",
+    "arinox_shipment_after_cancel",
+    "arinox_shipment_on_update"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Pilot Run-approved_by-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Pilot Run",
+   "field_name": "approved_by",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_pilot_run_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Pilot Run-approved_on-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Pilot Run",
+   "field_name": "approved_on",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_pilot_run_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Pilot Run-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Pilot Run",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_pilot_run_after_cancel",
+    "arinox_pilot_run_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Production Card-issue_date-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Production Card",
+   "field_name": "issue_date",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_production_card_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Production Card-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Production Card",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_close_production",
+    "arinox_engine",
+    "arinox_lay_report_after_submit",
+    "arinox_production_card_after_cancel"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Production Card Fabric-issued_m-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Production Card Fabric",
+   "field_name": "issued_m",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_cut_plan_api_suggest_rolls",
+    "arinox_cutting_api_get_issuable_rolls",
+    "arinox_cutting_api_issue_fabric",
+    "arinox_lay_report_after_cancel"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Order-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Order",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_order_after_cancel",
+    "arinox_purchase_order_after_submit",
+    "arinox_purchase_order_after_update"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Receipt-apparel_delay_days-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Receipt",
+   "field_name": "apparel_delay_days",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_receipt_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Receipt-apparel_penalty_amount-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Receipt",
+   "field_name": "apparel_penalty_amount",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_receipt_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Receipt-apparel_penalty_pct-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Receipt",
+   "field_name": "apparel_penalty_pct",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_receipt_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Receipt-apparel_qty_band_note-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Receipt",
+   "field_name": "apparel_qty_band_note",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_receipt_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Purchase Receipt-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Purchase Receipt",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_purchase_receipt_after_cancel",
+    "arinox_purchase_receipt_after_submit",
+    "arinox_purchase_receipt_validate"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Recut Request-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Recut Request",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_lay_report_after_cancel",
+    "arinox_lay_report_after_submit",
+    "arinox_recut_request_after_cancel"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Sales Contract-sales_order-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Sales Contract",
+   "field_name": "sales_order",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_sales_order_cancel",
+    "arinox_sales_order_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Sales Contract-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Sales Contract",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_sales_contract_after_cancel",
+    "arinox_sales_contract_signed",
+    "arinox_sales_order_cancel",
+    "arinox_sales_order_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Sample Approval Comment-closed_in-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Sample Approval Comment",
+   "field_name": "closed_in",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_pp_meeting_after_cancel",
+    "arinox_pp_meeting_after_submit",
+    "arinox_pp_meeting_after_update"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Sample Approval Comment-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Sample Approval Comment",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_pp_meeting_after_cancel",
+    "arinox_pp_meeting_after_submit",
+    "arinox_pp_meeting_after_update"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Shipment-apparel_actual_total-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Shipment",
+   "field_name": "apparel_actual_total",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_delivery_tna_after_cancel",
+    "arinox_delivery_tna_after_submit",
+    "arinox_freight_api_allocated_costs",
+    "arinox_purchase_invoice_freight"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Shipment-apparel_cost_variance_pct-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Shipment",
+   "field_name": "apparel_cost_variance_pct",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_delivery_tna_after_cancel",
+    "arinox_delivery_tna_after_submit",
+    "arinox_freight_api_allocated_costs",
+    "arinox_purchase_invoice_freight"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Shipment-apparel_estimate_total-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Shipment",
+   "field_name": "apparel_estimate_total",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_delivery_tna_after_cancel",
+    "arinox_delivery_tna_after_submit",
+    "arinox_freight_api_allocated_costs",
+    "arinox_purchase_invoice_freight"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Challan-returned_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Challan",
+   "field_name": "returned_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_challan_validate",
+    "arinox_subcontract_return_after_cancel",
+    "arinox_subcontract_return_after_submit",
+    "arinox_subcontract_settlement_validate"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Challan-short_close_reason-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Challan",
+   "field_name": "short_close_reason",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_challan_api_short_close"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Challan-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Challan",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_challan_after_submit",
+    "arinox_subcontract_challan_api_short_close",
+    "arinox_subcontract_challan_validate",
+    "arinox_subcontract_return_after_cancel"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Challan Row-returned_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Challan Row",
+   "field_name": "returned_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_challan_validate",
+    "arinox_subcontract_return_after_cancel",
+    "arinox_subcontract_return_after_submit",
+    "arinox_subcontract_settlement_validate"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Settlement-debit_note-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Settlement",
+   "field_name": "debit_note",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_settlement_api_make_invoices"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Subcontract Settlement-purchase_invoice-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Subcontract Settlement",
+   "field_name": "purchase_invoice",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_subcontract_settlement_api_make_invoices"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Tech Pack-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Tech Pack",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_tech_pack_after_cancel",
+    "arinox_tech_pack_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Tech Pack-style_item-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Tech Pack",
+   "field_name": "style_item",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_tech_pack_api_create_style_item"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Inspection-quality_inspection-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Inspection",
+   "field_name": "quality_inspection",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_trim_inspection_after_cancel",
+    "arinox_trim_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Inspection-stock_entry-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Inspection",
+   "field_name": "stock_entry",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_trim_inspection_after_cancel",
+    "arinox_trim_inspection_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition-approved_by-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition",
+   "field_name": "approved_by",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_trim_requisition_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition-approved_on-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition",
+   "field_name": "approved_on",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_trim_requisition_after_submit"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition-status-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition",
+   "field_name": "status",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "arinox_trim_requisition_after_cancel",
+    "arinox_trim_requisition_after_submit",
+    "arinox_trim_requisition_validate"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition Item-accepted_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition Item",
+   "field_name": "accepted_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition Item-ordered_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition Item",
+   "field_name": "ordered_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition Item-received_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition Item",
+   "field_name": "received_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  },
+  {
+   "doctype": "Property Setter",
+   "name": "Trim Requisition Item-rejected_qty-allow_on_submit",
+   "doctype_or_field": "DocField",
+   "doc_type": "Trim Requisition Item",
+   "field_name": "rejected_qty",
+   "property": "allow_on_submit",
+   "property_type": "Check",
+   "value": "1",
+   "_scripts": [
+    "lib_purchasing.refresh_requisition"
+   ]
+  }
+ ],
+ "skipped": [
+  [
+   "Fabric Inspection.status",
+   "no such field in the meta (the script writes a column the doctype does not define)"
+  ],
+  [
+   "Tech Pack Measurement.idx",
+   "no such field in the meta (the script writes a column the doctype does not define)"
+  ],
+  [
+   "Trim Inspection.status",
+   "no such field in the meta (the script writes a column the doctype does not define)"
+  ]
+ ]
+}

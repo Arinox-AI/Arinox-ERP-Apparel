@@ -1,0 +1,9 @@
+backend/data/
+*.db
+*.db.*
+sas_creds.json
+secret_key.bin
+mail/
+node_modules/
+__pycache__/
+dist/
