@@ -15,7 +15,7 @@
   "file": "03_doctypes.json",
   "group": "doctypes",
   "mode": "doctypes",
-  "count": 131
+  "count": 132
  },
  {
   "file": "04_custom_fields.json",
@@ -33,7 +33,7 @@
   "file": "06_seeds.json",
   "group": "seeds",
   "mode": "create",
-  "count": 195
+  "count": 228
  },
  {
   "file": "07_apparel_settings.json",
@@ -99,6 +99,6 @@
   "file": "17_server_scripts.json",
   "group": "server_scripts",
   "mode": "create",
-  "count": 251
+  "count": 253
  }
 ]

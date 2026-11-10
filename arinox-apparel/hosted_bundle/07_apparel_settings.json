@@ -4,6 +4,29 @@
  "records": [
   {
    "air_volumetric_divisor": 6000.0,
+   "alloc_cut_lead_days": 4,
+   "alloc_defaults": [
+    {
+     "cut_lead_days": 0,
+     "doctype": "Allocation Default",
+     "efficiency_pct": 65.0,
+     "finish_pack_days": 0,
+     "product_type": "Knit Top",
+     "sewing_sam": 17.2,
+     "source": "Company operation bulletin, short-sleeve raglan top (one style)"
+    },
+    {
+     "cut_lead_days": 0,
+     "doctype": "Allocation Default",
+     "efficiency_pct": 65.0,
+     "finish_pack_days": 0,
+     "product_type": "Woven Top",
+     "sewing_sam": 24.4,
+     "source": "Company operation bulletin, long-sleeve button-down shirt (one style)"
+    }
+   ],
+   "alloc_finish_pack_days": 9,
+   "alloc_min_batch_qty": 500,
    "approval_tolerance_pct": 0.5,
    "auto_submit_material_request": 1,
    "auto_submit_stock_entries": 0,

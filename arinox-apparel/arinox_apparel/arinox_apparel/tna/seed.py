@@ -73,6 +73,45 @@ TEMPLATE_ROWS = [
 	("FREIGHT_BOOKING", "After Milestone", "FINAL_INSPECTION", 3, "Fixed", 0),
 	("EX_FACTORY", "Ex-Factory", None, 0, "Fixed", 0),
 ]
+# The tower's other checkpoints (2026-11-09, TNA_PRODUCTION_GRADE_PLAN section 5.3 / Appendix C): one `TNA Milestone Type` per milestone
+# of the tower's 61-milestone template that the ERP's 33 types do not already carry, under the tower's own code. They are types only (a
+# vocabulary): the default template above is unchanged, and the tower's scheduler decides which of them an order uses.
+TOWER_TYPES = [
+	("SALES_CONTRACT", "Sales contract signed", "Merchandising", "Manual", 0, "Always", None),
+	("COST_APPROVAL", "Costing / price approved", "Merchandising", "Manual", 0, "Always", None),
+	("CAPACITY_BOOK", "Capacity booked / line plan set", "Merchandising", "Manual", 0, "Always", None),
+	("PATTERN", "Pattern & size grading complete", "Sampling", "Manual", 0, "Always", None),
+	("PROTO_SAMPLE", "Proto sample submitted", "Sampling", "Manual", 0, "Always", None),
+	("PROTO_APPROVE", "Proto sample approved", "Sampling", "Manual", 0, "Always", None),
+	("LABDIP_SUB", "Lab dip submitted", "Purchasing", "Manual", 0, "Always", None),
+	("BULK_TRIM_RELEASE", "Bulk trim production released", "Purchasing", "Manual", 0, "Always", None),
+	("SHADE_BAND", "Shade band / shade grouping approved", "Purchasing", "Manual", 1, "Always", None),
+	("MAT_RELEASE", "Material released to production", "Production", "Manual", 1, "Always", None),
+	("PP_SAMPLE_SUB", "PP sample submitted", "Production", "Manual", 0, "Always", None),
+	("OPS_BULLETIN", "Operation bulletin & quality plan finalised", "Production", "Manual", 0, "Always", None),
+	("LINE_PLAN", "Line plan / loading confirmed", "Production", "Manual", 0, "Always", None),
+	("CUT_START", "Bulk cutting start", "Production", "Manual", 1, "Always", None),
+	("CUT_END", "Bulk cutting complete", "Production", "Manual", 1, "Always", None),
+	("CUT_PANEL_QC", "Cut panel & bundle inspection", "Quality", "Manual", 0, "Always", None),
+	("SEW_START", "Sewing line loaded / start", "Production", "Manual", 1, "Always", None),
+	("QC_INLINE", "Inline quality inspection", "Quality", "Manual", 0, "Always", None),
+	("QC_ENDLINE", "End-line quality inspection", "Quality", "Manual", 1, "Always", None),
+	("WASH_SEND", "Sent to wash", "Production", "Manual", 1, "Always", None),
+	("WASH_TRIAL_APPROVAL", "Trial wash approved", "Quality", "Manual", 0, "Always", None),
+	("POST_WASH_MEAS", "Post-wash measurement audit", "Quality", "Manual", 0, "Always", None),
+	("FINISH_END", "Finishing complete", "Production", "Manual", 1, "Always", None),
+	("PACK_START", "Packing start", "Production", "Manual", 1, "Always", None),
+	("CARTON_AUDIT", "Carton audit & packing reconciliation", "Production", "Manual", 0, "Always", None),
+	("PACKLIST", "Packing list prepared", "Shipping", "Manual", 0, "Always", None),
+	("SHIP_READY", "Shipment readiness confirmed", "Shipping", "Manual", 0, "Always", None),
+	("COMM_INVOICE", "Commercial invoice prepared", "Shipping", "Manual", 0, "Always", None),
+	("COO_DOCS", "COO / export customs documents", "Shipping", "Manual", 0, "Always", None),
+	("CARGO_HANDOVER", "Container loading / cargo handover", "Shipping", "Manual", 1, "Always", None),
+	("SHIPPING_ADVICE", "Shipping advice / ASN sent to buyer", "Shipping", "Manual", 0, "Always", None),
+	("DOC_DISPATCH", "Documents dispatched to buyer", "Shipping", "Manual", 0, "Always", None),
+	("ORDER_CLOSURE", "Order closure & final settlement", "Shipping", "Manual", 0, "Always", None),
+]
+TYPES = TYPES + TOWER_TYPES
 TEMPLATE_NAME = "Standard 60-Day (forward)"
 
 

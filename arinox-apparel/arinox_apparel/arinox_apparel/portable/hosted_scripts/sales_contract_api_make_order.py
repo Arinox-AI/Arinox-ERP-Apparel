@@ -42,6 +42,8 @@ def main():
                "apparel_sales_contract": sc.name, "set_warehouse": warehouse})
     rates = []
     for s in sc.sizes:
+        if cint(s.qty) <= 0:
+            continue    # a size nobody orders is not an order line (the ERP refuses a zero quantity)
         line = line_of(s)
         item_code = s.style_item
         if frappe.db.get_value("Item", s.style_item, "has_variants"):
@@ -57,6 +59,8 @@ def main():
                             "apparel_etd": line.etd, "apparel_in_warehouse_date": line.in_warehouse_date, "apparel_qty_tolerance_pct": line.tolerance_pct,
                             "apparel_cost_sheet": line.cost_sheet})
         rates.append(line.rate)
+    if not so.items:
+        frappe.throw("Every size row on this contract has a quantity of zero, so there is nothing to order. Enter the pieces first.")
     so.run_method("set_missing_values")
     n = 0
     for row in so.items:

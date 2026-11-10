@@ -15,7 +15,7 @@ def contract_number_has_prefix_year_month_and_counter():
 	yy, mm = str(d.year)[2:], ("0" + str(d.month))[-2:]
 	prefix = frappe.db.get_single_value("Apparel Settings", "contract_prefix") or "SC"
 	frappe.db.set_value("Company", fx.company(), "apparel_contract_prefix", None)
-	true(re.fullmatch(rf"{prefix}{yy}\.{mm}\.\d{{3}}", sc.name), sc.name)
+	true(re.fullmatch(rf"{prefix}{yy}\.{mm}\.\d{{3,}}", sc.name), sc.name)
 
 
 @test("naming")

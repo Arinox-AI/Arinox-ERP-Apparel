@@ -129,7 +129,12 @@
   "escalation_days_2",
   "escalation_days_3",
   "claim_requires_evidence",
-  "air_volumetric_divisor"
+  "air_volumetric_divisor",
+  "section_alloc",
+  "alloc_finish_pack_days",
+  "alloc_cut_lead_days",
+  "alloc_min_batch_qty",
+  "alloc_defaults"
  ],
  "fields": [
   {
@@ -139,7 +144,7 @@
   },
   {
    "default": "8",
-   "description": "A SKU is one style \u00d7 colour line. A ninth needs a new contract.",
+   "description": "A SKU is one style × colour line. A ninth needs a new contract.",
    "fieldname": "max_skus_per_contract",
    "fieldtype": "Int",
    "label": "Max SKUs per Contract",
@@ -596,13 +601,13 @@
    "fieldname": "work_minutes_per_day",
    "fieldtype": "Int",
    "label": "Working Minutes per Day",
-   "default": "480"
+   "description": "Not set yet: line capacity is unknown until you set it"
   },
   {
    "fieldname": "planned_efficiency_pct",
    "fieldtype": "Percent",
    "label": "Planned Efficiency %",
-   "default": "65"
+   "description": "Not set yet: line capacity is unknown until you set it. Operation Bulletins and measured Daily Line Reports can inform it"
   },
   {
    "fieldname": "learning_curve",
@@ -891,6 +896,37 @@
    "label": "Air Freight Volumetric Divisor",
    "default": "6000",
    "description": "L x W x H in cm, divided by this, gives the volumetric kg"
+  },
+  {
+   "fieldname": "section_alloc",
+   "fieldtype": "Section Break",
+   "label": "Where to Produce (allocation suggester)",
+   "description": "Used by the Cortex Tower's suggester for the Factory Allocation. Working minutes and planned efficiency come from Production: Sewing above; the learning curve is the table there."
+  },
+  {
+   "fieldname": "alloc_finish_pack_days",
+   "fieldtype": "Int",
+   "label": "Days from Sewing End to Ex-factory",
+   "description": "Wash, finishing, packing, final inspection. Not set yet: the allocation will not guess it"
+  },
+  {
+   "fieldname": "alloc_cut_lead_days",
+   "fieldtype": "Int",
+   "label": "Days from PCD to Sewing Start",
+   "description": "Cutting and kitting lead. Not set yet: the allocation will not guess it"
+  },
+  {
+   "fieldname": "alloc_min_batch_qty",
+   "fieldtype": "Int",
+   "label": "Smallest Part of a Split Order",
+   "description": "A style and colour is split over several lines only when no single line fits, and never into parts below this. Not set: never split"
+  },
+  {
+   "fieldname": "alloc_defaults",
+   "fieldtype": "Table",
+   "label": "Capacity Defaults by Product Type",
+   "options": "Allocation Default",
+   "description": "Used when a style has no active Operation Bulletin. With neither, the line shows capacity unknown and nothing is placed on it"
   }
  ],
  "index_web_pages_for_search": 0,

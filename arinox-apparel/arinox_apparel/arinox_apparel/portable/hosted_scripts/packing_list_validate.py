@@ -40,7 +40,7 @@ def run(doc):
             c.cbm_per_carton = round(carton_cbm(c.length_cm or 0, c.width_cm or 0, c.height_cm or 0), 6)
             c.total_cbm = round(c.cbm_per_carton * c.carton_count, 6)
 
-        items = frappe.get_all("Sales Order Item", {"parent": doc.sales_order}, ["name", "apparel_colour", "apparel_size", "apparel_ship_to", "apparel_buyer_po"])
+        items = frappe.get_all("Sales Order Item", {"parent": doc.sales_order}, ["name", "item_code", "apparel_colour", "apparel_size", "apparel_ship_to", "apparel_buyer_po"])
         on_card = []
         for l in frappe.get_all("Production Card Line", {"parent": doc.production_card}, ["colour", "size"]):
             on_card.append((l.colour, l.size))
@@ -52,6 +52,8 @@ def run(doc):
             if (ct.colour, ct.size) not in on_card:
                 frappe.throw("Carton content row %s: %s %s is not on production card %s." % (ct.idx, ct.colour, ct.size, doc.production_card))
             cands = [i for i in items if i.apparel_colour == ct.colour and i.apparel_size == ct.size]
+            if doc.style_item and len([i for i in cands if (frappe.db.get_value("Item", i.item_code, "variant_of") or i.item_code) == doc.style_item]):
+                cands = [i for i in cands if (frappe.db.get_value("Item", i.item_code, "variant_of") or i.item_code) == doc.style_item]     # two styles on one order can share a colour and size
             if doc.ship_to and [i for i in cands if i.apparel_ship_to]:
                 cands = [i for i in cands if (i.apparel_ship_to or "") == doc.ship_to]
             if doc.buyer_po and [i for i in cands if i.apparel_buyer_po]:

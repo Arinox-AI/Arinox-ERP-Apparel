@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "creation": "2026-11-09 12:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "product_type",
+  "sewing_sam",
+  "efficiency_pct",
+  "finish_pack_days",
+  "cut_lead_days",
+  "source"
+ ],
+ "fields": [
+  {
+   "fieldname": "product_type",
+   "fieldtype": "Link",
+   "label": "Product Type",
+   "options": "Product Type",
+   "reqd": 1,
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "sewing_sam",
+   "fieldtype": "Float",
+   "label": "Total SAM per Garment",
+   "description": "Minutes, sewing plus manual (the Operation Bulletin's total SAM)",
+   "in_list_view": 1,
+   "columns": 2
+  },
+  {
+   "fieldname": "efficiency_pct",
+   "fieldtype": "Percent",
+   "label": "Efficiency %",
+   "description": "Blank: the planned efficiency of Production: Sewing",
+   "in_list_view": 1,
+   "columns": 1
+  },
+  {
+   "fieldname": "finish_pack_days",
+   "fieldtype": "Int",
+   "label": "Sewing End to Ex-factory (days)",
+   "description": "Blank: the general value above",
+   "columns": 1
+  },
+  {
+   "fieldname": "cut_lead_days",
+   "fieldtype": "Int",
+   "label": "PCD to Sewing Start (days)",
+   "description": "Blank: the general value above",
+   "columns": 1
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Data",
+   "label": "Where this came from",
+   "in_list_view": 1,
+   "columns": 3
+  }
+ ],
+ "modified": "2026-11-09 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Arinox Apparel",
+ "name": "Allocation Default",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "istable": 1,
+ "editable_grid": 1,
+ "permissions": []
+}

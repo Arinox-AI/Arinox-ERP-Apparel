@@ -108,6 +108,26 @@ def a_second_list_only_gets_what_is_left():
 
 
 @test("packing")
+def two_styles_sharing_a_colour_and_size_are_tied_to_their_own_order_lines():
+	"""A packing list of style B must point at B's Sales Order line, not at style A's line with the same colour and size (the delivery over-ship check reads that line)."""
+	frappe.db.set_single_value("Stock Settings", "allow_negative_stock", 1)
+	a, b = fx.item("HT-STYLE-1"), fx.item("HT-STYLE-2")
+	wh = frappe.db.get_value("Warehouse", {"company": fx.company(), "is_group": 0}, "name")
+	rows = [{"item_code": it, "qty": q, "rate": 10, "delivery_date": frappe.utils.add_days(nowdate(), 60), "warehouse": wh, "apparel_colour": "Navy", "apparel_size": "S",
+			 "apparel_qty_tolerance_pct": 10} for it, q in ((a, 50), (b, 70))]
+	so = frappe.get_doc({"doctype": "Sales Order", "customer": fx.customer(), "company": fx.company(), "delivery_date": frappe.utils.add_days(nowdate(), 60), "items": rows}).insert()
+	so.submit()
+	card = frappe.get_doc({"doctype": "Production Card", "company": fx.company(), "customer": fx.customer(), "sales_order": so.name, "style_item": b, "lines": [{"colour": "Navy", "size": "S"}]})
+	card.insert()
+	card.submit()
+	for stage in ("CUT", "SEW_IN", "SEW_OUT", "FIN_IN", "FIN_A"):
+		fx.engine(action="post", card=card.name, rows=json.dumps([{"stage": stage, "colour": "Navy", "size": "S", "qty": 70}]), source_doctype="Setup", source_name="S-" + stage, posting_date=nowdate(), check="0")
+	pl = fx.packing_list(card, 24)
+	lines = frappe.get_all("Packing List Content", {"parent": pl.name}, pluck="sales_order_item")
+	true(lines and all(frappe.db.get_value("Sales Order Item", n, "item_code") == b for n in lines), "carton contents of style B are tied to B's line")
+
+
+@test("packing")
 def sscc_numbers_have_a_valid_check_digit_and_are_never_reused():
 	frappe.db.set_single_value("Apparel Settings", "gs1_company_prefix", "0360002914")
 	card = fx.finished_card(100)

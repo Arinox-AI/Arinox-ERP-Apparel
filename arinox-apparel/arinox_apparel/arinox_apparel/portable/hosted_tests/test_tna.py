@@ -309,3 +309,37 @@ def milestone_state_through_real_milestones():
 	eq(state(planned=-5, not_applicable=1), ("Not Applicable", 0, 0))
 	eq(state(planned=-5, revised_date=add_days(nowdate(), 5), revision_reason="x"), ("Not Started", 10, 0))
 	eq(state(planned=-5, revised_date=add_days(nowdate(), -1), revision_reason="x"), ("Late", 5, 0))
+
+
+@test("tna")
+def the_vocabulary_carries_the_towers_checkpoints_next_to_the_erps_own():
+	# 33 types of the ERP plus one type for every other milestone of the tower's 61-milestone template (TNA plan section 5.3)
+	codes = set(frappe.get_all("TNA Milestone Type", pluck="code"))
+	true(len(codes) >= 66, "the vocabulary has %s types" % len(codes))
+	for code in ("ORDER_RECEIVED", "BULK_FINISH", "EX_FACTORY", "SEW_START", "CUT_START", "CUT_END", "QC_INLINE", "WASH_SEND", "PACK_START", "CARTON_AUDIT", "SHIP_READY", "ORDER_CLOSURE"):
+		true(code in codes, code)
+	eq(frappe.db.get_value("TNA Milestone Type", "CUT_START", "auto_source"), "Manual")
+	true(frappe.db.get_value("TNA Milestone Type", "CUT_START", "department"))
+
+
+@test("tna")
+def a_plan_computed_by_the_tower_is_written_in_one_call_and_respects_the_lock():
+	so, template, made = tna_order()
+	t = tnas(so)["Navy"]
+	d1, d2 = str(add_days(nowdate(), 40)), str(add_days(nowdate(), 45))
+	rows = [{"milestone_type": "MINI_MARKER", "planned_date": d1, "planned_start": d1, "sequence": 50, "is_critical": 0},
+			{"milestone_type": "CUT_START", "planned_date": d2, "planned_start": d2, "sequence": 3300, "is_critical": 1}]    # CUT_START is a tower checkpoint the template did not make
+	r = fx.engine_call("arinox_tna_apply_plan", order_tna=t.name, rows=rows, plan_feasible=0, feasibility_note="infeasible by 4 working days", critical_delay_days=4)["arinox_result"]
+	eq((r["made"], r["moved"], r["locked"]), (1, 1, 0))
+	eq(str(getdate(ms(so, "MINI_MARKER").planned_date)), d1)
+	eq(str(getdate(ms(so, "CUT_START").planned_date)), d2)
+	eq(frappe.db.get_value("Order TNA", t.name, ["plan_feasible", "critical_delay_days"]), (0, 4))
+	again = fx.engine_call("arinox_tna_apply_plan", order_tna=t.name, rows=rows)["arinox_result"]
+	eq((again["made"], again["moved"]), (0, 0))                        # idempotent: nothing is made or moved twice
+	fx.engine_call("arinox_order_tna_lock_baseline", name=t.name)
+	moved = [{"milestone_type": "MINI_MARKER", "planned_date": str(add_days(nowdate(), 70)), "revised_date": str(add_days(nowdate(), 50))}]
+	locked = fx.engine_call("arinox_tna_apply_plan", order_tna=t.name, rows=moved, reason="Fabric supplier slipped")["arinox_result"]
+	eq((locked["moved"], locked["revised"], locked["locked"]), (0, 1, 1))
+	eq(str(getdate(ms(so, "MINI_MARKER").planned_date)), d1)           # the baseline did not move
+	eq(str(getdate(ms(so, "MINI_MARKER").revised_date)), str(add_days(nowdate(), 50)))
+	true(throws(lambda: fx.engine_call("arinox_tna_apply_plan", order_tna=t.name, rows=[{"milestone_type": "FR_RAISED", "planned_date": d1, "revised_date": str(add_days(nowdate(), 90))}]), "reason"))   # a revised date needs its reason

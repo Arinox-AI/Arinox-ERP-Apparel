@@ -290,3 +290,22 @@ def requisition_receipt_and_inspection_stamp_the_time_and_action_plan_and_cancel
 	eq(ms("FABRIC_QC_PASSED").status, "Done")
 	fi.cancel()
 	true(ms("FABRIC_QC_PASSED").status != "Done")
+
+
+@test("inspection")
+def the_refresh_button_recomputes_requisition_quantities_after_an_inspection():
+	"""The tower runs an inspection's after-submit rules on a read made before the submit, so it calls this afterwards (Order page step 5)."""
+	settings_ok()
+	w = world()
+	f, po, pr = received_fabric(w)
+	fi = make_fi(pr, inspect=10)
+	fi.insert()
+	fi.submit()
+	row = frappe.get_doc("Fabric Requisition", f.name).items[0]
+	good = flt(row.accepted_qty)
+	true(good > 0, "the inspection accepted metres")
+	frappe.db.set_value("Fabric Requisition Item", row.name, {"accepted_qty": 0, "received_qty": 0})
+	res = call("arinox_fabric_requisition_refresh_quantities", requisition_type="FR", name=f.name)
+	eq((flt(res["lines"][0]["accepted"]), flt(res["lines"][0]["received"]) > 0), (good, True))
+	eq(flt(frappe.get_doc("Fabric Requisition", f.name).items[0].accepted_qty), good)
+	true(throws(lambda: call("arinox_fabric_requisition_refresh_quantities", requisition_type="FR", name="NO-SUCH"), "does not exist"))

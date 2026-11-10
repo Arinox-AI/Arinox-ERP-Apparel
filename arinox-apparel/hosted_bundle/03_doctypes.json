@@ -223,6 +223,336 @@
    "deferred": false,
    "doc": {
     "actions": [],
+    "autoname": "field:product_type",
+    "custom": 1,
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+     "product_type",
+     "item_group",
+     "column_1",
+     "default_sam",
+     "description"
+    ],
+    "fields": [
+     {
+      "fieldname": "product_type",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Product Type",
+      "reqd": 1,
+      "unique": 1
+     },
+     {
+      "fieldname": "item_group",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Item Group",
+      "options": "Item Group"
+     },
+     {
+      "fieldname": "column_1",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "default_sam",
+      "fieldtype": "Float",
+      "label": "Default SAM (minutes)"
+     },
+     {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+     }
+    ],
+    "index_web_pages_for_search": 0,
+    "links": [],
+    "module": "Arinox Apparel",
+    "name": "Product Type",
+    "naming_rule": "By fieldname",
+    "permissions": [
+     {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+     },
+     {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Apparel Costing Manager",
+      "share": 1,
+      "write": 1
+     },
+     {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Apparel Merchandiser",
+      "share": 1,
+      "write": 1
+     }
+    ],
+    "quick_entry": 1,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+   },
+   "first": {
+    "actions": [],
+    "autoname": "field:product_type",
+    "custom": 1,
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+     "product_type",
+     "item_group",
+     "column_1",
+     "default_sam",
+     "description"
+    ],
+    "fields": [
+     {
+      "fieldname": "product_type",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Product Type",
+      "reqd": 1,
+      "unique": 1
+     },
+     {
+      "fieldname": "item_group",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Item Group",
+      "options": "Item Group"
+     },
+     {
+      "fieldname": "column_1",
+      "fieldtype": "Column Break"
+     },
+     {
+      "fieldname": "default_sam",
+      "fieldtype": "Float",
+      "label": "Default SAM (minutes)"
+     },
+     {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+     }
+    ],
+    "index_web_pages_for_search": 0,
+    "links": [],
+    "module": "Arinox Apparel",
+    "name": "Product Type",
+    "naming_rule": "By fieldname",
+    "permissions": [
+     {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+     },
+     {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Apparel Costing Manager",
+      "share": 1,
+      "write": 1
+     },
+     {
+      "create": 1,
+      "delete": 0,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "Apparel Merchandiser",
+      "share": 1,
+      "write": 1
+     }
+    ],
+    "quick_entry": 1,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+   }
+  },
+  {
+   "deferred": false,
+   "doc": {
+    "actions": [],
+    "custom": 1,
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "product_type",
+     "sewing_sam",
+     "efficiency_pct",
+     "finish_pack_days",
+     "cut_lead_days",
+     "source"
+    ],
+    "fields": [
+     {
+      "columns": 2,
+      "fieldname": "product_type",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Product Type",
+      "options": "Product Type",
+      "reqd": 1
+     },
+     {
+      "columns": 2,
+      "description": "Minutes, sewing plus manual (the Operation Bulletin's total SAM)",
+      "fieldname": "sewing_sam",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Total SAM per Garment"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the planned efficiency of Production: Sewing",
+      "fieldname": "efficiency_pct",
+      "fieldtype": "Percent",
+      "in_list_view": 1,
+      "label": "Efficiency %"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the general value above",
+      "fieldname": "finish_pack_days",
+      "fieldtype": "Int",
+      "label": "Sewing End to Ex-factory (days)"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the general value above",
+      "fieldname": "cut_lead_days",
+      "fieldtype": "Int",
+      "label": "PCD to Sewing Start (days)"
+     },
+     {
+      "columns": 3,
+      "fieldname": "source",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Where this came from"
+     }
+    ],
+    "istable": 1,
+    "module": "Arinox Apparel",
+    "name": "Allocation Default",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC"
+   },
+   "first": {
+    "actions": [],
+    "custom": 1,
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+     "product_type",
+     "sewing_sam",
+     "efficiency_pct",
+     "finish_pack_days",
+     "cut_lead_days",
+     "source"
+    ],
+    "fields": [
+     {
+      "columns": 2,
+      "fieldname": "product_type",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "label": "Product Type",
+      "options": "Product Type",
+      "reqd": 1
+     },
+     {
+      "columns": 2,
+      "description": "Minutes, sewing plus manual (the Operation Bulletin's total SAM)",
+      "fieldname": "sewing_sam",
+      "fieldtype": "Float",
+      "in_list_view": 1,
+      "label": "Total SAM per Garment"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the planned efficiency of Production: Sewing",
+      "fieldname": "efficiency_pct",
+      "fieldtype": "Percent",
+      "in_list_view": 1,
+      "label": "Efficiency %"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the general value above",
+      "fieldname": "finish_pack_days",
+      "fieldtype": "Int",
+      "label": "Sewing End to Ex-factory (days)"
+     },
+     {
+      "columns": 1,
+      "description": "Blank: the general value above",
+      "fieldname": "cut_lead_days",
+      "fieldtype": "Int",
+      "label": "PCD to Sewing Start (days)"
+     },
+     {
+      "columns": 3,
+      "fieldname": "source",
+      "fieldtype": "Data",
+      "in_list_view": 1,
+      "label": "Where this came from"
+     }
+    ],
+    "istable": 1,
+    "module": "Arinox Apparel",
+    "name": "Allocation Default",
+    "permissions": [],
+    "sort_field": "modified",
+    "sort_order": "DESC"
+   }
+  },
+  {
+   "deferred": false,
+   "doc": {
+    "actions": [],
     "custom": 1,
     "doctype": "DocType",
     "editable_grid": 1,
@@ -2371,195 +2701,6 @@
     "permissions": [],
     "sort_field": "modified",
     "sort_order": "DESC"
-   }
-  },
-  {
-   "deferred": false,
-   "doc": {
-    "actions": [],
-    "autoname": "field:product_type",
-    "custom": 1,
-    "doctype": "DocType",
-    "engine": "InnoDB",
-    "field_order": [
-     "product_type",
-     "item_group",
-     "column_1",
-     "default_sam",
-     "description"
-    ],
-    "fields": [
-     {
-      "fieldname": "product_type",
-      "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Product Type",
-      "reqd": 1,
-      "unique": 1
-     },
-     {
-      "fieldname": "item_group",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Item Group",
-      "options": "Item Group"
-     },
-     {
-      "fieldname": "column_1",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "default_sam",
-      "fieldtype": "Float",
-      "label": "Default SAM (minutes)"
-     },
-     {
-      "fieldname": "description",
-      "fieldtype": "Small Text",
-      "label": "Description"
-     }
-    ],
-    "index_web_pages_for_search": 0,
-    "links": [],
-    "module": "Arinox Apparel",
-    "name": "Product Type",
-    "naming_rule": "By fieldname",
-    "permissions": [
-     {
-      "create": 1,
-      "delete": 1,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "System Manager",
-      "share": 1,
-      "write": 1
-     },
-     {
-      "create": 1,
-      "delete": 0,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "Apparel Costing Manager",
-      "share": 1,
-      "write": 1
-     },
-     {
-      "create": 1,
-      "delete": 0,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "Apparel Merchandiser",
-      "share": 1,
-      "write": 1
-     }
-    ],
-    "quick_entry": 1,
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": [],
-    "track_changes": 1
-   },
-   "first": {
-    "actions": [],
-    "autoname": "field:product_type",
-    "custom": 1,
-    "doctype": "DocType",
-    "engine": "InnoDB",
-    "field_order": [
-     "product_type",
-     "item_group",
-     "column_1",
-     "default_sam",
-     "description"
-    ],
-    "fields": [
-     {
-      "fieldname": "product_type",
-      "fieldtype": "Data",
-      "in_list_view": 1,
-      "label": "Product Type",
-      "reqd": 1,
-      "unique": 1
-     },
-     {
-      "fieldname": "item_group",
-      "fieldtype": "Link",
-      "in_list_view": 1,
-      "label": "Item Group",
-      "options": "Item Group"
-     },
-     {
-      "fieldname": "column_1",
-      "fieldtype": "Column Break"
-     },
-     {
-      "fieldname": "default_sam",
-      "fieldtype": "Float",
-      "label": "Default SAM (minutes)"
-     },
-     {
-      "fieldname": "description",
-      "fieldtype": "Small Text",
-      "label": "Description"
-     }
-    ],
-    "index_web_pages_for_search": 0,
-    "links": [],
-    "module": "Arinox Apparel",
-    "name": "Product Type",
-    "naming_rule": "By fieldname",
-    "permissions": [
-     {
-      "create": 1,
-      "delete": 1,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "System Manager",
-      "share": 1,
-      "write": 1
-     },
-     {
-      "create": 1,
-      "delete": 0,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "Apparel Costing Manager",
-      "share": 1,
-      "write": 1
-     },
-     {
-      "create": 1,
-      "delete": 0,
-      "email": 1,
-      "export": 1,
-      "print": 1,
-      "read": 1,
-      "report": 1,
-      "role": "Apparel Merchandiser",
-      "share": 1,
-      "write": 1
-     }
-    ],
-    "quick_entry": 1,
-    "sort_field": "modified",
-    "sort_order": "DESC",
-    "states": [],
-    "track_changes": 1
    }
   },
   {
@@ -28549,7 +28690,12 @@
      "escalation_days_2",
      "escalation_days_3",
      "claim_requires_evidence",
-     "air_volumetric_divisor"
+     "air_volumetric_divisor",
+     "section_alloc",
+     "alloc_finish_pack_days",
+     "alloc_cut_lead_days",
+     "alloc_min_batch_qty",
+     "alloc_defaults"
     ],
     "fields": [
      {
@@ -29013,13 +29159,13 @@
       "label": "Production: Sewing"
      },
      {
-      "default": "480",
+      "description": "Not set yet: line capacity is unknown until you set it",
       "fieldname": "work_minutes_per_day",
       "fieldtype": "Int",
       "label": "Working Minutes per Day"
      },
      {
-      "default": "65",
+      "description": "Not set yet: line capacity is unknown until you set it. Operation Bulletins and measured Daily Line Reports can inform it",
       "fieldname": "planned_efficiency_pct",
       "fieldtype": "Percent",
       "label": "Planned Efficiency %"
@@ -29311,6 +29457,37 @@
       "fieldname": "air_volumetric_divisor",
       "fieldtype": "Float",
       "label": "Air Freight Volumetric Divisor"
+     },
+     {
+      "description": "Used by the Cortex Tower's suggester for the Factory Allocation. Working minutes and planned efficiency come from Production: Sewing above; the learning curve is the table there.",
+      "fieldname": "section_alloc",
+      "fieldtype": "Section Break",
+      "label": "Where to Produce (allocation suggester)"
+     },
+     {
+      "description": "Wash, finishing, packing, final inspection. Not set yet: the allocation will not guess it",
+      "fieldname": "alloc_finish_pack_days",
+      "fieldtype": "Int",
+      "label": "Days from Sewing End to Ex-factory"
+     },
+     {
+      "description": "Cutting and kitting lead. Not set yet: the allocation will not guess it",
+      "fieldname": "alloc_cut_lead_days",
+      "fieldtype": "Int",
+      "label": "Days from PCD to Sewing Start"
+     },
+     {
+      "description": "A style and colour is split over several lines only when no single line fits, and never into parts below this. Not set: never split",
+      "fieldname": "alloc_min_batch_qty",
+      "fieldtype": "Int",
+      "label": "Smallest Part of a Split Order"
+     },
+     {
+      "description": "Used when a style has no active Operation Bulletin. With neither, the line shows capacity unknown and nothing is placed on it",
+      "fieldname": "alloc_defaults",
+      "fieldtype": "Table",
+      "label": "Capacity Defaults by Product Type",
+      "options": "Allocation Default"
      }
     ],
     "index_web_pages_for_search": 0,
@@ -29487,7 +29664,12 @@
      "escalation_days_2",
      "escalation_days_3",
      "claim_requires_evidence",
-     "air_volumetric_divisor"
+     "air_volumetric_divisor",
+     "section_alloc",
+     "alloc_finish_pack_days",
+     "alloc_cut_lead_days",
+     "alloc_min_batch_qty",
+     "alloc_defaults"
     ],
     "fields": [
      {
@@ -29951,13 +30133,13 @@
       "label": "Production: Sewing"
      },
      {
-      "default": "480",
+      "description": "Not set yet: line capacity is unknown until you set it",
       "fieldname": "work_minutes_per_day",
       "fieldtype": "Int",
       "label": "Working Minutes per Day"
      },
      {
-      "default": "65",
+      "description": "Not set yet: line capacity is unknown until you set it. Operation Bulletins and measured Daily Line Reports can inform it",
       "fieldname": "planned_efficiency_pct",
       "fieldtype": "Percent",
       "label": "Planned Efficiency %"
@@ -30249,6 +30431,37 @@
       "fieldname": "air_volumetric_divisor",
       "fieldtype": "Float",
       "label": "Air Freight Volumetric Divisor"
+     },
+     {
+      "description": "Used by the Cortex Tower's suggester for the Factory Allocation. Working minutes and planned efficiency come from Production: Sewing above; the learning curve is the table there.",
+      "fieldname": "section_alloc",
+      "fieldtype": "Section Break",
+      "label": "Where to Produce (allocation suggester)"
+     },
+     {
+      "description": "Wash, finishing, packing, final inspection. Not set yet: the allocation will not guess it",
+      "fieldname": "alloc_finish_pack_days",
+      "fieldtype": "Int",
+      "label": "Days from Sewing End to Ex-factory"
+     },
+     {
+      "description": "Cutting and kitting lead. Not set yet: the allocation will not guess it",
+      "fieldname": "alloc_cut_lead_days",
+      "fieldtype": "Int",
+      "label": "Days from PCD to Sewing Start"
+     },
+     {
+      "description": "A style and colour is split over several lines only when no single line fits, and never into parts below this. Not set: never split",
+      "fieldname": "alloc_min_batch_qty",
+      "fieldtype": "Int",
+      "label": "Smallest Part of a Split Order"
+     },
+     {
+      "description": "Used when a style has no active Operation Bulletin. With neither, the line shows capacity unknown and nothing is placed on it",
+      "fieldname": "alloc_defaults",
+      "fieldtype": "Table",
+      "label": "Capacity Defaults by Product Type",
+      "options": "Allocation Default"
      }
     ],
     "index_web_pages_for_search": 0,

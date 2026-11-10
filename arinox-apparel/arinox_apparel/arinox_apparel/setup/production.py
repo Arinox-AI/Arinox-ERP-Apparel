@@ -68,7 +68,7 @@ PROCESSES = [
 	("Garment Dye", "After Sewing", "Garments", "Kg", 1),
 ]
 
-# From the company's pilot-run form and finishing practice.
+# Default checks - edit to your process.
 CHECKS = [
 	("Fit and measurements after wash", "Pilot Run"), ("Construction", "Pilot Run"), ("Wash result vs approved standard", "Pilot Run"),
 	("Trims and labels", "Pilot Run"), ("Needle and thread", "Pilot Run"), ("Shade", "Pilot Run"), ("Packing", "Pilot Run"),
@@ -76,11 +76,10 @@ CHECKS = [
 	("Hang tag and sticker positions", "Pre-Pack"), ("Polybag warning and size", "Pre-Pack"), ("Barcode matches size and colour", "Pre-Pack"),
 ]
 
-# From the packing list in the reference documents: one carton size, height varies with contents.
+# Default carton - edit to your process.
 CARTONS = [("54 x 33 x 20 cm", 54, 33, 20)]
 
-# From the company's operation bulletin sheets ("PLANNED DAY TARGET EFF%"): planned efficiency of 35, 45, 55, 60 then 65 %
-# on days 1 to 5, against a final planned efficiency of 65 %. Stored as a percent of the final target (35 / 65 = 53.85 ...).
+# Default learning curve (percent of target on days 1 to 5) - edit to your process in Apparel Settings.
 LEARNING_CURVE = [(1, 53.85), (2, 69.23), (3, 84.62), (4, 92.31), (5, 100)]
 TRAFFIC_RULES = [("Yellow", 1), ("Red", 2)]
 
@@ -125,11 +124,18 @@ def seed_cartons():
 			frappe.get_doc({"doctype": "Shipment Parcel Template", "parcel_template_name": name, "length": length, "width": width, "height": height, "weight": 0}).insert(ignore_permissions=True)
 
 
+#: No Allocation Default rows are seeded: SAM and efficiency are the customer's own data (entered, or proposed from their own
+#: Operation Bulletins by "suggest from my history"). The doctype stays; the table starts empty.
+ALLOC_DEFAULTS: list = []
+
+
 def seed_settings_rows():
 	"""Insert the default rows of the two settings tables once, while a table is still empty."""
 	for field, child, rows, keys in (
 		("learning_curve", "Learning Curve Day", LEARNING_CURVE, ("day_no", "pct_of_target")),
 		("traffic_light_rules", "Traffic Light Rule", TRAFFIC_RULES, ("colour", "defects_from")),
+		("alloc_defaults", "Allocation Default", [r for r in ALLOC_DEFAULTS if frappe.db.exists("Product Type", r[0])],
+		 ("product_type", "sewing_sam", "efficiency_pct", "source")),
 	):
 		if frappe.db.count(child, {"parent": "Apparel Settings", "parentfield": field}):
 			continue

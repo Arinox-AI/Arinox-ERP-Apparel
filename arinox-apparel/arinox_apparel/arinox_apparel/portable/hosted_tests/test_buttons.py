@@ -49,6 +49,18 @@ def make_sales_order_builds_one_row_per_size_with_the_variant_and_the_line_price
 
 
 @test("buttons")
+def make_sales_order_skips_a_size_nobody_orders_and_says_so_when_nothing_is_ordered():
+	sc, template = variant_contract()
+	sc.sizes[0].db_set("qty", 0)                                          # the buyer listed a size and ordered none of it
+	so = fx.engine_call("arinox_sales_contract_make_sales_order", source_name=sc.name)["arinox_result"]
+	eq(len(so["items"]), 3)
+	true(all(r["qty"] > 0 for r in so["items"]), "no zero-quantity line is ever sent")
+	for row in sc.sizes:
+		row.db_set("qty", 0)
+	true(throws(lambda: fx.engine_call("arinox_sales_contract_make_sales_order", source_name=sc.name), "nothing to order"))
+
+
+@test("buttons")
 def make_sales_order_asks_for_the_finished_goods_warehouse():
 	sc, template = variant_contract()
 	frappe.db.set_single_value("Apparel Settings", "fg_warehouse", None)

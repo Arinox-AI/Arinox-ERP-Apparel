@@ -813,6 +813,13 @@
    "file": "tna_api_update_milestone.py"
   },
   {
+   "name": "arinox_tna_api_apply_plan",
+   "script_type": "API",
+   "api_method": "arinox_tna_apply_plan",
+   "allow_guest": 0,
+   "file": "tna_api_apply_plan.py"
+  },
+  {
    "name": "arinox_tna_api_get_tna",
    "script_type": "API",
    "api_method": "arinox_api_get_tna",
@@ -1056,6 +1063,13 @@
    "api_method": "arinox_purchase_order_make_purchase_orders",
    "allow_guest": 0,
    "file": "purchase_order_api_make.py"
+  },
+  {
+   "name": "arinox_requisition_api_refresh_quantities",
+   "script_type": "API",
+   "api_method": "arinox_fabric_requisition_refresh_quantities",
+   "allow_guest": 0,
+   "file": "requisition_api_refresh.py"
   },
   {
    "name": "arinox_purchase_receipt_validate",
