@@ -1,0 +1,15 @@
+{
+ "group": "server_scripts",
+ "mode": "create",
+ "records": [
+  {
+   "doctype": "Server Script",
+   "name": "arinox_ping",
+   "script_type": "API",
+   "api_method": "arinox_ping",
+   "allow_guest": 0,
+   "disabled": 0,
+   "script": "# _platform \u00b7 API arinox_ping \u2014 tells Cortex Tower that Server Scripts run natively on this ERP.\n# Read-only. Spec: cortex-tower/prompts/2026-11-12_erp_native_scripts_and_modules.md \u00a71.\nfrappe.response[\"message\"] = {\"native\": True, \"scripts\": frappe.db.count(\"Server Script\", {\"disabled\": 0}), \"version\": \"2026-11-12\"}\n"
+  }
+ ]
+}

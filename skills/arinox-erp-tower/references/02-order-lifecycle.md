@@ -1,0 +1,53 @@
+# 02 Order lifecycle: when, where, what
+
+Two flows, in this order. §A is the **Deal** (inquiry → Sales Order). §B is the **Order page** (Sales Order → cash). Each row says: the ERP document, the Tower function, who may do it, and the gate that can stop it.
+
+Roles: Merchandiser (M), Costing (C), Sampling (S), Planner (P), Purchase (Pu), QC, Production (Pr), Shipping (Sh), Accounts (A), Management/Admin (always allowed). Defaults from `guardrails.py`; a `guardrails.json` beside it can tighten them.
+
+## §A Deal flow (inquiry → Sales Order)
+
+| # | Stage | ERP documents | Tower functions | Who | Notes and gates |
+|---|---|---|---|---|---|
+| 0 | **Mail arrives** | none (local mail tables) | `inbox_sync`, `inbox_threads`, `inbox_thread`, `inbox_label`, `inbox_link_customer` | M | Mail is classified (inquiry, new_order, order_amendment, invoice …) and threaded by Gmail thread id / References. A PO document in the mail is decisive. Correct a wrong label with `inbox_label`. |
+| 1 | **Start the deal** | Customer (+ Contact) | `deal_from_thread` or `deal_create`, `customer_create`, `deal_update`, `deal_documents`, `deal_read_documents` | M | `deal_from_thread` pre-fills styles, quantities, season, incoterm, dates from the mail. Read every attachment (tech pack PDF, BOM sheet). A scan with no text layer is flagged `needs_ocr`; do not guess its content. |
+| 2 | **Register** | Opportunity; per style a Tech Pack (materials, colours, sizes, measurements) | `deal_register`, `deal_bom_upload` / `_from_mail` / `_from_erp` / `_ai` / `_paste`, `deal_bom_apply`, `deal_erp_setup` | M | `deal_erp_setup` repairs ERP masters the scripts need (Product Type rows, warehouses). BOM rows you extract with a model are *proposals*; a person confirms the table before `deal_bom_apply`. |
+| 3 | **Cost** | Cost Sheet (draft) per style | `deal_cost_open`, `deal_cost_sheet*`, `deal_cost_read`, `deal_cost_autofill`, `deal_cost_apply_prices`, `deal_cost_save`, `deal_cost_submit` | C, M | The ERP refuses a Cost Sheet that lacks mandatory cost heads or falls under the margin floor. Rates come from a Costing Parameter or are typed per costing. Submit is the "draft class" (allowed in mode `draft`). |
+| 4 | **Quote and negotiate** | Price Negotiation rounds | `deal_quote_draft`, `deal_quote_send`, `deal_record_reply` | M | `deal_quote_send` creates an email **draft** and writes the opening offer round. `deal_record_reply` takes the buyer's answer: `counter`, `our_counter`, `accepted` … Sending needs a person. |
+| 5 | **Contract** | Quotation (submitted) → Sales Contract | `deal_contract_prepare`, `deal_contract_form`, `deal_contract_update`, `deal_contract_create` | M | Prices come from the agreed negotiation. `deal_contract_form` returns the ERP's own field list; every contract term is written, Link values are validated. `sign: true` signs. |
+| 6 | **Sales Order** | Sales Order (draft → submitted) | `deal_make_order` | M | Uses the ERP script `arinox_sales_contract_make_sales_order`; skips zero-quantity sizes and refuses an order with no lines. Needs a finished-goods warehouse in Apparel Settings. |
+| 7 | **Open the order** | – | `order_get`, `order_list` | all | From here use §B. The Deal page's "Open the order" card links to the Order page. |
+
+`deal_track`, `deal_track_doc`, `deal_track_shipment` give the whole shipping picture of a deal from contract terms plus the Shipment (documents due, given, tracking); `deal_dashboard` gives pipeline counts, win rate, quotes waiting on the buyer, deals waiting on us.
+
+**Direct PO path.** A PO that arrives by mail for a known style can go through *Order intake* (`get_intake_queue`, `understand_intake`, `simulate_intake`, `intake_review`, `approve_intake` …): the Tower reads the PDF/XLSX, gives each field a confidence, runs arithmetic gates (Σ lines = total, rate × qty = value, ship date after PO date), matches buyer / PO duplicate or revision / style / fabric, and builds an ordered plan of **drafts only**. Nothing writes until `approve_intake`; every created ref is stored for one-click `rollback_intake`.
+
+## §B Order flow (Sales Order → cash), ten steps
+
+Read the whole order with `order_get(so)`; it returns `steps[]` (key, state, counts, docs, blockers, next), `by_step`, `focus`, `kpis`, `timeline`. Amendments (`-1`) are followed.
+
+| # | Key | Purpose | Documents (ERP) | Read | Write functions | Who | Gate / what blocks it |
+|---|---|---|---|---|---|---|---|
+| 1 | `confirm` | Order is confirmed | Sales Contract, Sales Order | `order_get` | (done in §A) | M | none |
+| 2 | `allocate` | Decide which factory/line makes what, by when | Factory Allocation (+ `Allocation Default`, Apparel Settings → *Where to Produce*) | `order_allocation_get`, `order_alloc_suggest_defaults` | `order_allocation_save` | P | Needs SAM and efficiency per Product Type, capacity, ex-factory. **The suggester proposes; the planner approves.** "Allocated = ordered" within tolerance. Empty state says what is missing ("No SAM for …"). |
+| 3 | `tna` | Time-and-action plan | Order TNA, TNA Milestone, TNA Template | `order_tna_get`, `order_tna_health` | `order_tna_make`, `order_tna_lock`, `order_tna_revise` | P | `order_tna_lock` is refused when the plan is infeasible (answer says by how many working days) or not fully written. Revising a locked plan needs a reason code (Buyer, Supplier, Factory, Logistics, Other). Every day is a working day (decision D5). |
+| 4 | `samples` | Sample approvals and PP meeting | Sample Approval (rounds), PP Meeting | `order_samples_get` | `order_samples_create`, `order_sample_round`, `order_sample_load`, `order_pp_meeting_make`, `order_pp_meeting_actions`, `order_pp_meeting_submit` | S, M | PP meeting submit checks: PP sample buyer-approved, every required department attended, every buyer comment is an action with owner and date. **Bulk gate** (Apparel Settings `enforce_bulk_gate`, `require_pp_meeting`) can stop Production Card issue. |
+| 5 | `materials` | Fabric and trims requested, bought, received, inspected | Fabric Requisition, Trim Requisition, Material Request, Purchase Order, Purchase Receipt, Fabric/Trim Inspection | `order_materials_get` (the ERP's Material Status report) | `order_req_lines`, `order_items_create`, `order_req_save`, `order_req_approve`, `order_req_revise`, `order_po_make`, `order_rolls_import`, `order_inspection_make`, `order_inspection_submit` | Pu, QC | Approving a requisition makes Material Requests. `order_po_make` is risky class. "Materials done" = requisitions approved, every PO received, received material inspected, no failed inspection. Inspection submit moves accepted qty to store, rejected to the rejected warehouse. |
+| 6 | `cutsew` | Production Card, cut plan, lay, line input, sewing, QC | Production Card, Operation Bulletin, Cut Plan, Lay Report, Cut Bundle, Line Input, Daily Line Report, Line QC Report, Pilot Run, Production Movement | `order_cutsew_get`, `production_board_get` | `order_card_context`, `order_card_save`, `order_card_approve`, `order_card_revise`, `order_cutplan_suggest/_release/_approve/_reopen`, `order_cut_issuable`, `order_cut_issue`, `order_ob_activate`, `order_prefill` | Pr, P | Production Card issue obeys the pilot and bulk gate. A marker variance over the limit sends a Cut Plan to a manager (`Pending Approval`). `order_cut_issue` is a Stock Entry (risky). Operation Bulletin needs operation times to activate. |
+| 7 | `subcontract` | Wash/print/embroidery out-and-back, finishing | Subcontract Challan, Subcontract Return, Subcontract Settlement, Finishing Receipt | `order_subcontract_get` | `order_challan_short_close`, `order_settlement_invoices`, `order_prefill_sub` | Pr | Short-close ("rest will not come back") is Production Manager only, with a reason. Settlement drafts the vendor Purchase Invoice and a debit note for penalties. |
+| 8 | `pack` | Packing and final inspection | Packing List, Final Inspection (AQL Plan) | `order_pack_get` | `order_pack_plan`, `order_prefill_pack` | Sh, QC | The carton plan is worked out by the ERP's script and compared with the order; writing nothing. A carton row is tied to the order line of its own style (multi-style fix). AQL accept/reject numbers are confirmed only for codes K, L, M. |
+| 9 | `ship` | Shipment, delivery notes, booking, tracking | Shipment, Delivery Note | `order_ship_get` | `order_shipment_create`, `order_ship_make_dns`, `order_ship_submit`, `order_ship_record` | Sh | Packing lists must be submitted, not on another shipment, belong to this order, have an accepted Final Inspection (`ship_gate_final_inspection`). `order_ship_make_dns` and `order_ship_submit` are **risky**: `needs_approval` until a manager approves. Order of steps is enforced by the wizard only; a desk user could skip them. |
+| 10 | `invoice` | Invoice, collect, claims, close | Sales Invoice, Payment Entry, Buyer Claim, Credit Note | `order_invoice_get` (receivable card, hidden from roles that cannot read accounts) | `order_invoice_prepare`, `order_invoice_submit`, `order_followup_log`, `order_claim_credit_note`, `order_close` | A | Invoices drafted only when all delivery notes of the shipment are submitted; factory leg submitted first. `order_invoice_submit` and `order_close` are risky. Close needs: production finished, everything shipped and invoiced, every customer invoice paid, no claim open. **Payments are recorded in the ERP, not in the Tower.** |
+
+### How the stages connect (what unlocks what)
+
+`Sales Order` → `Factory Allocation` + `Order TNA` → `Sample Approval`s (types per Apparel Sample Rule) → `PP Meeting` (needs approved PP sample) → requisitions → POs → receipts → inspections → `Production Card` (needs bulk gate) → `Cut Plan` → `Lay Report` → `Line Input` → `Daily Line Report` → `Line QC Report` → (subcontract round trip, `Finishing Receipt`) → `Packing List` → `Final Inspection` → `Shipment` → `Delivery Note` → `Sales Invoice` → `Payment Entry` → `order_close`.
+
+The T&A reads these evidence documents to decide whether a milestone is on time, late or done (30 rules over 20 types). `order_tna_health` tells you which evidence types exist on the ERP and how many; an empty type means that milestone can never complete automatically.
+
+### Which functions are read-only
+
+All `*_get`, `order_list`, `order_cutplan_suggest`, `order_cut_issuable`, `order_alloc_suggest_defaults`, `order_pack_plan`, `order_prefill*`, `order_tna_health`, `production_board_get`, `deal_cost_sheet_calc`, `deal_dashboard`, `deal_track`. Calling these never needs approval.
+
+### Two company documents to keep in mind
+
+Real sites may have several Companies (factory, trading, fabric seller) with inter-company prices; the invoice route across two companies was not run end to end (see 08).
